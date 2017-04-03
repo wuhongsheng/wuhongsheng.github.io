@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>WHS</title>
+    <title>Categories</title>
     <meta name="description" content="">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/category/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
 
@@ -58,8 +58,8 @@
             <ul>
                 <li>
                     
-                    <a class="active" href="/">
-                        
+                    <a href="/">
+                    
                         <i class="fa fa-home"></i>Home
                     </a>
                 </li>
@@ -78,8 +78,8 @@
                     
                     <li>
                         
-                        <a href="/category/">
-                        
+                        <a class="active" href="/category/">
+                            
                             <i class="fa fa-th-list"></i>Categories
                         </a>
                     </li>
@@ -137,31 +137,27 @@
 </header>
 
 
-        <div class="page clearfix" index>
+        <div class="page clearfix">
     <div class="left">
-        <h1>Welcome to WHS's Blog!</h1>
-        <small>这里记录着我的编程学习之路</small>
+        <h1>Categories</h1>
         <hr>
         <ul>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2016/11/25/how-to-write-a-count-down/">前端如何写一个精确的倒计时</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2016-11-25
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>HyG
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
+            <h2 id="JavaScript">JavaScript</h2>
+                
                     
+                        
+                    
+                
+                    
+                        
+                        <li>
+                            <time>
+                            2016-11-25 Fri.
+                            </time>
+                            <a class="title" href="/2016/11/25/how-to-write-a-count-down/">前端如何写一个精确的倒计时</a>
+
+                            
 
 
 <!-- <span class="point">•</span> -->
@@ -177,10 +173,7 @@
 </span>
 
 
-                    </div>
-
-                    <div class="label-card">
-                    
+                            
 <!-- <span class="point">•</span> -->
 <span class="pageTag">
   <i class="fa fa-tags"></i>
@@ -194,119 +187,38 @@
 
 </span>
 
-                    </div>
-                </div>
-                <div class="excerpt">
+                        </li>
+                        
                     
-<p>关于写倒计时大家可能都都比较熟悉，使用 setTimeout 或 setInterval 就可以搞定。几秒钟或者几分钟的倒计时这样写没有问题，但是如果是长时间的倒计时，这样写就会不准确。如果用户修改了他的设备时间，这样的倒计时就没有意义了。今天就说说写一个精确的倒计时的方法。</p>
-
-<p><img src="https://img.alicdn.com/tfs/TB18QnlOpXXXXcVXpXXXXXXXXXX-388-256.png" alt="" /></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2016/11/25/how-to-write-a-count-down/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
+                
             
         </ul>
-
-
-
-        <!-- Pagination links -->
-        <div class="pagination">
-          
-            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
-            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
-          
-          <span class="page_number ">1/1</span>
-          
-            <span class="next disable"><i class="fa fa-angle-right"></i></span>
-            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
-          
-        </div>
     </div>
-    <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
     <div class="right">
         <div class="wrap">
-            <div class="side">
-                <div>
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    Recent Posts
-                </div>
-                <ul class="content-ul" recent>
-                    
-                        <li><a href="/2016/11/25/how-to-write-a-count-down/">前端如何写一个精确的倒计时</a></li>
-                    
-                </ul>
-            </div>
 
             <!-- Content -->
-            <div class="side ">
+            <div class="side content">
                 <div>
-                    <i class="fa fa-th-list"></i>
-                    Categories
+                    Content
                 </div>
-                <ul class="content-ul" cate>
+                <ul id="content-side" class="content-ul">
                     
-                    <li>
-                        <a href="/category/#JavaScript" class="categories-list-item" cate="JavaScript">
-                            <span class="name">
-                                JavaScript
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a data-scroll href="#JavaScript">
+                                JavaScript (1)
+                            </a>
+                        </li>
                     
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
-            <div class="side">
-                <div>
-                    <i class="fa fa-tags"></i>
-                    Tags
-                </div>
-                <div class="tags-cloud">
-                    
-                    
-                    
-                    
-
-                    
-
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#countdown" style="font-size: 9pt; color: #999;">countdown</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#JavaScript" style="font-size: 9pt; color: #999;">JavaScript</a>
-                    
-                </div>
-            </div>
-
-            <!-- <div class="side">
-                <div>
-                    <i class="fa fa-external-link"></i>
-                    Links
-                </div>
-                <ul  class="content-ul">
-
-                </ul>
-            </div> -->
+            <!-- <div class="side">bbbb</div> -->
         </div>
     </div>
 </div>
-<!-- <script src="/js/scroll.min.js " charset="utf-8"></script> -->
-<!-- <script src="/js/pageContent.js " charset="utf-8"></script> -->
+<script src="/js/pageContent.js " charset="utf-8"></script>
 
 
     <footer class="site-footer">
