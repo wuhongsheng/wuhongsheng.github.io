@@ -20,7 +20,7 @@ author: WHS
 ## 搭建过程
 
 在jekyll的官网上 [http://jekyllrb.com/](http://jekyllrb.com/) 其实已经说得比较明白了，我在这里还是简单的说一下吧。我用的是Mac系统。    
-主要环节有：GitHub Pages建站，安装Ruby,安装RubyGems,不过这两步安装jekyll，安装代码高亮插件，安装node.js
+主要环节有：GitHub Pages建站，安装Ruby,安装RubyGems,不过最新的Mac系统已帮我们完成这两步，安装jekyll，安装代码高亮插件，安装node.js
 
 ### 使用 GitHub Pages 建站
 
