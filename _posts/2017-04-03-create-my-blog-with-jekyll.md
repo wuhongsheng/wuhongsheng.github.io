@@ -24,9 +24,9 @@ author: WHS
 
 ### 使用 GitHub Pages 建站
 
-第一步，登陆GitHub，新建一个repository,命名为你的用户名+github.io。如我的用户名为wuhongsheng，所以 repository 命名为 wuhongsheng.github.io，如下图。
+第一步，登陆GitHub，新建一个repository,命名为你的用户名+github.io。如我的用户名为wuhongsheng，所以 repository命名为wuhongsheng.github.io，如下图,由于我已经创建过该仓库，所以会有警告。
 
-![](https://pan.baidu.com/s/1bpemM2F)
+![](https://github.com/wuhongsheng/wuhongsheng.github.io/blob/master/_site/images/2017-04-04-1%20.png?raw=true)
 
 ### 安装Ruby
 
