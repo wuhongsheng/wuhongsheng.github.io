@@ -5,28 +5,26 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 03 Apr 2017 20:38:05 +0800</pubDate>
-    <lastBuildDate>Mon, 03 Apr 2017 20:38:05 +0800</lastBuildDate>
+    <pubDate>Tue, 04 Apr 2017 20:46:42 +0800</pubDate>
+    <lastBuildDate>Tue, 04 Apr 2017 20:46:42 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
-        <title>前端如何写一个精确的倒计时</title>
+        <title>Jekyll 搭建静态博客</title>
         <description>
-关于写倒计时大家可能都都比较熟悉，使用 setTimeout 或 setInterval 就可以搞定。几秒钟或者几分钟的倒计时这样写没有问题，但是如果是长时间的倒计时，这样写就会不准确。如果用户修改了他的设备时间，这样的倒计时就没有意义了。今天就说说写一个精确的倒计时的方法。
-
-&lt;img src=&quot;https://img.alicdn.com/tfs/TB18QnlOpXXXXcVXpXXXXXXXXXX-388-256.png&quot; alt=&quot;&quot; /&gt;
+一直以来都想搭建一个自己的博客，之前用过博客园的系统，感觉内容排版布局比较麻烦。后来在Github上看到有人使用jeklly,于是选择了在Github上用jekyll搭建博客。
 
 </description>
-        <pubDate>Fri, 25 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/25/how-to-write-a-count-down/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/25/how-to-write-a-count-down/</guid>
+        <pubDate>Tue, 04 Apr 2017 06:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/04/04/create-my-blog-with-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/04/create-my-blog-with-jekyll/</guid>
         
-        <category>countdown</category>
+        <category>jekyll</category>
         
-        <category>JavaScript</category>
+        <category>RubyGems</category>
         
         
-        <category>JavaScript</category>
+        <category>jekyll</category>
         
       </item>
     
