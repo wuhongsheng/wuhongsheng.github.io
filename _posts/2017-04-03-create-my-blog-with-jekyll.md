@@ -26,7 +26,7 @@ author: WHS
 
 第一步，登陆GitHub，新建一个repository,命名为你的用户名+github.io。如我的用户名为wuhongsheng，所以 repository 命名为 wuhongsheng.github.io，如下图。
 
-![](/images/2017-04-04-1.png)
+![](https://pan.baidu.com/s/1bpemM2F)
 
 ### 安装Ruby
 
