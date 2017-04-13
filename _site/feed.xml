@@ -5,12 +5,12 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 12 Apr 2017 08:58:09 +0800</pubDate>
-    <lastBuildDate>Wed, 12 Apr 2017 08:58:09 +0800</lastBuildDate>
+    <pubDate>Thu, 13 Apr 2017 21:56:45 +0800</pubDate>
+    <lastBuildDate>Thu, 13 Apr 2017 21:56:45 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
-        <title>常用adb命令及常见问题</title>
+        <title>adb常用命令及常见问题</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#前提&quot; id=&quot;markdown-toc-前提&quot;&gt;前提&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
@@ -34,12 +34,8 @@
 export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
 &lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
+    &lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
   &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
-
-&lt;ul&gt;
   &lt;li&gt;adb nodaemon server   查看adb 端口是否有占用&lt;/li&gt;
   &lt;li&gt;lsof -i:5037 查看adb端口占用进程&lt;/li&gt;
   &lt;li&gt;rm -rf ~/.android 重置本地签名文件&lt;/li&gt;
