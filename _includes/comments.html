@@ -44,7 +44,7 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 {% endif %}
-
+<!--畅言评论-->
 {% if site.changyan %}
 <!--
 <div id="SOHUCS" sid="{{ site.url }}{{ page.url }}"></div>
@@ -65,6 +65,14 @@ conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
   Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vZXh0ZW5kL2hvdF9uZXdzX3NjcmlwdC5odG1s", true);
 </script>
 {% endif %}
+<!--有言评论 邮箱 A-->
+{% if site.youyan %}
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid={{site.youyan}}"></script>
+<!-- UY END -->
+{% endif %}
+
 
 
 

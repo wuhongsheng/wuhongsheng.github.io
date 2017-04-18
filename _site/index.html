@@ -316,6 +316,21 @@ export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
   <li>还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。</li>
 </ul>
 
+<p><strong>错误信息：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ adb devices
+List of devices attached
+* daemon not running. starting it now at tcp:5037 *
+* daemon started successfully *
+** daemon still not running
+error: cannot connect to daemon at tcp:5037: Operation timed out
+</code></pre>
+</div>
+<p><strong>解决方法：</strong></p>
+<ul>
+  <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS。</li>
+</ul>
+
                 </div>
                 <div class="read-all">
                     <a  href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
