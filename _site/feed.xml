@@ -5,9 +5,95 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Apr 2017 22:24:07 +0800</pubDate>
-    <lastBuildDate>Tue, 18 Apr 2017 22:24:07 +0800</lastBuildDate>
+    <pubDate>Thu, 20 Apr 2017 12:35:48 +0800</pubDate>
+    <lastBuildDate>Thu, 20 Apr 2017 12:35:48 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Java正则表达式</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用正则表达式&quot; id=&quot;markdown-toc-常用正则表达式&quot;&gt;常用正则表达式&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#实例&quot; id=&quot;markdown-toc-实例&quot;&gt;实例&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#提取字符串中的数字并高亮显示&quot; id=&quot;markdown-toc-提取字符串中的数字并高亮显示&quot;&gt;提取字符串中的数字并高亮显示&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+正则表达式定义了字符串的模式。正则表达式可以用来搜索、编辑或处理文本。正则表达式并不仅限于某一种语言，但是在每种语言中有细微的差别。
+
+&lt;h3 id=&quot;基础知识&quot;&gt;基础知识&lt;/h3&gt;
+
+&lt;a href=&quot;http://www.runoob.com/java/java-regular-expressions.html&quot;&gt;菜鸟教程&lt;/a&gt;
+
+&lt;h3 id=&quot;常用正则表达式&quot;&gt;常用正则表达式&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;匹配数字  &lt;code class=&quot;highlighter-rouge&quot;&gt;\d+(\.\d+)?&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;匹配中文字符  &lt;code class=&quot;highlighter-rouge&quot;&gt;[\u4e00-\u9fa5]&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;匹配邮箱地址  &lt;code class=&quot;highlighter-rouge&quot;&gt;[\w!#$%&amp;amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;匹配网址  &lt;code class=&quot;highlighter-rouge&quot;&gt;[a-zA-z]+://[^\s]*&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;匹配国内电话号码  &lt;code class=&quot;highlighter-rouge&quot;&gt;\d{3}-\d{8}|\d{4}-\{7,8}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;匹配QQ号  &lt;code class=&quot;highlighter-rouge&quot;&gt;[1-9][0-9]{4,}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;匹配身份证号  &lt;code class=&quot;highlighter-rouge&quot;&gt;^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;实例&quot;&gt;实例&lt;/h3&gt;
+
+&lt;h4 id=&quot;提取字符串中的数字并高亮显示&quot;&gt;提取字符串中的数字并高亮显示&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; String ss = &quot;（一）现状：昆明市所辖14个县市区范围内，共有国有林场14个，其中市级2个，县区12个。从经营类型上划分，全市国有林场均属生态公益型，经营总面积87.32万亩，森林面积63.78万亩，森林总蓄积量为199.55万立方米，森林覆盖率73.05%；（二）目标：通过全面深化国有林场改革，切实做到“三增长、两建立、一确保”。即：资源增长、职工增收、林场增效；全面建立健全职工社会保障体系，尽快建立符合现代林业发展要求的国有林场管理体制和经营机制；确保林区社会和谐稳定&quot;;   
+        // 创建 Pattern 对象
+        Pattern pattern = Pattern.compile(&quot;\d+(\.\d+)?&quot;);
+        Matcher matcher = pattern.matcher(ss.trim());
+        String lasts=&quot;&quot;;
+        while (matcher.find()){
+            if(lasts.equals(matcher.group())){
+                ss=ss.replace(matcher.group(),&quot;&amp;lt;font color=#FF4081&amp;gt;&amp;lt;b&amp;gt;&quot;+ matcher.group()+ &quot;&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;&quot;);
+
+            }else {
+                ss=ss.replaceFirst(matcher.group(),&quot;&amp;lt;font color=#FF4081&amp;gt;&amp;lt;b&amp;gt;&quot;+ matcher.group()+ &quot;&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;&quot;);
+            }
+            lasts=matcher.group();
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 20 Apr 2017 06:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/04/20/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/20/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+        
+        <category>Java</category>
+        
+        <category>Android</category>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>如何在Android面试中脱颖而出</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#控件命名&quot; id=&quot;markdown-toc-控件命名&quot;&gt;控件命名&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Android 命名规范
+
+&lt;h3 id=&quot;控件命名&quot;&gt;控件命名&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;如TextView tv_title Button btn_confirm。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 19 Apr 2017 06:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/</guid>
+        
+        <category>Android</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
     
       <item>
         <title>Android 开发规范</title>
@@ -85,6 +171,7 @@ export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
   &lt;li&gt;killall adb 然后 重启Android Studio&lt;/li&gt;
   &lt;li&gt;如果上面方法无效，请检查是否重复设置Android环境变量&lt;/li&gt;
   &lt;li&gt;还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。&lt;/li&gt;
+  &lt;li&gt;Mac防火墙设置原因&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;strong&gt;错误信息：&lt;/strong&gt;
@@ -99,7 +186,7 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
 &lt;/div&gt;
 &lt;strong&gt;解决方法：&lt;/strong&gt;
 &lt;ul&gt;
-  &lt;li&gt;Close Android Studio 然后使用终端kill 占用adb的进程，重启AS。&lt;/li&gt;
+  &lt;li&gt;Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 12 Apr 2017 06:14:54 +0800</pubDate>
