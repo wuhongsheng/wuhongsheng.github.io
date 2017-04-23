@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 23 Apr 2017 13:02:08 +0800</pubDate>
-    <lastBuildDate>Sun, 23 Apr 2017 13:02:08 +0800</lastBuildDate>
+    <pubDate>Sun, 23 Apr 2017 22:23:01 +0800</pubDate>
+    <lastBuildDate>Sun, 23 Apr 2017 22:23:01 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -36,6 +36,7 @@
   &lt;li&gt;匹配国内电话号码  &lt;code class=&quot;highlighter-rouge&quot;&gt;\d{3}-\d{8}|\d{4}-\{7,8}&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;匹配QQ号  &lt;code class=&quot;highlighter-rouge&quot;&gt;[1-9][0-9]{4,}&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;匹配身份证号  &lt;code class=&quot;highlighter-rouge&quot;&gt;^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;匹配手机号码  &lt;code class=&quot;highlighter-rouge&quot;&gt;[1][3587]\d{9}&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;实例&quot;&gt;实例&lt;/h3&gt;
@@ -81,7 +82,10 @@
   &lt;li&gt;&lt;a href=&quot;#常问的知识点&quot; id=&quot;markdown-toc-常问的知识点&quot;&gt;常问的知识点&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#初级&quot; id=&quot;markdown-toc-初级&quot;&gt;初级&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#中级&quot; id=&quot;markdown-toc-中级&quot;&gt;中级&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#高级&quot; id=&quot;markdown-toc-高级&quot;&gt;高级&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#高级&quot; id=&quot;markdown-toc-高级&quot;&gt;高级&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#插件化&quot; id=&quot;markdown-toc-插件化&quot;&gt;插件化&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -148,6 +152,16 @@
 
 如插件化, 如网络的优化, 如缓存的处理, 如插件化, 如Service保活
 对产品的一些看法, 对代码质量的要求, 对开发流程、团队合作的理解等
+
+&lt;h6 id=&quot;插件化&quot;&gt;插件化&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/DroidPluginTeam/DroidPlugin&quot;&gt;Droid Plugin&lt;/a&gt;
+
+    DroidPlugin 是&lt;strong&gt;&lt;em&gt;360手机助手&lt;/em&gt;&lt;/strong&gt;在Android系统上实现了一种新的&lt;strong&gt;&lt;em&gt;插件机制&lt;/em&gt;&lt;/strong&gt;:它可以在无需安装、修改的情况下运行APK文件,此机制对改进大型APP的架构，实现多团队协作开发具有一定的好处。
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Wed, 19 Apr 2017 06:14:54 +0800</pubDate>
