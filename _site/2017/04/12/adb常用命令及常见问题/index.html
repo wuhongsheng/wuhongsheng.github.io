@@ -243,7 +243,9 @@ export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
   <li>killall adb 然后 重启Android Studio</li>
   <li>如果上面方法无效，请检查是否重复设置Android环境变量</li>
   <li>还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。</li>
+  <li>open sdk manager and installed all android sdk tools and done.</li>
   <li>Mac防火墙设置原因</li>
+  <li>查看AS debugger 端口是否被占用 lsof -i:63341</li>
 </ul>
 
 <p><strong>错误信息：</strong></p>
@@ -301,6 +303,10 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         </li>
                         
                         
+                    
+                
+            
+                
                     
                 
             
