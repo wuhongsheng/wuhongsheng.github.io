@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Android 开发规范</title>
-    <meta name="description" content="  参考资料  （一）命名规约Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java开发手册。参考资料阿里巴巴Java开发手册（一）命名规约  包名【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用 单数形式，但是类名如果有复数含义，类名可以使用复数形式。正例: 应用...">
+    <title>Markdown入门指南</title>
+    <meta name="description" content="  导语  Markdown 官方文档  使用 Markdown 的优点  Markdown 语法的简要规则          标题      列表      引用      图片和链接      粗体与斜体      表格      代码框      分割线        相关工具Markdown 是一种轻量级...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/04/12/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">
+    <link rel="canonical" href="http://localhost:4000/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
 
@@ -139,11 +139,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Android 开发规范</h1>
+        <h1>Markdown入门指南</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-04-12
+                <i class="fa fa-calendar"></i>2017-04-24
             </div>
 
             <div class="label-card">
@@ -164,7 +164,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+        <a href="/category/#Markdown" title="Category: Markdown" rel="category">Markdown</a>
     
   
 
@@ -181,8 +181,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a-->
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+        <!--a href="/tag/#Markdown" title="Tag: Markdown" rel="tag">Markdown</a-->
+        <a href="/tag/#Markdown" title="Tag: Markdown" rel="tag">Markdown</a>
     
   
 
@@ -194,50 +194,132 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#一命名规约" id="markdown-toc-一命名规约">（一）命名规约</a></li>
+  <li><a href="#导语" id="markdown-toc-导语">导语</a></li>
+  <li><a href="#markdown-官方文档" id="markdown-toc-markdown-官方文档">Markdown 官方文档</a></li>
+  <li><a href="#使用-markdown-的优点" id="markdown-toc-使用-markdown-的优点">使用 Markdown 的优点</a></li>
+  <li><a href="#markdown-语法的简要规则" id="markdown-toc-markdown-语法的简要规则">Markdown 语法的简要规则</a>    <ul>
+      <li><a href="#标题" id="markdown-toc-标题">标题</a></li>
+      <li><a href="#列表" id="markdown-toc-列表">列表</a></li>
+      <li><a href="#引用" id="markdown-toc-引用">引用</a></li>
+      <li><a href="#图片和链接" id="markdown-toc-图片和链接">图片和链接</a></li>
+      <li><a href="#粗体与斜体" id="markdown-toc-粗体与斜体">粗体与斜体</a></li>
+      <li><a href="#表格" id="markdown-toc-表格">表格</a></li>
+      <li><a href="#代码框" id="markdown-toc-代码框">代码框</a></li>
+      <li><a href="#分割线" id="markdown-toc-分割线">分割线</a></li>
+    </ul>
+  </li>
+  <li><a href="#相关工具" id="markdown-toc-相关工具">相关工具</a></li>
 </ul>
 
-<p>Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java开发手册。</p>
+<p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。</p>
 
-<h3 id="参考资料">参考资料</h3>
+<h3 id="导语">导语</h3>
 
-<p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8Cv1.1.1.pdf">阿里巴巴Java开发手册</a></p>
+<blockquote>
+  <p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
+</blockquote>
 
-<h3 id="一命名规约">（一）命名规约</h3>
+<h3 id="markdown-官方文档">Markdown 官方文档</h3>
+
+<blockquote>
+  <p>这里可以看到官方的Markdown语法规则文档，当然，后文我也会用自己的方式阐述这些语法的具体用法。</p>
+  <ul>
+    <li><a href="http://daringfireball.net/projects/markdown/syntax">创始人 John Gruber 的 Markdown 语法说明</a></li>
+    <li><a href="http://wowubuntu.com/markdown/#list">Markdown 中文版语法说明</a></li>
+  </ul>
+</blockquote>
+
+<h3 id="使用-markdown-的优点">使用 Markdown 的优点</h3>
 
 <ul>
-  <li>包名</li>
+  <li>专注你的文字内容而不是排版样式，安心写作。</li>
+  <li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
+  <li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
+  <li>随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱。可读、直观、学习成本低。</li>
 </ul>
 
-<p>【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用 单数形式，但是类名如果有复数含义，类名可以使用复数形式。</p>
+<h3 id="markdown-语法的简要规则">Markdown 语法的简要规则</h3>
 
-<p>正例: 应用工具类包名为com.alibaba.open.util、类名为MessageUtils(此规则参考 spring 的框架结构)</p>
+<h4 id="标题">标题</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_title.jpg" alt="" /></p>
+
+<h4 id="列表">列表</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_list.jpg" alt="" /></p>
+
+<h4 id="引用">引用</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_quote.jpg" alt="" /></p>
+
+<h4 id="图片和链接">图片和链接</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_img.jpg" alt="" /></p>
+
+<h4 id="粗体与斜体">粗体与斜体</h4>
+
+<p>Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就是粗体的语法，用一个 * 包含一段文本就是斜体的语法。</p>
+
+<p>例如：<strong>这里是粗体</strong> <em>这里是斜体</em></p>
+
+<h4 id="表格">表格</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+</code></pre>
+</div>
+
+<p>这种语法生成的表格如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tables</th>
+      <th style="text-align: center">Are</th>
+      <th style="text-align: right">Cool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>col 3 is</td>
+      <td style="text-align: center">right-aligned</td>
+      <td style="text-align: right">$1600</td>
+    </tr>
+    <tr>
+      <td>col 2 is</td>
+      <td style="text-align: center">centered</td>
+      <td style="text-align: right">$12</td>
+    </tr>
+    <tr>
+      <td>zebra stripes</td>
+      <td style="text-align: center">are neat</td>
+      <td style="text-align: right">$1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="代码框">代码框</h4>
+
+<p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。使用 tab 键即可缩进。</p>
+
+<h4 id="分割线">分割线</h4>
+
+<p>分割线的语法只需要三个 * 号，例如：</p>
+
+<hr />
+
+<h3 id="相关工具">相关工具</h3>
 
 <ul>
-  <li>类名</li>
+  <li>
+    <p>图床工具</p>
+
+    <p><a href="https://portal.qiniu.com">七牛云</a></p>
+  </li>
 </ul>
-
-<p>【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式，但以下情形例外:(领域模型 的相关命名)DO / BO / DTO / VO等。</p>
-
-<p>正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion 反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion‘</p>
-
-<ul>
-  <li>方法名</li>
-</ul>
-
-<p>【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从 驼峰形式。</p>
-
-<p>正例: localValue / getHttpMessage() / inputUserId</p>
-
-<ul>
-  <li>常量</li>
-</ul>
-
-<p>【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。</p>
-
-<p>正例: MAX_STOCK_COUNT
-反例: MAX_COUNT</p>
 
 
         </article>
@@ -251,62 +333,7 @@
                     
                 
             
-        
-            
-            
                 
-                    
-                
-            
-                
-                    
-                        
-                        <h2 id="similar_posts">Similar Posts</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Java正则表达式
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-            
-        
-            
-            
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/">如何在Android面试中脱颖而出
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题
-                            
-                            </a>
-                        </li>
-                        
-                        
                     
                 
             
@@ -322,20 +349,41 @@
                 
             
         
+            
+            
+                
+                    
+                
+            
         
-            </ul>
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Java正则表达式</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/">如何在Android面试中脱颖而出</a></p>
         
     </div>
 </div>
