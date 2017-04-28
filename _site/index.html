@@ -667,7 +667,9 @@
 
 <p>【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式，但以下情形例外:(领域模型 的相关命名)DO / BO / DTO / VO等。</p>
 
-<p>正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion 反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion‘</p>
+<p>正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion</p>
+
+<p>反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion</p>
 
 <ul>
   <li>方法名</li>
@@ -683,8 +685,9 @@
 
 <p>【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。</p>
 
-<p>正例: MAX_STOCK_COUNT
-反例: MAX_COUNT</p>
+<p>正例: MAX_STOCK_COUNT</p>
+
+<p>反例: MAX_COUNT</p>
 
 
                 </div>
@@ -813,6 +816,24 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
 <p><strong>解决方法：</strong></p>
 <ul>
   <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。</li>
+</ul>
+
+<p><strong>错误信息：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8606 for debugger
+</code></pre>
+</div>
+
+<p><strong>解决方法：</strong></p>
+
+<ul>
+  <li>在Debugger Configuration 设置Debuger Type 为 Java</li>
 </ul>
 
                 </div>

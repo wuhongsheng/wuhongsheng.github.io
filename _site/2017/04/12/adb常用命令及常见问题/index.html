@@ -263,6 +263,24 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
   <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。</li>
 </ul>
 
+<p><strong>错误信息：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8606 for debugger
+</code></pre>
+</div>
+
+<p><strong>解决方法：</strong></p>
+
+<ul>
+  <li>在Debugger Configuration 设置Debuger Type 为 Java</li>
+</ul>
+
         </article>
         <hr>
 

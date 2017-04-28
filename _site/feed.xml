@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Apr 2017 09:15:28 +0800</pubDate>
-    <lastBuildDate>Tue, 25 Apr 2017 09:15:28 +0800</lastBuildDate>
+    <pubDate>Fri, 28 Apr 2017 13:38:58 +0800</pubDate>
+    <lastBuildDate>Fri, 28 Apr 2017 13:38:58 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -348,7 +348,9 @@ Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java�
 
 【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式，但以下情形例外:(领域模型 的相关命名)DO / BO / DTO / VO等。
 
-正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion 反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion‘
+正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion
+
+反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion
 
 &lt;ul&gt;
   &lt;li&gt;方法名&lt;/li&gt;
@@ -365,6 +367,7 @@ Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java�
 【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。
 
 正例: MAX_STOCK_COUNT
+
 反例: MAX_COUNT
 
 </description>
@@ -449,6 +452,24 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
 &lt;strong&gt;解决方法：&lt;/strong&gt;
 &lt;ul&gt;
   &lt;li&gt;Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;strong&gt;错误信息：&lt;/strong&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;下午4:13	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8606 for debugger
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;strong&gt;解决方法：&lt;/strong&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在Debugger Configuration 设置Debuger Type 为 Java&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 12 Apr 2017 06:14:54 +0800</pubDate>
