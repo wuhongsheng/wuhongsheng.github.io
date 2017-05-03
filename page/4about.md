@@ -26,7 +26,7 @@ type: page
 * 2015.6.20 入职北京航天泰坦科技股份有限公司 
 * 2015.6 毕业于滁州学院 地理信息系统专业
 * 2014.12-2015.4 安徽省第四测绘院实习
-* 2012.6-2012.9 北京数字空间 (实习生)
+* 2012.6-2012.9 北京数字空间
 * 2011.10 获得安徽GIS大赛三等奖
 
 ## 联系我
@@ -36,7 +36,7 @@ type: page
 
 ## 关于本站
 
-**若您想使用这个 jekyll 博客主题，请访问：[https://github.com/wuhongsheng/gaohaoyang.github.io](https://github.com/wuhongsheng/Gaohaoyang.github.io)**
+**若您想使用这个 jekyll 博客主题，请访问：[https://github.com/wuhongsheng/wuhongsheng.github.io](https://github.com/wuhongsheng/Gaohaoyang.github.io)**
 
 ~欢迎使用~
 

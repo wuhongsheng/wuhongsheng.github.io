@@ -9,7 +9,11 @@ type: page
 * content
 {:toc}
 
-## 相关资料
+## DESIGN
+
+* [Material Design](https://md.gl)
+
+## 学习资料
 
 * Google官方网站
 
@@ -17,10 +21,25 @@ type: page
 
   [Android Developers](https://developer.android.google.cn/index.html)
 
+  [Google开发者中文博客](http://developers.googleblog.cn/)
+
+* 相关网站
+
+  [ANDROID WEEKLY](http://androidweekly.net)
+
+
 ## 常用技术
+
+### APK压缩
+
 * [APK瘦身](https://github.com/ShowJoy-com/showjoy-blog/issues/27)
 * [有效减少 Android 应用的方法数](https://zhuanlan.zhihu.com/p/26272085)
+### 插件化
+* [Android 插件技术实战总结](https://mp.weixin.qq.cos/1p5Y0f5XdVXN2EZYT0AM_A)
 
+* [Droid Plugin](https://github.com/DroidPluginTeam/DroidPlugin)
+
+  DroidPlugin 是***360手机助手***在Android系统上实现了一种新的***插件机制***:它可以在无需安装、修改的情况下运行APK文件,此机制对改进大型APP的架构，实现多团队协作开发具有一定的好处。
 
 
 ## 常用UI控件
@@ -33,6 +52,8 @@ type: page
 * RxJava
 
 [大神详解](http://gank.io/post/560e15be2dca930e00da1083#toc_10)
+
+* [greenDAO](https://github.com/greenrobot/greenDAO/)
 
 
 
