@@ -5,83 +5,9 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 04 May 2017 08:37:11 +0800</pubDate>
-    <lastBuildDate>Thu, 04 May 2017 08:37:11 +0800</lastBuildDate>
+    <pubDate>Thu, 04 May 2017 08:39:38 +0800</pubDate>
+    <lastBuildDate>Thu, 04 May 2017 08:39:38 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
-    
-      <item>
-        <title>常用Git命令及问题</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#git简介&quot; id=&quot;markdown-toc-git简介&quot;&gt;Git简介&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见问题及解决方法&quot; id=&quot;markdown-toc-常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。
-
-&lt;h3 id=&quot;git简介&quot;&gt;Git简介&lt;/h3&gt;
-
-Git是什么？
-
-Git是目前世界上最先进的分布式版本控制系统（没有之一）。
-
-Git的诞生
-
-阅读: 725576
-很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。
-
-Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？
-
-事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！
-
-你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。
-
-不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。
-
-安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。
-
-Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：
-
-Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。
-
-Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。
-
-历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。
-
-&lt;h3 id=&quot;常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/h3&gt;
-
-&lt;strong&gt;错误代码：&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
-java.lang.RuntimeException: Invocation failed Operation timed out
-	at org.jetbrains.git4idea.ssh.GitSSHXmlRpcClient.getLastSuccessful(GitSSHXmlRpcClient.java:230)
-	at org.jetbrains.git4idea.ssh.SSHMain.authenticate(SSHMain.java:212)
-	at org.jetbrains.git4idea.ssh.SSHMain.start(SSHMain.java:173)
-	at org.jetbrains.git4idea.ssh.SSHMain.main(SSHMain.java:138)
-Caused by: java.net.ConnectException: Operation timed out
-	at java.net.PlainSocketImpl.socketConnect(Native Method)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;strong&gt;解决方法：&lt;/strong&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Click File-&amp;gt; Settings. Keyboard shortcut is Ctrl+Alt+S.&lt;/li&gt;
-  &lt;li&gt;Search for “Version Control”&lt;/li&gt;
-  &lt;li&gt;Choose “Git” under “version Control”&lt;/li&gt;
-  &lt;li&gt;In the SSH executable dropdown, choose Native&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Mon, 24 Apr 2017 05:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/04/24/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/04/24/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/</guid>
-        
-        <category>Markdown</category>
-        
-        
-        <category>Markdown</category>
-        
-      </item>
     
       <item>
         <title>Markdown入门指南</title>
