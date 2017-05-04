@@ -67,6 +67,10 @@ type: page
 
 ## 测试
 
+## 常用工具
+
+* [svg2android](http://inloop.github.io/svg2android/)
+
 
 
 ## 打包
