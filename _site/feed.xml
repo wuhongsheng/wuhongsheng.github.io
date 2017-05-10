@@ -5,9 +5,520 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 04 May 2017 08:47:53 +0800</pubDate>
-    <lastBuildDate>Thu, 04 May 2017 08:47:53 +0800</lastBuildDate>
+    <pubDate>Wed, 10 May 2017 08:22:38 +0800</pubDate>
+    <lastBuildDate>Wed, 10 May 2017 08:22:38 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>GreenDAO使用教程</title>
+        <description>
+&lt;a href=&quot;http://greenrobot.org/greendao/&quot;&gt;GreenDAO&lt;/a&gt; 使用教程
+
+&lt;ol&gt;
+  &lt;li&gt;集成环境&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In your root build.gradle file:
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral() // add repository
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+    }
+}
+ 
+// In your app projects build.gradle file:
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+ 
+dependencies {
+    compile 'org.greenrobot:greendao:3.2.2' // add library
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在Gradle中配置数据库版本信息等&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;greendao {
+        //当前数据库版本
+        schemaVersion 1
+        //由GreenDao自动生成代码所在的包名，默认的是在项目包下面新建一个gen。
+        daoPackage 'com.titan.data.greendao'
+        //设置自动生成代码的目录
+        targetGenDir 'src/main/java'
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+3.在项目中定义实体类
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Entity
+public class TrackPoint  {
+    @Id(autoincrement = true)
+    private Long id;
+    /**上传时间*/
+    @NotNull
+    @Property(nameInDb = &quot;TIME&quot;)
+    private String time;
+	/**经度*/
+    @Property(nameInDb = &quot;LON&quot;)
+    private double lon;
+	/**纬度*/
+    @Property(nameInDb = &quot;LAT&quot;)
+    private double lat;
+    /**用户id*/
+    @Property(nameInDb = &quot;USERID&quot;)
+    private String userid;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+注解：
+
+@Entity   标识实体类，greenDAO会映射成sqlite的一个表，表名为实体类名的大写形式
+
+@Id 标识主键，该字段的类型为long或Long类型，autoincrement设置是否自动增长
+
+@Property       标识该属性在表中对应的列名称, nameInDb设置名称
+
+@Transient      标识该属性将不会映射到表中，也就是没有这列
+
+@NotNull         设置表中当前列的值不可为空
+
+@Convert         指定自定义类型(@linkPropertyConverter)
+
+@Generated   greenDAO运行所产生的构造函数或者方法，被此标注的代码可以变更或者下次运行时清除
+
+@Index    使用@Index作为一个属性来创建一个索引；定义多列索引(@link Entity#indexes())
+
+@JoinEntity     定义表连接关系
+
+@JoinProperty         定义名称和引用名称属性关系
+
+@Keep     注解的代码段在GreenDao下次运行时保持不变
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      1.注解实体类：默认禁止修改此类
+      2.注解其他代码段，默认禁止修改注解的代码段
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+@OrderBy        指定排序
+
+@ToMany         定义与多个实体对象的关系
+
+@ToOne  定义与另一个实体（一个实体对象）的关系
+
+@Unique 向数据库列添加了一个唯一的约束
+
+4.生成相关代码
+
+定义好了之后按ctrl+F9（或者工具栏build下面的Make Project）对项目进行重新构建，再
+daoPackage的目录下就会自动生成代码
+
+5.新建一个类，实例化greenDAO所需要的几个关键对象，DaoMaster，DaoSession，代码如下：
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class GreenDaoManager {
+    private DaoMaster mDaoMaster;
+    private DaoSession mDaoSession;
+    private static volatile GreenDaoManager mInstance = null;
+    private GreenDaoManager(){
+        if (mInstance == null) {
+            DaoMaster.DevOpenHelper devOpenHelper = new
+                    DaoMaster.DevOpenHelper(App.getContext(), &quot;user.db&quot;);
+            mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
+            mDaoSession = mDaoMaster.newSession();
+        }
+    }
+    public static GreenDaoManager getInstance() {
+        if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
+                    mInstance = new GreenDaoManager();
+                }
+            }
+        }
+        return mInstance;
+    }
+    public DaoMaster getMaster() {
+        return mDaoMaster;
+    }
+    public DaoSession getSession() {
+        return mDaoSession;
+    }
+    public DaoSession getNewSession() {
+        mDaoSession = mDaoMaster.newSession();
+        return mDaoSession;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+6.然后在Application中初始化：
+
+&lt;code class=&quot;highlighter-rouge&quot;&gt;GreenDaoManager.getInstance();&lt;/code&gt;
+
+7.数据库增、删、查、改
+
+首先获得UserDao的对象
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+UserDao userDao=GreenDaoManager.getInstance().getNewSession().getUserDao();
+&lt;/code&gt;
+增：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User user = new User(null, name, age, studentId);
+userDao.insert(user);
+
+
+insert(T entity)       当指定主键在表中存在时会发生异常
+insertOrReplace(T entity)      当指定主键在表中存在时会覆盖数据
+insertInTx(Iterable&amp;lt;T&amp;gt; entities)      批量插入数据
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+删：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User user = new User(null, name, age, studentId);    
+userDao.delete(user)
+ 
+delete(T entity)       删除数据
+deleteByKey(K key)     指定主键删除数据
+deleteInTx(Iterable&amp;lt;T&amp;gt; entities)      批量删除数据
+deleteByKeyInTx(Iterable&amp;lt;K&amp;gt; keys)      批量按数据删除数据        
+deleteAll()    删除所有数据
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+改：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User user = new User(id, name, age, studentId);
+userDao.update(user);
+ 
+update(T entity)       修改数据，主键需相同
+updateInTx(Iterable&amp;lt;T&amp;gt; entities)      批量更新数据
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+查：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;userDao.load(id)
+ 
+load(K key)    根据id查找数据
+loadByRowId(long rowId)        根据行号查找数据
+loadAll()      查找全部数据
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+8.一对一、一对多关系
+
+greenDAO目前只支持一对一和一对多关系，并不支持多对多关系
+
+一对一：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private Long studentId;
+@ToOne(joinProperty = &quot;studentId&quot;)
+private Studentstudent;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Generated(hash = 313494093)
+public Student getStudent() {
+    Long __key = this.studentId;
+    if (student__resolvedKey == null || !student__resolvedKey.equals(__key)) {
+        final DaoSession daoSession = this.daoSession;
+        if (daoSession == null) {
+            throw new DaoException(&quot;Entity is detached from DAO context&quot;);
+        }
+        StudentDao targetDao = daoSession.getStudentDao();
+        Student studentNew = targetDao.load(__key);
+        synchronized (this) {
+            student = studentNew;
+            student__resolvedKey = __key;
+        }
+    }
+    return student;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。
+
+一对多（有三种映射形式）：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ToMany(referencedJoinProperty = &quot;teacherId&quot;)
+private List&amp;lt;Teacher&amp;gt; teacherList;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+referencedJoinProperty：指定目标实体中与源实体相对应的外键。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ToMany(joinProperties = {
+        @JoinProperty(name=&quot;studentTag&quot;,referencedName = &quot;teacherTag&quot;)
+})
+private List&amp;lt;Teacher&amp;gt; teacherList;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ToMany
+@JoinEntity(
+        entity = Teacher.class,
+        sourceProperty = &quot;teacherId&quot;,
+        targetProperty = &quot;id&quot;
+)
+private List&amp;lt;Teacher&amp;gt; teacherList;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+@JoinEntity：在做NM多对多映射的时候使用
+
+9.数据库升级
+
+数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/** WARNING: Drops all table on Upgrade! Use only during development. */
+public static class DevOpenHelper extends OpenHelper {
+    public DevOpenHelper(Context context, String name) {
+        super(context, name);
+    }
+
+    public DevOpenHelper(Context context, String name, CursorFactory factory) {
+        super(context, name, factory);
+    }
+
+    @Override
+    public void onUpgrade(Database db, int oldVersion, int newVersion) {
+        Log.i(&quot;greenDAO&quot;, &quot;Upgrading schema from version &quot; + oldVersion + &quot; to &quot; + newVersion + &quot; by dropping all tables&quot;);
+        dropAllTables(db, true);
+        onCreate(db);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。
+
+在project的gradle添加
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;allprojects {
+    repositories {
+        jcenter()
+        maven { url &quot;https://jitpack.io&quot; }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+在app的gradle添加：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
+注意：要是使用的还是greenDAO3.0以前的版本，添加的是
+
+compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+新建一个类
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
+    public MySQLiteOpenHelper(Contextcontext,Stringname){
+        super(context,name);
+    }
+    public MySQLiteOpenHelper(Contextcontext,String name,SQLiteDatabase.CursorFactoryfactory) {
+        super(context,name,factory);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabasedb,int oldVersion,intnewVersion) {
+        Log.d(“SQLite”,“数据库从”+oldVersion+“升级到”+newVersion);
+        MigrationHelper.migrate(db,UserDao.class,StudentDao.class);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+在GreenDaoManager修改代码：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class GreenDaoManager {
+    private DaoMaster mDaoMaster;
+    private DaoSession mDaoSession;
+    private static volatile GreenDaoManager mInstance = null; 
+    private GreenDaoManager(){
+        if (mInstance == null) {
+            //重写MySQLiteOpenHelper数据库升级，数据不丢失
+            //MyApplication.getContext()上下文表示了数据库存储路径为手机内存
+            //DEBUG表示是否打印debug
+            MigrationHelper.DEBUG = true;
+            MySQLiteOpenHelper helper = new
+                    MySQLiteOpenHelper(App.getContext(),&quot;user.db&quot;,null);
+            mDaoMaster = new DaoMaster(helper.getWritableDatabase());
+            mDaoSession = mDaoMaster.newSession();
+        }
+    }
+
+    public static GreenDaoManager getInstance() {
+        if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
+                    mInstance = new GreenDaoManager();
+                }
+            }
+        }
+        return mInstance;
+    }
+    public DaoMaster getMaster() {
+        return mDaoMaster;
+    }
+    public DaoSession getSession() {
+        return mDaoSession;
+    }
+    public DaoSession getNewSession() {
+        mDaoSession = mDaoMaster.newSession();
+        return mDaoSession;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+注意：migrate(SQLiteDatabase db, Class… daoClasses); 里面的参数是全部的实体类，就是要生成的表。
+要生成的表。
+
+</description>
+        <pubDate>Mon, 08 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
+        
+        <category>Android</category>
+        
+        <category>GreenDAO</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
+    
+      <item>
+        <title>Android开发常用技巧</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#uiueux&quot; id=&quot;markdown-toc-uiueux&quot;&gt;UI/UE/UX&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#rippledrawable---波纹效果&quot; id=&quot;markdown-toc-rippledrawable---波纹效果&quot;&gt;RippleDrawable - 波纹效果&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+Android 开发技巧
+
+&lt;h3 id=&quot;uiueux&quot;&gt;UI/UE/UX&lt;/h3&gt;
+
+&lt;h4 id=&quot;rippledrawable---波纹效果&quot;&gt;RippleDrawable - 波纹效果&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用Android 提供的属性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;code class=&quot;highlighter-rouge&quot;&gt;android:foreground=&quot;?android:attr/selectableItemBackground&quot;&lt;/code&gt;
+
+扩散到View边界
+
+&lt;code class=&quot;highlighter-rouge&quot;&gt;android:foreground=&quot;?android:attr/selectableItemBackgroundBorderless&lt;/code&gt;
+
+设置后，会从孩子往父亲找一个依附的色。如果View往上找的时候，亲生父亲没背景色，会继续向上查找直到最顶端。找到了最顶端的爷爷，这个时候才绘制。然而，如果父亲的兄弟又绘制了颜色，且盖住了最顶端的绘制，会导致看不到效果。如果有一定的透明度，结果就显而易见了。
+特别注意：
+当把硬件加速给关闭时，这个效果是没有的。
+这是API 21的新属性，老版本无法使用.
+
+&lt;ul&gt;
+  &lt;li&gt;自定义&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;!-- A green ripple drawn atop a black rectangle. --&amp;gt;
+&amp;lt;ripple android:color=&quot;#ff00ff00&quot;&amp;gt;
+    &amp;lt;item android:drawable=&quot;@android:color/black&quot; /&amp;gt;
+&amp;lt;/ripple&amp;gt;
+ 
+&amp;lt;!-- A blue ripple drawn atop a drawable resource. --&amp;gt;
+&amp;lt;ripple android:color=&quot;#ff0000ff&quot;&amp;gt;
+    &amp;lt;item android:drawable=&quot;@drawable/my_drawable&quot; /&amp;gt;
+&amp;lt;/ripple&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+android:color中是点击响应色，也是波纹扩散色。
+item中是正常状态下的显示。
+
+一般使用时会和原有的selector配合，原有的selector负责5.0以下显示效果，
+新的selector内部含有ripple标签放在drawable-v21中，保证点击效果。
+
+</description>
+        <pubDate>Mon, 08 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+        
+        <category>Android</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
+    
+      <item>
+        <title>常用Git命令及问题</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#git简介&quot; id=&quot;markdown-toc-git简介&quot;&gt;Git简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题及解决方法&quot; id=&quot;markdown-toc-常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。
+
+&lt;h3 id=&quot;git简介&quot;&gt;Git简介&lt;/h3&gt;
+
+Git是什么？
+
+Git是目前世界上最先进的分布式版本控制系统（没有之一）。
+
+Git的诞生
+
+阅读: 725576
+很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。
+
+Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？
+
+事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！
+
+你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。
+
+不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。
+
+安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。
+
+Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：
+
+Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。
+
+Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。
+
+历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。
+
+&lt;h3 id=&quot;常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/h3&gt;
+
+&lt;strong&gt;错误代码：&lt;/strong&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
+java.lang.RuntimeException: Invocation failed Operation timed out
+	at org.jetbrains.git4idea.ssh.GitSSHXmlRpcClient.getLastSuccessful(GitSSHXmlRpcClient.java:230)
+	at org.jetbrains.git4idea.ssh.SSHMain.authenticate(SSHMain.java:212)
+	at org.jetbrains.git4idea.ssh.SSHMain.start(SSHMain.java:173)
+	at org.jetbrains.git4idea.ssh.SSHMain.main(SSHMain.java:138)
+Caused by: java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;strong&gt;解决方法：&lt;/strong&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Click File-&amp;gt; Settings. Keyboard shortcut is Ctrl+Alt+S.&lt;/li&gt;
+  &lt;li&gt;Search for “Version Control”&lt;/li&gt;
+  &lt;li&gt;Choose “Git” under “version Control”&lt;/li&gt;
+  &lt;li&gt;In the SSH executable dropdown, choose Native&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Wed, 03 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/</guid>
+        
+        <category>Git</category>
+        
+        
+        <category>Git</category>
+        
+      </item>
     
       <item>
         <title>Markdown入门指南</title>

@@ -13,6 +13,10 @@ type: page
 
 * [Material Design](https://md.gl)
 
+* [Material Design 指南](是一个动态文档，包含跨平台和跨设备的视觉、交互和动画设计指南。)
+
+* [COLOR TOOL](https://md.gl/color/#!/?view.left=0&view.right=0)
+
 ## 学习资料
 
 * Google官方网站
@@ -34,7 +38,9 @@ type: page
 
 * [APK瘦身](https://github.com/ShowJoy-com/showjoy-blog/issues/27)
 * [有效减少 Android 应用的方法数](https://zhuanlan.zhihu.com/p/26272085)
+
 ### 插件化
+
 * [Android 插件技术实战总结](https://mp.weixin.qq.cos/1p5Y0f5XdVXN2EZYT0AM_A)
 
 * [Droid Plugin](https://github.com/DroidPluginTeam/DroidPlugin)
@@ -49,9 +55,9 @@ type: page
 
 ## 开源库
 
-* RxJava
+* [RxJava](https://github.com/ReactiveX/RxJava)
 
-[大神详解](http://gank.io/post/560e15be2dca930e00da1083#toc_10)
+  [大神详解](http://gank.io/post/560e15be2dca930e00da1083#toc_10)
 
 * [greenDAO](https://github.com/greenrobot/greenDAO/)
 

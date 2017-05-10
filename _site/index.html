@@ -131,6 +131,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -143,6 +145,652 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">GreenDAO使用教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>&nbsp;
+    
+        <a href="/tag/#GreenDAO" title="Tag: GreenDAO" rel="tag">GreenDAO</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p><a href="http://greenrobot.org/greendao/">GreenDAO</a> 使用教程</p>
+
+<ol>
+  <li>集成环境</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// In your root build.gradle file:
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral() // add repository
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+    }
+}
+ 
+// In your app projects build.gradle file:
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+ 
+dependencies {
+    compile 'org.greenrobot:greendao:3.2.2' // add library
+}
+</code></pre>
+</div>
+
+<ol>
+  <li>在Gradle中配置数据库版本信息等</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>greendao {
+        //当前数据库版本
+        schemaVersion 1
+        //由GreenDao自动生成代码所在的包名，默认的是在项目包下面新建一个gen。
+        daoPackage 'com.titan.data.greendao'
+        //设置自动生成代码的目录
+        targetGenDir 'src/main/java'
+    }
+
+</code></pre>
+</div>
+
+<p>3.在项目中定义实体类</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@Entity
+public class TrackPoint  {
+    @Id(autoincrement = true)
+    private Long id;
+    /**上传时间*/
+    @NotNull
+    @Property(nameInDb = "TIME")
+    private String time;
+	/**经度*/
+    @Property(nameInDb = "LON")
+    private double lon;
+	/**纬度*/
+    @Property(nameInDb = "LAT")
+    private double lat;
+    /**用户id*/
+    @Property(nameInDb = "USERID")
+    private String userid;
+    }
+</code></pre>
+</div>
+
+<p>注解：</p>
+
+<p>@Entity   标识实体类，greenDAO会映射成sqlite的一个表，表名为实体类名的大写形式</p>
+
+<p>@Id 标识主键，该字段的类型为long或Long类型，autoincrement设置是否自动增长</p>
+
+<p>@Property       标识该属性在表中对应的列名称, nameInDb设置名称</p>
+
+<p>@Transient      标识该属性将不会映射到表中，也就是没有这列</p>
+
+<p>@NotNull         设置表中当前列的值不可为空</p>
+
+<p>@Convert         指定自定义类型(@linkPropertyConverter)</p>
+
+<p>@Generated   greenDAO运行所产生的构造函数或者方法，被此标注的代码可以变更或者下次运行时清除</p>
+
+<p>@Index    使用@Index作为一个属性来创建一个索引；定义多列索引(@link Entity#indexes())</p>
+
+<p>@JoinEntity     定义表连接关系</p>
+
+<p>@JoinProperty         定义名称和引用名称属性关系</p>
+
+<p>@Keep     注解的代码段在GreenDao下次运行时保持不变</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>      1.注解实体类：默认禁止修改此类
+      2.注解其他代码段，默认禁止修改注解的代码段
+</code></pre>
+</div>
+
+<p>@OrderBy        指定排序</p>
+
+<p>@ToMany         定义与多个实体对象的关系</p>
+
+<p>@ToOne  定义与另一个实体（一个实体对象）的关系</p>
+
+<p>@Unique 向数据库列添加了一个唯一的约束</p>
+
+<p>4.生成相关代码</p>
+
+<p>定义好了之后按ctrl+F9（或者工具栏build下面的Make Project）对项目进行重新构建，再
+daoPackage的目录下就会自动生成代码</p>
+
+<p>5.新建一个类，实例化greenDAO所需要的几个关键对象，DaoMaster，DaoSession，代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public class GreenDaoManager {
+    private DaoMaster mDaoMaster;
+    private DaoSession mDaoSession;
+    private static volatile GreenDaoManager mInstance = null;
+    private GreenDaoManager(){
+        if (mInstance == null) {
+            DaoMaster.DevOpenHelper devOpenHelper = new
+                    DaoMaster.DevOpenHelper(App.getContext(), "user.db");
+            mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
+            mDaoSession = mDaoMaster.newSession();
+        }
+    }
+    public static GreenDaoManager getInstance() {
+        if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
+                    mInstance = new GreenDaoManager();
+                }
+            }
+        }
+        return mInstance;
+    }
+    public DaoMaster getMaster() {
+        return mDaoMaster;
+    }
+    public DaoSession getSession() {
+        return mDaoSession;
+    }
+    public DaoSession getNewSession() {
+        mDaoSession = mDaoMaster.newSession();
+        return mDaoSession;
+    }
+}
+</code></pre>
+</div>
+
+<p>6.然后在Application中初始化：</p>
+
+<p><code class="highlighter-rouge">GreenDaoManager.getInstance();</code></p>
+
+<p>7.数据库增、删、查、改</p>
+
+<p>首先获得UserDao的对象
+<code class="highlighter-rouge">
+UserDao userDao=GreenDaoManager.getInstance().getNewSession().getUserDao();
+</code>
+增：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>User user = new User(null, name, age, studentId);
+userDao.insert(user);
+
+
+insert(T entity)       当指定主键在表中存在时会发生异常
+insertOrReplace(T entity)      当指定主键在表中存在时会覆盖数据
+insertInTx(Iterable&lt;T&gt; entities)      批量插入数据
+</code></pre>
+</div>
+
+<p>删：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>User user = new User(null, name, age, studentId);    
+userDao.delete(user)
+ 
+delete(T entity)       删除数据
+deleteByKey(K key)     指定主键删除数据
+deleteInTx(Iterable&lt;T&gt; entities)      批量删除数据
+deleteByKeyInTx(Iterable&lt;K&gt; keys)      批量按数据删除数据        
+deleteAll()    删除所有数据
+</code></pre>
+</div>
+<p>改：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>User user = new User(id, name, age, studentId);
+userDao.update(user);
+ 
+update(T entity)       修改数据，主键需相同
+updateInTx(Iterable&lt;T&gt; entities)      批量更新数据
+</code></pre>
+</div>
+
+<p>查：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>userDao.load(id)
+ 
+load(K key)    根据id查找数据
+loadByRowId(long rowId)        根据行号查找数据
+loadAll()      查找全部数据
+
+</code></pre>
+</div>
+
+<p>8.一对一、一对多关系</p>
+
+<p>greenDAO目前只支持一对一和一对多关系，并不支持多对多关系</p>
+
+<p>一对一：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>private Long studentId;
+@ToOne(joinProperty = "studentId")
+private Studentstudent;
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@Generated(hash = 313494093)
+public Student getStudent() {
+    Long __key = this.studentId;
+    if (student__resolvedKey == null || !student__resolvedKey.equals(__key)) {
+        final DaoSession daoSession = this.daoSession;
+        if (daoSession == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        StudentDao targetDao = daoSession.getStudentDao();
+        Student studentNew = targetDao.load(__key);
+        synchronized (this) {
+            student = studentNew;
+            student__resolvedKey = __key;
+        }
+    }
+    return student;
+}
+</code></pre>
+</div>
+<p>使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。</p>
+
+<p>一对多（有三种映射形式）：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@ToMany(referencedJoinProperty = "teacherId")
+private List&lt;Teacher&gt; teacherList;
+</code></pre>
+</div>
+
+<p>referencedJoinProperty：指定目标实体中与源实体相对应的外键。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@ToMany(joinProperties = {
+        @JoinProperty(name="studentTag",referencedName = "teacherTag")
+})
+private List&lt;Teacher&gt; teacherList;
+</code></pre>
+</div>
+<p>JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@ToMany
+@JoinEntity(
+        entity = Teacher.class,
+        sourceProperty = "teacherId",
+        targetProperty = "id"
+)
+private List&lt;Teacher&gt; teacherList;
+</code></pre>
+</div>
+<p>@JoinEntity：在做NM多对多映射的时候使用</p>
+
+<p>9.数据库升级</p>
+
+<p>数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>/** WARNING: Drops all table on Upgrade! Use only during development. */
+public static class DevOpenHelper extends OpenHelper {
+    public DevOpenHelper(Context context, String name) {
+        super(context, name);
+    }
+
+    public DevOpenHelper(Context context, String name, CursorFactory factory) {
+        super(context, name, factory);
+    }
+
+    @Override
+    public void onUpgrade(Database db, int oldVersion, int newVersion) {
+        Log.i("greenDAO", "Upgrading schema from version " + oldVersion + " to " + newVersion + " by dropping all tables");
+        dropAllTables(db, true);
+        onCreate(db);
+    }
+}
+</code></pre>
+</div>
+<p>第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。</p>
+
+<p>在project的gradle添加</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+</code></pre>
+</div>
+
+<p>在app的gradle添加：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
+注意：要是使用的还是greenDAO3.0以前的版本，添加的是
+
+compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
+</code></pre>
+</div>
+
+<p>新建一个类</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
+    public MySQLiteOpenHelper(Contextcontext,Stringname){
+        super(context,name);
+    }
+    public MySQLiteOpenHelper(Contextcontext,String name,SQLiteDatabase.CursorFactoryfactory) {
+        super(context,name,factory);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabasedb,int oldVersion,intnewVersion) {
+        Log.d(“SQLite”,“数据库从”+oldVersion+“升级到”+newVersion);
+        MigrationHelper.migrate(db,UserDao.class,StudentDao.class);
+    }
+}
+</code></pre>
+</div>
+
+<p>在GreenDaoManager修改代码：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public class GreenDaoManager {
+    private DaoMaster mDaoMaster;
+    private DaoSession mDaoSession;
+    private static volatile GreenDaoManager mInstance = null; 
+    private GreenDaoManager(){
+        if (mInstance == null) {
+            //重写MySQLiteOpenHelper数据库升级，数据不丢失
+            //MyApplication.getContext()上下文表示了数据库存储路径为手机内存
+            //DEBUG表示是否打印debug
+            MigrationHelper.DEBUG = true;
+            MySQLiteOpenHelper helper = new
+                    MySQLiteOpenHelper(App.getContext(),"user.db",null);
+            mDaoMaster = new DaoMaster(helper.getWritableDatabase());
+            mDaoSession = mDaoMaster.newSession();
+        }
+    }
+
+    public static GreenDaoManager getInstance() {
+        if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
+                    mInstance = new GreenDaoManager();
+                }
+            }
+        }
+        return mInstance;
+    }
+    public DaoMaster getMaster() {
+        return mDaoMaster;
+    }
+    public DaoSession getSession() {
+        return mDaoSession;
+    }
+    public DaoSession getNewSession() {
+        mDaoSession = mDaoMaster.newSession();
+        return mDaoSession;
+    }
+}
+</code></pre>
+</div>
+<p>注意：migrate(SQLiteDatabase db, Class… daoClasses); 里面的参数是全部的实体类，就是要生成的表。
+要生成的表。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#uiueux" id="markdown-toc-uiueux">UI/UE/UX</a>    <ul>
+      <li><a href="#rippledrawable---波纹效果" id="markdown-toc-rippledrawable---波纹效果">RippleDrawable - 波纹效果</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Android 开发技巧</p>
+
+<h3 id="uiueux">UI/UE/UX</h3>
+
+<h4 id="rippledrawable---波纹效果">RippleDrawable - 波纹效果</h4>
+
+<ul>
+  <li>使用Android 提供的属性</li>
+</ul>
+
+<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackground"</code></p>
+
+<p>扩散到View边界</p>
+
+<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackgroundBorderless</code></p>
+
+<p>设置后，会从孩子往父亲找一个依附的色。如果View往上找的时候，亲生父亲没背景色，会继续向上查找直到最顶端。找到了最顶端的爷爷，这个时候才绘制。然而，如果父亲的兄弟又绘制了颜色，且盖住了最顶端的绘制，会导致看不到效果。如果有一定的透明度，结果就显而易见了。
+特别注意：
+当把硬件加速给关闭时，这个效果是没有的。
+这是API 21的新属性，老版本无法使用.</p>
+
+<ul>
+  <li>自定义</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;!-- A green ripple drawn atop a black rectangle. --&gt;
+&lt;ripple android:color="#ff00ff00"&gt;
+    &lt;item android:drawable="@android:color/black" /&gt;
+&lt;/ripple&gt;
+ 
+&lt;!-- A blue ripple drawn atop a drawable resource. --&gt;
+&lt;ripple android:color="#ff0000ff"&gt;
+    &lt;item android:drawable="@drawable/my_drawable" /&gt;
+&lt;/ripple&gt;
+</code></pre>
+</div>
+
+<p>android:color中是点击响应色，也是波纹扩散色。
+item中是正常状态下的显示。</p>
+
+<p>一般使用时会和原有的selector配合，原有的selector负责5.0以下显示效果，
+新的selector内部含有ripple标签放在drawable-v21中，保证点击效果。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">常用Git命令及问题</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-03
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Git" title="Category: Git" rel="category">Git</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Git" title="Tag: Git" rel="tag">Git</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#git简介" id="markdown-toc-git简介">Git简介</a></li>
+  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+</ul>
+
+<p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。</p>
+
+<h3 id="git简介">Git简介</h3>
+
+<p>Git是什么？</p>
+
+<p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
+
+<p>Git的诞生</p>
+
+<p>阅读: 725576
+很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。</p>
+
+<p>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？</p>
+
+<p>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！</p>
+
+<p>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p>
+
+<p>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
+
+<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。</p>
+
+<p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：</p>
+
+<p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。</p>
+
+<p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p>
+
+<p>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p>
+
+<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
+
+<p><strong>错误代码：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
+java.lang.RuntimeException: Invocation failed Operation timed out
+	at org.jetbrains.git4idea.ssh.GitSSHXmlRpcClient.getLastSuccessful(GitSSHXmlRpcClient.java:230)
+	at org.jetbrains.git4idea.ssh.SSHMain.authenticate(SSHMain.java:212)
+	at org.jetbrains.git4idea.ssh.SSHMain.start(SSHMain.java:173)
+	at org.jetbrains.git4idea.ssh.SSHMain.main(SSHMain.java:138)
+Caused by: java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+</code></pre>
+</div>
+
+<p><strong>解决方法：</strong></p>
+
+<ol>
+  <li>Click File-&gt; Settings. Keyboard shortcut is Ctrl+Alt+S.</li>
+  <li>Search for “Version Control”</li>
+  <li>Choose “Git” under “version Control”</li>
+  <li>In the SSH executable dropdown, choose Native</li>
+</ol>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -603,332 +1251,6 @@
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/04/12/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Android 开发规范</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-04-12
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#一命名规约" id="markdown-toc-一命名规约">（一）命名规约</a></li>
-</ul>
-
-<p>Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java开发手册。</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8Cv1.1.1.pdf">阿里巴巴Java开发手册</a></p>
-
-<h3 id="一命名规约">（一）命名规约</h3>
-
-<ul>
-  <li>包名</li>
-</ul>
-
-<p>【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用 单数形式，但是类名如果有复数含义，类名可以使用复数形式。</p>
-
-<p>正例: 应用工具类包名为com.alibaba.open.util、类名为MessageUtils(此规则参考 spring 的框架结构)</p>
-
-<ul>
-  <li>类名</li>
-</ul>
-
-<p>【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式，但以下情形例外:(领域模型 的相关命名)DO / BO / DTO / VO等。</p>
-
-<p>正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion</p>
-
-<p>反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion</p>
-
-<ul>
-  <li>方法名</li>
-</ul>
-
-<p>【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从 驼峰形式。</p>
-
-<p>正例: localValue / getHttpMessage() / inputUserId</p>
-
-<ul>
-  <li>常量</li>
-</ul>
-
-<p>【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。</p>
-
-<p>正例: MAX_STOCK_COUNT</p>
-
-<p>反例: MAX_COUNT</p>
-
-<ul>
-  <li>控件名</li>
-</ul>
-
-<p>【强制】控件名统一使用 控件名简写_功能释义。</p>
-
-<p>正例: btn_login tv_title rcl_alarminfo</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/04/12/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-04-12
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#前提" id="markdown-toc-前提">前提</a>    <ul>
-      <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-    </ul>
-  </li>
-  <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
-      <li><a href="#adb端口占用" id="markdown-toc-adb端口占用">adb端口占用</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>自从换了Mac后adb经常出现问题（经验不足），所以写此篇记录一下常用的adb命令以及一些常见问题解决方法。</p>
-
-<h2 id="前提">前提</h2>
-<p>要想在Mac或Windows上直接使用adb命令，需要配置环境变量，以Mac为例，配置方法如下：</p>
-<ul>
-  <li>打开终端输入 touch .bash_profile 更新配置文件，如果不存在自动创建</li>
-  <li>open -e .bash_profile 打开配置文件</li>
-  <li>输入如下内容并保存
-    <div class="highlighter-rouge"><pre class="highlight"><code>export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
-export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
-</code></pre>
-    </div>
-    <h3 id="常用命令">常用命令</h3>
-  </li>
-  <li>adb nodaemon server   查看adb 端口是否有占用</li>
-  <li>lsof -i:5037 查看adb端口占用进程</li>
-  <li>rm -rf ~/.android 重置本地签名文件</li>
-  <li>killalladb 结束所有adb相关进程</li>
-  <li>未完待续……</li>
-</ul>
-
-<hr />
-
-<h2 id="可能出现的问题">可能出现的问题</h2>
-
-<h3 id="adb端口占用">adb端口占用</h3>
-
-<p><strong>错误代码：</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
-</code></pre>
-</div>
-
-<p><strong>解决方法：</strong></p>
-
-<ul>
-  <li>killall adb 然后 重启Android Studio</li>
-  <li>如果上面方法无效，请检查是否重复设置Android环境变量</li>
-  <li>还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。</li>
-  <li>open sdk manager and installed all android sdk tools and done.</li>
-  <li>Mac防火墙设置原因</li>
-  <li>查看AS debugger 端口是否被占用 lsof -i:63341</li>
-</ul>
-
-<p><strong>错误信息：</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ adb devices
-List of devices attached
-* daemon not running. starting it now at tcp:5037 *
-* daemon started successfully *
-** daemon still not running
-error: cannot connect to daemon at tcp:5037: Operation timed out
-</code></pre>
-</div>
-<p><strong>解决方法：</strong></p>
-<ul>
-  <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。</li>
-</ul>
-
-<p><strong>错误信息：</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8606 for debugger
-</code></pre>
-</div>
-
-<p><strong>解决方法：</strong></p>
-
-<ul>
-  <li>在Debugger Configuration 设置Debuger Type 为 Java</li>
-</ul>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/04/04/create-my-blog-with-jekyll/">Jekyll 搭建静态博客</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-04-04
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>&nbsp;
-    
-        <a href="/tag/#RubyGems" title="Tag: RubyGems" rel="tag">RubyGems</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p>一直以来都想搭建一个自己的博客，之前用过博客园的系统，感觉内容排版布局比较麻烦。后来在Github上看到有人使用jeklly,于是选择了在Github上用jekyll搭建博客。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/04/04/create-my-blog-with-jekyll/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -939,10 +1261,10 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
             <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
             <span class="previous disable"><i class="fa fa-angle-left"></i></span>
           
-          <span class="page_number ">1/1</span>
+          <span class="page_number ">1/2</span>
           
-            <span class="next disable"><i class="fa fa-angle-right"></i></span>
-            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+            <a href="/page2" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="/page2" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -955,6 +1277,12 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">GreenDAO使用教程</a></li>
+                    
+                        <li><a href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a></li>
+                    
+                        <li><a href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">常用Git命令及问题</a></li>
                     
                         <li><a href="/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Markdown入门指南</a></li>
                     
@@ -993,7 +1321,7 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">3</span>
+                            <span class="badge">5</span>
                         </a>
                     </li>
                     
@@ -1010,6 +1338,15 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         <a href="/category/#Markdown" class="categories-list-item" cate="Markdown">
                             <span class="name">
                                 Markdown
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Git" class="categories-list-item" cate="Git">
+                            <span class="name">
+                                Git
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1073,6 +1410,20 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                       
                       
                       <a href="/tag/#Markdown" style="font-size: 9pt; color: #999;">Markdown</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Git" style="font-size: 9pt; color: #999;">Git</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#GreenDAO" style="font-size: 9pt; color: #999;">GreenDAO</a>
                     
                 </div>
             </div>

@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Markdown入门指南</title>
-    <meta name="description" content="  导语  Markdown 官方文档  使用 Markdown 的优点  Markdown 语法的简要规则          标题      列表      引用      图片和链接      粗体与斜体      表格      代码框      分割线        相关工具Markdown 是一种轻量级...">
+    <title>常用Git命令及问题</title>
+    <meta name="description" content="  Git简介  常见问题及解决方法Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git简介Git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。Git的诞生阅读: 725576很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">
+    <link rel="canonical" href="http://localhost:4000/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
 
@@ -141,11 +141,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Markdown入门指南</h1>
+        <h1>常用Git命令及问题</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-04-24
+                <i class="fa fa-calendar"></i>2017-05-03
             </div>
 
             <div class="label-card">
@@ -166,7 +166,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Markdown" title="Category: Markdown" rel="category">Markdown</a>
+        <a href="/category/#Git" title="Category: Git" rel="category">Git</a>
     
   
 
@@ -183,8 +183,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Markdown" title="Tag: Markdown" rel="tag">Markdown</a-->
-        <a href="/tag/#Markdown" title="Tag: Markdown" rel="tag">Markdown</a>
+        <!--a href="/tag/#Git" title="Tag: Git" rel="tag">Git</a-->
+        <a href="/tag/#Git" title="Tag: Git" rel="tag">Git</a>
     
   
 
@@ -196,132 +196,64 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#导语" id="markdown-toc-导语">导语</a></li>
-  <li><a href="#markdown-官方文档" id="markdown-toc-markdown-官方文档">Markdown 官方文档</a></li>
-  <li><a href="#使用-markdown-的优点" id="markdown-toc-使用-markdown-的优点">使用 Markdown 的优点</a></li>
-  <li><a href="#markdown-语法的简要规则" id="markdown-toc-markdown-语法的简要规则">Markdown 语法的简要规则</a>    <ul>
-      <li><a href="#标题" id="markdown-toc-标题">标题</a></li>
-      <li><a href="#列表" id="markdown-toc-列表">列表</a></li>
-      <li><a href="#引用" id="markdown-toc-引用">引用</a></li>
-      <li><a href="#图片和链接" id="markdown-toc-图片和链接">图片和链接</a></li>
-      <li><a href="#粗体与斜体" id="markdown-toc-粗体与斜体">粗体与斜体</a></li>
-      <li><a href="#表格" id="markdown-toc-表格">表格</a></li>
-      <li><a href="#代码框" id="markdown-toc-代码框">代码框</a></li>
-      <li><a href="#分割线" id="markdown-toc-分割线">分割线</a></li>
-    </ul>
-  </li>
-  <li><a href="#相关工具" id="markdown-toc-相关工具">相关工具</a></li>
+  <li><a href="#git简介" id="markdown-toc-git简介">Git简介</a></li>
+  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
 </ul>
 
-<p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。</p>
+<p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。</p>
 
-<h3 id="导语">导语</h3>
+<h3 id="git简介">Git简介</h3>
 
-<blockquote>
-  <p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
-</blockquote>
+<p>Git是什么？</p>
 
-<h3 id="markdown-官方文档">Markdown 官方文档</h3>
+<p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
 
-<blockquote>
-  <p>这里可以看到官方的Markdown语法规则文档，当然，后文我也会用自己的方式阐述这些语法的具体用法。</p>
-  <ul>
-    <li><a href="http://daringfireball.net/projects/markdown/syntax">创始人 John Gruber 的 Markdown 语法说明</a></li>
-    <li><a href="http://wowubuntu.com/markdown/#list">Markdown 中文版语法说明</a></li>
-  </ul>
-</blockquote>
+<p>Git的诞生</p>
 
-<h3 id="使用-markdown-的优点">使用 Markdown 的优点</h3>
+<p>阅读: 725576
+很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。</p>
 
-<ul>
-  <li>专注你的文字内容而不是排版样式，安心写作。</li>
-  <li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
-  <li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
-  <li>随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱。可读、直观、学习成本低。</li>
-</ul>
+<p>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？</p>
 
-<h3 id="markdown-语法的简要规则">Markdown 语法的简要规则</h3>
+<p>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！</p>
 
-<h4 id="标题">标题</h4>
+<p>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p>
 
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_title.jpg" alt="" /></p>
+<p>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
 
-<h4 id="列表">列表</h4>
+<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。</p>
 
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_list.jpg" alt="" /></p>
+<p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：</p>
 
-<h4 id="引用">引用</h4>
+<p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。</p>
 
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_quote.jpg" alt="" /></p>
+<p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p>
 
-<h4 id="图片和链接">图片和链接</h4>
+<p>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p>
 
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_img.jpg" alt="" /></p>
+<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
 
-<h4 id="粗体与斜体">粗体与斜体</h4>
+<p><strong>错误代码：</strong></p>
 
-<p>Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就是粗体的语法，用一个 * 包含一段文本就是斜体的语法。</p>
-
-<p>例如：<strong>这里是粗体</strong> <em>这里是斜体</em></p>
-
-<h4 id="表格">表格</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+<div class="highlighter-rouge"><pre class="highlight"><code>getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
+java.lang.RuntimeException: Invocation failed Operation timed out
+	at org.jetbrains.git4idea.ssh.GitSSHXmlRpcClient.getLastSuccessful(GitSSHXmlRpcClient.java:230)
+	at org.jetbrains.git4idea.ssh.SSHMain.authenticate(SSHMain.java:212)
+	at org.jetbrains.git4idea.ssh.SSHMain.start(SSHMain.java:173)
+	at org.jetbrains.git4idea.ssh.SSHMain.main(SSHMain.java:138)
+Caused by: java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
 </code></pre>
 </div>
 
-<p>这种语法生成的表格如下：</p>
+<p><strong>解决方法：</strong></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tables</th>
-      <th style="text-align: center">Are</th>
-      <th style="text-align: right">Cool</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>col 3 is</td>
-      <td style="text-align: center">right-aligned</td>
-      <td style="text-align: right">$1600</td>
-    </tr>
-    <tr>
-      <td>col 2 is</td>
-      <td style="text-align: center">centered</td>
-      <td style="text-align: right">$12</td>
-    </tr>
-    <tr>
-      <td>zebra stripes</td>
-      <td style="text-align: center">are neat</td>
-      <td style="text-align: right">$1</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="代码框">代码框</h4>
-
-<p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。使用 tab 键即可缩进。</p>
-
-<h4 id="分割线">分割线</h4>
-
-<p>分割线的语法只需要三个 * 号，例如：</p>
-
-<hr />
-
-<h3 id="相关工具">相关工具</h3>
-
-<ul>
-  <li>
-    <p>图床工具</p>
-
-    <p><a href="https://portal.qiniu.com">七牛云</a></p>
-  </li>
-</ul>
+<ol>
+  <li>Click File-&gt; Settings. Keyboard shortcut is Ctrl+Alt+S.</li>
+  <li>Search for “Version Control”</li>
+  <li>Choose “Git” under “version Control”</li>
+  <li>In the SSH executable dropdown, choose Native</li>
+</ol>
 
 
         </article>
@@ -406,13 +338,13 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Java正则表达式</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Markdown入门指南</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">常用Git命令及问题</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a></p>
         
     </div>
 </div>
