@@ -66,6 +66,8 @@ type: page
 ## 跨平台技术
 
 * React Native
+   
+  [React Native中文网](http://reactnative.cn/)
 
   [React Native性能之谜](http://insights.thoughtworkers.org/the-react-native-mystery/)
 

@@ -5,9 +5,86 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 May 2017 08:24:27 +0800</pubDate>
-    <lastBuildDate>Wed, 10 May 2017 08:24:27 +0800</lastBuildDate>
+    <pubDate>Thu, 11 May 2017 12:51:57 +0800</pubDate>
+    <lastBuildDate>Thu, 11 May 2017 12:51:57 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>智能硬件学习</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#相关网站&quot; id=&quot;markdown-toc-相关网站&quot;&gt;相关网站&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+智能硬件学习
+
+&lt;h3 id=&quot;相关网站&quot;&gt;相关网站&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hackster.io/&quot;&gt;Hackster&lt;/a&gt;
+致力于学习硬件的社区&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 10 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/</guid>
+        
+        <category>智能硬件</category>
+        
+        
+        <category>智能硬件</category>
+        
+      </item>
+    
+      <item>
+        <title>MacBook使用技巧</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#启用键盘打字机音效&quot; id=&quot;markdown-toc-启用键盘打字机音效&quot;&gt;启用键盘打字机音效&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+MacBook使用技巧
+
+&lt;h3 id=&quot;启用键盘打字机音效&quot;&gt;启用键盘打字机音效&lt;/h3&gt;
+
+系统偏好设置 -&amp;gt; 辅助功能 -&amp;gt; 键盘 -&amp;gt; 启用慢速键 -&amp;gt; 选项（勾选使用按键音并将延时时间调到最短）
+
+</description>
+        <pubDate>Wed, 10 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+        
+        <category>MacBook</category>
+        
+        
+        <category>MacBook</category>
+        
+      </item>
+    
+      <item>
+        <title>普通程序员如何向人工智能靠拢</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+机器学习基础
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;a href=&quot;http://www.infoq.com/cn/news/2017/05/ordinary-programmer-approach-art?utm_source=news_about_architecture-design&amp;amp;utm_medium=link&amp;amp;utm_campaign=architecture-design&quot;&gt;普通程序员如何向人工智能靠拢&lt;/a&gt;
+
+</description>
+        <pubDate>Tue, 09 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+        
+        <category>机器学习</category>
+        
+        <category>AI</category>
+        
+        
+        <category>机器学习</category>
+        
+      </item>
     
       <item>
         <title>GreenDAO使用教程</title>
@@ -912,126 +989,6 @@ Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java�
         
         
         <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>adb常用命令及常见问题</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#前提&quot; id=&quot;markdown-toc-前提&quot;&gt;前提&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#可能出现的问题&quot; id=&quot;markdown-toc-可能出现的问题&quot;&gt;可能出现的问题&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#adb端口占用&quot; id=&quot;markdown-toc-adb端口占用&quot;&gt;adb端口占用&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-自从换了Mac后adb经常出现问题（经验不足），所以写此篇记录一下常用的adb命令以及一些常见问题解决方法。
-
-&lt;h2 id=&quot;前提&quot;&gt;前提&lt;/h2&gt;
-要想在Mac或Windows上直接使用adb命令，需要配置环境变量，以Mac为例，配置方法如下：
-&lt;ul&gt;
-  &lt;li&gt;打开终端输入 touch .bash_profile 更新配置文件，如果不存在自动创建&lt;/li&gt;
-  &lt;li&gt;open -e .bash_profile 打开配置文件&lt;/li&gt;
-  &lt;li&gt;输入如下内容并保存
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
-export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-    &lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
-  &lt;/li&gt;
-  &lt;li&gt;adb nodaemon server   查看adb 端口是否有占用&lt;/li&gt;
-  &lt;li&gt;lsof -i:5037 查看adb端口占用进程&lt;/li&gt;
-  &lt;li&gt;rm -rf ~/.android 重置本地签名文件&lt;/li&gt;
-  &lt;li&gt;killalladb 结束所有adb相关进程&lt;/li&gt;
-  &lt;li&gt;未完待续……&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;可能出现的问题&quot;&gt;可能出现的问题&lt;/h2&gt;
-
-&lt;h3 id=&quot;adb端口占用&quot;&gt;adb端口占用&lt;/h3&gt;
-
-&lt;strong&gt;错误代码：&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;strong&gt;解决方法：&lt;/strong&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;killall adb 然后 重启Android Studio&lt;/li&gt;
-  &lt;li&gt;如果上面方法无效，请检查是否重复设置Android环境变量&lt;/li&gt;
-  &lt;li&gt;还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。&lt;/li&gt;
-  &lt;li&gt;open sdk manager and installed all android sdk tools and done.&lt;/li&gt;
-  &lt;li&gt;Mac防火墙设置原因&lt;/li&gt;
-  &lt;li&gt;查看AS debugger 端口是否被占用 lsof -i:63341&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;strong&gt;错误信息：&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ adb devices
-List of devices attached
-* daemon not running. starting it now at tcp:5037 *
-* daemon started successfully *
-** daemon still not running
-error: cannot connect to daemon at tcp:5037: Operation timed out
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;strong&gt;解决方法：&lt;/strong&gt;
-&lt;ul&gt;
-  &lt;li&gt;Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;strong&gt;错误信息：&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;下午4:13	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8606 for debugger
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;strong&gt;解决方法：&lt;/strong&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在Debugger Configuration 设置Debuger Type 为 Java&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 12 Apr 2017 06:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
-        
-        <category>Android</category>
-        
-        
-        <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>Jekyll 搭建静态博客</title>
-        <description>
-一直以来都想搭建一个自己的博客，之前用过博客园的系统，感觉内容排版布局比较麻烦。后来在Github上看到有人使用jeklly,于是选择了在Github上用jekyll搭建博客。
-
-</description>
-        <pubDate>Tue, 04 Apr 2017 06:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/04/04/create-my-blog-with-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/04/04/create-my-blog-with-jekyll/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>RubyGems</category>
-        
-        
-        <category>jekyll</category>
         
       </item>
     
