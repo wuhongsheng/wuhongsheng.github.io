@@ -5,9 +5,72 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 11 May 2017 12:53:34 +0800</pubDate>
-    <lastBuildDate>Thu, 11 May 2017 12:53:34 +0800</lastBuildDate>
+    <pubDate>Wed, 17 May 2017 20:56:42 +0800</pubDate>
+    <lastBuildDate>Wed, 17 May 2017 20:56:42 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Android学习路线</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#android初级&quot; id=&quot;markdown-toc-android初级&quot;&gt;Android初级&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#android中级&quot; id=&quot;markdown-toc-android中级&quot;&gt;Android中级&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#android高级&quot; id=&quot;markdown-toc-android高级&quot;&gt;Android高级&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Android学习路线
+
+&lt;h3 id=&quot;基础知识&quot;&gt;基础知识&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Java基础知识（Java线程）
+&lt;a href=&quot;http://www.cnblogs.com/tjudzj/p/4443066.html&quot;&gt;Java访问修饰符&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;开发坏境搭建（JDK、AS）&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wuhongsheng.top/2017/04/11/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/&quot;&gt;Android开发代码规范&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Android四大组件，Activity启动模式、生命周期管理，Fragement生命周期。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;android初级&quot;&gt;Android初级&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;用户界面及自定义控件&lt;/li&gt;
+  &lt;li&gt;资源文件的使用&lt;/li&gt;
+  &lt;li&gt;数据持久化（Sqlite、File、Sharedpreferences）&lt;/li&gt;
+  &lt;li&gt;MeterialDesign&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;android中级&quot;&gt;Android中级&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;图形和动画绘制&lt;/li&gt;
+  &lt;li&gt;网络编程（Http、Socket、Bluetooth、NFC）&lt;/li&gt;
+  &lt;li&gt;屏幕适配（dp和px换算）&lt;/li&gt;
+  &lt;li&gt;单元测试&lt;/li&gt;
+  &lt;li&gt;进程间通信（4种方式）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;android高级&quot;&gt;Android高级&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NDK编程&lt;/li&gt;
+  &lt;li&gt;传感器应用&lt;/li&gt;
+  &lt;li&gt;地图应用&lt;/li&gt;
+  &lt;li&gt;跨平台开发&lt;/li&gt;
+  &lt;li&gt;Android性能优化（UI、电量、内存）&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 11 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</guid>
+        
+        <category>Android</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
     
       <item>
         <title>智能硬件学习</title>
@@ -95,7 +158,8 @@ MacBook使用技巧
   &lt;li&gt;集成环境&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In your root build.gradle file:
+&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
+// In your root build.gradle file:
 buildscript {
     repositories {
         jcenter()
@@ -114,14 +178,14 @@ apply plugin: 'org.greenrobot.greendao' // apply plugin
 dependencies {
     compile 'org.greenrobot:greendao:3.2.2' // add library
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/pre&gt;
 
 &lt;ol&gt;
   &lt;li&gt;在Gradle中配置数据库版本信息等&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;greendao {
+&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
+greendao {
         //当前数据库版本
         schemaVersion 1
         //由GreenDao自动生成代码所在的包名，默认的是在项目包下面新建一个gen。
@@ -129,13 +193,12 @@ dependencies {
         //设置自动生成代码的目录
         targetGenDir 'src/main/java'
     }
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/pre&gt;
 
 3.在项目中定义实体类
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Entity
+&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
+@Entity
 public class TrackPoint  {
     @Id(autoincrement = true)
     private Long id;
@@ -143,18 +206,17 @@ public class TrackPoint  {
     @NotNull
     @Property(nameInDb = &quot;TIME&quot;)
     private String time;
-	/**经度*/
+    /**经度*/
     @Property(nameInDb = &quot;LON&quot;)
     private double lon;
-	/**纬度*/
+    /**纬度*/
     @Property(nameInDb = &quot;LAT&quot;)
     private double lat;
     /**用户id*/
     @Property(nameInDb = &quot;USERID&quot;)
     private String userid;
     }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/pre&gt;
 
 注解：
 
@@ -200,21 +262,23 @@ daoPackage的目录下就会自动生成代码
 
 5.新建一个类，实例化greenDAO所需要的几个关键对象，DaoMaster，DaoSession，代码如下：
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class GreenDaoManager {
+&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
+public class GreenDaoManager {
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
     private static volatile GreenDaoManager mInstance = null;
     private GreenDaoManager(){
         if (mInstance == null) {
             DaoMaster.DevOpenHelper devOpenHelper = new
-                    DaoMaster.DevOpenHelper(App.getContext(), &quot;user.db&quot;);
+            DaoMaster.DevOpenHelper(App.getContext(), &quot;user.db&quot;);
             mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
             mDaoSession = mDaoMaster.newSession();
         }
     }
     public static GreenDaoManager getInstance() {
         if (mInstance == null) {
-            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                
+            if (mInstance == null) {
                     mInstance = new GreenDaoManager();
                 }
             }
@@ -232,8 +296,7 @@ daoPackage的目录下就会自动生成代码
         return mDaoSession;
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/pre&gt;
 
 6.然后在Application中初始化：
 
@@ -242,62 +305,67 @@ daoPackage的目录下就会自动生成代码
 7.数据库增、删、查、改
 
 首先获得UserDao的对象
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
+
+&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
 UserDao userDao=GreenDaoManager.getInstance().getNewSession().getUserDao();
-&lt;/code&gt;
+&lt;/pre&gt;
+
 增：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User user = new User(null, name, age, studentId);
+
+&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
+User user = new User(null, name, age, studentId);
 userDao.insert(user);
 
 
 insert(T entity)       当指定主键在表中存在时会发生异常
 insertOrReplace(T entity)      当指定主键在表中存在时会覆盖数据
-insertInTx(Iterable&amp;lt;T&amp;gt; entities)      批量插入数据
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
+insertInTx(Iterable&lt;T&gt; entities)      批量插入数据
+&amp;lt;/pre&amp;gt;
+s
+ 
 删：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User user = new User(null, name, age, studentId);    
+```
+User user = new User(null, name, age, studentId);    
 userDao.delete(user)
  
 delete(T entity)       删除数据
 deleteByKey(K key)     指定主键删除数据
-deleteInTx(Iterable&amp;lt;T&amp;gt; entities)      批量删除数据
-deleteByKeyInTx(Iterable&amp;lt;K&amp;gt; keys)      批量按数据删除数据        
+deleteInTx(Iterable&lt;T&gt; entities)      批量删除数据
+deleteByKeyInTx(Iterable&lt;K&gt; keys)      批量按数据删除数据        
 deleteAll()    删除所有数据
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 改：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User user = new User(id, name, age, studentId);
+```
+User user = new User(id, name, age, studentId);
 userDao.update(user);
  
 update(T entity)       修改数据，主键需相同
-updateInTx(Iterable&amp;lt;T&amp;gt; entities)      批量更新数据
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
+updateInTx(Iterable&lt;T&gt; entities)      批量更新数据
+```
+ 
 查：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;userDao.load(id)
+```
+userDao.load(id)
  
 load(K key)    根据id查找数据
 loadByRowId(long rowId)        根据行号查找数据
 loadAll()      查找全部数据
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 
 8.一对一、一对多关系
 
 greenDAO目前只支持一对一和一对多关系，并不支持多对多关系
 
 一对一：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private Long studentId;
+```
+private Long studentId;
 @ToOne(joinProperty = &quot;studentId&quot;)
 private Studentstudent;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Generated(hash = 313494093)
+```
+@Generated(hash = 313494093)
 public Student getStudent() {
     Long __key = this.studentId;
     if (student__resolvedKey == null || !student__resolvedKey.equals(__key)) {
@@ -314,39 +382,41 @@ public Student getStudent() {
     }
     return student;
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。
 
-一对多（有三种映射形式）：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ToMany(referencedJoinProperty = &quot;teacherId&quot;)
-private List&amp;lt;Teacher&amp;gt; teacherList;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+ 
 
-referencedJoinProperty：指定目标实体中与源实体相对应的外键。
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ToMany(joinProperties = {
+一对多（有三种映射形式）：
+```
+@ToMany(referencedJoinProperty = &quot;teacherId&quot;)
+private List&lt;Teacher&gt; teacherList;
+```
+
+ referencedJoinProperty：指定目标实体中与源实体相对应的外键。
+```
+@ToMany(joinProperties = {
         @JoinProperty(name=&quot;studentTag&quot;,referencedName = &quot;teacherTag&quot;)
 })
-private List&amp;lt;Teacher&amp;gt; teacherList;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+private List&lt;Teacher&gt; teacherList;
+```
 JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ToMany
+```
+@ToMany
 @JoinEntity(
         entity = Teacher.class,
         sourceProperty = &quot;teacherId&quot;,
         targetProperty = &quot;id&quot;
 )
-private List&amp;lt;Teacher&amp;gt; teacherList;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+private List&lt;Teacher&gt; teacherList;
+```
 @JoinEntity：在做NM多对多映射的时候使用
 
 9.数据库升级
 
 数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/** WARNING: Drops all table on Upgrade! Use only during development. */
+```
+/** WARNING: Drops all table on Upgrade! Use only during development. */
 public static class DevOpenHelper extends OpenHelper {
     public DevOpenHelper(Context context, String name) {
         super(context, name);
@@ -363,30 +433,30 @@ public static class DevOpenHelper extends OpenHelper {
         onCreate(db);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。
 
 在project的gradle添加
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;allprojects {
+```
+allprojects {
     repositories {
         jcenter()
         maven { url &quot;https://jitpack.io&quot; }
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 
 在app的gradle添加：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
+```
+compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
 注意：要是使用的还是greenDAO3.0以前的版本，添加的是
 
 compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 
 新建一个类
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
+```
+public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
     public MySQLiteOpenHelper(Contextcontext,Stringname){
         super(context,name);
     }
@@ -399,11 +469,11 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
         MigrationHelper.migrate(db,UserDao.class,StudentDao.class);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 
 在GreenDaoManager修改代码：
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class GreenDaoManager {
+```
+public class GreenDaoManager {
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
     private static volatile GreenDaoManager mInstance = null; 
@@ -440,11 +510,15 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
         return mDaoSession;
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-注意：migrate(SQLiteDatabase db, Class… daoClasses); 里面的参数是全部的实体类，就是要生成的表。
+```
+注意：migrate(SQLiteDatabase db, Class... daoClasses); 里面的参数是全部的实体类，就是要生成的表。
 要生成的表。
 
+
+
+
+
+&lt;/Teacher&gt;&lt;/Teacher&gt;&lt;/Teacher&gt;&lt;/T&gt;&lt;/K&gt;&lt;/T&gt;&lt;/T&gt;&lt;/pre&gt;
 </description>
         <pubDate>Mon, 08 May 2017 16:14:54 +0800</pubDate>
         <link>http://localhost:4000/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
@@ -866,7 +940,7 @@ Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就�
 &lt;h4 id=&quot;初级&quot;&gt;初级&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;那基本的 Activity/Fragment的生命周期&lt;/li&gt;
+  &lt;li&gt;那基本的 &lt;a href=&quot;https://developer.android.google.cn/guide/components/activities.html#Lifecycle&quot;&gt;Activity&lt;/a&gt;/&lt;a href=&quot;https://developer.android.google.cn/guide/components/fragments.html&quot;&gt;Fragment&lt;/a&gt;的生命周期&lt;/li&gt;
   &lt;li&gt;四大组件的具体作用以及用法&lt;/li&gt;
   &lt;li&gt;Activity四种启动模式的区别&lt;/li&gt;
   &lt;li&gt;ListView的优化&lt;/li&gt;
@@ -915,77 +989,6 @@ Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就�
         <category>Android</category>
         
         <category>面试</category>
-        
-        
-        <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>Android 开发规范</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#一命名规约&quot; id=&quot;markdown-toc-一命名规约&quot;&gt;（一）命名规约&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java开发手册。
-
-&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
-
-&lt;a href=&quot;http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8Cv1.1.1.pdf&quot;&gt;阿里巴巴Java开发手册&lt;/a&gt;
-
-&lt;h3 id=&quot;一命名规约&quot;&gt;（一）命名规约&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;包名&lt;/li&gt;
-&lt;/ul&gt;
-
-【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用 单数形式，但是类名如果有复数含义，类名可以使用复数形式。
-
-正例: 应用工具类包名为com.alibaba.open.util、类名为MessageUtils(此规则参考 spring 的框架结构)
-
-&lt;ul&gt;
-  &lt;li&gt;类名&lt;/li&gt;
-&lt;/ul&gt;
-
-【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式，但以下情形例外:(领域模型 的相关命名)DO / BO / DTO / VO等。
-
-正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion
-
-反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion
-
-&lt;ul&gt;
-  &lt;li&gt;方法名&lt;/li&gt;
-&lt;/ul&gt;
-
-【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从 驼峰形式。
-
-正例: localValue / getHttpMessage() / inputUserId
-
-&lt;ul&gt;
-  &lt;li&gt;常量&lt;/li&gt;
-&lt;/ul&gt;
-
-【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。
-
-正例: MAX_STOCK_COUNT
-
-反例: MAX_COUNT
-
-&lt;ul&gt;
-  &lt;li&gt;控件名&lt;/li&gt;
-&lt;/ul&gt;
-
-【强制】控件名统一使用 控件名简写_功能释义。
-
-正例: btn_login tv_title rcl_alarminfo
-
-</description>
-        <pubDate>Wed, 12 Apr 2017 06:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/04/12/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/04/12/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</guid>
-        
-        <category>Android</category>
         
         
         <category>Android</category>

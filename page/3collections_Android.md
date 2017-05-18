@@ -71,7 +71,15 @@ type: page
 
   [React Native性能之谜](http://insights.thoughtworkers.org/the-react-native-mystery/)
 
+  [Shoutem旨在成为React Native移动应用领域的WordPress](http://www.infoq.com/cn/news/2017/05/shoutem-react-native-mobile-apps)
+
 * [Weex](https://weex-project.io/cn/)  
+
+## 架构方面
+
+[模块化](http://baronzhang.com/blog/Framework/Android-%E6%A8%A1%E5%9D%97%E5%8C%96%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5/)
+
+[安居客 Android 项目架构演进](https://zhuanlan.zhihu.com/p/25420181)
 
 ## 测试
 

@@ -133,6 +133,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -205,7 +207,8 @@
   <li>集成环境</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>// In your root build.gradle file:
+<pre class="prettyprint lang-java">
+// In your root build.gradle file:
 buildscript {
     repositories {
         jcenter()
@@ -224,14 +227,14 @@ apply plugin: 'org.greenrobot.greendao' // apply plugin
 dependencies {
     compile 'org.greenrobot:greendao:3.2.2' // add library
 }
-</code></pre>
-</div>
+</pre>
 
 <ol>
   <li>在Gradle中配置数据库版本信息等</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>greendao {
+<pre class="prettyprint lang-java">
+greendao {
         //当前数据库版本
         schemaVersion 1
         //由GreenDao自动生成代码所在的包名，默认的是在项目包下面新建一个gen。
@@ -239,13 +242,12 @@ dependencies {
         //设置自动生成代码的目录
         targetGenDir 'src/main/java'
     }
-
-</code></pre>
-</div>
+</pre>
 
 <p>3.在项目中定义实体类</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@Entity
+<pre class="prettyprint lang-java">
+@Entity
 public class TrackPoint  {
     @Id(autoincrement = true)
     private Long id;
@@ -253,18 +255,17 @@ public class TrackPoint  {
     @NotNull
     @Property(nameInDb = "TIME")
     private String time;
-	/**经度*/
+    /**经度*/
     @Property(nameInDb = "LON")
     private double lon;
-	/**纬度*/
+    /**纬度*/
     @Property(nameInDb = "LAT")
     private double lat;
     /**用户id*/
     @Property(nameInDb = "USERID")
     private String userid;
     }
-</code></pre>
-</div>
+</pre>
 
 <p>注解：</p>
 
@@ -310,21 +311,23 @@ daoPackage的目录下就会自动生成代码</p>
 
 <p>5.新建一个类，实例化greenDAO所需要的几个关键对象，DaoMaster，DaoSession，代码如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>public class GreenDaoManager {
+<pre class="prettyprint lang-java">
+public class GreenDaoManager {
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
     private static volatile GreenDaoManager mInstance = null;
     private GreenDaoManager(){
         if (mInstance == null) {
             DaoMaster.DevOpenHelper devOpenHelper = new
-                    DaoMaster.DevOpenHelper(App.getContext(), "user.db");
+            DaoMaster.DevOpenHelper(App.getContext(), "user.db");
             mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
             mDaoSession = mDaoMaster.newSession();
         }
     }
     public static GreenDaoManager getInstance() {
         if (mInstance == null) {
-            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                
+            if (mInstance == null) {
                     mInstance = new GreenDaoManager();
                 }
             }
@@ -342,8 +345,7 @@ daoPackage的目录下就会自动生成代码</p>
         return mDaoSession;
     }
 }
-</code></pre>
-</div>
+</pre>
 
 <p>6.然后在Application中初始化：</p>
 
@@ -351,63 +353,68 @@ daoPackage的目录下就会自动生成代码</p>
 
 <p>7.数据库增、删、查、改</p>
 
-<p>首先获得UserDao的对象
-<code class="highlighter-rouge">
+<p>首先获得UserDao的对象</p>
+
+<pre class="prettyprint lang-java">
 UserDao userDao=GreenDaoManager.getInstance().getNewSession().getUserDao();
-</code>
-增：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>User user = new User(null, name, age, studentId);
+</pre>
+
+<p>增：</p>
+
+<pre class="prettyprint lang-java">
+User user = new User(null, name, age, studentId);
 userDao.insert(user);
 
 
 insert(T entity)       当指定主键在表中存在时会发生异常
 insertOrReplace(T entity)      当指定主键在表中存在时会覆盖数据
-insertInTx(Iterable&lt;T&gt; entities)      批量插入数据
-</code></pre>
-</div>
-
-<p>删：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>User user = new User(null, name, age, studentId);    
+insertInTx(Iterable<T> entities)      批量插入数据
+&lt;/pre&gt;
+s
+ 
+删：
+```
+User user = new User(null, name, age, studentId);    
 userDao.delete(user)
  
 delete(T entity)       删除数据
 deleteByKey(K key)     指定主键删除数据
-deleteInTx(Iterable&lt;T&gt; entities)      批量删除数据
-deleteByKeyInTx(Iterable&lt;K&gt; keys)      批量按数据删除数据        
+deleteInTx(Iterable<T> entities)      批量删除数据
+deleteByKeyInTx(Iterable<K> keys)      批量按数据删除数据        
 deleteAll()    删除所有数据
-</code></pre>
-</div>
-<p>改：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>User user = new User(id, name, age, studentId);
+```
+改：
+```
+User user = new User(id, name, age, studentId);
 userDao.update(user);
  
 update(T entity)       修改数据，主键需相同
-updateInTx(Iterable&lt;T&gt; entities)      批量更新数据
-</code></pre>
-</div>
-
-<p>查：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>userDao.load(id)
+updateInTx(Iterable<T> entities)      批量更新数据
+```
+ 
+查：
+```
+userDao.load(id)
  
 load(K key)    根据id查找数据
 loadByRowId(long rowId)        根据行号查找数据
 loadAll()      查找全部数据
 
-</code></pre>
-</div>
+```
 
-<p>8.一对一、一对多关系</p>
+8.一对一、一对多关系
 
-<p>greenDAO目前只支持一对一和一对多关系，并不支持多对多关系</p>
+greenDAO目前只支持一对一和一对多关系，并不支持多对多关系
 
-<p>一对一：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>private Long studentId;
+一对一：
+```
+private Long studentId;
 @ToOne(joinProperty = "studentId")
 private Studentstudent;
-</code></pre>
-</div>
+```
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@Generated(hash = 313494093)
+```
+@Generated(hash = 313494093)
 public Student getStudent() {
     Long __key = this.studentId;
     if (student__resolvedKey == null || !student__resolvedKey.equals(__key)) {
@@ -424,39 +431,41 @@ public Student getStudent() {
     }
     return student;
 }
-</code></pre>
-</div>
-<p>使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。</p>
+```
+使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。
 
-<p>一对多（有三种映射形式）：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>@ToMany(referencedJoinProperty = "teacherId")
-private List&lt;Teacher&gt; teacherList;
-</code></pre>
-</div>
+ 
 
-<p>referencedJoinProperty：指定目标实体中与源实体相对应的外键。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>@ToMany(joinProperties = {
+一对多（有三种映射形式）：
+```
+@ToMany(referencedJoinProperty = "teacherId")
+private List<Teacher> teacherList;
+```
+
+ referencedJoinProperty：指定目标实体中与源实体相对应的外键。
+```
+@ToMany(joinProperties = {
         @JoinProperty(name="studentTag",referencedName = "teacherTag")
 })
-private List&lt;Teacher&gt; teacherList;
-</code></pre>
-</div>
-<p>JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>@ToMany
+private List<Teacher> teacherList;
+```
+JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。
+```
+@ToMany
 @JoinEntity(
         entity = Teacher.class,
         sourceProperty = "teacherId",
         targetProperty = "id"
 )
-private List&lt;Teacher&gt; teacherList;
-</code></pre>
-</div>
-<p>@JoinEntity：在做NM多对多映射的时候使用</p>
+private List<Teacher> teacherList;
+```
+@JoinEntity：在做NM多对多映射的时候使用
 
-<p>9.数据库升级</p>
+9.数据库升级
 
-<p>数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>/** WARNING: Drops all table on Upgrade! Use only during development. */
+数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。
+```
+/** WARNING: Drops all table on Upgrade! Use only during development. */
 public static class DevOpenHelper extends OpenHelper {
     public DevOpenHelper(Context context, String name) {
         super(context, name);
@@ -473,30 +482,30 @@ public static class DevOpenHelper extends OpenHelper {
         onCreate(db);
     }
 }
-</code></pre>
-</div>
-<p>第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。</p>
+```
+第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。
 
-<p>在project的gradle添加</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>allprojects {
+在project的gradle添加
+```
+allprojects {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
     }
 }
-</code></pre>
-</div>
+```
 
-<p>在app的gradle添加：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
+在app的gradle添加：
+```
+compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
 注意：要是使用的还是greenDAO3.0以前的版本，添加的是
 
 compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
-</code></pre>
-</div>
+```
 
-<p>新建一个类</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
+新建一个类
+```
+public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
     public MySQLiteOpenHelper(Contextcontext,Stringname){
         super(context,name);
     }
@@ -509,11 +518,11 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
         MigrationHelper.migrate(db,UserDao.class,StudentDao.class);
     }
 }
-</code></pre>
-</div>
+```
 
-<p>在GreenDaoManager修改代码：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>public class GreenDaoManager {
+在GreenDaoManager修改代码：
+```
+public class GreenDaoManager {
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
     private static volatile GreenDaoManager mInstance = null; 
@@ -550,11 +559,15 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
         return mDaoSession;
     }
 }
-</code></pre>
-</div>
-<p>注意：migrate(SQLiteDatabase db, Class… daoClasses); 里面的参数是全部的实体类，就是要生成的表。
-要生成的表。</p>
+```
+注意：migrate(SQLiteDatabase db, Class... daoClasses); 里面的参数是全部的实体类，就是要生成的表。
+要生成的表。
 
+
+
+
+
+</Teacher></Teacher></Teacher></T></K></T></T></pre>
 
         </article>
         <hr>
@@ -565,42 +578,60 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
             
                 
                     
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                         
                         <li class="relatedPost">
                             <a href="http://localhost:4000/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧
@@ -699,24 +730,6 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
                 
             
         
-            
-            
-                
-                    
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-                    
-                
-            
-        
         
             </ul>
         
@@ -803,6 +816,13 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
 }());
 </script>
 <script src="/js/pageContent.js " charset="utf-8"></script>
+ <!--Google 代码高亮js-->
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
+
+<!--
+<link rel="stylesheet" type="text/css" href="/css/sunburst.css">
+-->
 
 
     <footer class="site-footer">
@@ -850,6 +870,8 @@ compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
       });
     </script>
     <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+   
+
   </body>
 
 </html>
