@@ -9,6 +9,14 @@ type: page
 * content
 {:toc}
 
+
+
+
+## 开发环境
+
+[AndroidStudio]()
+[Kotlin](http://kotlinlang.org/)
+
 ## DESIGN
 
 * [Material Design](https://md.gl)
@@ -31,8 +39,15 @@ type: page
 
   [ANDROID WEEKLY](http://androidweekly.net)
 
+  [Trinea](http://www.trinea.cn/)
+
 
 ## 常用技术
+
+
+### 网络编程
+
+[HTTPS 原理浅析及其在 Android 中的使用](https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&mid=2653579059&idx=1&sn=a7bc949a310e86cfbbd19bb671c4844e&chksm=84b3b534b3c43c222c3175195ec60f11e6cd4b5f3283cc7bbf48ffc9b5a8cf5f68bfc7a77502&scene=0&key=0d2ee539ac3c1e3e0c1fc6acd428bd1b389098abf929f005f2fbb14416b4b4d4e6875a2a0a74c462cc9798e1b8c16820390d2eeec7288735f5a69b46364b0056f75c4fc6661bd57645326fb4b2243df5&ascene=0&uin=MTA3ODQwMTQxOQ%3D%3D&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.12.5+build(16F73)&version=12020010&nettype=WIFI&fontScale=100&pass_ticket=jK49RR4GgAjqYYX9AlfdxEv0ujw4teUjDXpTc4fYf0G0nK7LVSp4LHANpw5125xS)
 
 ### APK压缩
 
@@ -76,6 +91,8 @@ type: page
 * [Weex](https://weex-project.io/cn/)  
 
 ## 架构方面
+
+#### 组件化模块化
 
 [模块化](http://baronzhang.com/blog/Framework/Android-%E6%A8%A1%E5%9D%97%E5%8C%96%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5/)
 
