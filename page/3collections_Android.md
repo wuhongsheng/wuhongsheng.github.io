@@ -15,6 +15,7 @@ type: page
 ## 开发环境
 
 [AndroidStudio]()
+
 [Kotlin](http://kotlinlang.org/)
 
 ## DESIGN
@@ -41,6 +42,8 @@ type: page
 
   [Trinea](http://www.trinea.cn/)
 
+  [美团技术点评团队](http://tech.meituan.com/)
+
 
 ## 常用技术
 
@@ -53,6 +56,7 @@ type: page
 
 * [APK瘦身](https://github.com/ShowJoy-com/showjoy-blog/issues/27)
 * [有效减少 Android 应用的方法数](https://zhuanlan.zhihu.com/p/26272085)
+* [Android App包瘦身优化实践(美团)](http://tech.meituan.com/android-shrink-overall-solution.html)
 
 ### 插件化
 
@@ -80,8 +84,8 @@ type: page
 
 ## 跨平台技术
 
-* React Native
-   
+* [React Native](https://github.com/facebook/react-native/)
+    
   [React Native中文网](http://reactnative.cn/)
 
   [React Native性能之谜](http://insights.thoughtworkers.org/the-react-native-mystery/)
@@ -97,6 +101,8 @@ type: page
 [模块化](http://baronzhang.com/blog/Framework/Android-%E6%A8%A1%E5%9D%97%E5%8C%96%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5/)
 
 [安居客 Android 项目架构演进](https://zhuanlan.zhihu.com/p/25420181)
+
+[如何构建Android MVVM 应用框架(美团)](http://tech.meituan.com/android_mvvm.html)
 
 ## 测试
 
