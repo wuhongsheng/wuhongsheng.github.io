@@ -5,9 +5,40 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 May 2017 08:37:20 +0800</pubDate>
-    <lastBuildDate>Thu, 25 May 2017 08:37:20 +0800</lastBuildDate>
+    <pubDate>Wed, 31 May 2017 12:52:44 +0800</pubDate>
+    <lastBuildDate>Wed, 31 May 2017 12:52:44 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Kotlin 从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Kotlin学习路线
+
+&lt;h3 id=&quot;基础知识&quot;&gt;基础知识&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;《Kotlin for android developers》中文翻译版&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md&quot;&gt;from-java-to-kotlin&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 30 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>Kotlin</category>
+        
+        
+        <category>Kotlin</category>
+        
+      </item>
     
       <item>
         <title>Android学习路线</title>
@@ -876,125 +907,6 @@ Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就�
         
         
         <category>Java</category>
-        
-      </item>
-    
-      <item>
-        <title>如何在Android面试中脱颖而出</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#怎么写简历&quot; id=&quot;markdown-toc-怎么写简历&quot;&gt;怎么写简历？&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#项目经验如何展示&quot; id=&quot;markdown-toc-项目经验如何展示&quot;&gt;项目经验如何展示？&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#须知&quot; id=&quot;markdown-toc-须知&quot;&gt;须知&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#注意事项&quot; id=&quot;markdown-toc-注意事项&quot;&gt;注意事项&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常问的知识点&quot; id=&quot;markdown-toc-常问的知识点&quot;&gt;常问的知识点&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#初级&quot; id=&quot;markdown-toc-初级&quot;&gt;初级&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#中级&quot; id=&quot;markdown-toc-中级&quot;&gt;中级&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#高级&quot; id=&quot;markdown-toc-高级&quot;&gt;高级&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#插件化&quot; id=&quot;markdown-toc-插件化&quot;&gt;插件化&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见的要求&quot; id=&quot;markdown-toc-常见的要求&quot;&gt;常见的要求&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-马上要去面安卓开发岗位了……简历该如何写才不易石沉大海？项目经历该如何展示？有那些必考的面试题？
-
-&lt;h3 id=&quot;怎么写简历&quot;&gt;怎么写简历？&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;简历不要太花哨, 你是应聘的技术, 不是设计师&lt;/li&gt;
-  &lt;li&gt;简历把一些基本信息要说清楚（无关的不要写, 比如头像之类的）&lt;/li&gt;
-  &lt;li&gt;有个人博客跟 GitHub 的写上, 若没有内容那就算了&lt;/li&gt;
-  &lt;li&gt;应届毕业生需写上相关证书之类, 有经验的可不写&lt;/li&gt;
-  &lt;li&gt;简历控制在两页 A4 纸&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;项目经验如何展示&quot;&gt;项目经验如何展示？&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一般写 2, 3个代表性的项目就好，优先写本职工作相关的&lt;/li&gt;
-  &lt;li&gt;时间为倒序&lt;/li&gt;
-  &lt;li&gt;说明你在项目当中的职责作用&lt;/li&gt;
-  &lt;li&gt;项目模块需要了解大概逻辑与思路，以及一些关键的技术点，以防面试官问到&lt;/li&gt;
-  &lt;li&gt;没有项目经验的也要模仿一两个小 Demo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;须知&quot;&gt;须知&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;自己亲自做的东西一定要明白, 如果不是自己亲自做的, 请慎重骗面试官&lt;/li&gt;
-  &lt;li&gt;问的时候会问一些知识点相关的话题，比如你的数据是需要 api 交互的，那可能会问 http 相关， json 数据解析相关，缓存相关，图片加载相关等&lt;/li&gt;
-  &lt;li&gt;对用到的知识点虽用不着一定要看源码的地步，但是最好要懂原理，比如图片加载一定要知道二级缓存，一些常见的缓存算法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;注意事项&quot;&gt;注意事项&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;去面试前一定要花点时间了解下你面试的这家公司（本身有自己产品的下载体验一下，以防面试过程中问到，或者可以给产品提点意见)&lt;/li&gt;
-  &lt;li&gt;面试的时候态度要谦虚点&lt;/li&gt;
-  &lt;li&gt;个人兴趣(不要提什么打游戏, 唱歌之类的,可以说一下业余时间提下自己经常上一些技术社区,看一些技术博客之类的)&lt;/li&gt;
-  &lt;li&gt;除了基本的知识点, 面试官通常都会问一些比较深的领域(可能你没有接触过,但不要气馁, 面试官在考察下你的技术的深度, 这些领域一般包括设计模式, 虚拟机, 插件化, React Native之类的)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常问的知识点&quot;&gt;常问的知识点&lt;/h3&gt;
-针对不同的级别问的知识点是不一样的。
-
-&lt;h4 id=&quot;初级&quot;&gt;初级&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;那基本的 &lt;a href=&quot;https://developer.android.google.cn/guide/components/activities.html#Lifecycle&quot;&gt;Activity&lt;/a&gt;/&lt;a href=&quot;https://developer.android.google.cn/guide/components/fragments.html&quot;&gt;Fragment&lt;/a&gt;的生命周期&lt;/li&gt;
-  &lt;li&gt;四大组件的具体作用以及用法&lt;/li&gt;
-  &lt;li&gt;Activity四种启动模式的区别&lt;/li&gt;
-  &lt;li&gt;ListView的优化&lt;/li&gt;
-  &lt;li&gt;一些动画的使用&lt;/li&gt;
-  &lt;li&gt;Java一些基础知识(如最基本的 String, StringBuilder, StringBuffer的区别; 如ArrayList, LinkedList的区别; Java线程的几种用法)&lt;/li&gt;
-  &lt;li&gt;……&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;中级&quot;&gt;中级&lt;/h4&gt;
-
-屏幕适配经验，性能优化的经验、Java 线程几种用法等
-
-&lt;h4 id=&quot;高级&quot;&gt;高级&lt;/h4&gt;
-
-如插件化, 如网络的优化, 如缓存的处理, 如插件化, 如Service保活
-对产品的一些看法, 对代码质量的要求, 对开发流程、团队合作的理解等
-
-&lt;h6 id=&quot;插件化&quot;&gt;插件化&lt;/h6&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/DroidPluginTeam/DroidPlugin&quot;&gt;Droid Plugin&lt;/a&gt;
-
-    DroidPlugin 是&lt;strong&gt;&lt;em&gt;360手机助手&lt;/em&gt;&lt;/strong&gt;在Android系统上实现了一种新的&lt;strong&gt;&lt;em&gt;插件机制&lt;/em&gt;&lt;/strong&gt;:它可以在无需安装、修改的情况下运行APK文件,此机制对改进大型APP的架构，实现多团队协作开发具有一定的好处。
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常见的要求&quot;&gt;常见的要求&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;计算机相关专业本科及以上学历，3年以上Android开发经验，有完整应用项目开发经验；&lt;/li&gt;
-  &lt;li&gt;熟练掌握Android平台开发，精通自定义UI组件，图形绘制，动画特效等；&lt;/li&gt;
-  &lt;li&gt;熟悉Android系统框架(Framework相关)以及NDK开发技术；&lt;/li&gt;
-  &lt;li&gt;熟练掌握Android网络编程、多线程编程以及进程间通信技术；&lt;/li&gt;
-  &lt;li&gt;熟练使用Linux操作系统、Android源码及应用编译过程以及Android开发调试工具，熟悉Git代码管理工具；&lt;/li&gt;
-  &lt;li&gt;熟悉常用开源项目，有良好的编码风格和编程习惯；&lt;/li&gt;
-  &lt;li&gt;在app Store发布过作品的优先考虑。&lt;/li&gt;
-  &lt;li&gt;熟悉HTML5、JS相关框架与知识。&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Wed, 19 Apr 2017 06:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/</guid>
-        
-        <category>Android</category>
-        
-        <category>面试</category>
-        
-        
-        <category>Android</category>
         
       </item>
     

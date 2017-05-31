@@ -44,8 +44,14 @@ type: page
 
   [美团技术点评团队](http://tech.meituan.com/)
 
+  [2016移动开发技术巡礼](http://www.infoq.com/cn/articles/2016-review-mobile?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text)
+
 
 ## 常用技术
+
+* [屏幕适配](https://developer.android.google.cn/design/style/devices-displays.html)
+
+* [Android截屏与WebView长图分享经验总结](https://youzanmobile.github.io/2017/05/19/android-screenshot-and-webview/)
 
 
 ### 网络编程
@@ -80,6 +86,8 @@ type: page
 
 * [greenDAO](https://github.com/greenrobot/greenDAO/)
 
+* [Realm数据库 从入门到“放弃”](http://www.jianshu.com/p/50e0efb66bdf)
+
 
 
 ## 跨平台技术
@@ -98,17 +106,26 @@ type: page
 
 #### 组件化模块化
 
-[模块化](http://baronzhang.com/blog/Framework/Android-%E6%A8%A1%E5%9D%97%E5%8C%96%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5/)
+[Android 模块化探索与实践](http://baronzhang.com/blog/Framework/Android-%E6%A8%A1%E5%9D%97%E5%8C%96%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5/)
 
 [安居客 Android 项目架构演进](https://zhuanlan.zhihu.com/p/25420181)
 
 [如何构建Android MVVM 应用框架(美团)](http://tech.meituan.com/android_mvvm.html)
+
+[携程移动App架构优化之旅](http://www.infoq.com/cn/articles/ctrip-app-architecture)
+
+[简单聊聊Android Architecture Componets](http://blog.isming.me//2017/05/18/android-architecture-components-guide/)
 
 ## 测试
 
 ## 常用工具
 
 * [svg2android](http://inloop.github.io/svg2android/)
+
+
+## 最新技术
+
+* [Android 免安装应用](https://developer.android.google.cn/topic/instant-apps/index.html)
 
 
 

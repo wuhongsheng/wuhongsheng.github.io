@@ -150,6 +150,115 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#uiueux" id="markdown-toc-uiueux">UI/UE/UX</a>    <ul>
+      <li><a href="#rippledrawable---波纹效果" id="markdown-toc-rippledrawable---波纹效果">RippleDrawable - 波纹效果</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Android 开发技巧</p>
+
+<h3 id="uiueux">UI/UE/UX</h3>
+
+<h4 id="rippledrawable---波纹效果">RippleDrawable - 波纹效果</h4>
+
+<ul>
+  <li>使用Android 提供的属性</li>
+</ul>
+
+<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackground"</code></p>
+
+<p>扩散到View边界</p>
+
+<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackgroundBorderless</code></p>
+
+<p>设置后，会从孩子往父亲找一个依附的色。如果View往上找的时候，亲生父亲没背景色，会继续向上查找直到最顶端。找到了最顶端的爷爷，这个时候才绘制。然而，如果父亲的兄弟又绘制了颜色，且盖住了最顶端的绘制，会导致看不到效果。如果有一定的透明度，结果就显而易见了。
+特别注意：
+当把硬件加速给关闭时，这个效果是没有的。
+这是API 21的新属性，老版本无法使用.</p>
+
+<ul>
+  <li>自定义</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;!-- A green ripple drawn atop a black rectangle. --&gt;
+&lt;ripple android:color="#ff00ff00"&gt;
+    &lt;item android:drawable="@android:color/black" /&gt;
+&lt;/ripple&gt;
+ 
+&lt;!-- A blue ripple drawn atop a drawable resource. --&gt;
+&lt;ripple android:color="#ff0000ff"&gt;
+    &lt;item android:drawable="@drawable/my_drawable" /&gt;
+&lt;/ripple&gt;
+</code></pre>
+</div>
+
+<p>android:color中是点击响应色，也是波纹扩散色。
+item中是正常状态下的显示。</p>
+
+<p>一般使用时会和原有的selector配合，原有的selector负责5.0以下显示效果，
+新的selector内部含有ripple标签放在drawable-v21中，保证点击效果。</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">常用Git命令及问题</a>
                 </h2>
                 <div class="label">
@@ -854,152 +963,6 @@ Caused by: java.net.ConnectException: Operation timed out
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-04-12
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#前提" id="markdown-toc-前提">前提</a>    <ul>
-      <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-    </ul>
-  </li>
-  <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
-      <li><a href="#adb端口占用" id="markdown-toc-adb端口占用">adb端口占用</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>自从换了Mac后adb经常出现问题（经验不足），所以写此篇记录一下常用的adb命令以及一些常见问题解决方法。</p>
-
-<h2 id="前提">前提</h2>
-<p>要想在Mac或Windows上直接使用adb命令，需要配置环境变量，以Mac为例，配置方法如下：</p>
-<ul>
-  <li>打开终端输入 touch .bash_profile 更新配置文件，如果不存在自动创建</li>
-  <li>open -e .bash_profile 打开配置文件</li>
-  <li>输入如下内容并保存
-    <div class="highlighter-rouge"><pre class="highlight"><code>export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
-export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
-</code></pre>
-    </div>
-    <h3 id="常用命令">常用命令</h3>
-  </li>
-  <li>adb nodaemon server   查看adb 端口是否有占用</li>
-  <li>lsof -i:5037 查看adb端口占用进程</li>
-  <li>rm -rf ~/.android 重置本地签名文件</li>
-  <li>killalladb 结束所有adb相关进程</li>
-  <li>未完待续……</li>
-</ul>
-
-<hr />
-
-<h2 id="可能出现的问题">可能出现的问题</h2>
-
-<h3 id="adb端口占用">adb端口占用</h3>
-
-<p><strong>错误代码：</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
-</code></pre>
-</div>
-
-<p><strong>解决方法：</strong></p>
-
-<ul>
-  <li>killall adb 然后 重启Android Studio</li>
-  <li>如果上面方法无效，请检查是否重复设置Android环境变量</li>
-  <li>还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。</li>
-  <li>open sdk manager and installed all android sdk tools and done.</li>
-  <li>Mac防火墙设置原因</li>
-  <li>查看AS debugger 端口是否被占用 lsof -i:63341</li>
-</ul>
-
-<p><strong>错误信息：</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ adb devices
-List of devices attached
-* daemon not running. starting it now at tcp:5037 *
-* daemon started successfully *
-** daemon still not running
-error: cannot connect to daemon at tcp:5037: Operation timed out
-</code></pre>
-</div>
-<p><strong>解决方法：</strong></p>
-<ul>
-  <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。</li>
-</ul>
-
-<p><strong>错误信息：</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8606 for debugger
-</code></pre>
-</div>
-
-<p><strong>解决方法：</strong></p>
-
-<ul>
-  <li>在Debugger Configuration 设置Debuger Type 为 Java</li>
-</ul>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1027,6 +990,8 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a></li>
+                    
                         <li><a href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a></li>
                     
                         <li><a href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/">智能硬件学习</a></li>
@@ -1044,8 +1009,6 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         <li><a href="/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Markdown入门指南</a></li>
                     
                         <li><a href="/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Java正则表达式</a></li>
-                    
-                        <li><a href="/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/">如何在Android面试中脱颖而出</a></li>
                     
                 </ul>
             </div>
@@ -1125,6 +1088,15 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         <a href="/category/#智能硬件" class="categories-list-item" cate="智能硬件">
                             <span class="name">
                                 智能硬件
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Kotlin" class="categories-list-item" cate="Kotlin">
+                            <span class="name">
+                                Kotlin
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1230,6 +1202,13 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                       
                       
                       <a href="/tag/#智能硬件" style="font-size: 9pt; color: #999;">智能硬件</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Kotlin" style="font-size: 9pt; color: #999;">Kotlin</a>
                     
                 </div>
             </div>
