@@ -14,9 +14,12 @@ type: page
 
 ## 开发环境
 
-[AndroidStudio]()
+* [AndroidStudio]()
 
-[Kotlin](http://kotlinlang.org/)
+* [Kotlin](http://kotlinlang.org/)
+
+* [Maven 仓库使用与私有仓库搭建](https://my.oschina.net/u/1474965/blog/832526)
+
 
 ## DESIGN
 
@@ -25,6 +28,8 @@ type: page
 * [Material Design 指南](是一个动态文档，包含跨平台和跨设备的视觉、交互和动画设计指南。)
 
 * [COLOR TOOL](https://md.gl/color/#!/?view.left=0&view.right=0)
+
+* [Android 设计准则](https://developer.android.google.cn/design/index.html)
 
 ## 学习资料
 
