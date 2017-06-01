@@ -5,40 +5,9 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Jun 2017 18:46:15 +0800</pubDate>
-    <lastBuildDate>Thu, 01 Jun 2017 18:46:15 +0800</lastBuildDate>
+    <pubDate>Thu, 01 Jun 2017 18:48:11 +0800</pubDate>
+    <lastBuildDate>Thu, 01 Jun 2017 18:48:11 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
-    
-      <item>
-        <title>Kotlin 从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Kotlin学习路线
-
-&lt;h3 id=&quot;基础知识&quot;&gt;基础知识&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;《Kotlin for android developers》中文翻译版&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md&quot;&gt;from-java-to-kotlin&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 30 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>Kotlin</category>
-        
-        
-        <category>Kotlin</category>
-        
-      </item>
     
       <item>
         <title>GIS 开发从入门到放弃</title>
@@ -72,14 +41,45 @@ GIS学习路线
 &lt;/ul&gt;
 
 </description>
+        <pubDate>Wed, 31 May 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>GIS</category>
+        
+        
+        <category>GIS</category>
+        
+      </item>
+    
+      <item>
+        <title>Kotlin 从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Kotlin学习路线
+
+&lt;h3 id=&quot;基础知识&quot;&gt;基础知识&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;《Kotlin for android developers》中文翻译版&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md&quot;&gt;from-java-to-kotlin&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
         <pubDate>Tue, 30 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/30/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/30/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        <link>http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
         
-        <category>GIS</category>
+        <category>Kotlin</category>
         
         
-        <category>GIS</category>
+        <category>Kotlin</category>
         
       </item>
     
