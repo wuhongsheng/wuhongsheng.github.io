@@ -125,7 +125,9 @@ type: page
 
 ## 持续改进(Continuous Improvement)
 
-[Jenkins](https://jenkins.io/index.html)领先的开源自动化服务器，Jenkins提供了数百个插件来支持任何项目的构建，部署和自动化
+[Jenkins](https://jenkins.io/index.html)
+
+领先的开源自动化服务器，Jenkins提供了数百个插件来支持任何项目的构建，部署和自动化
 
 [Jenkin+Git+Gradle为Android项目搭建CI环境](http://blog.csdn.net/ownwell/article/details/49023285)
 
