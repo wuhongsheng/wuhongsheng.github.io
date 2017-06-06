@@ -105,6 +105,8 @@ type: page
 
   [Shoutem旨在成为React Native移动应用领域的WordPress](http://www.infoq.com/cn/news/2017/05/shoutem-react-native-mobile-apps)
 
+  [基于React Native的移动平台研发实践分享](http://blog.csdn.net/haozhenming/article/details/72772787)
+
 * [Weex](https://weex-project.io/cn/)  
 
 ## 架构方面
@@ -120,6 +122,14 @@ type: page
 [携程移动App架构优化之旅](http://www.infoq.com/cn/articles/ctrip-app-architecture)
 
 [简单聊聊Android Architecture Componets](http://blog.isming.me//2017/05/18/android-architecture-components-guide/)
+
+## 持续改进(Continuous Improvement)
+
+[Jenkins](https://jenkins.io/index.html)领先的开源自动化服务器，Jenkins提供了数百个插件来支持任何项目的构建，部署和自动化
+
+[Jenkin+Git+Gradle为Android项目搭建CI环境](http://blog.csdn.net/ownwell/article/details/49023285)
+
+[敏捷开发的持续改进(携程)](https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&mid=2697266154&idx=2&sn=99f4fd36b4bf5e9db333a0281f1a06e0&chksm=8376fcdeb40175c8faa97178df5ea595147315f0eeba220be90f9079dde1b377ba21e7a51226&mpshare=1&scene=23&srcid=0606urg3RHKx7D8LXandp0wy%23rd)
 
 ## 测试
 
