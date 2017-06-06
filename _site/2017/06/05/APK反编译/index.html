@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>APK反编译</title>
-    <meta name="description" content="  参考网站  工具介绍：  实战（以Mac为例）          apktool使用      Android Apk反编译学习路线参考网站Android APK反编译就这么简单 详解（附图）工具介绍：apktool  作用：资源文件获取，可以提取出图片文件和布局文件进行使用查看dex2jar 作用：将apk...">
+    <meta name="description" content="Android Apk反编译学习路线">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -217,10 +217,12 @@
 
 <h4 id="工具介绍">工具介绍：</h4>
 <p><a href="https://ibotpeaches.github.io/Apktool/">apktool</a> <br />
- 作用：资源文件获取，可以提取出图片文件和布局文件进行使用查看
-<a href="https://github.com/pxb1988/dex2jar">dex2jar</a>
- 作用：将apk反编译成Java源码（classes.dex转化成jar文件）
-<a href="">jd-gui</a>
+ 作用：资源文件获取，可以提取出图片文件和布局文件进行使用查看</p>
+
+<p><a href="https://github.com/pxb1988/dex2jar">dex2jar</a>
+ 作用：将apk反编译成Java源码（classes.dex转化成jar文件）</p>
+
+<p><a href="">jd-gui</a>
  作用：查看APK中classes.dex转化成出的jar文件，即源码文件</p>
 
 <h4 id="实战以mac为例">实战（以Mac为例）</h4>
@@ -229,11 +231,15 @@
 
 <ul>
   <li>
-    <p><a href="https://ibotpeaches.github.io/Apktool/install/">安装apktoll</a>
- 1.下载<a href="https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/osx/apktool">脚本</a>，保存为apktool；
- 2.下载最新的<a href="https://bitbucket.org/iBotPeaches/apktool/downloads/">apktool_x.jar</a>；
- 3.将下载的jar包重命名为apktool.jar；
- 4.将下载的apktool和apktool.jar移到/usr/local/bin目录</p>
+    <p><a href="https://ibotpeaches.github.io/Apktool/install/">安装apktoll</a></p>
+
+    <p>1.下载<a href="https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/osx/apktool">脚本</a>，保存为apktool；</p>
+
+    <p>2.下载最新的<a href="https://bitbucket.org/iBotPeaches/apktool/downloads/">apktool_x.jar</a>；</p>
+
+    <p>3.将下载的jar包重命名为apktool.jar；</p>
+
+    <p>4.将下载的apktool和apktool.jar移到/usr/local/bin目录</p>
 
     <p><code class="highlighter-rouge">$ mv file /usr/local/bin</code></p>
 
@@ -247,10 +253,13 @@
 
     <p>反编译失败解决方法</p>
 
-    <p><code class="highlighter-rouge">Exception in thread "main" brut.androlib.err.UndefinedResObject:</code>
- 1.删除/Users/your user/Library/apktool/framework/1.apk;
- 2.导出手机/system/framework/framework-res.apk 放入上面目录
- 3.重新反编译</p>
+    <p><code class="highlighter-rouge">Exception in thread "main" brut.androlib.err.UndefinedResObject:</code></p>
+
+    <p>1.删除/Users/your user/Library/apktool/framework/1.apk;</p>
+
+    <p>2.导出手机/system/framework/framework-res.apk 放入上面目录</p>
+
+    <p>3.重新反编译</p>
 
     <p>其他问题的解决方法可在<a href="https://github.com/iBotPeaches/Apktool/issues">ISSUE LIST</a>中查找或提问</p>
   </li>
