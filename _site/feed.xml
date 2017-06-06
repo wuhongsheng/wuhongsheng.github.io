@@ -5,9 +5,28 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Jun 2017 14:09:44 +0800</pubDate>
-    <lastBuildDate>Tue, 06 Jun 2017 14:09:44 +0800</lastBuildDate>
+    <pubDate>Tue, 06 Jun 2017 22:26:11 +0800</pubDate>
+    <lastBuildDate>Tue, 06 Jun 2017 22:26:11 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>APK反编译</title>
+        <description>
+Android Apk反编译学习路线
+
+</description>
+        <pubDate>Mon, 05 Jun 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/</guid>
+        
+        <category>反编译</category>
+        
+        <category>Android</category>
+        
+        
+        <category>反编译</category>
+        
+      </item>
     
       <item>
         <title>GIS 开发从入门到放弃</title>
@@ -748,148 +767,6 @@ Caused by: java.net.ConnectException: Operation timed out
         
         
         <category>Git</category>
-        
-      </item>
-    
-      <item>
-        <title>Markdown入门指南</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#导语&quot; id=&quot;markdown-toc-导语&quot;&gt;导语&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#markdown-官方文档&quot; id=&quot;markdown-toc-markdown-官方文档&quot;&gt;Markdown 官方文档&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#使用-markdown-的优点&quot; id=&quot;markdown-toc-使用-markdown-的优点&quot;&gt;使用 Markdown 的优点&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#markdown-语法的简要规则&quot; id=&quot;markdown-toc-markdown-语法的简要规则&quot;&gt;Markdown 语法的简要规则&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#标题&quot; id=&quot;markdown-toc-标题&quot;&gt;标题&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#引用&quot; id=&quot;markdown-toc-引用&quot;&gt;引用&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#图片和链接&quot; id=&quot;markdown-toc-图片和链接&quot;&gt;图片和链接&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#粗体与斜体&quot; id=&quot;markdown-toc-粗体与斜体&quot;&gt;粗体与斜体&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#表格&quot; id=&quot;markdown-toc-表格&quot;&gt;表格&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#代码框&quot; id=&quot;markdown-toc-代码框&quot;&gt;代码框&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#分割线&quot; id=&quot;markdown-toc-分割线&quot;&gt;分割线&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#相关工具&quot; id=&quot;markdown-toc-相关工具&quot;&gt;相关工具&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。
-
-&lt;h3 id=&quot;导语&quot;&gt;导语&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;markdown-官方文档&quot;&gt;Markdown 官方文档&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  这里可以看到官方的Markdown语法规则文档，当然，后文我也会用自己的方式阐述这些语法的具体用法。
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;创始人 John Gruber 的 Markdown 语法说明&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#list&quot;&gt;Markdown 中文版语法说明&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;使用-markdown-的优点&quot;&gt;使用 Markdown 的优点&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;专注你的文字内容而不是排版样式，安心写作。&lt;/li&gt;
-  &lt;li&gt;轻松的导出 HTML、PDF 和本身的 .md 文件。&lt;/li&gt;
-  &lt;li&gt;纯文本内容，兼容所有的文本编辑器与字处理软件。&lt;/li&gt;
-  &lt;li&gt;随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱。可读、直观、学习成本低。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;markdown-语法的简要规则&quot;&gt;Markdown 语法的简要规则&lt;/h3&gt;
-
-&lt;h4 id=&quot;标题&quot;&gt;标题&lt;/h4&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/md_title.jpg&quot; alt=&quot;&quot; /&gt;
-
-&lt;h4 id=&quot;列表&quot;&gt;列表&lt;/h4&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/md_list.jpg&quot; alt=&quot;&quot; /&gt;
-
-&lt;h4 id=&quot;引用&quot;&gt;引用&lt;/h4&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/md_quote.jpg&quot; alt=&quot;&quot; /&gt;
-
-&lt;h4 id=&quot;图片和链接&quot;&gt;图片和链接&lt;/h4&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/md_img.jpg&quot; alt=&quot;&quot; /&gt;
-
-&lt;h4 id=&quot;粗体与斜体&quot;&gt;粗体与斜体&lt;/h4&gt;
-
-Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就是粗体的语法，用一个 * 包含一段文本就是斜体的语法。
-
-例如：&lt;strong&gt;这里是粗体&lt;/strong&gt; &lt;em&gt;这里是斜体&lt;/em&gt;
-
-&lt;h4 id=&quot;表格&quot;&gt;表格&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-这种语法生成的表格如下：
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Tables&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Are&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Cool&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;col 3 is&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;right-aligned&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$1600&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;col 2 is&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;centered&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;zebra stripes&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;are neat&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&quot;代码框&quot;&gt;代码框&lt;/h4&gt;
-
-如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。使用 tab 键即可缩进。
-
-&lt;h4 id=&quot;分割线&quot;&gt;分割线&lt;/h4&gt;
-
-分割线的语法只需要三个 * 号，例如：
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;相关工具&quot;&gt;相关工具&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    图床工具
-
-    &lt;a href=&quot;https://portal.qiniu.com&quot;&gt;七牛云&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Mon, 24 Apr 2017 05:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</guid>
-        
-        <category>Markdown</category>
-        
-        
-        <category>Markdown</category>
         
       </item>
     

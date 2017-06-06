@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Java正则表达式</title>
-    <meta name="description" content="  基础知识  常用正则表达式  实例          提取字符串中的数字并高亮显示      正则表达式定义了字符串的模式。正则表达式可以用来搜索、编辑或处理文本。正则表达式并不仅限于某一种语言，但是在每种语言中有细微的差别。基础知识菜鸟教程常用正则表达式  匹配数字  \d+(\.\d+)?  匹配中文字符...">
+    <title>APK反编译</title>
+    <meta name="description" content="Android Apk反编译学习路线">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+    <link rel="canonical" href="http://localhost:4000/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
 
@@ -143,11 +143,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Java正则表达式</h1>
+        <h1>APK反编译</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-04-19
+                <i class="fa fa-calendar"></i>2017-06-05
             </div>
 
             <div class="label-card">
@@ -168,7 +168,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Java" title="Category: Java" rel="category">Java</a>
+        <a href="/category/#反编译" title="Category: 反编译" rel="category">反编译</a>
     
   
 
@@ -185,8 +185,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Java" title="Tag: Java" rel="tag">Java</a-->
-        <a href="/tag/#Java" title="Tag: Java" rel="tag">Java</a>&nbsp;
+        <!--a href="/tag/#%E5%8F%8D%E7%BC%96%E8%AF%91" title="Tag: 反编译" rel="tag">反编译</a-->
+        <a href="/tag/#反编译" title="Tag: 反编译" rel="tag">反编译</a>&nbsp;
     
         <!--a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a-->
         <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
@@ -201,52 +201,61 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
-  <li><a href="#常用正则表达式" id="markdown-toc-常用正则表达式">常用正则表达式</a></li>
-  <li><a href="#实例" id="markdown-toc-实例">实例</a>    <ul>
-      <li><a href="#提取字符串中的数字并高亮显示" id="markdown-toc-提取字符串中的数字并高亮显示">提取字符串中的数字并高亮显示</a></li>
+  <li><a href="#参考网站" id="markdown-toc-参考网站">参考网站</a></li>
+  <li><a href="#工具介绍" id="markdown-toc-工具介绍">工具介绍：</a></li>
+  <li><a href="#实战以mac为例" id="markdown-toc-实战以mac为例">实战（以Mac为例）</a>    <ul>
+      <li><a href="#apktool使用" id="markdown-toc-apktool使用">apktool使用</a></li>
     </ul>
   </li>
 </ul>
 
-<p>正则表达式定义了字符串的模式。正则表达式可以用来搜索、编辑或处理文本。正则表达式并不仅限于某一种语言，但是在每种语言中有细微的差别。</p>
+<p>Android Apk反编译学习路线</p>
 
-<h3 id="基础知识">基础知识</h3>
+<h4 id="参考网站">参考网站</h4>
 
-<p><a href="http://www.runoob.com/java/java-regular-expressions.html">菜鸟教程</a></p>
+<p><a href="http://blog.csdn.net/vipzjyno1/article/details/21039349/">Android APK反编译就这么简单 详解（附图）</a></p>
 
-<h3 id="常用正则表达式">常用正则表达式</h3>
+<h4 id="工具介绍">工具介绍：</h4>
+<p><a href="https://ibotpeaches.github.io/Apktool/">apktool</a> <br />
+ 作用：资源文件获取，可以提取出图片文件和布局文件进行使用查看
+<a href="https://github.com/pxb1988/dex2jar">dex2jar</a>
+ 作用：将apk反编译成Java源码（classes.dex转化成jar文件）
+<a href="">jd-gui</a>
+ 作用：查看APK中classes.dex转化成出的jar文件，即源码文件</p>
+
+<h4 id="实战以mac为例">实战（以Mac为例）</h4>
+
+<h5 id="apktool使用">apktool使用</h5>
 
 <ul>
-  <li>匹配数字  <code class="highlighter-rouge">\d+(\.\d+)?</code></li>
-  <li>匹配中文字符  <code class="highlighter-rouge">[\u4e00-\u9fa5]</code></li>
-  <li>匹配邮箱地址  <code class="highlighter-rouge">[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?</code></li>
-  <li>匹配网址  <code class="highlighter-rouge">[a-zA-z]+://[^\s]*</code></li>
-  <li>匹配国内电话号码  <code class="highlighter-rouge">\d{3}-\d{8}|\d{4}-\{7,8}</code></li>
-  <li>匹配QQ号  <code class="highlighter-rouge">[1-9][0-9]{4,}</code></li>
-  <li>匹配身份证号  <code class="highlighter-rouge">^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$</code></li>
-  <li>匹配手机号码  <code class="highlighter-rouge">[1][3587]\d{9}</code></li>
+  <li>
+    <p><a href="https://ibotpeaches.github.io/Apktool/install/">安装apktoll</a>
+ 1.下载<a href="https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/osx/apktool">脚本</a>，保存为apktool；
+ 2.下载最新的<a href="https://bitbucket.org/iBotPeaches/apktool/downloads/">apktool_x.jar</a>；
+ 3.将下载的jar包重命名为apktool.jar；
+ 4.将下载的apktool和apktool.jar移到/usr/local/bin目录</p>
+
+    <p><code class="highlighter-rouge">$ mv file /usr/local/bin</code></p>
+
+    <p>5.将两个文件的权限设为可执行</p>
+
+    <p><code class="highlighter-rouge">$ chmod a+x file</code></p>
+
+    <p>6.进入Apk所在目录执行反编译</p>
+
+    <p><code class="highlighter-rouge">$ apktool d xxx.apk</code></p>
+
+    <p>反编译失败解决方法</p>
+
+    <p><code class="highlighter-rouge">Exception in thread "main" brut.androlib.err.UndefinedResObject:</code>
+ 1.删除/Users/your user/Library/apktool/framework/1.apk;
+ 2.导出手机/system/framework/framework-res.apk 放入上面目录
+ 3.重新反编译</p>
+
+    <p>其他问题的解决方法可在<a href="https://github.com/iBotPeaches/Apktool/issues">ISSUE LIST</a>中查找或提问</p>
+  </li>
 </ul>
 
-<h3 id="实例">实例</h3>
-
-<h4 id="提取字符串中的数字并高亮显示">提取字符串中的数字并高亮显示</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code> String ss = "（一）现状：昆明市所辖14个县市区范围内，共有国有林场14个，其中市级2个，县区12个。从经营类型上划分，全市国有林场均属生态公益型，经营总面积87.32万亩，森林面积63.78万亩，森林总蓄积量为199.55万立方米，森林覆盖率73.05%；（二）目标：通过全面深化国有林场改革，切实做到“三增长、两建立、一确保”。即：资源增长、职工增收、林场增效；全面建立健全职工社会保障体系，尽快建立符合现代林业发展要求的国有林场管理体制和经营机制；确保林区社会和谐稳定";   
-        // 创建 Pattern 对象
-        Pattern pattern = Pattern.compile("\d+(\.\d+)?");
-        Matcher matcher = pattern.matcher(ss.trim());
-        String lasts="";
-        while (matcher.find()){
-            if(lasts.equals(matcher.group())){
-                ss=ss.replace(matcher.group(),"&lt;font color=#FF4081&gt;&lt;b&gt;"+ matcher.group()+ "&lt;/b&gt;&lt;/font&gt;");
-
-            }else {
-                ss=ss.replaceFirst(matcher.group(),"&lt;font color=#FF4081&gt;&lt;b&gt;"+ matcher.group()+ "&lt;/b&gt;&lt;/font&gt;");
-            }
-            lasts=matcher.group();
-        }
-</code></pre>
-</div>
 
         </article>
         <hr>
@@ -261,6 +270,18 @@
                     
                 
             
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
                 
                     
                 
@@ -268,42 +289,6 @@
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
                         
                         <li class="relatedPost">
                             <a href="http://localhost:4000/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线
@@ -400,6 +385,15 @@
                 
             
         
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
         
             </ul>
         
@@ -407,13 +401,11 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/">如何在Android面试中脱颖而出</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Markdown入门指南</a></p>
         
     </div>
 </div>

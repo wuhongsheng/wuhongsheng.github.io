@@ -69,6 +69,11 @@ type: page
 * [有效减少 Android 应用的方法数](https://zhuanlan.zhihu.com/p/26272085)
 * [Android App包瘦身优化实践(美团)](http://tech.meituan.com/android-shrink-overall-solution.html)
 
+
+### APK反编译
+
+[Android APK反编译就这么简单详解(附图)](http://blog.csdn.net/vipzjyno1/article/details/21039349/#reply)
+
 ### 插件化
 
 * [Android 插件技术实战总结](https://mp.weixin.qq.cos/1p5Y0f5XdVXN2EZYT0AM_A)
