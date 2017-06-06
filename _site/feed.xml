@@ -5,14 +5,67 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Jun 2017 22:26:11 +0800</pubDate>
-    <lastBuildDate>Tue, 06 Jun 2017 22:26:11 +0800</lastBuildDate>
+    <pubDate>Tue, 06 Jun 2017 22:31:31 +0800</pubDate>
+    <lastBuildDate>Tue, 06 Jun 2017 22:31:31 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
         <title>APK反编译</title>
-        <description>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考网站&quot; id=&quot;markdown-toc-参考网站&quot;&gt;参考网站&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#工具介绍&quot; id=&quot;markdown-toc-工具介绍&quot;&gt;工具介绍：&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#实战以mac为例&quot; id=&quot;markdown-toc-实战以mac为例&quot;&gt;实战（以Mac为例）&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#apktool使用&quot; id=&quot;markdown-toc-apktool使用&quot;&gt;apktool使用&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 Android Apk反编译学习路线
+
+&lt;h4 id=&quot;参考网站&quot;&gt;参考网站&lt;/h4&gt;
+
+&lt;a href=&quot;http://blog.csdn.net/vipzjyno1/article/details/21039349/&quot;&gt;Android APK反编译就这么简单 详解（附图）&lt;/a&gt;
+
+&lt;h4 id=&quot;工具介绍&quot;&gt;工具介绍：&lt;/h4&gt;
+&lt;a href=&quot;https://ibotpeaches.github.io/Apktool/&quot;&gt;apktool&lt;/a&gt; &lt;br /&gt;
+ 作用：资源文件获取，可以提取出图片文件和布局文件进行使用查看
+&lt;a href=&quot;https://github.com/pxb1988/dex2jar&quot;&gt;dex2jar&lt;/a&gt;
+ 作用：将apk反编译成Java源码（classes.dex转化成jar文件）
+&lt;a href=&quot;&quot;&gt;jd-gui&lt;/a&gt;
+ 作用：查看APK中classes.dex转化成出的jar文件，即源码文件
+
+&lt;h4 id=&quot;实战以mac为例&quot;&gt;实战（以Mac为例）&lt;/h4&gt;
+
+&lt;h5 id=&quot;apktool使用&quot;&gt;apktool使用&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://ibotpeaches.github.io/Apktool/install/&quot;&gt;安装apktoll&lt;/a&gt;
+ 1.下载&lt;a href=&quot;https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/osx/apktool&quot;&gt;脚本&lt;/a&gt;，保存为apktool；
+ 2.下载最新的&lt;a href=&quot;https://bitbucket.org/iBotPeaches/apktool/downloads/&quot;&gt;apktool_x.jar&lt;/a&gt;；
+ 3.将下载的jar包重命名为apktool.jar；
+ 4.将下载的apktool和apktool.jar移到/usr/local/bin目录
+
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;$ mv file /usr/local/bin&lt;/code&gt;
+
+    5.将两个文件的权限设为可执行
+
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;$ chmod a+x file&lt;/code&gt;
+
+    6.进入Apk所在目录执行反编译
+
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;$ apktool d xxx.apk&lt;/code&gt;
+
+    反编译失败解决方法
+
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;Exception in thread &quot;main&quot; brut.androlib.err.UndefinedResObject:&lt;/code&gt;
+ 1.删除/Users/your user/Library/apktool/framework/1.apk;
+ 2.导出手机/system/framework/framework-res.apk 放入上面目录
+ 3.重新反编译
+
+    其他问题的解决方法可在&lt;a href=&quot;https://github.com/iBotPeaches/Apktool/issues&quot;&gt;ISSUE LIST&lt;/a&gt;中查找或提问
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Mon, 05 Jun 2017 16:14:54 +0800</pubDate>

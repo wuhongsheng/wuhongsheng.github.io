@@ -201,8 +201,61 @@
                     </div>
                 </div>
                 <div class="excerpt">
-                    
+                    <ul id="markdown-toc">
+  <li><a href="#参考网站" id="markdown-toc-参考网站">参考网站</a></li>
+  <li><a href="#工具介绍" id="markdown-toc-工具介绍">工具介绍：</a></li>
+  <li><a href="#实战以mac为例" id="markdown-toc-实战以mac为例">实战（以Mac为例）</a>    <ul>
+      <li><a href="#apktool使用" id="markdown-toc-apktool使用">apktool使用</a></li>
+    </ul>
+  </li>
+</ul>
+
 <p>Android Apk反编译学习路线</p>
+
+<h4 id="参考网站">参考网站</h4>
+
+<p><a href="http://blog.csdn.net/vipzjyno1/article/details/21039349/">Android APK反编译就这么简单 详解（附图）</a></p>
+
+<h4 id="工具介绍">工具介绍：</h4>
+<p><a href="https://ibotpeaches.github.io/Apktool/">apktool</a> <br />
+ 作用：资源文件获取，可以提取出图片文件和布局文件进行使用查看
+<a href="https://github.com/pxb1988/dex2jar">dex2jar</a>
+ 作用：将apk反编译成Java源码（classes.dex转化成jar文件）
+<a href="">jd-gui</a>
+ 作用：查看APK中classes.dex转化成出的jar文件，即源码文件</p>
+
+<h4 id="实战以mac为例">实战（以Mac为例）</h4>
+
+<h5 id="apktool使用">apktool使用</h5>
+
+<ul>
+  <li>
+    <p><a href="https://ibotpeaches.github.io/Apktool/install/">安装apktoll</a>
+ 1.下载<a href="https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/osx/apktool">脚本</a>，保存为apktool；
+ 2.下载最新的<a href="https://bitbucket.org/iBotPeaches/apktool/downloads/">apktool_x.jar</a>；
+ 3.将下载的jar包重命名为apktool.jar；
+ 4.将下载的apktool和apktool.jar移到/usr/local/bin目录</p>
+
+    <p><code class="highlighter-rouge">$ mv file /usr/local/bin</code></p>
+
+    <p>5.将两个文件的权限设为可执行</p>
+
+    <p><code class="highlighter-rouge">$ chmod a+x file</code></p>
+
+    <p>6.进入Apk所在目录执行反编译</p>
+
+    <p><code class="highlighter-rouge">$ apktool d xxx.apk</code></p>
+
+    <p>反编译失败解决方法</p>
+
+    <p><code class="highlighter-rouge">Exception in thread "main" brut.androlib.err.UndefinedResObject:</code>
+ 1.删除/Users/your user/Library/apktool/framework/1.apk;
+ 2.导出手机/system/framework/framework-res.apk 放入上面目录
+ 3.重新反编译</p>
+
+    <p>其他问题的解决方法可在<a href="https://github.com/iBotPeaches/Apktool/issues">ISSUE LIST</a>中查找或提问</p>
+  </li>
+</ul>
 
 
                 </div>
