@@ -114,6 +114,8 @@ type: page
 
 * [Weex](https://weex-project.io/cn/)  
 
+* [ReactXP](https://github.com/microsoft/reactxp)
+
 ## 架构方面
 
 #### 组件化模块化

@@ -214,6 +214,185 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/06/03/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-03
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Python" title="Category: Python" rel="category">Python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a>&nbsp;
+    
+        <a href="/tag/#爬虫" title="Tag: 爬虫" rel="tag">爬虫</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#python开发工具的选择" id="markdown-toc-python开发工具的选择">Python开发工具的选择</a>    <ul>
+      <li><a href="#文本类" id="markdown-toc-文本类">文本类</a></li>
+      <li><a href="#集成类ide" id="markdown-toc-集成类ide">集成类（IDE）</a></li>
+    </ul>
+  </li>
+  <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
+  <li><a href="#相关资料" id="markdown-toc-相关资料">相关资料</a></li>
+</ul>
+
+<p>Python爬虫与信息提取</p>
+
+<h3 id="python开发工具的选择">Python开发工具的选择</h3>
+
+<h4 id="文本类">文本类</h4>
+
+<ul>
+  <li>IDLE  自带的、默认、代码一般不超过300行</li>
+  <li>Notepad++</li>
+  <li>Sublime Text  专业的编程体验</li>
+  <li>Vim &amp; Emacs</li>
+  <li>Atom</li>
+  <li>Komodo Edit</li>
+</ul>
+
+<h4 id="集成类ide">集成类（IDE）</h4>
+
+<ul>
+  <li>
+    <p>PyCharm  社区版免费、专业版收费</p>
+  </li>
+  <li>
+    <p>Wing  收费、调试、版本控制、同步</p>
+  </li>
+  <li>
+    <p>PyDev &amp; Eclipse   开源开放、自定义使用相对复杂</p>
+  </li>
+  <li>
+    <p>PTVS &amp; Visual Studio  丰富的调试功能</p>
+  </li>
+  <li>
+    <p>Anaconda &amp; Spyder  开源免费、支持800个库、和Canopy由同一个人领导开发  用于科学计算</p>
+  </li>
+  <li>
+    <p>Canopy  收费、用于科学计算、支持超过500个库</p>
+  </li>
+</ul>
+
+<h3 id="常用库介绍">常用库介绍</h3>
+
+<ul>
+  <li>
+    <p><a href="http://www.python-requests.org">Requests</a></p>
+
+    <p>安装：</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>pip  install requests
+pip3 install requests
+</code></pre>
+    </div>
+    <p>调用方式：<code class="highlighter-rouge">import requests</code></p>
+
+    <p>用途：发起请求、获取请求内容</p>
+  </li>
+  <li>
+    <p><a href="https://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a></p>
+
+    <p>安装：</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>pip  install beautifulsoup4
+pip3 install beautifulsoup4
+</code></pre>
+    </div>
+
+    <p>调用方式：<code class="highlighter-rouge">from bs4 import beautifulsoup</code></p>
+
+    <p>用途：解析HTML标签</p>
+  </li>
+  <li>
+    <p>Re(正则表达式)库是Python的标准库</p>
+
+    <p>用途：
+调用方式：<code class="highlighter-rouge">import re</code></p>
+  </li>
+  <li>
+    <p><a href="https://scrapy.org/">Scrapy爬虫框架</a></p>
+
+    <p>安装：<code class="highlighter-rouge">pip install scrapy</code></p>
+
+    <p>测试：<code class="highlighter-rouge">scrapy ‐h</code></p>
+
+    <p>使用：</p>
+
+    <p>** 初始化一个工程</p>
+
+    <p><code class="highlighter-rouge">scrapy startproject [projectnaem]</code></p>
+
+    <p>** 建一个爬虫</p>
+
+    <p><code class="highlighter-rouge">scrapy genspider [spidername] [url]</code></p>
+
+    <p>** 配置产生的爬虫</p>
+
+    <p>** 运行爬虫</p>
+
+    <p><code class="highlighter-rouge">scrapy crawl [spidername]</code></p>
+  </li>
+</ul>
+
+<h3 id="相关资料">相关资料</h3>
+
+<ul>
+  <li>
+    <p><a href="https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&amp;mid=2697266133&amp;idx=1&amp;sn=51426072d8ad4c4496795127e9c9f1ae&amp;chksm=8376fce1b40175f76724b8be9d5bfcda3d3759c4fc30f9ee38f776dd832bd5171034e6a3e89d&amp;mpshare=1&amp;scene=23&amp;srcid=0606X6JFFUGEK1P1JUuH9GXM%23rd">那些你不知道的爬虫反爬虫套路</a></p>
+  </li>
+  <li>
+    <p><a href="http://gashero.iteye.com/">gashero的Geek前哨</a></p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/03/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a>
                 </h2>
                 <div class="label">
@@ -264,14 +443,25 @@
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
+  <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
   <li><a href="#技术路线" id="markdown-toc-技术路线">技术路线</a>    <ul>
       <li><a href="#开源gis" id="markdown-toc-开源gis">开源GIS</a></li>
       <li><a href="#商业gis" id="markdown-toc-商业gis">商业GIS</a></li>
     </ul>
   </li>
+  <li><a href="#主要技术" id="markdown-toc-主要技术">主要技术</a>    <ul>
+      <li><a href="#投影转换和坐标校正" id="markdown-toc-投影转换和坐标校正">投影转换和坐标校正</a></li>
+    </ul>
+  </li>
 </ul>
 
 <p>GIS学习路线</p>
+
+<h3 id="相关网站">相关网站</h3>
+
+<ul>
+  <li><a href="http://www.osgeo.org/">OSGeo</a></li>
+</ul>
 
 <h3 id="技术路线">技术路线</h3>
 
@@ -280,6 +470,16 @@
 <ul>
   <li>postgis+geoserver/geotools+ol/leaflet</li>
 </ul>
+
+<p>桌面GIS - QGIS，OpenEV
+GIS工作站 - GRASS，OSSIM
+GIS开发工具包 - GDAL / OGR，地理工具
+地理统计 - GNU R
+Web映射服务器 - MapGuide开源，Mapserver，GeoServer
+网页地图客户端 - MapBuilder
+元数据服务器 - Isite
+空间数据引擎 - PostGIS，myGIS
+C / S数据库 - PostgreSQL，mySQL，SQLite</p>
 
 <h5 id="商业gis">商业GIS</h5>
 
@@ -290,6 +490,14 @@
   <li>
     <p>超图平台</p>
   </li>
+</ul>
+
+<h3 id="主要技术">主要技术</h3>
+
+<h4 id="投影转换和坐标校正">投影转换和坐标校正</h4>
+
+<ul>
+  <li><a href="http://trac.osgeo.org/proj4j/">Proj4J</a></li>
 </ul>
 
 
@@ -352,14 +560,17 @@
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
-  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
+  <li><a href="#相关网站及资料" id="markdown-toc-相关网站及资料">相关网站及资料</a></li>
 </ul>
 
 <p>Kotlin学习路线</p>
 
-<h3 id="基础知识">基础知识</h3>
+<h3 id="相关网站及资料">相关网站及资料</h3>
 
 <ul>
+  <li>
+    <p><a href="http://kotlinlang.org/docs/tutorials/kotlin-android.html">Kotlin官网</a></p>
+  </li>
   <li>
     <p><a href="https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">《Kotlin for android developers》中文翻译版</a></p>
   </li>
@@ -559,75 +770,6 @@
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">MacBook使用技巧</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#MacBook" title="Category: MacBook" rel="category">MacBook</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#MacBook" title="Tag: MacBook" rel="tag">MacBook</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#启用键盘打字机音效" id="markdown-toc-启用键盘打字机音效">启用键盘打字机音效</a></li>
-</ul>
-
-<p>MacBook使用技巧</p>
-
-<h3 id="启用键盘打字机音效">启用键盘打字机音效</h3>
-
-<p>系统偏好设置 -&gt; 辅助功能 -&gt; 键盘 -&gt; 启用慢速键 -&gt; 选项（勾选使用按键音并将延时时间调到最短）</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -657,6 +799,8 @@
                     
                         <li><a href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a></li>
                     
+                        <li><a href="/2017/06/03/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></li>
+                    
                         <li><a href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a></li>
                     
                         <li><a href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a></li>
@@ -672,8 +816,6 @@
                         <li><a href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">GreenDAO使用教程</a></li>
                     
                         <li><a href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a></li>
-                    
-                        <li><a href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">常用Git命令及问题</a></li>
                     
                 </ul>
             </div>
@@ -771,6 +913,15 @@
                         <a href="/category/#GIS" class="categories-list-item" cate="GIS">
                             <span class="name">
                                 GIS
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Python" class="categories-list-item" cate="Python">
+                            <span class="name">
+                                Python
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -899,6 +1050,20 @@
                       
                       
                       <a href="/tag/#GIS" style="font-size: 9pt; color: #999;">GIS</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Python" style="font-size: 9pt; color: #999;">Python</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#爬虫" style="font-size: 9pt; color: #999;">爬虫</a>
                     
                       
                       
