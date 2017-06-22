@@ -108,16 +108,6 @@
                     
                     <li>
                         
-                        <a href="/demo/">
-                        
-                            <i class="fa fa-play"></i>Demo
-                        </a>
-                    </li>
-                    
-                
-                    
-                    <li>
-                        
                         <a href="/about/">
                         
                             <i class="fa fa-heart"></i>About
@@ -208,10 +198,16 @@
     </ul>
   </li>
   <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
+  <li><a href="#实战" id="markdown-toc-实战">实战</a>    <ul>
+      <li><a href="#通用代码框架" id="markdown-toc-通用代码框架">通用代码框架</a></li>
+      <li><a href="#股票数据scrapy爬虫" id="markdown-toc-股票数据scrapy爬虫">股票数据Scrapy爬虫</a></li>
+    </ul>
+  </li>
   <li><a href="#相关资料" id="markdown-toc-相关资料">相关资料</a></li>
 </ul>
 
-<p>Python爬虫与信息提取</p>
+<p>Python爬虫与信息提取
+<a href="https://pan.baidu.com/s/1eSIMk9c">参考资料</a></p>
 
 <h3 id="python开发工具的选择">Python开发工具的选择</h3>
 
@@ -286,27 +282,149 @@ pip3 install beautifulsoup4
   <li>
     <p><a href="https://scrapy.org/">Scrapy爬虫框架</a></p>
 
-    <p>安装：<code class="highlighter-rouge">pip install scrapy</code></p>
+    <p>安装：<code class="highlighter-rouge">pip3 install scrapy</code></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> ```conda install -c conda-forge scrapy```
+</code></pre>
+    </div>
+
+    <p>升级：<code class="highlighter-rouge">pip3 install --upgrade scrapy</code></p>
 
     <p>测试：<code class="highlighter-rouge">scrapy ‐h</code></p>
 
     <p>使用：</p>
 
-    <p>** 初始化一个工程</p>
+    <ul>
+      <li>初始化一个工程</li>
+    </ul>
 
     <p><code class="highlighter-rouge">scrapy startproject [projectnaem]</code></p>
 
-    <p>** 建一个爬虫</p>
+    <ul>
+      <li>建一个爬虫</li>
+    </ul>
 
     <p><code class="highlighter-rouge">scrapy genspider [spidername] [url]</code></p>
 
-    <p>** 配置产生的爬虫</p>
+    <p>**配置产生的爬虫</p>
 
-    <p>** 运行爬虫</p>
+    <ul>
+      <li>运行爬虫</li>
+    </ul>
 
     <p><code class="highlighter-rouge">scrapy crawl [spidername]</code></p>
   </li>
 </ul>
+
+<h3 id="实战">实战</h3>
+
+<h4 id="通用代码框架">通用代码框架</h4>
+
+<pre class="prettyprint lang-py">
+   import requests
+   try:
+       r= requests.get([url],timeout=30)
+       r.raise_for_status()
+       r.encoding = r.apparent_encoding
+       return r=status_code
+   except:
+        return "产生异常"
+</pre>
+
+<h4 id="股票数据scrapy爬虫">股票数据Scrapy爬虫</h4>
+
+<ul>
+  <li>编写Spider</li>
+</ul>
+
+<pre class="prettyprint lang-py">
+    # -*- coding: utf-8 -*-
+  import scrapy
+  import re
+
+
+  class StocksSpider(scrapy.Spider):
+    name = 'stocks'
+    # allowed_domains = ['baidu.com']
+    # 东方财富网
+    start_urls = ['http://quote.eastmoney.com/stocklist.html']
+
+    def parse(self, response):
+         self.headers = {
+          'user-agent':'Mozilla/5.0'
+         }
+         for href in response.css('a::attr(href)').extract():
+            try:
+                stock = re.findall(r"[s][hz]\d{6}",href)[0]
+                url = 'https://gupiao.baidu.com/stock/'+ stock+'.html'
+                yield scrapy.Request(url,callback=self.parse_stock)
+            except:
+                continue
+        
+    def parse_stock(self,response):
+        infoDict = {}
+        stockInfo = response.css('.stock-bets')
+        name = stockInfo.css('.bets-name').extract()[0]
+        keyList = stockInfo.css('dt').extract()
+        valueList = stockInfo.css('dd').extract()
+        for i in range(len(keyList)):
+            key = re.findall(r'&gt;.*&lt;dt&gt;',keyList[i])[0][1:-5]
+            try:
+                 val = re.findall(r'\d+\.?.*&lt;/dd&gt;',valueList[i])[0][0:-5]
+            except:
+                 val = '--'
+            infoDict[key] = val
+
+        infoDict.update(
+            {'股票名称':re.findall('\s.*\(',name)[0].split()[0] + \
+             re.findall('\&gt;.*\&lt;',name)[0][1:-1]})            
+        yield infoDict
+  </pre>
+
+<ul>
+  <li>编写pipeline</li>
+</ul>
+
+<pre class="prettyprint lang-py">
+# -*- coding: utf-8 -*-
+
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+
+
+class PythondemoPipeline(object):
+    def process_item(self, item, spider):
+        return item
+
+class BaiduStockPipline(object):
+    def open_spider(self,spider):
+        self.f = open('BaiduStockInfo.txt','w')
+        
+    def close_spider(self,spider):
+        self.f.close()
+
+    def process_item(self,item,spider):
+        try:
+            line = str(dict(item))+'\n'
+            self.f.write(line)
+        except:
+            pass
+        return item
+</pre>
+
+<ul>
+  <li>配置pipeline</li>
+</ul>
+
+<p>找到settings.py文件并修改配置</p>
+
+<ul>
+  <li>结果如下：</li>
+</ul>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/py_spider_result.png" alt="" /></p>
 
 <h3 id="相关资料">相关资料</h3>
 
@@ -590,6 +708,12 @@ Web映射服务器 - MapGuide开源，Mapserver，GeoServer
 元数据服务器 - Isite
 空间数据引擎 - PostGIS，myGIS
 C / S数据库 - PostgreSQL，mySQL，SQLite</p>
+
+<ul>
+  <li>最短路径分析</li>
+</ul>
+
+<p>postgresql + postgis+ pgrouting</p>
 
 <h5 id="商业gis">商业GIS</h5>
 
