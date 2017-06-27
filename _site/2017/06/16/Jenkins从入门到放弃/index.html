@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MacBook使用技巧</title>
-    <meta name="description" content="  常用技巧MacBook使用技巧常用技巧  启用键盘打字机音效系统偏好设置 -&gt; 辅助功能 -&gt; 键盘 -&gt; 启用慢速键 -&gt; 选项（勾选使用按键音并将延时时间调到最短）  分屏首先打开两个所需文件，把鼠标放在页面最大化处（绿色按钮），点按（非轻点）触摸板超过1s，就可以实现左右分屏了">
+    <title>Jenkins从入门到放弃</title>
+    <meta name="description" content="  参考资料  准备及安装(以Mac为例)  升级  新建和配置项目          常见问题及解决方法      Jenkins安装及使用Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：  持续的软件版本发布/测试项目。  监控外部调用执行的工作。  对于Android来...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
+    <link rel="canonical" href="http://localhost:4000/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
 
@@ -135,11 +135,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>MacBook使用技巧</h1>
+        <h1>Jenkins从入门到放弃</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-05-10
+                <i class="fa fa-calendar"></i>2017-06-16
             </div>
 
             <div class="label-card">
@@ -160,7 +160,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#MacBook" title="Category: MacBook" rel="category">MacBook</a>
+        <a href="/category/#jenkins" title="Category: jenkins" rel="category">jenkins</a>
     
   
 
@@ -177,8 +177,11 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#MacBook" title="Tag: MacBook" rel="tag">MacBook</a-->
-        <a href="/tag/#MacBook" title="Tag: MacBook" rel="tag">MacBook</a>
+        <!--a href="/tag/#jenkins" title="Tag: jenkins" rel="tag">jenkins</a-->
+        <a href="/tag/#jenkins" title="Tag: jenkins" rel="tag">jenkins</a>&nbsp;
+    
+        <!--a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a-->
+        <a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a>
     
   
 
@@ -190,24 +193,176 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#常用技巧" id="markdown-toc-常用技巧">常用技巧</a></li>
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#升级" id="markdown-toc-升级">升级</a></li>
+  <li><a href="#新建和配置项目" id="markdown-toc-新建和配置项目">新建和配置项目</a>    <ul>
+      <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+    </ul>
+  </li>
 </ul>
 
-<p>MacBook使用技巧</p>
+<p><a href="https://jenkins.io/">Jenkins</a>安装及使用</p>
 
-<h3 id="常用技巧">常用技巧</h3>
+<p>Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：</p>
+<ul>
+  <li>持续的软件版本发布/测试项目。</li>
+  <li>监控外部调用执行的工作。</li>
+  <li>对于Android来说，可以自动打包、Android lint 检查、自动测试等。</li>
+</ul>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://www.cnblogs.com/wnfindbug/p/5784476.html">jenkins git gradle android自动化构建配置</a></p>
+
+<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
 
 <ul>
-  <li>启用键盘打字机音效</li>
+  <li>
+    <p><a href="http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/">安装Tomcat</a></p>
+  </li>
+  <li>
+    <p>下载<a href="https://jenkins.io/doc/">Jenkins.war</a>并复制到Tomcat webapps目录下</p>
+  </li>
+  <li>
+    <p>启动Tomcat-&gt;启动Jenkins(打开http://localhost:8080/jenkins/) <code class="highlighter-rouge">startup.sh</code></p>
+  </li>
+  <li>
+    <p>配置Plugin</p>
+  </li>
+  <li>
+    <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）</p>
+  </li>
+  <li>
+    <p>系统配置
+1.配置邮件服务</p>
+
+    <ul>
+      <li>在系统设置中找到Jenkins Locaction项填入Jenkins URL和系统管理员邮件地址，系统管理员邮件地址一定要配置，否则发不了邮件通知。因为邮件通知都是由系统管理员的邮箱发出来的。</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193043944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193101791?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>配好以后勾选“通过发送测试邮件测试配置”</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193124369?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>填入接收测试邮件的地址，点击“Test configuration”。如果配置正确就会在下面显示Email was successfully sent</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193149854?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <p>2.配置Gradle环境</p>
+    <ul>
+      <li>
+        <p><a href="http://services.gradle.org/distributions">下载地址</a></p>
+      </li>
+      <li>
+        <p>上传到linux并解压： unzip gradle-2.14.1-all.zip</p>
+      </li>
+      <li>
+        <p>配置环境变量：</p>
+      </li>
+    </ul>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
+  export PATH=$PATH:$GRADLE_HOME/bin
+</code></pre>
+    </div>
+    <p>　</p>
+    <ul>
+      <li>
+        <p>source命令使配置生效：source .bash_profile(source 文件名)</p>
+      </li>
+      <li>
+        <p>检验配置是否生效：echo $GRADLE_HOME</p>
+      </li>
+    </ul>
+
+    <p>3.配置Java环境</p>
+
+    <ul>
+      <li>配置环境变量：</li>
+    </ul>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+  export PATH=$JAVA_HOME/bin:$PATH:
+</code></pre>
+    </div>
+    <p>　</p>
+  </li>
 </ul>
 
-<p>系统偏好设置 -&gt; 辅助功能 -&gt; 键盘 -&gt; 启用慢速键 -&gt; 选项（勾选使用按键音并将延时时间调到最短）</p>
+<h3 id="升级">升级</h3>
+
+<h3 id="新建和配置项目">新建和配置项目</h3>
+
+<p><a href="http://wangkuiwu.github.io/2015/08/07/jenkins-02/">教程</a></p>
+
+<h4 id="常见问题及解决方法">常见问题及解决方法</h4>
+
+<p><strong>登陆失败</strong></p>
+
+<p>提示登陆信息无效</p>
+
+<p><strong>解决方法</strong></p>
 
 <ul>
-  <li>分屏</li>
+  <li>
+    <p><code class="highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
+  </li>
+  <li>
+    <p>打开config.xml文件并修改配置信息</p>
+  </li>
 </ul>
 
-<p>首先打开两个所需文件，把鼠标放在页面最大化处（绿色按钮），点按（非轻点）触摸板超过1s，就可以实现左右分屏了</p>
+<p>修改成false</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;useSecurity&gt;true&lt;/useSecurity&gt; 
+修改成false删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可
+&lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
+&lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
+&lt;/authorizationStrategy&gt;
+&lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
+&lt;disableSignup&gt;true&lt;/disableSignup&gt;
+&lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
+&lt;/securityRealm&gt;
+</code></pre>
+</div>
+
+<ul>
+  <li>配置运行权限</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+chmod a+x startup.sh
+chmod +x catalina.sh
+</code></p>
+
+<ul>
+  <li>配置环境变量</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+open -e .bash_profile
+export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
+</code></p>
+
+<ul>
+  <li>启动Tomcat</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+startup.sh
+</code></p>
 
 
         </article>
@@ -220,7 +375,11 @@
                 
                     
                 
+                    
+                
             
+                
+                    
                 
                     
                 
@@ -231,7 +390,17 @@
                 
                     
                 
+                    
+                
             
+                
+                    
+                
+                    
+                
+            
+                
+                    
                 
                     
                 
@@ -242,22 +411,11 @@
                 
                     
                 
-            
-                
                     
                 
             
                 
                     
-                
-            
-        
-            
-            
-                
-                    
-                
-            
                 
                     
                 
@@ -268,11 +426,6 @@
                 
                     
                 
-            
-        
-            
-            
-                
                     
                 
             
@@ -281,11 +434,6 @@
             
                 
                     
-                
-            
-        
-            
-            
                 
                     
                 
@@ -296,7 +444,14 @@
                 
                     
                 
+                    
+                
             
+        
+            
+            
+                
+                    
                 
                     
                 
@@ -307,7 +462,35 @@
                 
                     
                 
+                    
+                
             
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
                 
                     
                 
@@ -318,13 +501,11 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/05/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%92%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">普通程序员如何向人工智能靠拢</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/">智能硬件学习</a></p>
         
     </div>
 </div>

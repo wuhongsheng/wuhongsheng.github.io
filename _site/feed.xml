@@ -5,9 +5,197 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 22 Jun 2017 11:00:14 +0800</pubDate>
-    <lastBuildDate>Thu, 22 Jun 2017 11:00:14 +0800</lastBuildDate>
+    <pubDate>Tue, 27 Jun 2017 11:39:49 +0800</pubDate>
+    <lastBuildDate>Tue, 27 Jun 2017 11:39:49 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Jenkins从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#准备及安装以mac为例&quot; id=&quot;markdown-toc-准备及安装以mac为例&quot;&gt;准备及安装(以Mac为例)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#升级&quot; id=&quot;markdown-toc-升级&quot;&gt;升级&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#新建和配置项目&quot; id=&quot;markdown-toc-新建和配置项目&quot;&gt;新建和配置项目&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#常见问题及解决方法&quot; id=&quot;markdown-toc-常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&quot;https://jenkins.io/&quot;&gt;Jenkins&lt;/a&gt;安装及使用
+
+Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：
+&lt;ul&gt;
+  &lt;li&gt;持续的软件版本发布/测试项目。&lt;/li&gt;
+  &lt;li&gt;监控外部调用执行的工作。&lt;/li&gt;
+  &lt;li&gt;对于Android来说，可以自动打包、Android lint 检查、自动测试等。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;a href=&quot;http://www.cnblogs.com/wnfindbug/p/5784476.html&quot;&gt;jenkins git gradle android自动化构建配置&lt;/a&gt;
+
+&lt;h3 id=&quot;准备及安装以mac为例&quot;&gt;准备及安装(以Mac为例)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/&quot;&gt;安装Tomcat&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    下载&lt;a href=&quot;https://jenkins.io/doc/&quot;&gt;Jenkins.war&lt;/a&gt;并复制到Tomcat webapps目录下
+  &lt;/li&gt;
+  &lt;li&gt;
+    启动Tomcat-&amp;gt;启动Jenkins(打开http://localhost:8080/jenkins/) &lt;code class=&quot;highlighter-rouge&quot;&gt;startup.sh&lt;/code&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    配置Plugin
+  &lt;/li&gt;
+  &lt;li&gt;
+    配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）
+  &lt;/li&gt;
+  &lt;li&gt;
+    系统配置
+1.配置邮件服务
+
+    &lt;ul&gt;
+      &lt;li&gt;在系统设置中找到Jenkins Locaction项填入Jenkins URL和系统管理员邮件地址，系统管理员邮件地址一定要配置，否则发不了邮件通知。因为邮件通知都是由系统管理员的邮箱发出来的。&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;img src=&quot;http://img.blog.csdn.net/20161103193043944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; alt=&quot;&quot; /&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;img src=&quot;http://img.blog.csdn.net/20161103193101791?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; alt=&quot;&quot; /&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;配好以后勾选“通过发送测试邮件测试配置”&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;img src=&quot;http://img.blog.csdn.net/20161103193124369?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; alt=&quot;&quot; /&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;填入接收测试邮件的地址，点击“Test configuration”。如果配置正确就会在下面显示Email was successfully sent&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;img src=&quot;http://img.blog.csdn.net/20161103193149854?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; alt=&quot;&quot; /&gt;
+
+    2.配置Gradle环境
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;http://services.gradle.org/distributions&quot;&gt;下载地址&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        上传到linux并解压： unzip gradle-2.14.1-all.zip
+      &lt;/li&gt;
+      &lt;li&gt;
+        配置环境变量：
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
+  export PATH=$PATH:$GRADLE_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    　
+    &lt;ul&gt;
+      &lt;li&gt;
+        source命令使配置生效：source .bash_profile(source 文件名)
+      &lt;/li&gt;
+      &lt;li&gt;
+        检验配置是否生效：echo $GRADLE_HOME
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    3.配置Java环境
+
+    &lt;ul&gt;
+      &lt;li&gt;配置环境变量：&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+  export PATH=$JAVA_HOME/bin:$PATH:
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    　
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;升级&quot;&gt;升级&lt;/h3&gt;
+
+&lt;h3 id=&quot;新建和配置项目&quot;&gt;新建和配置项目&lt;/h3&gt;
+
+&lt;a href=&quot;http://wangkuiwu.github.io/2015/08/07/jenkins-02/&quot;&gt;教程&lt;/a&gt;
+
+&lt;h4 id=&quot;常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/h4&gt;
+
+&lt;strong&gt;登陆失败&lt;/strong&gt;
+
+提示登陆信息无效
+
+&lt;strong&gt;解决方法&lt;/strong&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;cd /Users/[username]/.jenkins/&lt;/code&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    打开config.xml文件并修改配置信息
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+修改成false
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;useSecurity&amp;gt;true&amp;lt;/useSecurity&amp;gt; 
+修改成false删除 &amp;lt;/authorizationStrategy&amp;gt;和&amp;lt;/securityRealm&amp;gt;,重启jenkins，重新打开jenkins即可
+&amp;lt;authorizationStrategy class=&quot;hudson.security.FullControlOnceLoggedInAuthorizationStrategy&quot;&amp;gt;
+&amp;lt;denyAnonymousReadAccess&amp;gt;true&amp;lt;/denyAnonymousReadAccess&amp;gt;
+&amp;lt;/authorizationStrategy&amp;gt;
+&amp;lt;securityRealm class=&quot;hudson.security.HudsonPrivateSecurityRealm&quot;&amp;gt;
+&amp;lt;disableSignup&amp;gt;true&amp;lt;/disableSignup&amp;gt;
+&amp;lt;enableCaptcha&amp;gt;false&amp;lt;/enableCaptcha&amp;gt;
+&amp;lt;/securityRealm&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;配置运行权限&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+chmod a+x startup.sh
+chmod +x catalina.sh
+&lt;/code&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;配置环境变量&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+open -e .bash_profile
+export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
+&lt;/code&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;启动Tomcat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+startup.sh
+&lt;/code&gt;
+
+</description>
+        <pubDate>Fri, 16 Jun 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>jenkins</category>
+        
+        <category>CI</category>
+        
+        
+        <category>jenkins</category>
+        
+      </item>
     
       <item>
         <title>Python爬虫从入门到放弃</title>
@@ -387,14 +575,22 @@ GIS学习路线
 &lt;/ul&gt;
 
 桌面GIS - QGIS，OpenEV
+
 GIS工作站 - GRASS，OSSIM
+
 GIS开发工具包 - GDAL / OGR，地理工具
+
 地理统计 - GNU R
+
 Web映射服务器 - MapGuide开源，Mapserver，GeoServer
+
 网页地图客户端 - MapBuilder
+
 元数据服务器 - Isite
+
 空间数据引擎 - PostGIS，myGIS
-C / S数据库 - PostgreSQL，mySQL，SQLite
+
+C／S数据库 - PostgreSQL，mySQL，SQLite
 
 &lt;ul&gt;
   &lt;li&gt;最短路径分析&lt;/li&gt;
@@ -619,391 +815,6 @@ MacBook使用技巧
         
         
         <category>机器学习</category>
-        
-      </item>
-    
-      <item>
-        <title>GreenDAO使用教程</title>
-        <description>
-&lt;a href=&quot;http://greenrobot.org/greendao/&quot;&gt;GreenDAO&lt;/a&gt; 使用教程
-&lt;a href=&quot;http://blog.csdn.net/Hi_AndG/article/details/54695725&quot;&gt;GreenDao3.2.0使用教程&lt;/a&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;集成环境&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-// In your root build.gradle file:
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral() // add repository
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
-    }
-}
- 
-// In your app projects build.gradle file:
-apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao' // apply plugin
- 
-dependencies {
-    compile 'org.greenrobot:greendao:3.2.2' // add library
-}
-&lt;/pre&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;在Gradle中配置数据库版本信息等&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-greendao {
-        //当前数据库版本
-        schemaVersion 1
-        //由GreenDao自动生成代码所在的包名，默认的是在项目包下面新建一个gen。
-        daoPackage 'com.titan.data.greendao'
-        //设置自动生成代码的目录
-        targetGenDir 'src/main/java'
-    }
-&lt;/pre&gt;
-
-3.在项目中定义实体类
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-@Entity
-public class TrackPoint  {
-    @Id(autoincrement = true)
-    private Long id;
-    /**上传时间*/
-    @NotNull
-    @Property(nameInDb = &quot;TIME&quot;)
-    private String time;
-    /**经度*/
-    @Property(nameInDb = &quot;LON&quot;)
-    private double lon;
-    /**纬度*/
-    @Property(nameInDb = &quot;LAT&quot;)
-    private double lat;
-    /**用户id*/
-    @Property(nameInDb = &quot;USERID&quot;)
-    private String userid;
-    }
-&lt;/pre&gt;
-
-注解：
-
-@Entity   标识实体类，greenDAO会映射成sqlite的一个表，表名为实体类名的大写形式
-
-@Id 标识主键，该字段的类型为long或Long类型，autoincrement设置是否自动增长
-
-@Property       标识该属性在表中对应的列名称, nameInDb设置名称
-
-@Transient      标识该属性将不会映射到表中，也就是没有这列
-
-@NotNull         设置表中当前列的值不可为空
-
-@Convert         指定自定义类型(@linkPropertyConverter)
-
-@Generated   greenDAO运行所产生的构造函数或者方法，被此标注的代码可以变更或者下次运行时清除
-
-@Index    使用@Index作为一个属性来创建一个索引；定义多列索引(@link Entity#indexes())
-
-@JoinEntity     定义表连接关系
-
-@JoinProperty         定义名称和引用名称属性关系
-
-@Keep     注解的代码段在GreenDao下次运行时保持不变
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      1.注解实体类：默认禁止修改此类
-      2.注解其他代码段，默认禁止修改注解的代码段
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-@OrderBy        指定排序
-
-@ToMany         定义与多个实体对象的关系
-
-@ToOne  定义与另一个实体（一个实体对象）的关系
-
-@Unique 向数据库列添加了一个唯一的约束
-
-4.生成相关代码
-
-定义好了之后按ctrl+F9（或者工具栏build下面的Make Project）对项目进行重新构建，再
-daoPackage的目录下就会自动生成代码
-
-5.新建一个类，实例化greenDAO所需要的几个关键对象，DaoMaster，DaoSession，代码如下：
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-public class GreenDaoManager {
-    private DaoMaster mDaoMaster;
-    private DaoSession mDaoSession;
-    private static volatile GreenDaoManager mInstance = null;
-    private GreenDaoManager(){
-        if (mInstance == null) {
-            DaoMaster.DevOpenHelper devOpenHelper = new
-            DaoMaster.DevOpenHelper(App.getContext(), &quot;user.db&quot;);
-            mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
-            mDaoSession = mDaoMaster.newSession();
-        }
-    }
-    public static GreenDaoManager getInstance() {
-        if (mInstance == null) {
-            synchronized (GreenDaoManager.class) {                
-            if (mInstance == null) {
-                    mInstance = new GreenDaoManager();
-                }
-            }
-        }
-        return mInstance;
-    }
-    public DaoMaster getMaster() {
-        return mDaoMaster;
-    }
-    public DaoSession getSession() {
-        return mDaoSession;
-    }
-    public DaoSession getNewSession() {
-        mDaoSession = mDaoMaster.newSession();
-        return mDaoSession;
-    }
-}
-&lt;/pre&gt;
-
-6.然后在Application中初始化：
-
-&lt;code class=&quot;highlighter-rouge&quot;&gt;GreenDaoManager.getInstance();&lt;/code&gt;
-
-7.数据库增、删、查、改
-
-首先获得UserDao的对象
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-UserDao userDao=GreenDaoManager.getInstance().getNewSession().getUserDao();
-&lt;/pre&gt;
-
-增：
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-User user = new User(null, name, age, studentId);
-userDao.insert(user);
-
-
-insert(T entity)       当指定主键在表中存在时会发生异常
-insertOrReplace(T entity)      当指定主键在表中存在时会覆盖数据
-insertInTx(Iterable&lt;T&gt; entities)      批量插入数据
-&amp;lt;/pre&amp;gt;
-s
- 
-删：
-```
-User user = new User(null, name, age, studentId);    
-userDao.delete(user)
- 
-delete(T entity)       删除数据
-deleteByKey(K key)     指定主键删除数据
-deleteInTx(Iterable&lt;T&gt; entities)      批量删除数据
-deleteByKeyInTx(Iterable&lt;K&gt; keys)      批量按数据删除数据        
-deleteAll()    删除所有数据
-```
-改：
-```
-User user = new User(id, name, age, studentId);
-userDao.update(user);
- 
-update(T entity)       修改数据，主键需相同
-updateInTx(Iterable&lt;T&gt; entities)      批量更新数据
-```
- 
-查：
-```
-userDao.load(id)
- 
-load(K key)    根据id查找数据
-loadByRowId(long rowId)        根据行号查找数据
-loadAll()      查找全部数据
-
-```
-
-8.一对一、一对多关系
-
-greenDAO目前只支持一对一和一对多关系，并不支持多对多关系
-
-一对一：
-```
-private Long studentId;
-@ToOne(joinProperty = &quot;studentId&quot;)
-private Studentstudent;
-```
-
-```
-@Generated(hash = 313494093)
-public Student getStudent() {
-    Long __key = this.studentId;
-    if (student__resolvedKey == null || !student__resolvedKey.equals(__key)) {
-        final DaoSession daoSession = this.daoSession;
-        if (daoSession == null) {
-            throw new DaoException(&quot;Entity is detached from DAO context&quot;);
-        }
-        StudentDao targetDao = daoSession.getStudentDao();
-        Student studentNew = targetDao.load(__key);
-        synchronized (this) {
-            student = studentNew;
-            student__resolvedKey = __key;
-        }
-    }
-    return student;
-}
-```
-使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。
-
- 
-
-一对多（有三种映射形式）：
-```
-@ToMany(referencedJoinProperty = &quot;teacherId&quot;)
-private List&lt;Teacher&gt; teacherList;
-```
-
- referencedJoinProperty：指定目标实体中与源实体相对应的外键。
-```
-@ToMany(joinProperties = {
-        @JoinProperty(name=&quot;studentTag&quot;,referencedName = &quot;teacherTag&quot;)
-})
-private List&lt;Teacher&gt; teacherList;
-```
-JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。
-```
-@ToMany
-@JoinEntity(
-        entity = Teacher.class,
-        sourceProperty = &quot;teacherId&quot;,
-        targetProperty = &quot;id&quot;
-)
-private List&lt;Teacher&gt; teacherList;
-```
-@JoinEntity：在做NM多对多映射的时候使用
-
-9.数据库升级
-
-数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。
-```
-/** WARNING: Drops all table on Upgrade! Use only during development. */
-public static class DevOpenHelper extends OpenHelper {
-    public DevOpenHelper(Context context, String name) {
-        super(context, name);
-    }
-
-    public DevOpenHelper(Context context, String name, CursorFactory factory) {
-        super(context, name, factory);
-    }
-
-    @Override
-    public void onUpgrade(Database db, int oldVersion, int newVersion) {
-        Log.i(&quot;greenDAO&quot;, &quot;Upgrading schema from version &quot; + oldVersion + &quot; to &quot; + newVersion + &quot; by dropping all tables&quot;);
-        dropAllTables(db, true);
-        onCreate(db);
-    }
-}
-```
-第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。
-
-在project的gradle添加
-```
-allprojects {
-    repositories {
-        jcenter()
-        maven { url &quot;https://jitpack.io&quot; }
-    }
-}
-```
-
-在app的gradle添加：
-```
-compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
-注意：要是使用的还是greenDAO3.0以前的版本，添加的是
-
-compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
-```
-
-新建一个类
-```
-public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
-    public MySQLiteOpenHelper(Contextcontext,Stringname){
-        super(context,name);
-    }
-    public MySQLiteOpenHelper(Contextcontext,String name,SQLiteDatabase.CursorFactoryfactory) {
-        super(context,name,factory);
-    }
-    @Override
-    public void onUpgrade(SQLiteDatabasedb,int oldVersion,intnewVersion) {
-        Log.d(“SQLite”,“数据库从”+oldVersion+“升级到”+newVersion);
-        MigrationHelper.migrate(db,UserDao.class,StudentDao.class);
-    }
-}
-```
-
-在GreenDaoManager修改代码：
-```
-public class GreenDaoManager {
-    private DaoMaster mDaoMaster;
-    private DaoSession mDaoSession;
-    private static volatile GreenDaoManager mInstance = null; 
-    private GreenDaoManager(){
-        if (mInstance == null) {
-            //重写MySQLiteOpenHelper数据库升级，数据不丢失
-            //MyApplication.getContext()上下文表示了数据库存储路径为手机内存
-            //DEBUG表示是否打印debug
-            MigrationHelper.DEBUG = true;
-            MySQLiteOpenHelper helper = new
-                    MySQLiteOpenHelper(App.getContext(),&quot;user.db&quot;,null);
-            mDaoMaster = new DaoMaster(helper.getWritableDatabase());
-            mDaoSession = mDaoMaster.newSession();
-        }
-    }
-
-    public static GreenDaoManager getInstance() {
-        if (mInstance == null) {
-            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
-                    mInstance = new GreenDaoManager();
-                }
-            }
-        }
-        return mInstance;
-    }
-    public DaoMaster getMaster() {
-        return mDaoMaster;
-    }
-    public DaoSession getSession() {
-        return mDaoSession;
-    }
-    public DaoSession getNewSession() {
-        mDaoSession = mDaoMaster.newSession();
-        return mDaoSession;
-    }
-}
-```
-注意：migrate(SQLiteDatabase db, Class... daoClasses); 里面的参数是全部的实体类，就是要生成的表。
-要生成的表。
-
-
-
-
-
-&lt;/Teacher&gt;&lt;/Teacher&gt;&lt;/Teacher&gt;&lt;/T&gt;&lt;/K&gt;&lt;/T&gt;&lt;/T&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Mon, 08 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
-        
-        <category>Android</category>
-        
-        <category>GreenDAO</category>
-        
-        
-        <category>Android</category>
         
       </item>
     
