@@ -20,6 +20,8 @@ type: page
 
 * [Maven 仓库使用与私有仓库搭建](https://my.oschina.net/u/1474965/blog/832526)
 
+* [Ubuntu下全命令行搭建Android开发环境](http://qianngchn.github.io/wiki/8.html)
+
 
 ## DESIGN
 
@@ -143,6 +145,8 @@ type: page
 领先的开源自动化服务器，Jenkins提供了数百个插件来支持任何项目的构建，部署和自动化
 
 [Jenkin+Git+Gradle为Android项目搭建CI环境](http://ownwell.github.io/2015/08/16/jenkins-CI-android)
+
+[Spinnaker 1.0：持续的云交付平台](http://developers.googleblog.cn/2017/06/spinnaker-10.html)
 
 [敏捷开发的持续改进(携程)](https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&mid=2697266154&idx=2&sn=99f4fd36b4bf5e9db333a0281f1a06e0&chksm=8376fcdeb40175c8faa97178df5ea595147315f0eeba220be90f9079dde1b377ba21e7a51226&mpshare=1&scene=23&srcid=0606urg3RHKx7D8LXandp0wy%23rd)
 
