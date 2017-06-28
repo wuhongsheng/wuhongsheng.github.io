@@ -5,9 +5,67 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 27 Jun 2017 11:39:49 +0800</pubDate>
-    <lastBuildDate>Tue, 27 Jun 2017 11:39:49 +0800</lastBuildDate>
+    <pubDate>Wed, 28 Jun 2017 16:41:58 +0800</pubDate>
+    <lastBuildDate>Wed, 28 Jun 2017 16:41:58 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>百度地图从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用方法&quot; id=&quot;markdown-toc-常用方法&quot;&gt;常用方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&quot;http://lbsyun.baidu.com/&quot;&gt;百度地图&lt;/a&gt;开发
+
+&lt;h3 id=&quot;常用方法&quot;&gt;常用方法&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;坐标转换&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
+/**
+ * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
+ * 将 BD-09 坐标转换成GCJ-02 坐标 
+ * bd_lat * @param bd_lon * @return
+ */
+ public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
+        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
+        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
+        double gg_lon = z * Math.cos(theta);
+        double gg_lat = z * Math.sin(theta);
+        return new TitanLocation(gg_lon, gg_lat);
+
+ }
+/**
+ * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
+ * @param gg_lat
+ * @param gg_lon
+ */
+ public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
+        double x = gg_lon, y = gg_lat;
+        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
+        double bd_lon = z * Math.cos(theta) + 0.0065;
+        double bd_lat = z * Math.sin(theta) + 0.006;
+        return new TitanLocation(bd_lon, bd_lat);
+ }
+&lt;/pre&gt;
+
+</description>
+        <pubDate>Tue, 20 Jun 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>GIS</category>
+        
+        <category>百度地图</category>
+        
+        
+        <category>百度地图</category>
+        
+      </item>
     
       <item>
         <title>Jenkins从入门到放弃</title>
@@ -787,34 +845,6 @@ MacBook使用技巧
         
         
         <category>MacBook</category>
-        
-      </item>
-    
-      <item>
-        <title>普通程序员如何向人工智能靠拢</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-机器学习基础
-
-&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
-
-&lt;a href=&quot;http://www.infoq.com/cn/news/2017/05/ordinary-programmer-approach-art?utm_source=news_about_architecture-design&amp;amp;utm_medium=link&amp;amp;utm_campaign=architecture-design&quot;&gt;普通程序员如何向人工智能靠拢&lt;/a&gt;
-
-&lt;a href=&quot;https://google.ai/&quot;&gt;Google.ai&lt;/a&gt;
-
-</description>
-        <pubDate>Tue, 09 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%92%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%92%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
-        
-        <category>机器学习</category>
-        
-        <category>AI</category>
-        
-        
-        <category>机器学习</category>
         
       </item>
     
