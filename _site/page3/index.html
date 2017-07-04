@@ -142,6 +142,436 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">GreenDAO使用教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>&nbsp;
+    
+        <a href="/tag/#GreenDAO" title="Tag: GreenDAO" rel="tag">GreenDAO</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p><a href="http://greenrobot.org/greendao/">GreenDAO</a> 使用教程
+<a href="http://blog.csdn.net/Hi_AndG/article/details/54695725">GreenDao3.2.0使用教程</a></p>
+
+<ol>
+  <li>集成环境</li>
+</ol>
+
+<pre class="prettyprint lang-java">
+// In your root build.gradle file:
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral() // add repository
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+    }
+}
+ 
+// In your app projects build.gradle file:
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+ 
+dependencies {
+    compile 'org.greenrobot:greendao:3.2.2' // add library
+}
+</pre>
+
+<ol>
+  <li>在Gradle中配置数据库版本信息等</li>
+</ol>
+
+<pre class="prettyprint lang-java">
+greendao {
+        //当前数据库版本
+        schemaVersion 1
+        //由GreenDao自动生成代码所在的包名，默认的是在项目包下面新建一个gen。
+        daoPackage 'com.titan.data.greendao'
+        //设置自动生成代码的目录
+        targetGenDir 'src/main/java'
+    }
+</pre>
+
+<p>3.在项目中定义实体类</p>
+
+<pre class="prettyprint lang-java">
+@Entity
+public class TrackPoint  {
+    @Id(autoincrement = true)
+    private Long id;
+    /**上传时间*/
+    @NotNull
+    @Property(nameInDb = "TIME")
+    private String time;
+    /**经度*/
+    @Property(nameInDb = "LON")
+    private double lon;
+    /**纬度*/
+    @Property(nameInDb = "LAT")
+    private double lat;
+    /**用户id*/
+    @Property(nameInDb = "USERID")
+    private String userid;
+    }
+</pre>
+
+<p>注解：</p>
+
+<p>@Entity   标识实体类，greenDAO会映射成sqlite的一个表，表名为实体类名的大写形式</p>
+
+<p>@Id 标识主键，该字段的类型为long或Long类型，autoincrement设置是否自动增长</p>
+
+<p>@Property       标识该属性在表中对应的列名称, nameInDb设置名称</p>
+
+<p>@Transient      标识该属性将不会映射到表中，也就是没有这列</p>
+
+<p>@NotNull         设置表中当前列的值不可为空</p>
+
+<p>@Convert         指定自定义类型(@linkPropertyConverter)</p>
+
+<p>@Generated   greenDAO运行所产生的构造函数或者方法，被此标注的代码可以变更或者下次运行时清除</p>
+
+<p>@Index    使用@Index作为一个属性来创建一个索引；定义多列索引(@link Entity#indexes())</p>
+
+<p>@JoinEntity     定义表连接关系</p>
+
+<p>@JoinProperty         定义名称和引用名称属性关系</p>
+
+<p>@Keep     注解的代码段在GreenDao下次运行时保持不变</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>      1.注解实体类：默认禁止修改此类
+      2.注解其他代码段，默认禁止修改注解的代码段
+</code></pre>
+</div>
+
+<p>@OrderBy        指定排序</p>
+
+<p>@ToMany         定义与多个实体对象的关系</p>
+
+<p>@ToOne  定义与另一个实体（一个实体对象）的关系</p>
+
+<p>@Unique 向数据库列添加了一个唯一的约束</p>
+
+<p>4.生成相关代码</p>
+
+<p>定义好了之后按ctrl+F9（或者工具栏build下面的Make Project）对项目进行重新构建，再
+daoPackage的目录下就会自动生成代码</p>
+
+<p>5.新建一个类，实例化greenDAO所需要的几个关键对象，DaoMaster，DaoSession，代码如下：</p>
+
+<pre class="prettyprint lang-java">
+public class GreenDaoManager {
+    private DaoMaster mDaoMaster;
+    private DaoSession mDaoSession;
+    private static volatile GreenDaoManager mInstance = null;
+    private GreenDaoManager(){
+        if (mInstance == null) {
+            DaoMaster.DevOpenHelper devOpenHelper = new
+            DaoMaster.DevOpenHelper(App.getContext(), "user.db");
+            mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
+            mDaoSession = mDaoMaster.newSession();
+        }
+    }
+    public static GreenDaoManager getInstance() {
+        if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                
+            if (mInstance == null) {
+                    mInstance = new GreenDaoManager();
+                }
+            }
+        }
+        return mInstance;
+    }
+    public DaoMaster getMaster() {
+        return mDaoMaster;
+    }
+    public DaoSession getSession() {
+        return mDaoSession;
+    }
+    public DaoSession getNewSession() {
+        mDaoSession = mDaoMaster.newSession();
+        return mDaoSession;
+    }
+}
+</pre>
+
+<p>6.然后在Application中初始化：</p>
+
+<p><code class="highlighter-rouge">GreenDaoManager.getInstance();</code></p>
+
+<p>7.数据库增、删、查、改</p>
+
+<p>首先获得UserDao的对象</p>
+
+<pre class="prettyprint lang-java">
+UserDao userDao=GreenDaoManager.getInstance().getNewSession().getUserDao();
+</pre>
+
+<p>增：</p>
+
+<pre class="prettyprint lang-java">
+User user = new User(null, name, age, studentId);
+userDao.insert(user);
+
+
+insert(T entity)       当指定主键在表中存在时会发生异常
+insertOrReplace(T entity)      当指定主键在表中存在时会覆盖数据
+insertInTx(Iterable<T> entities)      批量插入数据
+&lt;/pre&gt;
+s
+ 
+删：
+```
+User user = new User(null, name, age, studentId);    
+userDao.delete(user)
+ 
+delete(T entity)       删除数据
+deleteByKey(K key)     指定主键删除数据
+deleteInTx(Iterable<T> entities)      批量删除数据
+deleteByKeyInTx(Iterable<K> keys)      批量按数据删除数据        
+deleteAll()    删除所有数据
+```
+改：
+```
+User user = new User(id, name, age, studentId);
+userDao.update(user);
+ 
+update(T entity)       修改数据，主键需相同
+updateInTx(Iterable<T> entities)      批量更新数据
+```
+ 
+查：
+```
+userDao.load(id)
+ 
+load(K key)    根据id查找数据
+loadByRowId(long rowId)        根据行号查找数据
+loadAll()      查找全部数据
+
+```
+
+8.一对一、一对多关系
+
+greenDAO目前只支持一对一和一对多关系，并不支持多对多关系
+
+一对一：
+```
+private Long studentId;
+@ToOne(joinProperty = "studentId")
+private Studentstudent;
+```
+
+```
+@Generated(hash = 313494093)
+public Student getStudent() {
+    Long __key = this.studentId;
+    if (student__resolvedKey == null || !student__resolvedKey.equals(__key)) {
+        final DaoSession daoSession = this.daoSession;
+        if (daoSession == null) {
+            throw new DaoException("Entity is detached from DAO context");
+        }
+        StudentDao targetDao = daoSession.getStudentDao();
+        Student studentNew = targetDao.load(__key);
+        synchronized (this) {
+            student = studentNew;
+            student__resolvedKey = __key;
+        }
+    }
+    return student;
+}
+```
+使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。
+
+ 
+
+一对多（有三种映射形式）：
+```
+@ToMany(referencedJoinProperty = "teacherId")
+private List<Teacher> teacherList;
+```
+
+ referencedJoinProperty：指定目标实体中与源实体相对应的外键。
+```
+@ToMany(joinProperties = {
+        @JoinProperty(name="studentTag",referencedName = "teacherTag")
+})
+private List<Teacher> teacherList;
+```
+JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。
+```
+@ToMany
+@JoinEntity(
+        entity = Teacher.class,
+        sourceProperty = "teacherId",
+        targetProperty = "id"
+)
+private List<Teacher> teacherList;
+```
+@JoinEntity：在做NM多对多映射的时候使用
+
+9.数据库升级
+
+数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。
+```
+/** WARNING: Drops all table on Upgrade! Use only during development. */
+public static class DevOpenHelper extends OpenHelper {
+    public DevOpenHelper(Context context, String name) {
+        super(context, name);
+    }
+
+    public DevOpenHelper(Context context, String name, CursorFactory factory) {
+        super(context, name, factory);
+    }
+
+    @Override
+    public void onUpgrade(Database db, int oldVersion, int newVersion) {
+        Log.i("greenDAO", "Upgrading schema from version " + oldVersion + " to " + newVersion + " by dropping all tables");
+        dropAllTables(db, true);
+        onCreate(db);
+    }
+}
+```
+第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。
+
+在project的gradle添加
+```
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+在app的gradle添加：
+```
+compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
+注意：要是使用的还是greenDAO3.0以前的版本，添加的是
+
+compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
+```
+
+新建一个类
+```
+public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
+    public MySQLiteOpenHelper(Contextcontext,Stringname){
+        super(context,name);
+    }
+    public MySQLiteOpenHelper(Contextcontext,String name,SQLiteDatabase.CursorFactoryfactory) {
+        super(context,name,factory);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabasedb,int oldVersion,intnewVersion) {
+        Log.d(“SQLite”,“数据库从”+oldVersion+“升级到”+newVersion);
+        MigrationHelper.migrate(db,UserDao.class,StudentDao.class);
+    }
+}
+```
+
+在GreenDaoManager修改代码：
+```
+public class GreenDaoManager {
+    private DaoMaster mDaoMaster;
+    private DaoSession mDaoSession;
+    private static volatile GreenDaoManager mInstance = null; 
+    private GreenDaoManager(){
+        if (mInstance == null) {
+            //重写MySQLiteOpenHelper数据库升级，数据不丢失
+            //MyApplication.getContext()上下文表示了数据库存储路径为手机内存
+            //DEBUG表示是否打印debug
+            MigrationHelper.DEBUG = true;
+            MySQLiteOpenHelper helper = new
+                    MySQLiteOpenHelper(App.getContext(),"user.db",null);
+            mDaoMaster = new DaoMaster(helper.getWritableDatabase());
+            mDaoSession = mDaoMaster.newSession();
+        }
+    }
+
+    public static GreenDaoManager getInstance() {
+        if (mInstance == null) {
+            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
+                    mInstance = new GreenDaoManager();
+                }
+            }
+        }
+        return mInstance;
+    }
+    public DaoMaster getMaster() {
+        return mDaoMaster;
+    }
+    public DaoSession getSession() {
+        return mDaoSession;
+    }
+    public DaoSession getNewSession() {
+        mDaoSession = mDaoMaster.newSession();
+        return mDaoSession;
+    }
+}
+```
+注意：migrate(SQLiteDatabase db, Class... daoClasses); 里面的参数是全部的实体类，就是要生成的表。
+要生成的表。
+
+
+
+
+
+</Teacher></Teacher></Teacher></T></K></T></T></pre>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a>
                 </h2>
                 <div class="label">
@@ -853,134 +1283,6 @@ index-pack failed
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/04/12/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Android 开发规范</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-04-12
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#一命名规约" id="markdown-toc-一命名规约">（一）命名规约</a></li>
-</ul>
-
-<p>Android 命名规范根据平时开发经验总结，并参考阿里巴巴Java开发手册。</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<p><a href="http://techforum-img.cn-hangzhou.oss-pub.aliyun-inc.com/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8Cv1.1.1.pdf">阿里巴巴Java开发手册</a></p>
-
-<h3 id="一命名规约">（一）命名规约</h3>
-
-<ul>
-  <li>包名</li>
-</ul>
-
-<p>【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用 单数形式，但是类名如果有复数含义，类名可以使用复数形式。</p>
-
-<p>正例: 应用工具类包名为com.alibaba.open.util、类名为MessageUtils(此规则参考 spring 的框架结构)</p>
-
-<ul>
-  <li>类名</li>
-</ul>
-
-<p>【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式，但以下情形例外:(领域模型 的相关命名)DO / BO / DTO / VO等。</p>
-
-<p>正例:MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion</p>
-
-<p>反例:macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion</p>
-
-<ul>
-  <li>方法名</li>
-</ul>
-
-<p>【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从 驼峰形式。</p>
-
-<p>正例: localValue / getHttpMessage() / inputUserId</p>
-
-<ul>
-  <li>常量</li>
-</ul>
-
-<p>【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。</p>
-
-<p>正例: MAX_STOCK_COUNT</p>
-
-<p>反例: MAX_COUNT</p>
-
-<ul>
-  <li>控件名</li>
-</ul>
-
-<p>【强制】控件名统一使用 控件名简写_功能释义。</p>
-
-<p>正例: Button btn_login ; TextView tv_title ; RecyclerView rcl_alarminfo</p>
-
-<ul>
-  <li>资源文件命名</li>
-</ul>
-
-<p>【推荐】矢量图使用ic_前缀</p>
-
-<p>正例: ic_basemap</p>
-
-<p>【推荐】 Button、RadioButon、ImageButton背景选择资源文件</p>
-
-<p>正例: rb_oa_selector.xml</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/04/12/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1008,6 +1310,8 @@ index-pack failed
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
+                    
                         <li><a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a></li>
@@ -1025,8 +1329,6 @@ index-pack failed
                         <li><a href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a></li>
                     
                         <li><a href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/">智能硬件学习</a></li>
-                    
-                        <li><a href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">MacBook使用技巧</a></li>
                     
                 </ul>
             </div>
@@ -1053,7 +1355,7 @@ index-pack failed
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">6</span>
+                            <span class="badge">7</span>
                         </a>
                     </li>
                     
@@ -1287,7 +1589,7 @@ index-pack failed
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 10.5pt; color: #888;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 10pt; color: #888;">GIS</a>
                     
                       
                       

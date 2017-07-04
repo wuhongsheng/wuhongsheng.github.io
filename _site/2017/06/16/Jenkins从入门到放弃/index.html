@@ -211,6 +211,8 @@
   <li>对于Android来说，可以自动打包、Android lint 检查、自动测试等。</li>
 </ul>
 
+<hr />
+
 <h3 id="参考资料">参考资料</h3>
 
 <p><a href="http://www.cnblogs.com/wnfindbug/p/5784476.html">jenkins git gradle android自动化构建配置</a></p>
@@ -304,6 +306,8 @@
 
 <h3 id="升级">升级</h3>
 
+<hr />
+
 <h3 id="新建和配置项目">新建和配置项目</h3>
 
 <p><a href="http://wangkuiwu.github.io/2015/08/07/jenkins-02/">教程</a></p>
@@ -325,18 +329,18 @@
   </li>
 </ul>
 
-<p>修改成false</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;useSecurity&gt;true&lt;/useSecurity&gt; 
-修改成false删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可
-&lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
-&lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
-&lt;/authorizationStrategy&gt;
-&lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
-&lt;disableSignup&gt;true&lt;/disableSignup&gt;
-&lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
-&lt;/securityRealm&gt;
-</code></pre>
-</div>
+<pre class="prettyprint lang-xml">
+ <!--修改成false-->
+<useSecurity>true</useSecurity>
+<!--删除 </authorizationStrategy>和</securityRealm>,重启jenkins，重新打开jenkins即可-->
+<authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
+<denyAnonymousReadAccess>true</denyAnonymousReadAccess>
+</authorizationStrategy>
+<securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+<disableSignup>true</disableSignup>
+<enableCaptcha>false</enableCaptcha>
+</securityRealm>
+</pre>
 
 <ul>
   <li>配置运行权限</li>
@@ -378,35 +382,8 @@ startup.sh
                     
                 
             
-                
-                    
-                
-                    
-                
-            
         
             
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
             
                 
                     
@@ -444,6 +421,33 @@ startup.sh
                     
                 
             
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
         
             
             
@@ -482,12 +486,6 @@ startup.sh
             
         
             
-            
-                
-                    
-                
-                    
-                
             
                 
                     

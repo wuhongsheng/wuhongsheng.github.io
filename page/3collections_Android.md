@@ -90,6 +90,7 @@ type: page
 
   DroidPlugin 是***360手机助手***在Android系统上实现了一种新的***插件机制***:它可以在无需安装、修改的情况下运行APK文件,此机制对改进大型APP的架构，实现多团队协作开发具有一定的好处。
 
+* [滴滴插件化项目VirtualAPK开源](http://www.infoq.com/cn/news/2017/06/VirtualAPK-opensource)
 
 ## 常用UI控件
 
@@ -140,15 +141,20 @@ type: page
 
 ## 持续改进(Continuous Improvement)
 
-[Jenkins](https://jenkins.io/index.html)
-
+### [Jenkins](https://jenkins.io/index.html)
 领先的开源自动化服务器，Jenkins提供了数百个插件来支持任何项目的构建，部署和自动化
 
-[Jenkin+Git+Gradle为Android项目搭建CI环境](http://ownwell.github.io/2015/08/16/jenkins-CI-android)
+  * [Jenkin+Git+Gradle为Android项目搭建CI环境](http://ownwell.github.io/2015/08/16/jenkins-CI-android)
 
-[Spinnaker 1.0：持续的云交付平台](http://developers.googleblog.cn/2017/06/spinnaker-10.html)
+### [travis-ci](https://travis-ci.com/)
 
-[敏捷开发的持续改进(携程)](https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&mid=2697266154&idx=2&sn=99f4fd36b4bf5e9db333a0281f1a06e0&chksm=8376fcdeb40175c8faa97178df5ea595147315f0eeba220be90f9079dde1b377ba21e7a51226&mpshare=1&scene=23&srcid=0606urg3RHKx7D8LXandp0wy%23rd)
+  * [用TRAVIS CI给ANDROID项目部署GITHUB RELEASE](http://kescoode.com/travis-ci-android-github-release/)
+
+### [circleci](https://circleci.com/)
+
+  * [Spinnaker 1.0：持续的云交付平台](http://developers.googleblog.cn/2017/06/spinnaker-10.html)
+
+  * [敏捷开发的持续改进(携程)](https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&mid=2697266154&idx=2&sn=99f4fd36b4bf5e9db333a0281f1a06e0&chksm=8376fcdeb40175c8faa97178df5ea595147315f0eeba220be90f9079dde1b377ba21e7a51226&mpshare=1&scene=23&srcid=0606urg3RHKx7D8LXandp0wy%23rd)
 
 ## 测试
 

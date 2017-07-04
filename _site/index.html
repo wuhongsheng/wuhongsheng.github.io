@@ -142,6 +142,81 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常用问题" id="markdown-toc-常用问题">常用问题</a></li>
+</ul>
+
+<p>Android开发问题集锦</p>
+
+<h3 id="常用问题">常用问题</h3>
+
+<p><strong>错误描述</strong></p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/android_error_1.png" alt="" /></p>
+
+<p><strong>解决方法</strong></p>
+
+<p>so文件重复，如bugly同时使用手动集成和自动集成会出现此问题</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a>
                 </h2>
                 <div class="label">
@@ -195,6 +270,7 @@
                 <div class="excerpt">
                     <ul id="markdown-toc">
   <li><a href="#常用方法" id="markdown-toc-常用方法">常用方法</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
 </ul>
 
 <p><a href="http://lbsyun.baidu.com/">百度地图</a>开发</p>
@@ -234,6 +310,14 @@
         return new TitanLocation(bd_lon, bd_lat);
  }
 </pre>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p><strong>错误描述</strong></p>
+
+<p><strong>解决方法</strong></p>
+
+<p>集成百度导航需要将 targetSdkVersion 设为23</p>
 
 
                 </div>
@@ -314,6 +398,8 @@
   <li>监控外部调用执行的工作。</li>
   <li>对于Android来说，可以自动打包、Android lint 检查、自动测试等。</li>
 </ul>
+
+<hr />
 
 <h3 id="参考资料">参考资料</h3>
 
@@ -408,6 +494,8 @@
 
 <h3 id="升级">升级</h3>
 
+<hr />
+
 <h3 id="新建和配置项目">新建和配置项目</h3>
 
 <p><a href="http://wangkuiwu.github.io/2015/08/07/jenkins-02/">教程</a></p>
@@ -429,18 +517,18 @@
   </li>
 </ul>
 
-<p>修改成false</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;useSecurity&gt;true&lt;/useSecurity&gt; 
-修改成false删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可
-&lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
-&lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
-&lt;/authorizationStrategy&gt;
-&lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
-&lt;disableSignup&gt;true&lt;/disableSignup&gt;
-&lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
-&lt;/securityRealm&gt;
-</code></pre>
-</div>
+<pre class="prettyprint lang-xml">
+ <!--修改成false-->
+<useSecurity>true</useSecurity>
+<!--删除 </authorizationStrategy>和</securityRealm>,重启jenkins，重新打开jenkins即可-->
+<authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
+<denyAnonymousReadAccess>true</denyAnonymousReadAccess>
+</authorizationStrategy>
+<securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+<disableSignup>true</disableSignup>
+<enableCaptcha>false</enableCaptcha>
+</securityRealm>
+</pre>
 
 <ul>
   <li>配置运行权限</li>
@@ -957,137 +1045,6 @@ startup.sh
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-31
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
-  <li><a href="#技术路线" id="markdown-toc-技术路线">技术路线</a>    <ul>
-      <li><a href="#开源gis" id="markdown-toc-开源gis">开源GIS</a></li>
-      <li><a href="#商业gis" id="markdown-toc-商业gis">商业GIS</a></li>
-    </ul>
-  </li>
-  <li><a href="#主要技术" id="markdown-toc-主要技术">主要技术</a>    <ul>
-      <li><a href="#投影转换和坐标校正" id="markdown-toc-投影转换和坐标校正">投影转换和坐标校正</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>GIS学习路线</p>
-
-<h3 id="相关网站">相关网站</h3>
-
-<ul>
-  <li><a href="http://www.osgeo.org/">OSGeo</a></li>
-</ul>
-
-<h3 id="技术路线">技术路线</h3>
-
-<h5 id="开源gis">开源GIS</h5>
-
-<ul>
-  <li>postgis+geoserver/geotools+ol/leaflet</li>
-</ul>
-
-<p>桌面GIS - QGIS，OpenEV</p>
-
-<p>GIS工作站 - GRASS，OSSIM</p>
-
-<p>GIS开发工具包 - GDAL / OGR，地理工具</p>
-
-<p>地理统计 - GNU R</p>
-
-<p>Web映射服务器 - MapGuide开源，Mapserver，GeoServer</p>
-
-<p>网页地图客户端 - MapBuilder</p>
-
-<p>元数据服务器 - Isite</p>
-
-<p>空间数据引擎 - PostGIS，myGIS</p>
-
-<p>C／S数据库 - PostgreSQL，mySQL，SQLite</p>
-
-<ul>
-  <li>最短路径分析</li>
-</ul>
-
-<p>postgresql + postgis+ pgrouting</p>
-
-<h5 id="商业gis">商业GIS</h5>
-
-<ul>
-  <li>
-    <p>Arcgis平台</p>
-  </li>
-  <li>
-    <p>超图平台</p>
-  </li>
-</ul>
-
-<h3 id="主要技术">主要技术</h3>
-
-<h4 id="投影转换和坐标校正">投影转换和坐标校正</h4>
-
-<ul>
-  <li><a href="http://trac.osgeo.org/proj4j/">Proj4J</a></li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1115,6 +1072,8 @@ startup.sh
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
+                    
                         <li><a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a></li>
@@ -1132,8 +1091,6 @@ startup.sh
                         <li><a href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a></li>
                     
                         <li><a href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/">智能硬件学习</a></li>
-                    
-                        <li><a href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">MacBook使用技巧</a></li>
                     
                 </ul>
             </div>
@@ -1160,7 +1117,7 @@ startup.sh
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">6</span>
+                            <span class="badge">7</span>
                         </a>
                     </li>
                     
@@ -1394,7 +1351,7 @@ startup.sh
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 10.5pt; color: #888;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 10pt; color: #888;">GIS</a>
                     
                       
                       

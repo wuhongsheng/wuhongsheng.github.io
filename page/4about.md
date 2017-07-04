@@ -11,7 +11,8 @@ type: page
 
 ## 关于我
 
-<iframe src="https://githubbadge.appspot.com/gaohaoyang?s=1" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder="0"></iframe>
+<!--<iframe src="https://githubbadge.appspot.com/gaohaoyang?s=1" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder="0"></iframe>-->
+![](http://ooxw95lkz.bkt.clouddn.com/me.jpeg)
 
 现就职于北京航天泰坦科技股份有限公司，Android开发工程师。
 

@@ -5,14 +5,45 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 28 Jun 2017 16:41:58 +0800</pubDate>
-    <lastBuildDate>Wed, 28 Jun 2017 16:41:58 +0800</lastBuildDate>
+    <pubDate>Tue, 04 Jul 2017 09:09:14 +0800</pubDate>
+    <lastBuildDate>Tue, 04 Jul 2017 09:09:14 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Android开发问题集锦</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用问题&quot; id=&quot;markdown-toc-常用问题&quot;&gt;常用问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Android开发问题集锦
+
+&lt;h3 id=&quot;常用问题&quot;&gt;常用问题&lt;/h3&gt;
+
+&lt;strong&gt;错误描述&lt;/strong&gt;
+
+&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/android_error_1.png&quot; alt=&quot;&quot; /&gt;
+
+&lt;strong&gt;解决方法&lt;/strong&gt;
+
+so文件重复，如bugly同时使用手动集成和自动集成会出现此问题
+
+</description>
+        <pubDate>Fri, 30 Jun 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/</guid>
+        
+        <category>Android</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
     
       <item>
         <title>百度地图从入门到放弃</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#常用方法&quot; id=&quot;markdown-toc-常用方法&quot;&gt;常用方法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;a href=&quot;http://lbsyun.baidu.com/&quot;&gt;百度地图&lt;/a&gt;开发
@@ -53,6 +84,14 @@
  }
 &lt;/pre&gt;
 
+&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
+
+&lt;strong&gt;错误描述&lt;/strong&gt;
+
+&lt;strong&gt;解决方法&lt;/strong&gt;
+
+集成百度导航需要将 targetSdkVersion 设为23
+
 </description>
         <pubDate>Tue, 20 Jun 2017 16:14:54 +0800</pubDate>
         <link>http://localhost:4000/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
@@ -87,6 +126,8 @@ Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复
   &lt;li&gt;监控外部调用执行的工作。&lt;/li&gt;
   &lt;li&gt;对于Android来说，可以自动打包、Android lint 检查、自动测试等。&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;hr /&gt;
 
 &lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
 
@@ -181,6 +222,8 @@ Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复
 
 &lt;h3 id=&quot;升级&quot;&gt;升级&lt;/h3&gt;
 
+&lt;hr /&gt;
+
 &lt;h3 id=&quot;新建和配置项目&quot;&gt;新建和配置项目&lt;/h3&gt;
 
 &lt;a href=&quot;http://wangkuiwu.github.io/2015/08/07/jenkins-02/&quot;&gt;教程&lt;/a&gt;
@@ -202,18 +245,18 @@ Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复
   &lt;/li&gt;
 &lt;/ul&gt;
 
-修改成false
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;useSecurity&amp;gt;true&amp;lt;/useSecurity&amp;gt; 
-修改成false删除 &amp;lt;/authorizationStrategy&amp;gt;和&amp;lt;/securityRealm&amp;gt;,重启jenkins，重新打开jenkins即可
-&amp;lt;authorizationStrategy class=&quot;hudson.security.FullControlOnceLoggedInAuthorizationStrategy&quot;&amp;gt;
-&amp;lt;denyAnonymousReadAccess&amp;gt;true&amp;lt;/denyAnonymousReadAccess&amp;gt;
-&amp;lt;/authorizationStrategy&amp;gt;
-&amp;lt;securityRealm class=&quot;hudson.security.HudsonPrivateSecurityRealm&quot;&amp;gt;
-&amp;lt;disableSignup&amp;gt;true&amp;lt;/disableSignup&amp;gt;
-&amp;lt;enableCaptcha&amp;gt;false&amp;lt;/enableCaptcha&amp;gt;
-&amp;lt;/securityRealm&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
+ &lt;!--修改成false--&gt;
+&lt;useSecurity&gt;true&lt;/useSecurity&gt;
+&lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
+&lt;authorizationStrategy class=&quot;hudson.security.FullControlOnceLoggedInAuthorizationStrategy&quot;&gt;
+&lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
+&lt;/authorizationStrategy&gt;
+&lt;securityRealm class=&quot;hudson.security.HudsonPrivateSecurityRealm&quot;&gt;
+&lt;disableSignup&gt;true&lt;/disableSignup&gt;
+&lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
+&lt;/securityRealm&gt;
+&lt;/pre&gt;
 
 &lt;ul&gt;
   &lt;li&gt;配置运行权限&lt;/li&gt;
@@ -811,40 +854,6 @@ Android学习路线
         
         
         <category>智能硬件</category>
-        
-      </item>
-    
-      <item>
-        <title>MacBook使用技巧</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用技巧&quot; id=&quot;markdown-toc-常用技巧&quot;&gt;常用技巧&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-MacBook使用技巧
-
-&lt;h3 id=&quot;常用技巧&quot;&gt;常用技巧&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;启用键盘打字机音效&lt;/li&gt;
-&lt;/ul&gt;
-
-系统偏好设置 -&amp;gt; 辅助功能 -&amp;gt; 键盘 -&amp;gt; 启用慢速键 -&amp;gt; 选项（勾选使用按键音并将延时时间调到最短）
-
-&lt;ul&gt;
-  &lt;li&gt;分屏&lt;/li&gt;
-&lt;/ul&gt;
-
-首先打开两个所需文件，把鼠标放在页面最大化处（绿色按钮），点按（非轻点）触摸板超过1s，就可以实现左右分屏了
-
-</description>
-        <pubDate>Wed, 10 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
-        
-        <category>MacBook</category>
-        
-        
-        <category>MacBook</category>
         
       </item>
     
