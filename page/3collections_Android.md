@@ -106,6 +106,17 @@ type: page
 * [greenDAO](https://github.com/greenrobot/greenDAO/)
 
 * [Realm数据库 从入门到“放弃”](http://www.jianshu.com/p/50e0efb66bdf)
+##### 路由
+* [DeepLinkDispatch](https://github.com/airbnb/DeepLinkDispatch)
+##### 依赖注入
+* [dagger2](https://github.com/google/dagger)
+
+
+
+
+
+
+
 
 
 
