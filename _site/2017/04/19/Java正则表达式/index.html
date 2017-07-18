@@ -230,22 +230,22 @@
 <h3 id="实例">实例</h3>
 
 <h4 id="提取字符串中的数字并高亮显示">提取字符串中的数字并高亮显示</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code> String ss = "（一）现状：昆明市所辖14个县市区范围内，共有国有林场14个，其中市级2个，县区12个。从经营类型上划分，全市国有林场均属生态公益型，经营总面积87.32万亩，森林面积63.78万亩，森林总蓄积量为199.55万立方米，森林覆盖率73.05%；（二）目标：通过全面深化国有林场改革，切实做到“三增长、两建立、一确保”。即：资源增长、职工增收、林场增效；全面建立健全职工社会保障体系，尽快建立符合现代林业发展要求的国有林场管理体制和经营机制；确保林区社会和谐稳定";   
+<pre class="prettyprint lang-java">
+ String ss = "（一）现状：昆明市所辖14个县市区范围内，共有国有林场14个，其中市级2个，县区12个。从经营类型上划分，全市国有林场均属生态公益型，经营总面积87.32万亩，森林面积63.78万亩，森林总蓄积量为199.55万立方米，森林覆盖率73.05%；（二）目标：通过全面深化国有林场改革，切实做到“三增长、两建立、一确保”。即：资源增长、职工增收、林场增效；全面建立健全职工社会保障体系，尽快建立符合现代林业发展要求的国有林场管理体制和经营机制；确保林区社会和谐稳定";   
         // 创建 Pattern 对象
         Pattern pattern = Pattern.compile("\d+(\.\d+)?");
         Matcher matcher = pattern.matcher(ss.trim());
         String lasts="";
         while (matcher.find()){
             if(lasts.equals(matcher.group())){
-                ss=ss.replace(matcher.group(),"&lt;font color=#FF4081&gt;&lt;b&gt;"+ matcher.group()+ "&lt;/b&gt;&lt;/font&gt;");
+                ss=ss.replace(matcher.group(),"&lt;font color=#FF4081&gt;<b>"+ matcher.group()+ "</b>&lt;/font&gt;");
 
             }else {
-                ss=ss.replaceFirst(matcher.group(),"&lt;font color=#FF4081&gt;&lt;b&gt;"+ matcher.group()+ "&lt;/b&gt;&lt;/font&gt;");
+                ss=ss.replaceFirst(matcher.group(),"&lt;font color=#FF4081&gt;<b>"+ matcher.group()+ "</b>&lt;/font&gt;");
             }
             lasts=matcher.group();
         }
-</code></pre>
-</div>
+</pre>
 
         </article>
         <hr>
