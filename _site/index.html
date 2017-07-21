@@ -16,7 +16,12 @@
     <link rel="stylesheet" href="/css/main.css ">
     <link rel="canonical" href="http://localhost:4000/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="/css/prettify.css ">
+    <script type="text/javascript" src="/js/google-code-prettify/prettify.js?lang=css&amp;skin=sunburst"></script>
+
+    
+    <!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
 
 
     <script>
@@ -56,12 +61,12 @@
 </head>
 
 
-  <body>
+  <body onload="PR.prettyPrint()">
 
     <header id="top">
     <div class="wrapper">
         <a href="/" class="brand">WHS</a>
-        <small>Android Engineer</small>
+        <small>GIS Engineer</small>
         <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
         <nav id="headerNav">
             <ul>
@@ -418,23 +423,49 @@
 
 <ul>
   <li>
+    <p>JDK、SDK、GRADLE配置</p>
+  </li>
+  <li>
     <p><a href="http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/">安装Tomcat</a></p>
   </li>
   <li>
     <p>下载<a href="https://jenkins.io/doc/">Jenkins.war</a>并复制到Tomcat webapps目录下</p>
   </li>
   <li>
-    <p>启动Tomcat-&gt;启动Jenkins(打开http://localhost:8080/jenkins/) <code class="highlighter-rouge">startup.sh</code></p>
-  </li>
-  <li>
     <p>配置Plugin</p>
   </li>
   <li>
-    <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）</p>
+    <p>Jenkins unlock</p>
+  </li>
+</ul>
+
+<p>windows用notpad++打开password文件</p>
+
+<ul>
+  <li>
+    <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）一定要先配置，后面配会比较麻烦</p>
   </li>
   <li>
     <p>系统配置
-1.配置邮件服务</p>
+1.配置环境变量</p>
+
+    <ul>
+      <li>
+        <p>JDK</p>
+      </li>
+      <li>
+        <p>AndrodSDK</p>
+      </li>
+      <li>
+        <p>Gradle
+1.<a href="http://services.gradle.org/distributions">下载</a>
+2.设置环境变量
+3.
+2.配置全局Tools</p>
+      </li>
+    </ul>
+
+    <p>3.配置邮件服务</p>
 
     <ul>
       <li>在系统设置中找到Jenkins Locaction项填入Jenkins URL和系统管理员邮件地址，系统管理员邮件地址一定要配置，否则发不了邮件通知。因为邮件通知都是由系统管理员的邮箱发出来的。</li>
@@ -522,22 +553,43 @@
     <p><code class="highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
   </li>
   <li>
-    <p>打开config.xml文件并修改配置信息</p>
+    <p>打开config.xml文件并修改配置信息(windows系统可能会保存在这个路径下C:\Windows\System32\config\systemprofile)</p>
   </li>
 </ul>
 
 <pre class="prettyprint lang-xml">
  <!--修改成false-->
-<useSecurity>true</useSecurity>
-<!--删除 </authorizationStrategy>和</securityRealm>,重启jenkins，重新打开jenkins即可-->
-<authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
-<denyAnonymousReadAccess>true</denyAnonymousReadAccess>
-</authorizationStrategy>
-<securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
-<disableSignup>true</disableSignup>
-<enableCaptcha>false</enableCaptcha>
-</securityRealm>
+ <useSecurity>true</useSecurity>
+ <!--删除 </authorizationStrategy>和</securityRealm>,重启jenkins，重新打开jenkins即可-->
+ <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
+ <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
+ </authorizationStrategy>
+ <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+   <disableSignup>true</disableSignup>
+   <enableCaptcha>false</enableCaptcha>
+ </securityRealm>
 </pre>
+
+<p><strong>SDK许可问题</strong></p>
+
+<p><strong>解决办法</strong></p>
+
+<ul>
+  <li>Linux</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "$ANDROID_HOME/licenses"
+echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" &gt; "$ANDROID_HOME/licenses/android-sdk-license"
+</code></pre>
+</div>
+<ul>
+  <li>Windows</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "%ANDROID_HOME%\licenses"
+echo |set /p="8933bad161af4178b1185d1a37fbf41ea5269c55" &gt;"%ANDROID_HOME%\licenses\android-sdk-license"
+</code></pre>
+</div>
 
 <ul>
   <li>配置运行权限</li>
@@ -937,6 +989,7 @@ class BaiduStockPipline(object):
                 <div class="excerpt">
                     <ul id="markdown-toc">
   <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
 </ul>
 
 <p>Tomcat安装及使用</p>
@@ -982,6 +1035,12 @@ export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
 shutdown.sh 关闭Tomcat
 </code></pre>
 </div>
+
+<h3 id="遇到的问题">遇到的问题</h3>
+
+<p><strong>startup之后一闪而过服务端没启动</strong></p>
+
+<p><strong>解决</strong></p>
 
 
                 </div>

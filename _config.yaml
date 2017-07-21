@@ -7,7 +7,7 @@
 
 # Site settings
 title: WHS
-brief-intro: Android Engineer
+brief-intro: GIS Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://wuhongsheng.github.io" # the base hostname & protocol for your site
 

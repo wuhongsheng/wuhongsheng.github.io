@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Tomcat安装从入门到放弃</title>
-    <meta name="description" content="  准备及安装(以Mac为例)Tomcat安装及使用准备及安装(以Mac为例)      官网下载        解压并移动到系统目录下  mv  apache-tomcat-9.0.0.M21 /usr/local  配置运行权限chmod a+x startup.shchmod +x catalina.sh ...">
+    <meta name="description" content="  准备及安装(以Mac为例)  遇到的问题Tomcat安装及使用准备及安装(以Mac为例)      官网下载        解压并移动到系统目录下  mv  apache-tomcat-9.0.0.M21 /usr/local  配置运行权限chmod a+x startup.shchmod +x catal...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -16,7 +16,12 @@
     <link rel="stylesheet" href="/css/main.css ">
     <link rel="canonical" href="http://localhost:4000/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="/css/prettify.css ">
+    <script type="text/javascript" src="/js/google-code-prettify/prettify.js?lang=css&amp;skin=sunburst"></script>
+
+    
+    <!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
 
 
     <script>
@@ -56,12 +61,12 @@
 </head>
 
 
-  <body>
+  <body onload="PR.prettyPrint()">
 
     <header id="top">
     <div class="wrapper">
         <a href="/" class="brand">WHS</a>
-        <small>Android Engineer</small>
+        <small>GIS Engineer</small>
         <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
         <nav id="headerNav">
             <ul>
@@ -206,6 +211,7 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
   <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
 </ul>
 
 <p>Tomcat安装及使用</p>
@@ -251,6 +257,12 @@ export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
 shutdown.sh 关闭Tomcat
 </code></pre>
 </div>
+
+<h3 id="遇到的问题">遇到的问题</h3>
+
+<p><strong>startup之后一闪而过服务端没启动</strong></p>
+
+<p><strong>解决</strong></p>
 
 
         </article>
