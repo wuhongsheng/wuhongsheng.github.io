@@ -132,6 +132,8 @@ type: page
 
   [基于React Native的移动平台研发实践分享](http://blog.csdn.net/haozhenming/article/details/72772787)
 
+  [写给移动开发者的 React Native 指南](http://www.jianshu.com/p/b88944250b25)
+
 * [Weex](https://weex-project.io/cn/)  
 
 * [ReactXP](https://github.com/microsoft/reactxp)
