@@ -5,9 +5,28 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 24 Jul 2017 08:53:42 +0800</pubDate>
-    <lastBuildDate>Mon, 24 Jul 2017 08:53:42 +0800</lastBuildDate>
+    <pubDate>Mon, 31 Jul 2017 21:19:03 +0800</pubDate>
+    <lastBuildDate>Mon, 31 Jul 2017 21:19:03 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>React Native从入门到放弃</title>
+        <description>
+React Native 开发指南
+
+</description>
+        <pubDate>Sun, 23 Jul 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>RN</category>
+        
+        <category>跨平台</category>
+        
+        
+        <category>跨平台</category>
+        
+      </item>
     
       <item>
         <title>Android开发问题集锦</title>
@@ -18,6 +37,10 @@
 Android开发问题集锦
 
 &lt;h3 id=&quot;常用问题&quot;&gt;常用问题&lt;/h3&gt;
+
+模拟器Menu键
+
+&lt;code class=&quot;highlighter-rouge&quot;&gt;⌘+M&lt;/code&gt;
 
 &lt;strong&gt;错误描述&lt;/strong&gt;
 
@@ -137,7 +160,7 @@ Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复
 
 &lt;ul&gt;
   &lt;li&gt;
-    JDK、SDK、GRADLE配置
+    JDK、SDK、GRADLE配置(包括环境变量)
   &lt;/li&gt;
   &lt;li&gt;
     &lt;a href=&quot;http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/&quot;&gt;安装Tomcat&lt;/a&gt;
@@ -146,18 +169,24 @@ Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复
     下载&lt;a href=&quot;https://jenkins.io/doc/&quot;&gt;Jenkins.war&lt;/a&gt;并复制到Tomcat webapps目录下
   &lt;/li&gt;
   &lt;li&gt;
-    配置Plugin
+    配置Jenkins环境变量(启动web容器之前)
+1.Windows
+Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkins 。
+可以通过设置环境变量来修改，例如： JENKINS_HOME=C:\jenkins，然后重新启动jenkins。
   &lt;/li&gt;
   &lt;li&gt;
     Jenkins unlock
   &lt;/li&gt;
 &lt;/ul&gt;
 
+打开主目录找到改文件(windows用notpad++打开password文件)
+
 &lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/jenkins_unlock.jpg&quot; alt=&quot;&quot; /&gt;
 
-windows用notpad++打开password文件
-
 &lt;ul&gt;
+  &lt;li&gt;
+    配置Plugin
+  &lt;/li&gt;
   &lt;li&gt;
     配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）一定要先配置，后面配会比较麻烦
   &lt;/li&gt;
@@ -171,6 +200,8 @@ windows用notpad++打开password文件
       &lt;/li&gt;
       &lt;li&gt;
         AndrodSDK
+
+        1.&lt;a href=&quot;&quot;&gt;下载&lt;/a&gt;
       &lt;/li&gt;
       &lt;li&gt;
         Gradle
@@ -193,7 +224,7 @@ windows用notpad++打开password文件
       &lt;li&gt;找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;img src=&quot;http://img.blog.csdn.net/20161103193101791?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center&quot; alt=&quot;&quot; /&gt;
+    &lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/jenkins%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E9%85%8D%E7%BD%AE.png&quot; alt=&quot;&quot; /&gt;
 
     &lt;ul&gt;
       &lt;li&gt;配好以后勾选“通过发送测试邮件测试配置”&lt;/li&gt;
@@ -287,6 +318,7 @@ windows用notpad++打开password文件
 &lt;/ul&gt;
 
 &lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
+
  &lt;!--修改成false--&gt;
  &lt;useSecurity&gt;true&lt;/useSecurity&gt;
  &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
@@ -297,6 +329,7 @@ windows用notpad++打开password文件
    &lt;disableSignup&gt;true&lt;/disableSignup&gt;
    &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
  &lt;/securityRealm&gt;
+ 
 &lt;/pre&gt;
 
 &lt;strong&gt;SDK许可问题&lt;/strong&gt;
@@ -677,7 +710,9 @@ shutdown.sh 关闭Tomcat
 
 &lt;strong&gt;startup之后一闪而过服务端没启动&lt;/strong&gt;
 
-&lt;strong&gt;解决&lt;/strong&gt;
+&lt;strong&gt;解决办法&lt;/strong&gt;
+
+修复配置文件打印log,配置一定的内存
 
 </description>
         <pubDate>Wed, 14 Jun 2017 16:14:54 +0800</pubDate>
@@ -914,41 +949,6 @@ Android学习路线
         
         
         <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>智能硬件学习</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#相关网站&quot; id=&quot;markdown-toc-相关网站&quot;&gt;相关网站&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-智能硬件学习
-
-&lt;h3 id=&quot;相关网站&quot;&gt;相关网站&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://www.hackster.io/&quot;&gt;Hackster&lt;/a&gt;
-致力于学习硬件的社区
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://viktorkirilov.me/post/home-automation-raspberry-pi/&quot;&gt;智能家居&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://blog.csdn.net/tangxiaoyin/article/details/73743166&quot;&gt;使用JavaScript和MQTT开发物联网应用&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Wed, 10 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/</guid>
-        
-        <category>智能硬件</category>
-        
-        
-        <category>智能硬件</category>
         
       </item>
     

@@ -18,11 +18,12 @@ React Native 开发指南
 ## 环境配置
 
 1.安装node.js
+
 2.安装react-native命令行工具
 
 ```npm install -g react-native-cli```
 
-2.新建项目
+3.新建项目
 
 ```react-native init [ProjectName]```
 

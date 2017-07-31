@@ -235,7 +235,7 @@
 
 <ul>
   <li>
-    <p>JDK、SDK、GRADLE配置</p>
+    <p>JDK、SDK、GRADLE配置(包括环境变量)</p>
   </li>
   <li>
     <p><a href="http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/">安装Tomcat</a></p>
@@ -244,18 +244,24 @@
     <p>下载<a href="https://jenkins.io/doc/">Jenkins.war</a>并复制到Tomcat webapps目录下</p>
   </li>
   <li>
-    <p>配置Plugin</p>
+    <p>配置Jenkins环境变量(启动web容器之前)
+1.Windows
+Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkins 。
+可以通过设置环境变量来修改，例如： JENKINS_HOME=C:\jenkins，然后重新启动jenkins。</p>
   </li>
   <li>
     <p>Jenkins unlock</p>
   </li>
 </ul>
 
+<p>打开主目录找到改文件(windows用notpad++打开password文件)</p>
+
 <p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins_unlock.jpg" alt="" /></p>
 
-<p>windows用notpad++打开password文件</p>
-
 <ul>
+  <li>
+    <p>配置Plugin</p>
+  </li>
   <li>
     <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）一定要先配置，后面配会比较麻烦</p>
   </li>
@@ -269,6 +275,8 @@
       </li>
       <li>
         <p>AndrodSDK</p>
+
+        <p>1.<a href="">下载</a></p>
       </li>
       <li>
         <p>Gradle
@@ -291,7 +299,7 @@
       <li>找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。</li>
     </ul>
 
-    <p><img src="http://img.blog.csdn.net/20161103193101791?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+    <p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E9%85%8D%E7%BD%AE.png" alt="" /></p>
 
     <ul>
       <li>配好以后勾选“通过发送测试邮件测试配置”</li>
@@ -385,6 +393,7 @@
 </ul>
 
 <pre class="prettyprint lang-xml">
+
  <!--修改成false-->
  <useSecurity>true</useSecurity>
  <!--删除 </authorizationStrategy>和</securityRealm>,重启jenkins，重新打开jenkins即可-->
@@ -395,6 +404,7 @@
    <disableSignup>true</disableSignup>
    <enableCaptcha>false</enableCaptcha>
  </securityRealm>
+ 
 </pre>
 
 <p><strong>SDK许可问题</strong></p>
@@ -458,6 +468,21 @@ startup.sh
                     
                 
             
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
         
             
             
@@ -517,15 +542,6 @@ startup.sh
                 
                     
                 
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
             
                 
                     
