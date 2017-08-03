@@ -107,9 +107,19 @@ type: page
 
 * [Realm数据库 从入门到“放弃”](http://www.jianshu.com/p/50e0efb66bdf)
 ##### 路由
+
 * [DeepLinkDispatch](https://github.com/airbnb/DeepLinkDispatch)
+
 ##### 依赖注入
+
 * [dagger2](https://github.com/google/dagger)
+
+##### 网络库
+
+* [Retrofit](http://square.github.io/retrofit/)
+
+* [谈谈网络库和Retrofit](http://www.jianshu.com/p/74db8711c2f8)
+
 
 
 
@@ -180,7 +190,9 @@ type: page
 
 * [Android 免安装应用](https://developer.android.google.cn/topic/instant-apps/index.html)
 
+## 混淆和代码保护
 
+[Android 高级混淆和代码保护技术](http://drakeet.me/android-advanced-proguard-and-security/)
 
 ## 打包
 * [android新一代多渠道打包神器](http://ltlovezh.com/2017/04/09/Android%E6%96%B0%E4%B8%80%E4%BB%A3%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E7%A5%9E%E5%99%A8/)

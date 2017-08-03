@@ -10,7 +10,7 @@ author: WHS
 * content
 {:toc}
 
-React Native 开发指南
+[React Native](http://facebook.github.io/react-native/) 开发指南
 
 
 
@@ -21,11 +21,15 @@ React Native 开发指南
 
 2.安装react-native命令行工具
 
-```npm install -g react-native-cli```
+```
+npm install -g react-native-cli
+```
 
 3.新建项目
 
-```react-native init [ProjectName]```
+```
+react-native init [ProjectName]
+```
 
 ## 常用命令
 
@@ -36,7 +40,9 @@ React Native 开发指南
 
 2. 安装react-native-git-upgrade工具模块
 
-```$ npm install -g react-native-git-upgrade```
+```
+$ npm install -g react-native-git-upgrade
+```
 
 3. 进入项目目录下运行更新命令
 
@@ -67,7 +73,10 @@ To run your app on Android:
 
 ## 参考资料
 
-![写给移动开发者的 React Native 指南](http://www.jianshu.com/p/b88944250b25)
+1. [写给移动开发者的 React Native 指南](http://www.jianshu.com/p/b88944250b25)
+
+2. [React Native 中文网](http://reactnative.cn/post/3634)
+
 
 ### 常见问题
 
@@ -78,6 +87,7 @@ To run your app on Android:
 React Native unable to load script from assets index.android.bundle on windows
 ```
 **解决办法**
+
 1.在工程目录里建assets目录
 2.运行命令
 ```

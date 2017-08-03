@@ -219,7 +219,7 @@
   </li>
 </ul>
 
-<p>React Native 开发指南</p>
+<p><a href="http://facebook.github.io/react-native/">React Native</a> 开发指南</p>
 
 <h2 id="环境配置">环境配置</h2>
 
@@ -227,11 +227,15 @@
 
 <p>2.安装react-native命令行工具</p>
 
-<p><code class="highlighter-rouge">npm install -g react-native-cli</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install -g react-native-cli
+</code></pre>
+</div>
 
 <p>3.新建项目</p>
 
-<p><code class="highlighter-rouge">react-native init [ProjectName]</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>react-native init [ProjectName]
+</code></pre>
+</div>
 
 <h2 id="常用命令">常用命令</h2>
 
@@ -246,7 +250,9 @@
   </li>
 </ol>
 
-<p><code class="highlighter-rouge">$ npm install -g react-native-git-upgrade</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ npm install -g react-native-git-upgrade
+</code></pre>
+</div>
 
 <ol>
   <li>进入项目目录下运行更新命令</li>
@@ -278,7 +284,14 @@ To run your app on Android:
 
 <h2 id="参考资料">参考资料</h2>
 
-<p><img src="http://www.jianshu.com/p/b88944250b25" alt="写给移动开发者的 React Native 指南" /></p>
+<ol>
+  <li>
+    <p><a href="http://www.jianshu.com/p/b88944250b25">写给移动开发者的 React Native 指南</a></p>
+  </li>
+  <li>
+    <p><a href="http://reactnative.cn/post/3634">React Native 中文网</a></p>
+  </li>
+</ol>
 
 <h3 id="常见问题">常见问题</h3>
 
@@ -286,8 +299,9 @@ To run your app on Android:
 <div class="highlighter-rouge"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
 </code></pre>
 </div>
-<p><strong>解决办法</strong>
-1.在工程目录里建assets目录
+<p><strong>解决办法</strong></p>
+
+<p>1.在工程目录里建assets目录
 2.运行命令</p>
 <div class="highlighter-rouge"><pre class="highlight"><code> react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 </code></pre>

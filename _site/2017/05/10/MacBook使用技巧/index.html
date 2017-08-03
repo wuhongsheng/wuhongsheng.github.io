@@ -226,14 +226,16 @@
 
 <h3 id="常用命令">常用命令</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>lsof -i :8081 查看端口
-
-kill [pid] kill进程
-
-#打开环境变量配置文件
+<div class="highlighter-rouge"><pre class="highlight"><code># 查看端口
+lsof -i :8081 
+# kill进程
+kill [pid] 
+# 打开环境变量配置文件
 open -e .bash_profile
-#生效环境变量
+# 生效环境变量
 source .bash_profile
+# 返回上级目录
+cd ../ 
 </code></pre>
 </div>
 
