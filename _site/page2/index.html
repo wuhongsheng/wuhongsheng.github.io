@@ -156,6 +156,130 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-14
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Tomcat" title="Category: Tomcat" rel="category">Tomcat</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Tomcat" title="Tag: Tomcat" rel="tag">Tomcat</a>&nbsp;
+    
+        <a href="/tag/#Mac" title="Tag: Mac" rel="tag">Mac</a>&nbsp;
+    
+        <a href="/tag/#服务器" title="Tag: 服务器" rel="tag">服务器</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
+</ul>
+
+<p>Tomcat安装及使用</p>
+
+<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
+
+<ul>
+  <li>
+    <p><a href="http://tomcat.apache.org/download-90.cgi">官网下载</a></p>
+  </li>
+  <li>
+    <p>解压并移动到系统目录下</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mv  apache-tomcat-9.0.0.M21 /usr/local
+</code></pre>
+</div>
+
+<ul>
+  <li>配置运行权限</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+chmod a+x startup.sh
+chmod +x catalina.sh
+</code></p>
+
+<ul>
+  <li>配置环境变量</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+open -e .bash_profile
+export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
+</code></p>
+
+<ul>
+  <li>启动Tomcat</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>startup.sh  启动Tomcat
+shutdown.sh 关闭Tomcat
+</code></pre>
+</div>
+
+<h3 id="遇到的问题">遇到的问题</h3>
+
+<p><strong>startup之后一闪而过服务端没启动</strong></p>
+
+<p><strong>解决办法</strong></p>
+
+<p>修复配置文件打印log,配置一定的内存</p>
+
+<ul>
+  <li>进入Tomcat根目录-&gt;bin-&gt;catalina修改</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a>
                 </h2>
                 <div class="label">
@@ -636,101 +760,6 @@ dependencies {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">MacBook使用技巧</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#MacBook" title="Category: MacBook" rel="category">MacBook</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#MacBook" title="Tag: MacBook" rel="tag">MacBook</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常用技巧" id="markdown-toc-常用技巧">常用技巧</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-</ul>
-
-<p>MacBook使用技巧</p>
-
-<h3 id="常用技巧">常用技巧</h3>
-
-<ul>
-  <li>启用键盘打字机音效</li>
-</ul>
-
-<p>系统偏好设置 -&gt; 辅助功能 -&gt; 键盘 -&gt; 启用慢速键 -&gt; 选项（勾选使用按键音并将延时时间调到最短）</p>
-
-<ul>
-  <li>分屏</li>
-</ul>
-
-<p>首先打开两个所需文件，把鼠标放在页面最大化处（绿色按钮），点按（非轻点）触摸板超过1s，就可以实现左右分屏了</p>
-
-<h3 id="常用命令">常用命令</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 查看端口
-lsof -i :8081 
-# kill进程
-kill [pid] 
-# 打开环境变量配置文件
-open -e .bash_profile
-# 生效环境变量
-source .bash_profile
-# 返回上级目录
-cd ../ 
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -758,6 +787,8 @@ cd ../
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a></li>
+                    
                         <li><a href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
@@ -775,8 +806,6 @@ cd ../
                         <li><a href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a></li>
                     
                         <li><a href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a></li>
                     
                 </ul>
             </div>
@@ -928,6 +957,15 @@ cd ../
                         <a href="/category/#跨平台" class="categories-list-item" cate="跨平台">
                             <span class="name">
                                 跨平台
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#SpringBoot" class="categories-list-item" cate="SpringBoot">
+                            <span class="name">
+                                SpringBoot
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1124,6 +1162,13 @@ cd ../
                       
                       
                       <a href="/tag/#跨平台" style="font-size: 9pt; color: #999;">跨平台</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SpringBoot" style="font-size: 9pt; color: #999;">SpringBoot</a>
                     
                 </div>
             </div>

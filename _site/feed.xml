@@ -5,9 +5,114 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Aug 2017 10:01:32 +0800</pubDate>
-    <lastBuildDate>Thu, 03 Aug 2017 10:01:32 +0800</lastBuildDate>
+    <pubDate>Thu, 17 Aug 2017 13:42:44 +0800</pubDate>
+    <lastBuildDate>Thu, 17 Aug 2017 13:42:44 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>SpringBoot从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#orm&quot; id=&quot;markdown-toc-orm&quot;&gt;ORM&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用命令和方法&quot; id=&quot;markdown-toc-常用命令和方法&quot;&gt;常用命令和方法&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#程序部署&quot; id=&quot;markdown-toc-程序部署&quot;&gt;程序部署&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题及解决方法&quot; id=&quot;markdown-toc-常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&quot;http://projects.spring.io/spring-boot/&quot;&gt;SpringBoot&lt;/a&gt;从入门到放弃
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;http://projects.spring.io/spring-boot/&quot;&gt;SpringBoot官网&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;http://www.infoq.com/cn/articles/microframeworks1-spring-boot&quot;&gt;深入学习微框架：Spring Boot&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/alibaba/druid&quot;&gt;为监控而生的数据库连接池！阿里云DRDS&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;orm&quot;&gt;ORM&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;&quot;&gt;hibernate&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;&quot;&gt;JPA&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/mybatis/spring-boot-starter&quot;&gt;MyBatis&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;常用命令和方法&quot;&gt;常用命令和方法&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 构建项目
+gradle build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;程序部署&quot;&gt;程序部署&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;War部署（传统方式）&lt;/li&gt;
+&lt;/ul&gt;
+
+将War文件拷贝到Tomcat Webapp目录下
+
+&lt;ul&gt;
+  &lt;li&gt;Jar部署&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java -jar build/libs/gs-rest-service-0.1.0.jar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/h3&gt;
+
+&lt;strong&gt;问题描述&lt;/strong&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;druid 连接池 {dataSource-1} inited 是卡住
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;strong&gt;解决办法&lt;/strong&gt;
+
+1.重启IDEA或者重启电脑（可能是Druid bug 导致）
+
+&lt;strong&gt;问题描述&lt;/strong&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Unregistering JMX-exposed beans on shutdown
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;strong&gt;解决办法&lt;/strong&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;配置文件增加
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 10 Aug 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>SpringBoot</category>
+        
+        
+        <category>SpringBoot</category>
+        
+      </item>
     
       <item>
         <title>React Native从入门到放弃</title>
@@ -31,12 +136,12 @@
       <item>
         <title>Android开发问题集锦</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用问题&quot; id=&quot;markdown-toc-常用问题&quot;&gt;常用问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 Android开发问题集锦
 
-&lt;h3 id=&quot;常用问题&quot;&gt;常用问题&lt;/h3&gt;
+&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
 
 模拟器Menu键
 
@@ -49,6 +154,23 @@ Android开发问题集锦
 &lt;strong&gt;解决方法&lt;/strong&gt;
 
 so文件重复，如bugly同时使用手动集成和自动集成会出现此问题
+
+&lt;strong&gt;错误描述&lt;/strong&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
+   - with linked exception:
+  [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
+    at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;strong&gt;原因及解决方法&lt;/strong&gt;
+
+大概意思：win下，databinding布局文件中的中文字符串非UTF-8编码
+
+&lt;ul&gt;
+  &lt;li&gt;中文使用@string/name引入；&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Fri, 30 Jun 2017 16:14:54 +0800</pubDate>
@@ -196,7 +318,7 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
 
     &lt;ul&gt;
       &lt;li&gt;
-        JDK
+        &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/index.html&quot;&gt;JDK&lt;/a&gt;
       &lt;/li&gt;
       &lt;li&gt;
         AndrodSDK
@@ -319,16 +441,16 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
 
 &lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
 
- &lt;!--修改成false--&gt;
- &lt;useSecurity&gt;true&lt;/useSecurity&gt;
- &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
- &lt;authorizationStrategy class=&quot;hudson.security.FullControlOnceLoggedInAuthorizationStrategy&quot;&gt;
- &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
- &lt;/authorizationStrategy&gt;
- &lt;securityRealm class=&quot;hudson.security.HudsonPrivateSecurityRealm&quot;&gt;
-   &lt;disableSignup&gt;true&lt;/disableSignup&gt;
-   &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
- &lt;/securityRealm&gt;
+ &amp;lt;!--修改成false--&amp;gt;
+ &amp;lt;useSecurity&amp;gt;true&amp;lt;/useSecurity&amp;gt;
+ &amp;lt;!--删除 &amp;lt;/authorizationStrategy&amp;gt;和&amp;lt;/securityRealm&amp;gt;,重启jenkins，重新打开jenkins即可--&amp;gt;
+ &amp;lt;authorizationStrategy class=&quot;hudson.security.FullControlOnceLoggedInAuthorizationStrategy&quot;&amp;gt;
+ &amp;lt;denyAnonymousReadAccess&amp;gt;true&amp;lt;/denyAnonymousReadAccess&amp;gt;
+ &amp;lt;/authorizationStrategy&amp;gt;
+ &amp;lt;securityRealm class=&quot;hudson.security.HudsonPrivateSecurityRealm&quot;&amp;gt;
+   &amp;lt;disableSignup&amp;gt;true&amp;lt;/disableSignup&amp;gt;
+   &amp;lt;enableCaptcha&amp;gt;false&amp;lt;/enableCaptcha&amp;gt;
+ &amp;lt;/securityRealm&amp;gt;
  
 &lt;/pre&gt;
 
@@ -675,9 +797,9 @@ Tomcat安装及使用
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-mv  apache-tomcat-9.0.0.M21 /usr/local
-&lt;/code&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mv  apache-tomcat-9.0.0.M21 /usr/local
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;配置运行权限&lt;/li&gt;
@@ -713,6 +835,10 @@ shutdown.sh 关闭Tomcat
 &lt;strong&gt;解决办法&lt;/strong&gt;
 
 修复配置文件打印log,配置一定的内存
+
+&lt;ul&gt;
+  &lt;li&gt;进入Tomcat根目录-&amp;gt;bin-&amp;gt;catalina修改&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Wed, 14 Jun 2017 16:14:54 +0800</pubDate>
@@ -886,69 +1012,6 @@ dependencies {
         
         
         <category>Kotlin</category>
-        
-      </item>
-    
-      <item>
-        <title>Android学习路线</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#android初级&quot; id=&quot;markdown-toc-android初级&quot;&gt;Android初级&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#android中级&quot; id=&quot;markdown-toc-android中级&quot;&gt;Android中级&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#android高级&quot; id=&quot;markdown-toc-android高级&quot;&gt;Android高级&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Android学习路线
-
-&lt;h3 id=&quot;基础知识&quot;&gt;基础知识&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Java基础知识（Java线程）
-&lt;a href=&quot;http://www.cnblogs.com/tjudzj/p/4443066.html&quot;&gt;Java访问修饰符&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;开发坏境搭建（JDK、AS）&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://wuhongsheng.top/2017/04/11/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/&quot;&gt;Android开发代码规范&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Android四大组件，Activity启动模式、生命周期管理，Fragement生命周期。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;android初级&quot;&gt;Android初级&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;用户界面及自定义控件&lt;/li&gt;
-  &lt;li&gt;资源文件的使用&lt;/li&gt;
-  &lt;li&gt;数据持久化（Sqlite、File、Sharedpreferences）&lt;/li&gt;
-  &lt;li&gt;MeterialDesign&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;android中级&quot;&gt;Android中级&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;图形和动画绘制&lt;/li&gt;
-  &lt;li&gt;网络编程（Http、Socket、Bluetooth、NFC）&lt;/li&gt;
-  &lt;li&gt;屏幕适配（dp和px换算）&lt;/li&gt;
-  &lt;li&gt;单元测试&lt;/li&gt;
-  &lt;li&gt;进程间通信（4种方式）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;android高级&quot;&gt;Android高级&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;NDK编程&lt;/li&gt;
-  &lt;li&gt;传感器应用&lt;/li&gt;
-  &lt;li&gt;地图应用&lt;/li&gt;
-  &lt;li&gt;跨平台开发&lt;/li&gt;
-  &lt;li&gt;Android性能优化（UI、电量、内存）&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Thu, 11 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</guid>
-        
-        <category>Android</category>
-        
-        
-        <category>Android</category>
         
       </item>
     

@@ -69,18 +69,42 @@ To run your app on Android:
    Have an Android emulator running (quickest way to get started), or a device connected
    react-native run-android
 ```
-
+#### [npm](https://www.npmjs.com/)常用命令
+```
+#更新
+npm install npm@latest -g
+```
 
 ## 参考资料
 
-1. [写给移动开发者的 React Native 指南](http://www.jianshu.com/p/b88944250b25)
+* [官网](http://facebook.github.io/react-native/)
 
-2. [React Native 中文网](http://reactnative.cn/post/3634)
+* [写给移动开发者的 React Native 指南](http://www.jianshu.com/p/b88944250b25)
+
+* [React Native 中文网](http://reactnative.cn/post/3634)
+
+* [React](https://facebook.github.io/react/)
+
+### 常用组件
+
+* [mapbox/react-native-mapbox-gl](https://github.com/mapbox/react-native-mapbox-gl)
+
 
 
 ### 常见问题
 
+**问题描述**
 
+我是在Mac环境下，利用facebook开源的react-native创建原生app项目缓慢的问题
+
+**解决办法**
+
+1.确定自己的环境配置是否有问题
+2.打开终端，输入命令行
+```
+brew install wget
+```
+3.npm config set registry=http://registry.npm.taobao.org/
 
 **问题描述**
 ```
@@ -93,8 +117,12 @@ React Native unable to load script from assets index.android.bundle on windows
 ```
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 ```
-3.```react-native run android```
-
-
+3.
+```
+react-native run android
+```
+```
+error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
+```
 
 

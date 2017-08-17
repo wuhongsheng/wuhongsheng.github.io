@@ -156,6 +156,116 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Java正则表达式</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-04-19
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Java" title="Category: Java" rel="category">Java</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Java" title="Tag: Java" rel="tag">Java</a>&nbsp;
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
+  <li><a href="#常用正则表达式" id="markdown-toc-常用正则表达式">常用正则表达式</a></li>
+  <li><a href="#实例" id="markdown-toc-实例">实例</a>    <ul>
+      <li><a href="#提取字符串中的数字并高亮显示" id="markdown-toc-提取字符串中的数字并高亮显示">提取字符串中的数字并高亮显示</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>正则表达式定义了字符串的模式。正则表达式可以用来搜索、编辑或处理文本。正则表达式并不仅限于某一种语言，但是在每种语言中有细微的差别。</p>
+
+<h3 id="基础知识">基础知识</h3>
+
+<p><a href="http://www.runoob.com/java/java-regular-expressions.html">菜鸟教程</a></p>
+
+<p><a href="https://github.com/zeeshanu/learn-regex/blob/master/README-cn.md">正则教程</a></p>
+
+<h3 id="常用正则表达式">常用正则表达式</h3>
+
+<ul>
+  <li>匹配数字  <code class="highlighter-rouge">\d+(\.\d+)?</code></li>
+  <li>匹配中文字符  <code class="highlighter-rouge">[\u4e00-\u9fa5]</code></li>
+  <li>匹配邮箱地址  <code class="highlighter-rouge">[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?</code></li>
+  <li>匹配网址  <code class="highlighter-rouge">[a-zA-z]+://[^\s]*</code></li>
+  <li>匹配国内电话号码  <code class="highlighter-rouge">\d{3}-\d{8}|\d{4}-\{7,8}</code></li>
+  <li>匹配QQ号  <code class="highlighter-rouge">[1-9][0-9]{4,}</code></li>
+  <li>匹配身份证号  <code class="highlighter-rouge">^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$</code></li>
+  <li>匹配手机号码  <code class="highlighter-rouge">[1][3587]\d{9}</code></li>
+</ul>
+
+<h3 id="实例">实例</h3>
+
+<h4 id="提取字符串中的数字并高亮显示">提取字符串中的数字并高亮显示</h4>
+<pre class="prettyprint lang-java">
+ String ss = "（一）现状：昆明市所辖14个县市区范围内，共有国有林场14个，其中市级2个，县区12个。从经营类型上划分，全市国有林场均属生态公益型，经营总面积87.32万亩，森林面积63.78万亩，森林总蓄积量为199.55万立方米，森林覆盖率73.05%；（二）目标：通过全面深化国有林场改革，切实做到“三增长、两建立、一确保”。即：资源增长、职工增收、林场增效；全面建立健全职工社会保障体系，尽快建立符合现代林业发展要求的国有林场管理体制和经营机制；确保林区社会和谐稳定";   
+        // 创建 Pattern 对象
+        Pattern pattern = Pattern.compile("\d+(\.\d+)?");
+        Matcher matcher = pattern.matcher(ss.trim());
+        String lasts="";
+        while (matcher.find()){
+            if(lasts.equals(matcher.group())){
+                ss=ss.replace(matcher.group(),"&lt;font color=#FF4081&gt;<b>"+ matcher.group()+ "</b>&lt;/font&gt;");
+
+            }else {
+                ss=ss.replaceFirst(matcher.group(),"&lt;font color=#FF4081&gt;<b>"+ matcher.group()+ "</b>&lt;/font&gt;");
+            }
+            lasts=matcher.group();
+        }
+</pre>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/">如何在Android面试中脱颖而出</a>
                 </h2>
                 <div class="label">
@@ -683,6 +793,8 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a></li>
+                    
                         <li><a href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
@@ -700,8 +812,6 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         <li><a href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a></li>
                     
                         <li><a href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a></li>
                     
                 </ul>
             </div>
@@ -853,6 +963,15 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         <a href="/category/#跨平台" class="categories-list-item" cate="跨平台">
                             <span class="name">
                                 跨平台
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#SpringBoot" class="categories-list-item" cate="SpringBoot">
+                            <span class="name">
+                                SpringBoot
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1049,6 +1168,13 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                       
                       
                       <a href="/tag/#跨平台" style="font-size: 9pt; color: #999;">跨平台</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SpringBoot" style="font-size: 9pt; color: #999;">SpringBoot</a>
                     
                 </div>
             </div>

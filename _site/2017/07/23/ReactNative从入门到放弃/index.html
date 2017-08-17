@@ -211,9 +211,11 @@
   <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a>    <ul>
       <li><a href="#升级新版本" id="markdown-toc-升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></a></li>
       <li><a href="#运行方法" id="markdown-toc-运行方法">运行方法</a></li>
+      <li><a href="#npm常用命令" id="markdown-toc-npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</a></li>
     </ul>
   </li>
   <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
+      <li><a href="#常用组件" id="markdown-toc-常用组件">常用组件</a></li>
       <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
     </ul>
   </li>
@@ -281,19 +283,49 @@ To run your app on Android:
    react-native run-android
 </code></pre>
 </div>
+<h4 id="npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>#更新
+npm install npm@latest -g
+</code></pre>
+</div>
 
 <h2 id="参考资料">参考资料</h2>
 
-<ol>
+<ul>
+  <li>
+    <p><a href="http://facebook.github.io/react-native/">官网</a></p>
+  </li>
   <li>
     <p><a href="http://www.jianshu.com/p/b88944250b25">写给移动开发者的 React Native 指南</a></p>
   </li>
   <li>
     <p><a href="http://reactnative.cn/post/3634">React Native 中文网</a></p>
   </li>
-</ol>
+  <li>
+    <p><a href="https://facebook.github.io/react/">React</a></p>
+  </li>
+</ul>
+
+<h3 id="常用组件">常用组件</h3>
+
+<ul>
+  <li><a href="https://github.com/mapbox/react-native-mapbox-gl">mapbox/react-native-mapbox-gl</a></li>
+</ul>
 
 <h3 id="常见问题">常见问题</h3>
+
+<p><strong>问题描述</strong></p>
+
+<p>我是在Mac环境下，利用facebook开源的react-native创建原生app项目缓慢的问题</p>
+
+<p><strong>解决办法</strong></p>
+
+<p>1.确定自己的环境配置是否有问题
+2.打开终端，输入命令行</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>brew install wget
+</code></pre>
+</div>
+<p>3.npm config set registry=http://registry.npm.taobao.org/</p>
 
 <p><strong>问题描述</strong></p>
 <div class="highlighter-rouge"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
@@ -306,7 +338,13 @@ To run your app on Android:
 <div class="highlighter-rouge"><pre class="highlight"><code> react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 </code></pre>
 </div>
-<p>3.<code class="highlighter-rouge">react-native run android</code></p>
+<p>3.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>react-native run android
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
+</code></pre>
+</div>
 
 
         </article>
@@ -331,12 +369,6 @@ To run your app on Android:
                     
                 
             
-                
-                    
-                
-                    
-                
-            
         
             
             
@@ -382,12 +414,6 @@ To run your app on Android:
                     
                 
             
-                
-                    
-                
-                    
-                
-            
         
             
             
@@ -403,8 +429,20 @@ To run your app on Android:
                     
                 
             
+                
+                    
+                
+                    
+                
+            
         
             
+            
+                
+                    
+                
+                    
+                
             
                 
                     
@@ -450,6 +488,8 @@ To run your app on Android:
     </div>
     <div class="nex">
 
+        
+        <p><strong>下一篇</strong> <a href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a></p>
         
     </div>
 </div>

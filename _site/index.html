@@ -156,6 +156,156 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-08-10
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#SpringBoot" title="Category: SpringBoot" rel="category">SpringBoot</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#SpringBoot" title="Tag: SpringBoot" rel="tag">SpringBoot</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
+      <li><a href="#orm" id="markdown-toc-orm">ORM</a></li>
+    </ul>
+  </li>
+  <li><a href="#常用命令和方法" id="markdown-toc-常用命令和方法">常用命令和方法</a>    <ul>
+      <li><a href="#程序部署" id="markdown-toc-程序部署">程序部署</a></li>
+    </ul>
+  </li>
+  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+</ul>
+
+<p><a href="http://projects.spring.io/spring-boot/">SpringBoot</a>从入门到放弃</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ul>
+  <li>
+    <p><a href="http://projects.spring.io/spring-boot/">SpringBoot官网</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.infoq.com/cn/articles/microframeworks1-spring-boot">深入学习微框架：Spring Boot</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/alibaba/druid">为监控而生的数据库连接池！阿里云DRDS</a></p>
+  </li>
+</ul>
+
+<h4 id="orm">ORM</h4>
+
+<ul>
+  <li>
+    <p><a href="">hibernate</a></p>
+  </li>
+  <li>
+    <p><a href="">JPA</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/mybatis/spring-boot-starter">MyBatis</a></p>
+  </li>
+</ul>
+
+<h3 id="常用命令和方法">常用命令和方法</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 构建项目
+gradle build
+</code></pre>
+</div>
+<h4 id="程序部署">程序部署</h4>
+
+<ul>
+  <li>War部署（传统方式）</li>
+</ul>
+
+<p>将War文件拷贝到Tomcat Webapp目录下</p>
+
+<ul>
+  <li>Jar部署</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
+</code></pre>
+</div>
+
+<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
+
+<p><strong>问题描述</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
+</code></pre>
+</div>
+
+<p><strong>解决办法</strong></p>
+
+<p>1.重启IDEA或者重启电脑（可能是Druid bug 导致）</p>
+
+<p><strong>问题描述</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
+
+</code></pre>
+</div>
+<p><strong>解决办法</strong></p>
+
+<ul>
+  <li>配置文件增加
+    <div class="highlighter-rouge"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a>
                 </h2>
                 <div class="label">
@@ -270,12 +420,12 @@
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
-  <li><a href="#常用问题" id="markdown-toc-常用问题">常用问题</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
 </ul>
 
 <p>Android开发问题集锦</p>
 
-<h3 id="常用问题">常用问题</h3>
+<h3 id="常见问题">常见问题</h3>
 
 <p>模拟器Menu键</p>
 
@@ -288,6 +438,23 @@
 <p><strong>解决方法</strong></p>
 
 <p>so文件重复，如bugly同时使用手动集成和自动集成会出现此问题</p>
+
+<p><strong>错误描述</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
+   - with linked exception:
+  [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
+    at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
+</code></pre>
+</div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<p>大概意思：win下，databinding布局文件中的中文字符串非UTF-8编码</p>
+
+<ul>
+  <li>中文使用@string/name引入；</li>
+</ul>
 
 
                 </div>
@@ -527,7 +694,7 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
 
     <ul>
       <li>
-        <p>JDK</p>
+        <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a></p>
       </li>
       <li>
         <p>AndrodSDK</p>
@@ -650,16 +817,16 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
 
 <pre class="prettyprint lang-xml">
 
- <!--修改成false-->
- <useSecurity>true</useSecurity>
- <!--删除 </authorizationStrategy>和</securityRealm>,重启jenkins，重新打开jenkins即可-->
- <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
- <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
- </authorizationStrategy>
- <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
-   <disableSignup>true</disableSignup>
-   <enableCaptcha>false</enableCaptcha>
- </securityRealm>
+ &lt;!--修改成false--&gt;
+ &lt;useSecurity&gt;true&lt;/useSecurity&gt;
+ &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
+ &lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
+ &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
+ &lt;/authorizationStrategy&gt;
+ &lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
+   &lt;disableSignup&gt;true&lt;/disableSignup&gt;
+   &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
+ &lt;/securityRealm&gt;
  
 </pre>
 
@@ -1025,126 +1192,6 @@ class BaiduStockPipline(object):
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-14
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Tomcat" title="Category: Tomcat" rel="category">Tomcat</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Tomcat" title="Tag: Tomcat" rel="tag">Tomcat</a>&nbsp;
-    
-        <a href="/tag/#Mac" title="Tag: Mac" rel="tag">Mac</a>&nbsp;
-    
-        <a href="/tag/#服务器" title="Tag: 服务器" rel="tag">服务器</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
-  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
-</ul>
-
-<p>Tomcat安装及使用</p>
-
-<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
-
-<ul>
-  <li>
-    <p><a href="http://tomcat.apache.org/download-90.cgi">官网下载</a></p>
-  </li>
-  <li>
-    <p>解压并移动到系统目录下</p>
-  </li>
-</ul>
-
-<p><code class="highlighter-rouge">
-mv  apache-tomcat-9.0.0.M21 /usr/local
-</code></p>
-
-<ul>
-  <li>配置运行权限</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-chmod a+x startup.sh
-chmod +x catalina.sh
-</code></p>
-
-<ul>
-  <li>配置环境变量</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-open -e .bash_profile
-export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
-</code></p>
-
-<ul>
-  <li>启动Tomcat</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>startup.sh  启动Tomcat
-shutdown.sh 关闭Tomcat
-</code></pre>
-</div>
-
-<h3 id="遇到的问题">遇到的问题</h3>
-
-<p><strong>startup之后一闪而过服务端没启动</strong></p>
-
-<p><strong>解决办法</strong></p>
-
-<p>修复配置文件打印log,配置一定的内存</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1172,6 +1219,8 @@ shutdown.sh 关闭Tomcat
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a></li>
+                    
                         <li><a href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
@@ -1189,8 +1238,6 @@ shutdown.sh 关闭Tomcat
                         <li><a href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a></li>
                     
                         <li><a href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a></li>
                     
                 </ul>
             </div>
@@ -1342,6 +1389,15 @@ shutdown.sh 关闭Tomcat
                         <a href="/category/#跨平台" class="categories-list-item" cate="跨平台">
                             <span class="name">
                                 跨平台
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#SpringBoot" class="categories-list-item" cate="SpringBoot">
+                            <span class="name">
+                                SpringBoot
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1538,6 +1594,13 @@ shutdown.sh 关闭Tomcat
                       
                       
                       <a href="/tag/#跨平台" style="font-size: 9pt; color: #999;">跨平台</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SpringBoot" style="font-size: 9pt; color: #999;">SpringBoot</a>
                     
                 </div>
             </div>

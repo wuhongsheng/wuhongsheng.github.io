@@ -271,7 +271,7 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
 
     <ul>
       <li>
-        <p>JDK</p>
+        <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a></p>
       </li>
       <li>
         <p>AndrodSDK</p>
@@ -394,16 +394,16 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
 
 <pre class="prettyprint lang-xml">
 
- <!--修改成false-->
- <useSecurity>true</useSecurity>
- <!--删除 </authorizationStrategy>和</securityRealm>,重启jenkins，重新打开jenkins即可-->
- <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
- <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
- </authorizationStrategy>
- <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
-   <disableSignup>true</disableSignup>
-   <enableCaptcha>false</enableCaptcha>
- </securityRealm>
+ &lt;!--修改成false--&gt;
+ &lt;useSecurity&gt;true&lt;/useSecurity&gt;
+ &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
+ &lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
+ &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
+ &lt;/authorizationStrategy&gt;
+ &lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
+   &lt;disableSignup&gt;true&lt;/disableSignup&gt;
+   &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
+ &lt;/securityRealm&gt;
  
 </pre>
 
@@ -468,21 +468,6 @@ startup.sh
                     
                 
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
         
             
             
@@ -507,20 +492,8 @@ startup.sh
                     
                 
             
-                
-                    
-                
-                    
-                
-            
         
             
-            
-                
-                    
-                
-                    
-                
             
                 
                     
@@ -551,6 +524,33 @@ startup.sh
             
         
             
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
             
                 
                     

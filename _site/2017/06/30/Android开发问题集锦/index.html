@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Android开发问题集锦</title>
-    <meta name="description" content="  常用问题Android开发问题集锦常用问题模拟器Menu键⌘+M错误描述解决方法so文件重复，如bugly同时使用手动集成和自动集成会出现此问题">
+    <meta name="description" content="  常见问题Android开发问题集锦常见问题模拟器Menu键⌘+M错误描述解决方法so文件重复，如bugly同时使用手动集成和自动集成会出现此问题错误描述错误: Exception while handling step android.databinding.annotationprocessor.Proce...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -204,12 +204,12 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#常用问题" id="markdown-toc-常用问题">常用问题</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
 </ul>
 
 <p>Android开发问题集锦</p>
 
-<h3 id="常用问题">常用问题</h3>
+<h3 id="常见问题">常见问题</h3>
 
 <p>模拟器Menu键</p>
 
@@ -223,11 +223,35 @@
 
 <p>so文件重复，如bugly同时使用手动集成和自动集成会出现此问题</p>
 
+<p><strong>错误描述</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
+   - with linked exception:
+  [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
+    at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
+</code></pre>
+</div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<p>大概意思：win下，databinding布局文件中的中文字符串非UTF-8编码</p>
+
+<ul>
+  <li>中文使用@string/name引入；</li>
+</ul>
+
 
         </article>
         <hr>
 
         
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -337,13 +361,6 @@
                         </li>
                         
                         
-                    
-                
-            
-        
-            
-            
-                
                     
                 
             
