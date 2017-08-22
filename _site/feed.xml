@@ -5,9 +5,59 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Aug 2017 13:42:44 +0800</pubDate>
-    <lastBuildDate>Thu, 17 Aug 2017 13:42:44 +0800</lastBuildDate>
+    <pubDate>Tue, 22 Aug 2017 09:52:37 +0800</pubDate>
+    <lastBuildDate>Tue, 22 Aug 2017 09:52:37 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Centos使用从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用命令和方法以阿里云centos为例&quot; id=&quot;markdown-toc-常用命令和方法以阿里云centos为例&quot;&gt;常用命令和方法(以阿里云Centos为例)&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#安装apache&quot; id=&quot;markdown-toc-安装apache&quot;&gt;安装Apache&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;h3 id=&quot;常用命令和方法以阿里云centos为例&quot;&gt;常用命令和方法(以阿里云Centos为例)&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;安装apache&quot;&gt;安装Apache&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;安装Apache
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install httpd httpd-devel 
+# service httpd start 
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;开启80端口（阿里云需要设置安全组策略设置如下）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;img src=&quot;http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/25475/cn_zh/1495786224289/Image%201.png&quot; alt=&quot;&quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;测试安装
+访问服务器公网地址可以看到Apache说明安装成功&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 16 Aug 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>Contos</category>
+        
+        <category>Linux</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>SpringBoot从入门到放弃</title>
@@ -118,6 +168,9 @@ gradle build
         <title>React Native从入门到放弃</title>
         <description>
 &lt;a href=&quot;http://facebook.github.io/react-native/&quot;&gt;React Native&lt;/a&gt; 开发指南
+
+使用JavaScript和React构建本地移动应用程序
+React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。
 
 </description>
         <pubDate>Sun, 23 Jul 2017 16:14:54 +0800</pubDate>
@@ -925,7 +978,18 @@ Web映射服务器 - MapGuide开源，Mapserver，GeoServer
 C／S数据库 - PostgreSQL，mySQL，SQLite
 
 &lt;ul&gt;
-  &lt;li&gt;最短路径分析&lt;/li&gt;
+  &lt;li&gt;
+    矢量切片：
+
+    &lt;ol&gt;
+      &lt;li&gt;Mapbox&lt;/li&gt;
+      &lt;li&gt;Geoserver&lt;/li&gt;
+      &lt;li&gt;titlecache工具可以切成geojson&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    最短路径分析
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 postgresql + postgis+ pgrouting
@@ -958,60 +1022,6 @@ postgresql + postgis+ pgrouting
         
         
         <category>GIS</category>
-        
-      </item>
-    
-      <item>
-        <title>Kotlin 从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#相关网站及资料&quot; id=&quot;markdown-toc-相关网站及资料&quot;&gt;相关网站及资料&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#遇到的问题&quot; id=&quot;markdown-toc-遇到的问题&quot;&gt;遇到的问题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Kotlin学习路线
-
-&lt;h3 id=&quot;相关网站及资料&quot;&gt;相关网站及资料&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://kotlinlang.org/docs/tutorials/kotlin-android.html&quot;&gt;Kotlin官网&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot;&gt;《Kotlin for android developers》中文翻译版&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md&quot;&gt;from-java-to-kotlin&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://juejin.im/post/591dd9f544d904006c9fbb96&quot;&gt;Kotlin 资源大全&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;遇到的问题&quot;&gt;遇到的问题&lt;/h3&gt;
-
-&lt;strong&gt;问题描述&lt;/strong&gt;
-
-kotlin与Databinding冲突
-
-&lt;strong&gt;解决办法&lt;/strong&gt;
-需要在app moudle的build.gradle里面添加
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kapt {
-    generateStubs = true
-}
-dependencies {
-    kapt 'com.android.databinding:compiler:2.2.3'//与Gradle版本一致
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Tue, 30 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>Kotlin</category>
-        
-        
-        <category>Kotlin</category>
         
       </item>
     

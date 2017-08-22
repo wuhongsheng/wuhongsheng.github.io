@@ -12,6 +12,9 @@ author: WHS
 
 [React Native](http://facebook.github.io/react-native/) 开发指南
 
+使用JavaScript和React构建本地移动应用程序
+React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。
+
 
 
 
