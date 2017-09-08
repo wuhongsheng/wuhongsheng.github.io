@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/">
+    <link rel="canonical" href="http://localhost:4000/page5/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -72,8 +72,8 @@
             <ul>
                 <li>
                     
-                    <a class="active" href="/">
-                        
+                    <a href="/">
+                    
                         <i class="fa fa-home"></i>Home
                     </a>
                 </li>
@@ -158,11 +158,11 @@
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a>
+                  <a class="post-link" href="/2017/04/04/Jekyll-%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">Jekyll 搭建静态博客</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-30
+                        <i class="fa fa-calendar"></i>2017-04-04
                     </div>
                     <div class="label-card">
                         <i class="fa fa-user"></i>WHS
@@ -181,7 +181,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
+        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
     
   
 
@@ -198,373 +198,9 @@
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#Spatialite" title="Tag: Spatialite" rel="tag">Spatialite</a>
+        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>&nbsp;
     
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#常用sql语句" id="markdown-toc-常用sql语句">常用SQL语句()</a></li>
-</ul>
-
-<p>Sptialite使用从入门到放弃</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<p><a href="http://www.gaia-gis.it/gaia-sins/">官网</a></p>
-
-<p><a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html">spatialite-cookbook</a></p>
-
-<h3 id="常用sql语句">常用SQL语句()</h3>
-
-<p>CGCS2000 4490(国家2000坐标系SRID)</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 插入点数据
-INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
-
-# 导出Shapfile
-select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-16
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Linux" title="Category: Linux" rel="category">Linux</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Contos" title="Tag: Contos" rel="tag">Contos</a>&nbsp;
-    
-        <a href="/tag/#Linux" title="Tag: Linux" rel="tag">Linux</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#常用命令和方法以阿里云centos为例" id="markdown-toc-常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</a>    <ul>
-      <li><a href="#安装apache" id="markdown-toc-安装apache">安装Apache</a></li>
-      <li><a href="#安装php及扩展" id="markdown-toc-安装php及扩展">安装PHP及扩展</a></li>
-      <li><a href="#安装git" id="markdown-toc-安装git">安装Git</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<h3 id="常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</h3>
-
-<hr />
-
-<h4 id="安装apache">安装Apache</h4>
-<ul>
-  <li>安装Apache
-    <div class="highlighter-rouge"><pre class="highlight"><code># yum install httpd httpd-devel 
-# service httpd start 
-</code></pre>
-    </div>
-  </li>
-  <li>开启80端口（阿里云需要设置安全组策略设置如下）</li>
-</ul>
-
-<p><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/25475/cn_zh/1495786224289/Image%201.png" alt="" /></p>
-
-<ul>
-  <li>测试安装
-访问服务器公网地址可以看到Apache说明安装成功</li>
-</ul>
-
-<h4 id="安装php及扩展">安装PHP及扩展</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code># yum install php php-devel
-
-# yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
-
-安装完需要重启Apache
-# httpd restart
-</code></pre>
-</div>
-
-<h4 id="安装git">安装Git</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># yum install git
-查看版本
-# git version
-
-配置Git用户信息
-# git config --global user.name "woider"
-# git config --global user.email "woider@gmail.com"
-
-查看ssh key 是否存在,如果不存在需要生成
-# ls -al ~/.ssh
-
-生成ssh key(生成 ssh key 过程中，会让你填写 passphrase，连按三次回车跳过即可)
-# ssh-keygen -t rsa -C "woider@gmail.com" 
-
-查看ssh key(id_rsa 为私钥，id_rsa.pub 为公钥  SSH KEY 公钥，用于 GitHub 身份验证)
-登录 GitHub，打开 Personal settings 页面，选择 SSH and GPG keys 选项：
-# vim ~/.ssh/id_rsa.pub
-
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#SpringBoot" title="Category: SpringBoot" rel="category">SpringBoot</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#SpringBoot" title="Tag: SpringBoot" rel="tag">SpringBoot</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
-      <li><a href="#orm" id="markdown-toc-orm">ORM</a></li>
-    </ul>
-  </li>
-  <li><a href="#常用命令和方法" id="markdown-toc-常用命令和方法">常用命令和方法</a>    <ul>
-      <li><a href="#程序部署" id="markdown-toc-程序部署">程序部署</a></li>
-    </ul>
-  </li>
-  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
-</ul>
-
-<p><a href="http://projects.spring.io/spring-boot/">SpringBoot</a>从入门到放弃</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<ul>
-  <li>
-    <p><a href="http://projects.spring.io/spring-boot/">SpringBoot官网</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.infoq.com/cn/articles/microframeworks1-spring-boot">深入学习微框架：Spring Boot</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/alibaba/druid">为监控而生的数据库连接池！阿里云DRDS</a></p>
-  </li>
-</ul>
-
-<h4 id="orm">ORM</h4>
-
-<ul>
-  <li>
-    <p><a href="">hibernate</a></p>
-  </li>
-  <li>
-    <p><a href="">JPA</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/mybatis/spring-boot-starter">MyBatis</a></p>
-  </li>
-</ul>
-
-<h3 id="常用命令和方法">常用命令和方法</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 构建项目
-gradle build
-</code></pre>
-</div>
-<h4 id="程序部署">程序部署</h4>
-
-<ul>
-  <li>War部署（传统方式）</li>
-</ul>
-
-<p>将War文件拷贝到Tomcat Webapp目录下</p>
-
-<ul>
-  <li>Jar部署</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
-</code></pre>
-</div>
-
-<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
-
-<p><strong>问题描述</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
-</code></pre>
-</div>
-
-<p><strong>解决办法</strong></p>
-
-<p>1.重启IDEA或者重启电脑（可能是Druid bug 导致）</p>
-
-<p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
-
-</code></pre>
-</div>
-<p><strong>解决办法</strong></p>
-
-<ul>
-  <li>配置文件增加
-    <div class="highlighter-rouge"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
-</code></pre>
-    </div>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-07-23
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#跨平台" title="Category: 跨平台" rel="category">跨平台</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#RN" title="Tag: RN" rel="tag">RN</a>&nbsp;
-    
-        <a href="/tag/#跨平台" title="Tag: 跨平台" rel="tag">跨平台</a>
+        <a href="/tag/#RubyGems" title="Tag: RubyGems" rel="tag">RubyGems</a>
     
   
 
@@ -574,223 +210,12 @@ gradle build
                 </div>
                 <div class="excerpt">
                     
-<p><a href="http://facebook.github.io/react-native/">React Native</a> 开发指南</p>
-
-<p>使用JavaScript和React构建本地移动应用程序
-React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。</p>
+<p>一直以来都想搭建一个自己的博客，之前用过博客园的系统，感觉内容排版布局比较麻烦。后来在Github上看到有人使用jeklly,于是选择了在Github上用jekyll搭建博客。</p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-30
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-</ul>
-
-<p>Android开发问题集锦</p>
-
-<h3 id="常见问题">常见问题</h3>
-
-<p>模拟器Menu键</p>
-
-<p><code class="highlighter-rouge">⌘+M</code></p>
-
-<p><strong>错误描述</strong></p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/android_error_1.png" alt="" /></p>
-
-<p><strong>解决方法</strong></p>
-
-<p>so文件重复，如bugly同时使用手动集成和自动集成会出现此问题</p>
-
-<p><strong>错误描述</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
-   - with linked exception:
-  [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
-    at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
-</code></pre>
-</div>
-
-<p><strong>原因及解决方法</strong></p>
-
-<p>大概意思：win下，databinding布局文件中的中文字符串非UTF-8编码</p>
-
-<ul>
-  <li>中文使用@string/name引入；</li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-20
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#百度地图" title="Category: 百度地图" rel="category">百度地图</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
-    
-        <a href="/tag/#百度地图" title="Tag: 百度地图" rel="tag">百度地图</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常用方法" id="markdown-toc-常用方法">常用方法</a></li>
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-</ul>
-
-<p><a href="http://lbsyun.baidu.com/">百度地图</a>开发</p>
-
-<h3 id="常用方法">常用方法</h3>
-
-<ul>
-  <li>坐标转换</li>
-</ul>
-
-<pre class="prettyprint lang-java">
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
- * 将 BD-09 坐标转换成GCJ-02 坐标 
- * bd_lat * @param bd_lon * @return
- */
- public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
-        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
-        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
-        double gg_lon = z * Math.cos(theta);
-        double gg_lat = z * Math.sin(theta);
-        return new TitanLocation(gg_lon, gg_lat);
-
- }
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
- * @param gg_lat
- * @param gg_lon
- */
- public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
-        double x = gg_lon, y = gg_lat;
-        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
-        double bd_lon = z * Math.cos(theta) + 0.0065;
-        double bd_lat = z * Math.sin(theta) + 0.006;
-        return new TitanLocation(bd_lon, bd_lat);
- }
-</pre>
-
-<h3 id="常见问题">常见问题</h3>
-
-<p><strong>错误描述</strong></p>
-
-<p><strong>解决方法</strong></p>
-
-<p>集成百度导航需要将 targetSdkVersion 设为23</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2017/04/04/Jekyll-%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -802,13 +227,13 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
         <!-- Pagination links -->
         <div class="pagination">
           
-            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
-            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="/page4" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">1/5</span>
+          <span class="page_number ">5/5</span>
           
-            <a href="/page2" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page5" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
           
         </div>
     </div>

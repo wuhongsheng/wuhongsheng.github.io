@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Centos使用从入门到放弃</title>
-    <meta name="description" content="  参考资料  常用命令和方法(以阿里云Centos为例)          安装Apache      CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开...">
+    <meta name="description" content="  参考资料  常用命令和方法(以阿里云Centos为例)          安装Apache      安装PHP及扩展      安装Git      CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Re...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -141,6 +141,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -210,6 +212,8 @@
   <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
   <li><a href="#常用命令和方法以阿里云centos为例" id="markdown-toc-常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</a>    <ul>
       <li><a href="#安装apache" id="markdown-toc-安装apache">安装Apache</a></li>
+      <li><a href="#安装php及扩展" id="markdown-toc-安装php及扩展">安装PHP及扩展</a></li>
+      <li><a href="#安装git" id="markdown-toc-安装git">安装Git</a></li>
     </ul>
   </li>
 </ul>
@@ -240,6 +244,39 @@
 访问服务器公网地址可以看到Apache说明安装成功</li>
 </ul>
 
+<h4 id="安装php及扩展">安装PHP及扩展</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code># yum install php php-devel
+
+# yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
+
+安装完需要重启Apache
+# httpd restart
+</code></pre>
+</div>
+
+<h4 id="安装git">安装Git</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># yum install git
+查看版本
+# git version
+
+配置Git用户信息
+# git config --global user.name "woider"
+# git config --global user.email "woider@gmail.com"
+
+查看ssh key 是否存在,如果不存在需要生成
+# ls -al ~/.ssh
+
+生成ssh key(生成 ssh key 过程中，会让你填写 passphrase，连按三次回车跳过即可)
+# ssh-keygen -t rsa -C "woider@gmail.com" 
+
+查看ssh key(id_rsa 为私钥，id_rsa.pub 为公钥  SSH KEY 公钥，用于 GitHub 身份验证)
+登录 GitHub，打开 Personal settings 页面，选择 SSH and GPG keys 选项：
+# vim ~/.ssh/id_rsa.pub
+
+</code></pre>
+</div>
+
 
         </article>
         <hr>
@@ -263,21 +300,6 @@
                     
                 
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
         
             
             
@@ -295,12 +317,6 @@
             
         
             
-            
-                
-                    
-                
-                    
-                
             
                 
                     
@@ -338,12 +354,6 @@
                     
                 
             
-                
-                    
-                
-                    
-                
-            
         
             
             
@@ -361,6 +371,33 @@
             
         
             
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
             
                 
                     
@@ -388,6 +425,8 @@
     </div>
     <div class="nex">
 
+        
+        <p><strong>下一篇</strong> <a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></p>
         
     </div>
 </div>

@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>React Native从入门到放弃</title>
-    <meta name="description" content="React Native 开发指南使用JavaScript和React构建本地移动应用程序React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。">
+    <title>Spatialite使用从入门到放弃</title>
+    <meta name="description" content="  参考资料  常用SQL语句()Sptialite使用从入门到放弃参考资料官网spatialite-cookbook常用SQL语句()CGCS2000 4490(国家2000坐标系SRID)# 插入点数据INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+    <link rel="canonical" href="http://localhost:4000/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -151,11 +151,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>React Native从入门到放弃</h1>
+        <h1>Spatialite使用从入门到放弃</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-07-23
+                <i class="fa fa-calendar"></i>2017-08-30
             </div>
 
             <div class="label-card">
@@ -176,7 +176,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#跨平台" title="Category: 跨平台" rel="category">跨平台</a>
+        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
     
   
 
@@ -193,11 +193,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#RN" title="Tag: RN" rel="tag">RN</a-->
-        <a href="/tag/#RN" title="Tag: RN" rel="tag">RN</a>&nbsp;
-    
-        <!--a href="/tag/#%E8%B7%A8%E5%B9%B3%E5%8F%B0" title="Tag: 跨平台" rel="tag">跨平台</a-->
-        <a href="/tag/#跨平台" title="Tag: 跨平台" rel="tag">跨平台</a>
+        <!--a href="/tag/#Spatialite" title="Tag: Spatialite" rel="tag">Spatialite</a-->
+        <a href="/tag/#Spatialite" title="Tag: Spatialite" rel="tag">Spatialite</a>
     
   
 
@@ -209,146 +206,27 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#环境配置" id="markdown-toc-环境配置">环境配置</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a>    <ul>
-      <li><a href="#升级新版本" id="markdown-toc-升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></a></li>
-      <li><a href="#运行方法" id="markdown-toc-运行方法">运行方法</a></li>
-      <li><a href="#npm常用命令" id="markdown-toc-npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</a></li>
-    </ul>
-  </li>
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
-      <li><a href="#常用组件" id="markdown-toc-常用组件">常用组件</a></li>
-      <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-    </ul>
-  </li>
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+  <li><a href="#常用sql语句" id="markdown-toc-常用sql语句">常用SQL语句()</a></li>
 </ul>
 
-<p><a href="http://facebook.github.io/react-native/">React Native</a> 开发指南</p>
+<p>Sptialite使用从入门到放弃</p>
 
-<p>使用JavaScript和React构建本地移动应用程序
-React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。</p>
+<h3 id="参考资料">参考资料</h3>
 
-<h2 id="环境配置">环境配置</h2>
+<p><a href="http://www.gaia-gis.it/gaia-sins/">官网</a></p>
 
-<p>1.安装node.js</p>
+<p><a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html">spatialite-cookbook</a></p>
 
-<p>2.安装react-native命令行工具</p>
+<h3 id="常用sql语句">常用SQL语句()</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>npm install -g react-native-cli
-</code></pre>
-</div>
+<p>CGCS2000 4490(国家2000坐标系SRID)</p>
 
-<p>3.新建项目</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># 插入点数据
+INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
 
-<div class="highlighter-rouge"><pre class="highlight"><code>react-native init [ProjectName]
-</code></pre>
-</div>
-
-<h2 id="常用命令">常用命令</h2>
-
-<h4 id="升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></h4>
-
-<ol>
-  <li>
-    <p>安装Git并设置环境变量</p>
-  </li>
-  <li>
-    <p>安装react-native-git-upgrade工具模块</p>
-  </li>
-</ol>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ npm install -g react-native-git-upgrade
-</code></pre>
-</div>
-
-<ol>
-  <li>进入项目目录下运行更新命令</li>
-</ol>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ react-native-git-upgrade
-# 这样会直接把react native升级到最新版本
-
-# 或者是：
-
-$ react-native-git-upgrade X.Y.Z
-# 这样把react native升级到指定的X.Y.Z版本
-</code></pre>
-</div>
-<h4 id="运行方法">运行方法</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>To run your app on iOS:
-   cd /Users/whs/AwesomeProject
-   react-native run-ios
-   - or -
-   Open ios/AwesomeProject.xcodeproj in Xcode
-   Hit the Run button
-To run your app on Android:
-   cd /Users/whs/AwesomeProject
-   Have an Android emulator running (quickest way to get started), or a device connected
-   react-native run-android
-</code></pre>
-</div>
-<h4 id="npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code>#更新
-npm install npm@latest -g
-</code></pre>
-</div>
-
-<h2 id="参考资料">参考资料</h2>
-
-<ul>
-  <li>
-    <p><a href="http://facebook.github.io/react-native/">官网</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.jianshu.com/p/b88944250b25">写给移动开发者的 React Native 指南</a></p>
-  </li>
-  <li>
-    <p><a href="http://reactnative.cn/post/3634">React Native 中文网</a></p>
-  </li>
-  <li>
-    <p><a href="https://facebook.github.io/react/">React</a></p>
-  </li>
-</ul>
-
-<h3 id="常用组件">常用组件</h3>
-
-<ul>
-  <li><a href="https://github.com/mapbox/react-native-mapbox-gl">mapbox/react-native-mapbox-gl</a></li>
-</ul>
-
-<h3 id="常见问题">常见问题</h3>
-
-<p><strong>问题描述</strong></p>
-
-<p>我是在Mac环境下，利用facebook开源的react-native创建原生app项目缓慢的问题</p>
-
-<p><strong>解决办法</strong></p>
-
-<p>1.确定自己的环境配置是否有问题
-2.打开终端，输入命令行</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>brew install wget
-</code></pre>
-</div>
-<p>3.npm config set registry=http://registry.npm.taobao.org/</p>
-
-<p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
-</code></pre>
-</div>
-<p><strong>解决办法</strong></p>
-
-<p>1.在工程目录里建assets目录</p>
-
-<p>2.运行命令</p>
-<div class="highlighter-rouge"><pre class="highlight"><code> react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
-</code></pre>
-</div>
-<p>3.运行程序</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>react-native run android
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
+# 导出Shapfile
+select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
 </code></pre>
 </div>
 
@@ -363,20 +241,7 @@ npm install npm@latest -g
                 
                     
                 
-                    
-                
             
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
                 
                     
                 
@@ -387,8 +252,6 @@ npm install npm@latest -g
                 
                     
                 
-                    
-                
             
         
             
@@ -396,20 +259,7 @@ npm install npm@latest -g
                 
                     
                 
-                    
-                
             
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
                 
                     
                 
@@ -420,11 +270,14 @@ npm install npm@latest -g
                 
                     
                 
-                    
-                
+            
+        
+            
             
                 
                     
+                
+            
                 
                     
                 
@@ -435,11 +288,7 @@ npm install npm@latest -g
                 
                     
                 
-                    
-                
             
-                
-                    
                 
                     
                 
@@ -450,17 +299,7 @@ npm install npm@latest -g
                 
                     
                 
-                    
-                
             
-                
-                    
-                
-                    
-                
-            
-                
-                    
                 
                     
                 
@@ -471,11 +310,11 @@ npm install npm@latest -g
                 
                     
                 
-                    
-                
             
                 
                     
+                
+            
                 
                     
                 
@@ -485,6 +324,15 @@ npm install npm@latest -g
             
                 
                     
+                
+            
+                
+                    
+                
+            
+        
+            
+            
                 
                     
                 
@@ -495,13 +343,11 @@ npm install npm@latest -g
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a></p>
         
     </div>
 </div>

@@ -141,6 +141,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -153,6 +155,315 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-16
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#jenkins" title="Category: jenkins" rel="category">jenkins</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#jenkins" title="Tag: jenkins" rel="tag">jenkins</a>&nbsp;
+    
+        <a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#升级" id="markdown-toc-升级">升级</a></li>
+  <li><a href="#新建和配置项目" id="markdown-toc-新建和配置项目">新建和配置项目</a>    <ul>
+      <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><a href="https://jenkins.io/">Jenkins</a>安装及使用</p>
+
+<p>Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：</p>
+<ul>
+  <li>持续的软件版本发布/测试项目。</li>
+  <li>监控外部调用执行的工作。</li>
+  <li>对于Android来说，可以自动打包、Android lint 检查、自动测试等。</li>
+</ul>
+
+<hr />
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://www.cnblogs.com/wnfindbug/p/5784476.html">jenkins git gradle android自动化构建配置</a></p>
+
+<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
+
+<ul>
+  <li>
+    <p>JDK、SDK、GRADLE配置(包括环境变量)</p>
+  </li>
+  <li>
+    <p><a href="http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/">安装Tomcat</a></p>
+  </li>
+  <li>
+    <p>下载<a href="https://jenkins.io/doc/">Jenkins.war</a>并复制到Tomcat webapps目录下</p>
+  </li>
+  <li>
+    <p>配置Jenkins环境变量(启动web容器之前)
+1.Windows
+Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkins 。
+可以通过设置环境变量来修改，例如： JENKINS_HOME=C:\jenkins，然后重新启动jenkins。</p>
+  </li>
+  <li>
+    <p>Jenkins unlock</p>
+  </li>
+</ul>
+
+<p>打开主目录找到改文件(windows用notpad++打开password文件)</p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins_unlock.jpg" alt="" /></p>
+
+<ul>
+  <li>
+    <p>配置Plugin</p>
+  </li>
+  <li>
+    <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）一定要先配置，后面配会比较麻烦</p>
+  </li>
+  <li>
+    <p>系统配置
+1.配置环境变量</p>
+
+    <ul>
+      <li>
+        <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a></p>
+      </li>
+      <li>
+        <p>AndrodSDK</p>
+
+        <p>1.<a href="">下载</a></p>
+      </li>
+      <li>
+        <p>Gradle
+1.<a href="http://services.gradle.org/distributions">下载</a>
+2.设置环境变量
+3.
+2.配置全局Tools</p>
+      </li>
+    </ul>
+
+    <p>3.配置邮件服务</p>
+
+    <ul>
+      <li>在系统设置中找到Jenkins Locaction项填入Jenkins URL和系统管理员邮件地址，系统管理员邮件地址一定要配置，否则发不了邮件通知。因为邮件通知都是由系统管理员的邮箱发出来的。</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193043944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。</li>
+    </ul>
+
+    <p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E9%85%8D%E7%BD%AE.png" alt="" /></p>
+
+    <ul>
+      <li>配好以后勾选“通过发送测试邮件测试配置”</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193124369?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>填入接收测试邮件的地址，点击“Test configuration”。如果配置正确就会在下面显示Email was successfully sent</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193149854?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <p>2.配置Gradle环境</p>
+    <ul>
+      <li>
+        <p><a href="http://services.gradle.org/distributions">下载地址</a></p>
+      </li>
+      <li>
+        <p>上传到linux并解压： unzip gradle-2.14.1-all.zip</p>
+      </li>
+      <li>
+        <p>配置环境变量：</p>
+      </li>
+    </ul>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
+  export PATH=$PATH:$GRADLE_HOME/bin
+</code></pre>
+    </div>
+    <p>　</p>
+    <ul>
+      <li>
+        <p>source命令使配置生效：source .bash_profile(source 文件名)</p>
+      </li>
+      <li>
+        <p>检验配置是否生效：echo $GRADLE_HOME</p>
+      </li>
+    </ul>
+
+    <p>3.配置Java环境</p>
+
+    <ul>
+      <li>配置环境变量：</li>
+    </ul>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+  export PATH=$JAVA_HOME/bin:$PATH:
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p>　</p>
+
+<h3 id="升级">升级</h3>
+
+<hr />
+
+<h3 id="新建和配置项目">新建和配置项目</h3>
+
+<p><a href="http://wangkuiwu.github.io/2015/08/07/jenkins-02/">教程</a></p>
+
+<ul>
+  <li>导出编译文件</li>
+</ul>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-out.png" alt="" /></p>
+
+<ul>
+  <li>构建</li>
+</ul>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-build.png" alt="" /></p>
+
+<h4 id="常见问题及解决方法">常见问题及解决方法</h4>
+
+<p><strong>登陆失败</strong></p>
+
+<p>提示登陆信息无效</p>
+
+<p><strong>解决方法</strong></p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
+  </li>
+  <li>
+    <p>打开config.xml文件并修改配置信息(windows系统可能会保存在这个路径下C:\Windows\System32\config\systemprofile)</p>
+  </li>
+</ul>
+
+<pre class="prettyprint lang-xml">
+
+ &lt;!--修改成false--&gt;
+ &lt;useSecurity&gt;true&lt;/useSecurity&gt;
+ &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
+ &lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
+ &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
+ &lt;/authorizationStrategy&gt;
+ &lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
+   &lt;disableSignup&gt;true&lt;/disableSignup&gt;
+   &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
+ &lt;/securityRealm&gt;
+ 
+</pre>
+
+<p><strong>SDK许可问题</strong></p>
+
+<p><strong>解决办法</strong></p>
+
+<ul>
+  <li>Linux</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "$ANDROID_HOME/licenses"
+echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" &gt; "$ANDROID_HOME/licenses/android-sdk-license"
+</code></pre>
+</div>
+<ul>
+  <li>Windows</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "%ANDROID_HOME%\licenses"
+echo |set /p="8933bad161af4178b1185d1a37fbf41ea5269c55" &gt;"%ANDROID_HOME%\licenses\android-sdk-license"
+</code></pre>
+</div>
+
+<ul>
+  <li>配置运行权限</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+chmod a+x startup.sh
+chmod +x catalina.sh
+</code></p>
+
+<ul>
+  <li>配置环境变量</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+open -e .bash_profile
+export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
+</code></p>
+
+<ul>
+  <li>启动Tomcat</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+startup.sh
+</code></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -718,7 +1029,13 @@ shutdown.sh 关闭Tomcat
 <h3 id="相关网站">相关网站</h3>
 
 <ul>
-  <li><a href="http://www.osgeo.org/">OSGeo</a></li>
+  <li>
+    <p><a href="http://www.osgeo.org/">OSGeo</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.opengeospatial.org/">OGC</a>（开放地理空间联盟）
+是一个致力于为全球地理空间社区制定优质开放标准的国际非营利组织。这些标准是通过协商一致的过程完成的，任何人都可以免费使用来改善世界地理空间数据的共享。</p>
+  </li>
 </ul>
 
 <h3 id="技术路线">技术路线</h3>
@@ -890,114 +1207,6 @@ dependencies {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-11
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
-  <li><a href="#android初级" id="markdown-toc-android初级">Android初级</a></li>
-  <li><a href="#android中级" id="markdown-toc-android中级">Android中级</a></li>
-  <li><a href="#android高级" id="markdown-toc-android高级">Android高级</a></li>
-</ul>
-
-<p>Android学习路线</p>
-
-<h3 id="基础知识">基础知识</h3>
-
-<ul>
-  <li>Java基础知识（Java线程）
-<a href="http://www.cnblogs.com/tjudzj/p/4443066.html">Java访问修饰符</a></li>
-  <li>开发坏境搭建（JDK、AS）</li>
-  <li><a href="http://wuhongsheng.top/2017/04/11/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Android开发代码规范</a></li>
-  <li>Android四大组件，Activity启动模式、生命周期管理，Fragement生命周期。</li>
-</ul>
-
-<h3 id="android初级">Android初级</h3>
-
-<ul>
-  <li>用户界面及自定义控件</li>
-  <li>资源文件的使用</li>
-  <li>数据持久化（Sqlite、File、Sharedpreferences）</li>
-  <li>MeterialDesign</li>
-  <li></li>
-</ul>
-
-<h3 id="android中级">Android中级</h3>
-
-<ul>
-  <li>图形和动画绘制</li>
-  <li>网络编程（Http、Socket、Bluetooth、NFC）</li>
-  <li>屏幕适配（dp和px换算）</li>
-  <li>单元测试</li>
-  <li>进程间通信（4种方式）</li>
-</ul>
-
-<h3 id="android高级">Android高级</h3>
-
-<ul>
-  <li>NDK编程</li>
-  <li>传感器应用</li>
-  <li>地图应用</li>
-  <li>跨平台开发</li>
-  <li>Android性能优化（UI、电量、内存）</li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1008,10 +1217,10 @@ dependencies {
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">2/4</span>
+          <span class="page_number ">2/5</span>
           
             <a href="/page3" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page4" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page5" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -1024,6 +1233,8 @@ dependencies {
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></li>
                     
                         <li><a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></li>
                     
@@ -1042,8 +1253,6 @@ dependencies {
                         <li><a href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a></li>
-                    
-                        <li><a href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -1213,6 +1422,15 @@ dependencies {
                         <a href="/category/#Linux" class="categories-list-item" cate="Linux">
                             <span class="name">
                                 Linux
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#DB" class="categories-list-item" cate="DB">
+                            <span class="name">
+                                DB
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1430,6 +1648,13 @@ dependencies {
                       
                       
                       <a href="/tag/#Linux" style="font-size: 9pt; color: #999;">Linux</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Spatialite" style="font-size: 9pt; color: #999;">Spatialite</a>
                     
                 </div>
             </div>

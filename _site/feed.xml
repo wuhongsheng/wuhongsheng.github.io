@@ -5,9 +5,48 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 22 Aug 2017 09:52:37 +0800</pubDate>
-    <lastBuildDate>Tue, 22 Aug 2017 09:52:37 +0800</lastBuildDate>
+    <pubDate>Fri, 08 Sep 2017 08:46:08 +0800</pubDate>
+    <lastBuildDate>Fri, 08 Sep 2017 08:46:08 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Spatialite使用从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用sql语句&quot; id=&quot;markdown-toc-常用sql语句&quot;&gt;常用SQL语句()&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Sptialite使用从入门到放弃
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;a href=&quot;http://www.gaia-gis.it/gaia-sins/&quot;&gt;官网&lt;/a&gt;
+
+&lt;a href=&quot;http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html&quot;&gt;spatialite-cookbook&lt;/a&gt;
+
+&lt;h3 id=&quot;常用sql语句&quot;&gt;常用SQL语句()&lt;/h3&gt;
+
+CGCS2000 4490(国家2000坐标系SRID)
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 插入点数据
+INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
+
+# 导出Shapfile
+select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 30 Aug 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>Spatialite</category>
+        
+        
+        <category>DB</category>
+        
+      </item>
     
       <item>
         <title>Centos使用从入门到放弃</title>
@@ -15,6 +54,8 @@
   &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#常用命令和方法以阿里云centos为例&quot; id=&quot;markdown-toc-常用命令和方法以阿里云centos为例&quot;&gt;常用命令和方法(以阿里云Centos为例)&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#安装apache&quot; id=&quot;markdown-toc-安装apache&quot;&gt;安装Apache&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#安装php及扩展&quot; id=&quot;markdown-toc-安装php及扩展&quot;&gt;安装PHP及扩展&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#安装git&quot; id=&quot;markdown-toc-安装git&quot;&gt;安装Git&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -44,6 +85,39 @@ CentOS（Community Enterprise Operating System，中文意思是：社区企业�
   &lt;li&gt;测试安装
 访问服务器公网地址可以看到Apache说明安装成功&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h4 id=&quot;安装php及扩展&quot;&gt;安装PHP及扩展&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install php php-devel
+
+# yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
+
+安装完需要重启Apache
+# httpd restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;安装git&quot;&gt;安装Git&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install git
+查看版本
+# git version
+
+配置Git用户信息
+# git config --global user.name &quot;woider&quot;
+# git config --global user.email &quot;woider@gmail.com&quot;
+
+查看ssh key 是否存在,如果不存在需要生成
+# ls -al ~/.ssh
+
+生成ssh key(生成 ssh key 过程中，会让你填写 passphrase，连按三次回车跳过即可)
+# ssh-keygen -t rsa -C &quot;woider@gmail.com&quot; 
+
+查看ssh key(id_rsa 为私钥，id_rsa.pub 为公钥  SSH KEY 公钥，用于 GitHub 身份验证)
+登录 GitHub，打开 Personal settings 页面，选择 SSH and GPG keys 选项：
+# vim ~/.ssh/id_rsa.pub
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
         <pubDate>Wed, 16 Aug 2017 16:14:54 +0800</pubDate>
@@ -925,103 +999,6 @@ Android Apk反编译学习路线
         
         
         <category>反编译</category>
-        
-      </item>
-    
-      <item>
-        <title>GIS 开发从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#相关网站&quot; id=&quot;markdown-toc-相关网站&quot;&gt;相关网站&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#技术路线&quot; id=&quot;markdown-toc-技术路线&quot;&gt;技术路线&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#开源gis&quot; id=&quot;markdown-toc-开源gis&quot;&gt;开源GIS&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#商业gis&quot; id=&quot;markdown-toc-商业gis&quot;&gt;商业GIS&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#主要技术&quot; id=&quot;markdown-toc-主要技术&quot;&gt;主要技术&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#投影转换和坐标校正&quot; id=&quot;markdown-toc-投影转换和坐标校正&quot;&gt;投影转换和坐标校正&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-GIS学习路线
-
-&lt;h3 id=&quot;相关网站&quot;&gt;相关网站&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.osgeo.org/&quot;&gt;OSGeo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;技术路线&quot;&gt;技术路线&lt;/h3&gt;
-
-&lt;h5 id=&quot;开源gis&quot;&gt;开源GIS&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;postgis+geoserver/geotools+ol/leaflet&lt;/li&gt;
-&lt;/ul&gt;
-
-桌面GIS - QGIS，OpenEV
-
-GIS工作站 - GRASS，OSSIM
-
-GIS开发工具包 - GDAL / OGR，地理工具
-
-地理统计 - GNU R
-
-Web映射服务器 - MapGuide开源，Mapserver，GeoServer
-
-网页地图客户端 - MapBuilder
-
-元数据服务器 - Isite
-
-空间数据引擎 - PostGIS，myGIS
-
-C／S数据库 - PostgreSQL，mySQL，SQLite
-
-&lt;ul&gt;
-  &lt;li&gt;
-    矢量切片：
-
-    &lt;ol&gt;
-      &lt;li&gt;Mapbox&lt;/li&gt;
-      &lt;li&gt;Geoserver&lt;/li&gt;
-      &lt;li&gt;titlecache工具可以切成geojson&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    最短路径分析
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-postgresql + postgis+ pgrouting
-
-&lt;h5 id=&quot;商业gis&quot;&gt;商业GIS&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    Arcgis平台
-  &lt;/li&gt;
-  &lt;li&gt;
-    超图平台
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;主要技术&quot;&gt;主要技术&lt;/h3&gt;
-
-&lt;h4 id=&quot;投影转换和坐标校正&quot;&gt;投影转换和坐标校正&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://trac.osgeo.org/proj4j/&quot;&gt;Proj4J&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Wed, 31 May 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>GIS</category>
-        
-        
-        <category>GIS</category>
         
       </item>
     

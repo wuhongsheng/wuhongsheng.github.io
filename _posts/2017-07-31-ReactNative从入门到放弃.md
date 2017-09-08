@@ -116,11 +116,12 @@ React Native unable to load script from assets index.android.bundle on windows
 **解决办法**
 
 1.在工程目录里建assets目录
+
 2.运行命令
 ```
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 ```
-3.
+3.运行程序
 ```
 react-native run android
 ```
