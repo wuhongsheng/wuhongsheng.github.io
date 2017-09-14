@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Oracle使用从入门到放弃</title>
-    <meta name="description" content="  常用SQLOracle使用从入门到放弃常用SQL  主键自增长--首先建一个表TESTcreate table TEST(  NID int PRIMARY KEY,  test1 varchar2(20),  test2 varchar2(20),  test3 varchar2(20),  test4 v...">
+    <meta name="description" content="  常用SQLOracle使用从入门到放弃常用SQL  主键自增长--首先建一个表TESTcreate table BUSI_UPLOADINFO(  ID int PRIMARY KEY,  ENENTTYPE int,  EVNNTSUBTYPE INT,  lAT number,  lON number, ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -222,15 +222,54 @@
 
 <div class="highlighter-rouge"><pre class="highlight"><code>--首先建一个表TEST
 
-create table TEST
+create table BUSI_UPLOADINFO
 (
-  NID int PRIMARY KEY,
-  test1 varchar2(20),
-  test2 varchar2(20),
-  test3 varchar2(20),
-  test4 varchar2(20),
-  test5 varchar2(20)
+  ID int PRIMARY KEY,
+  ENENTTYPE int,
+  EVNNTSUBTYPE INT,
+  lAT number,
+  lON number,
+  INFO varchar2(100),
+  UPLOADTYPE int,
+  USERID Int,
+  USERNAME varchar2(20),
+  PHONE number,
+   REMARK varchar2(100),
+   REMARK1 varchar2(100),
+   REMARK2 varchar2(100),
+  ADDRESS VARCHAR2(100)
+
 )
+/
+COMMENT ON TABLE BUSI_UPLOADINFO IS '业务表-上报事件表'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.ID IS '主键'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.ENENTTYPE IS '事件类型'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.EVNNTSUBTYPE IS '事件子类型'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.lAT IS '纬度'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.LON IS '经度'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK1 IS '备用字段'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK2 IS '备用字段'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.ADDRESS IS '地址信息'
 
 -- 建一个序列
 create sequence SEQ_TEST
