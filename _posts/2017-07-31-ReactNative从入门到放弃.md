@@ -20,17 +20,13 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
 
 ## 环境配置
 
+```
 1.安装node.js
 
 2.安装react-native命令行工具
-
-```
 npm install -g react-native-cli
-```
 
 3.新建项目
-
-```
 react-native init [ProjectName]
 ```
 
@@ -102,12 +98,15 @@ npm install npm@latest -g
 
 **解决办法**
 
+```
 1.确定自己的环境配置是否有问题
 2.打开终端，输入命令行
-```
 brew install wget
-```
+
 3.npm config set registry=http://registry.npm.taobao.org/
+
+```
+
 
 **问题描述**
 ```
@@ -115,14 +114,13 @@ React Native unable to load script from assets index.android.bundle on windows
 ```
 **解决办法**
 
+```
 1.在工程目录里建assets目录
 
 2.运行命令
-```
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
-```
+
 3.运行程序
-```
 react-native run android
 ```
 ```

@@ -230,17 +230,13 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
 
 <h2 id="环境配置">环境配置</h2>
 
-<p>1.安装node.js</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1.安装node.js
 
-<p>2.安装react-native命令行工具</p>
+2.安装react-native命令行工具
+npm install -g react-native-cli
 
-<div class="highlighter-rouge"><pre class="highlight"><code>npm install -g react-native-cli
-</code></pre>
-</div>
-
-<p>3.新建项目</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>react-native init [ProjectName]
+3.新建项目
+react-native init [ProjectName]
 </code></pre>
 </div>
 
@@ -325,12 +321,14 @@ npm install npm@latest -g
 
 <p><strong>解决办法</strong></p>
 
-<p>1.确定自己的环境配置是否有问题
-2.打开终端，输入命令行</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>brew install wget
+<div class="highlighter-rouge"><pre class="highlight"><code>1.确定自己的环境配置是否有问题
+2.打开终端，输入命令行
+brew install wget
+
+3.npm config set registry=http://registry.npm.taobao.org/
+
 </code></pre>
 </div>
-<p>3.npm config set registry=http://registry.npm.taobao.org/</p>
 
 <p><strong>问题描述</strong></p>
 <div class="highlighter-rouge"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
@@ -338,14 +336,13 @@ npm install npm@latest -g
 </div>
 <p><strong>解决办法</strong></p>
 
-<p>1.在工程目录里建assets目录</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1.在工程目录里建assets目录
 
-<p>2.运行命令</p>
-<div class="highlighter-rouge"><pre class="highlight"><code> react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
-</code></pre>
-</div>
-<p>3.运行程序</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>react-native run android
+2.运行命令
+ react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+3.运行程序
+react-native run android
 </code></pre>
 </div>
 <div class="highlighter-rouge"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
@@ -366,24 +363,6 @@ npm install npm@latest -g
                     
                 
             
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
                 
                     
                 
@@ -423,6 +402,39 @@ npm install npm@latest -g
                     
                 
             
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
                 
                     
                 
@@ -473,15 +485,6 @@ npm install npm@latest -g
                 
                     
                 
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
             
                 
                     

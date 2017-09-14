@@ -158,6 +158,152 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-04-12
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#前提" id="markdown-toc-前提">前提</a>    <ul>
+      <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+    </ul>
+  </li>
+  <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
+      <li><a href="#adb端口占用" id="markdown-toc-adb端口占用">adb端口占用</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>自从换了Mac后adb经常出现问题（经验不足），所以写此篇记录一下常用的adb命令以及一些常见问题解决方法。</p>
+
+<h2 id="前提">前提</h2>
+<p>要想在Mac或Windows上直接使用adb命令，需要配置环境变量，以Mac为例，配置方法如下：</p>
+<ul>
+  <li>打开终端输入 touch .bash_profile 更新配置文件，如果不存在自动创建</li>
+  <li>open -e .bash_profile 打开配置文件</li>
+  <li>输入如下内容并保存
+    <div class="highlighter-rouge"><pre class="highlight"><code>export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
+export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
+</code></pre>
+    </div>
+    <h3 id="常用命令">常用命令</h3>
+  </li>
+  <li>adb nodaemon server   查看adb 端口是否有占用</li>
+  <li>lsof -i:5037 查看adb端口占用进程</li>
+  <li>rm -rf ~/.android 重置本地签名文件</li>
+  <li>killalladb 结束所有adb相关进程</li>
+  <li>未完待续……</li>
+</ul>
+
+<hr />
+
+<h2 id="可能出现的问题">可能出现的问题</h2>
+
+<h3 id="adb端口占用">adb端口占用</h3>
+
+<p><strong>错误代码：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
+</code></pre>
+</div>
+
+<p><strong>解决方法：</strong></p>
+
+<ul>
+  <li>killall adb 然后 重启Android Studio</li>
+  <li>如果上面方法无效，请检查是否重复设置Android环境变量</li>
+  <li>还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。</li>
+  <li>open sdk manager and installed all android sdk tools and done.</li>
+  <li>Mac防火墙设置原因</li>
+  <li>查看AS debugger 端口是否被占用 lsof -i:63341</li>
+</ul>
+
+<p><strong>错误信息：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ adb devices
+List of devices attached
+* daemon not running. starting it now at tcp:5037 *
+* daemon started successfully *
+** daemon still not running
+error: cannot connect to daemon at tcp:5037: Operation timed out
+</code></pre>
+</div>
+<p><strong>解决方法：</strong></p>
+<ul>
+  <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。</li>
+</ul>
+
+<p><strong>错误信息：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8606 for debugger
+</code></pre>
+</div>
+
+<p><strong>解决方法：</strong></p>
+
+<ul>
+  <li>在Debugger Configuration 设置Debuger Type 为 Java</li>
+</ul>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/04/04/Jekyll-%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">Jekyll 搭建静态博客</a>
                 </h2>
                 <div class="label">
@@ -247,6 +393,8 @@
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
+                    
                         <li><a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></li>
                     
                         <li><a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></li>
@@ -264,8 +412,6 @@
                         <li><a href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a></li>
                     
                 </ul>
             </div>
@@ -445,7 +591,7 @@
                             <span class="name">
                                 DB
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -668,6 +814,20 @@
                       
                       
                       <a href="/tag/#Spatialite" style="font-size: 9pt; color: #999;">Spatialite</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Oracle" style="font-size: 9pt; color: #999;">Oracle</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#DB" style="font-size: 9pt; color: #999;">DB</a>
                     
                 </div>
             </div>

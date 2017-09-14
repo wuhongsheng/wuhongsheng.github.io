@@ -158,6 +158,111 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-09-14
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a>&nbsp;
+    
+        <a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常用sql" id="markdown-toc-常用sql">常用SQL</a></li>
+</ul>
+
+<p>Oracle使用从入门到放弃</p>
+
+<h3 id="常用sql">常用SQL</h3>
+
+<ul>
+  <li>主键自增长</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>--首先建一个表TEST
+
+create table TEST
+(
+  NID int PRIMARY KEY,
+  test1 varchar2(20),
+  test2 varchar2(20),
+  test3 varchar2(20),
+  test4 varchar2(20),
+  test5 varchar2(20)
+)
+
+-- 建一个序列
+create sequence SEQ_TEST
+minvalue 1        --最小值
+nomaxvalue        --不设置最大值
+start with 1      --从1开始计数
+increment by 1    --每次加1个
+nocycle           --一直累加，不循环
+nocache;          --不建缓冲区
+
+以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
+你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
+
+CREATE OR REPLACE TRIGGER tg_test 
+BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
+begin
+select seq_test.nextval into:new.nid from dual;
+end;
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a>
                 </h2>
                 <div class="label">
@@ -683,118 +788,6 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-20
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#百度地图" title="Category: 百度地图" rel="category">百度地图</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
-    
-        <a href="/tag/#百度地图" title="Tag: 百度地图" rel="tag">百度地图</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常用方法" id="markdown-toc-常用方法">常用方法</a></li>
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-</ul>
-
-<p><a href="http://lbsyun.baidu.com/">百度地图</a>开发</p>
-
-<h3 id="常用方法">常用方法</h3>
-
-<ul>
-  <li>坐标转换</li>
-</ul>
-
-<pre class="prettyprint lang-java">
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
- * 将 BD-09 坐标转换成GCJ-02 坐标 
- * bd_lat * @param bd_lon * @return
- */
- public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
-        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
-        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
-        double gg_lon = z * Math.cos(theta);
-        double gg_lat = z * Math.sin(theta);
-        return new TitanLocation(gg_lon, gg_lat);
-
- }
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
- * @param gg_lat
- * @param gg_lon
- */
- public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
-        double x = gg_lon, y = gg_lat;
-        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
-        double bd_lon = z * Math.cos(theta) + 0.0065;
-        double bd_lat = z * Math.sin(theta) + 0.006;
-        return new TitanLocation(bd_lon, bd_lat);
- }
-</pre>
-
-<h3 id="常见问题">常见问题</h3>
-
-<p><strong>错误描述</strong></p>
-
-<p><strong>解决方法</strong></p>
-
-<p>集成百度导航需要将 targetSdkVersion 设为23</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -822,6 +815,8 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
+                    
                         <li><a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></li>
                     
                         <li><a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></li>
@@ -839,8 +834,6 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
                         <li><a href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a></li>
                     
                 </ul>
             </div>
@@ -1020,7 +1013,7 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
                             <span class="name">
                                 DB
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1243,6 +1236,20 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
                       
                       
                       <a href="/tag/#Spatialite" style="font-size: 9pt; color: #999;">Spatialite</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Oracle" style="font-size: 9pt; color: #999;">Oracle</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#DB" style="font-size: 9pt; color: #999;">DB</a>
                     
                 </div>
             </div>

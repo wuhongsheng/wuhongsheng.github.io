@@ -158,6 +158,105 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Kotlin" title="Category: Kotlin" rel="category">Kotlin</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Kotlin" title="Tag: Kotlin" rel="tag">Kotlin</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#相关网站及资料" id="markdown-toc-相关网站及资料">相关网站及资料</a></li>
+  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
+</ul>
+
+<p>Kotlin学习路线</p>
+
+<h3 id="相关网站及资料">相关网站及资料</h3>
+
+<ul>
+  <li>
+    <p><a href="http://kotlinlang.org/docs/tutorials/kotlin-android.html">Kotlin官网</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">《Kotlin for android developers》中文翻译版</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md">from-java-to-kotlin</a></p>
+  </li>
+  <li>
+    <p><a href="https://juejin.im/post/591dd9f544d904006c9fbb96">Kotlin 资源大全</a></p>
+  </li>
+</ul>
+
+<h3 id="遇到的问题">遇到的问题</h3>
+
+<p><strong>问题描述</strong></p>
+
+<p>kotlin与Databinding冲突</p>
+
+<p><strong>解决办法</strong>
+需要在app moudle的build.gradle里面添加</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>kapt {
+    generateStubs = true
+}
+dependencies {
+    kapt 'com.android.databinding:compiler:2.2.3'//与Gradle版本一致
+}
+</code></pre>
+</div>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a>
                 </h2>
                 <div class="label">
@@ -951,139 +1050,6 @@ public class GreenDaoManager {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-08
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#uiueux" id="markdown-toc-uiueux">UI/UE/UX</a>    <ul>
-      <li><a href="#rippledrawable---波纹效果" id="markdown-toc-rippledrawable---波纹效果">RippleDrawable - 波纹效果</a></li>
-      <li><a href="#vectordrawable使用" id="markdown-toc-vectordrawable使用">VectorDrawable使用</a>        <ul>
-          <li><a href="#vectordrawable优点" id="markdown-toc-vectordrawable优点">VectorDrawable优点</a></li>
-          <li><a href="#vectordrawable使用-1" id="markdown-toc-vectordrawable使用-1">VectorDrawable使用</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p>Android 开发技巧</p>
-
-<h3 id="uiueux">UI/UE/UX</h3>
-
-<h4 id="rippledrawable---波纹效果">RippleDrawable - 波纹效果</h4>
-
-<ul>
-  <li>使用Android 提供的属性</li>
-</ul>
-
-<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackground"</code></p>
-
-<p>扩散到View边界</p>
-
-<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackgroundBorderless</code></p>
-
-<p>设置后，会从孩子往父亲找一个依附的色。如果View往上找的时候，亲生父亲没背景色，会继续向上查找直到最顶端。找到了最顶端的爷爷，这个时候才绘制。然而，如果父亲的兄弟又绘制了颜色，且盖住了最顶端的绘制，会导致看不到效果。如果有一定的透明度，结果就显而易见了。
-特别注意：
-当把硬件加速给关闭时，这个效果是没有的。
-这是API 21的新属性，老版本无法使用.</p>
-
-<ul>
-  <li>自定义</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;!-- A green ripple drawn atop a black rectangle. --&gt;
-&lt;ripple android:color="#ff00ff00"&gt;
-    &lt;item android:drawable="@android:color/black" /&gt;
-&lt;/ripple&gt;
- 
-&lt;!-- A blue ripple drawn atop a drawable resource. --&gt;
-&lt;ripple android:color="#ff0000ff"&gt;
-    &lt;item android:drawable="@drawable/my_drawable" /&gt;
-&lt;/ripple&gt;
-</code></pre>
-</div>
-
-<p>android:color中是点击响应色，也是波纹扩散色。
-item中是正常状态下的显示。</p>
-
-<p>一般使用时会和原有的selector配合，原有的selector负责5.0以下显示效果，
-新的selector内部含有ripple标签放在drawable-v21中，保证点击效果。</p>
-
-<hr />
-
-<h4 id="vectordrawable使用">VectorDrawable使用</h4>
-
-<h6 id="vectordrawable优点">VectorDrawable优点</h6>
-
-<ul>
-  <li>
-    <p>VectorDrawable图像可以自动进行适配，不需要通过分辨率来设置不同的图片Vector图像可以大幅度减少图像的体积。</p>
-  </li>
-  <li>
-    <p>svg图像导出工具方便，从而转换成Vector图像功能强大，前端已经广泛使用。</p>
-  </li>
-</ul>
-
-<h6 id="vectordrawable使用-1">VectorDrawable使用</h6>
-
-<p><a href="http://www.jianshu.com/p/18c9bd860394">VectorDrawable—5.0</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1111,6 +1077,8 @@ item中是正常状态下的显示。</p>
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
+                    
                         <li><a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></li>
                     
                         <li><a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></li>
@@ -1128,8 +1096,6 @@ item中是正常状态下的显示。</p>
                         <li><a href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a></li>
                     
                 </ul>
             </div>
@@ -1309,7 +1275,7 @@ item中是正常状态下的显示。</p>
                             <span class="name">
                                 DB
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1532,6 +1498,20 @@ item中是正常状态下的显示。</p>
                       
                       
                       <a href="/tag/#Spatialite" style="font-size: 9pt; color: #999;">Spatialite</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Oracle" style="font-size: 9pt; color: #999;">Oracle</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#DB" style="font-size: 9pt; color: #999;">DB</a>
                     
                 </div>
             </div>

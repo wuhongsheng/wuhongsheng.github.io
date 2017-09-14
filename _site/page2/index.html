@@ -158,6 +158,118 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-20
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#百度地图" title="Category: 百度地图" rel="category">百度地图</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
+    
+        <a href="/tag/#百度地图" title="Tag: 百度地图" rel="tag">百度地图</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常用方法" id="markdown-toc-常用方法">常用方法</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+</ul>
+
+<p><a href="http://lbsyun.baidu.com/">百度地图</a>开发</p>
+
+<h3 id="常用方法">常用方法</h3>
+
+<ul>
+  <li>坐标转换</li>
+</ul>
+
+<pre class="prettyprint lang-java">
+/**
+ * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
+ * 将 BD-09 坐标转换成GCJ-02 坐标 
+ * bd_lat * @param bd_lon * @return
+ */
+ public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
+        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
+        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
+        double gg_lon = z * Math.cos(theta);
+        double gg_lat = z * Math.sin(theta);
+        return new TitanLocation(gg_lon, gg_lat);
+
+ }
+/**
+ * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
+ * @param gg_lat
+ * @param gg_lon
+ */
+ public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
+        double x = gg_lon, y = gg_lat;
+        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
+        double bd_lon = z * Math.cos(theta) + 0.0065;
+        double bd_lat = z * Math.sin(theta) + 0.006;
+        return new TitanLocation(bd_lon, bd_lat);
+ }
+</pre>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p><strong>错误描述</strong></p>
+
+<p><strong>解决方法</strong></p>
+
+<p>集成百度导航需要将 targetSdkVersion 设为23</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a>
                 </h2>
                 <div class="label">
@@ -1108,105 +1220,6 @@ shutdown.sh 关闭Tomcat
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-30
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Kotlin" title="Category: Kotlin" rel="category">Kotlin</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Kotlin" title="Tag: Kotlin" rel="tag">Kotlin</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#相关网站及资料" id="markdown-toc-相关网站及资料">相关网站及资料</a></li>
-  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
-</ul>
-
-<p>Kotlin学习路线</p>
-
-<h3 id="相关网站及资料">相关网站及资料</h3>
-
-<ul>
-  <li>
-    <p><a href="http://kotlinlang.org/docs/tutorials/kotlin-android.html">Kotlin官网</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">《Kotlin for android developers》中文翻译版</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md">from-java-to-kotlin</a></p>
-  </li>
-  <li>
-    <p><a href="https://juejin.im/post/591dd9f544d904006c9fbb96">Kotlin 资源大全</a></p>
-  </li>
-</ul>
-
-<h3 id="遇到的问题">遇到的问题</h3>
-
-<p><strong>问题描述</strong></p>
-
-<p>kotlin与Databinding冲突</p>
-
-<p><strong>解决办法</strong>
-需要在app moudle的build.gradle里面添加</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>kapt {
-    generateStubs = true
-}
-dependencies {
-    kapt 'com.android.databinding:compiler:2.2.3'//与Gradle版本一致
-}
-</code></pre>
-</div>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1234,6 +1247,8 @@ dependencies {
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
+                    
                         <li><a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></li>
                     
                         <li><a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></li>
@@ -1251,8 +1266,6 @@ dependencies {
                         <li><a href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a></li>
                     
                 </ul>
             </div>
@@ -1432,7 +1445,7 @@ dependencies {
                             <span class="name">
                                 DB
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1655,6 +1668,20 @@ dependencies {
                       
                       
                       <a href="/tag/#Spatialite" style="font-size: 9pt; color: #999;">Spatialite</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Oracle" style="font-size: 9pt; color: #999;">Oracle</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#DB" style="font-size: 9pt; color: #999;">DB</a>
                     
                 </div>
             </div>

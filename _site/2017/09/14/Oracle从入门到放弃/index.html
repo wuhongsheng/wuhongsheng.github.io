@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>GIS 开发从入门到放弃</title>
-    <meta name="description" content="  相关网站  技术路线          开源GIS      商业GIS        主要技术          投影转换和坐标校正      GIS学习路线相关网站      OSGeo        OGC（开放地理空间联盟）是一个致力于为全球地理空间社区制定优质开放标准的国际非营利组织。这些标准是通过...">
+    <title>Oracle使用从入门到放弃</title>
+    <meta name="description" content="  常用SQLOracle使用从入门到放弃常用SQL  主键自增长--首先建一个表TESTcreate table TEST(  NID int PRIMARY KEY,  test1 varchar2(20),  test2 varchar2(20),  test3 varchar2(20),  test4 v...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+    <link rel="canonical" href="http://localhost:4000/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -151,11 +151,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>GIS 开发从入门到放弃</h1>
+        <h1>Oracle使用从入门到放弃</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-05-31
+                <i class="fa fa-calendar"></i>2017-09-14
             </div>
 
             <div class="label-card">
@@ -176,7 +176,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
+        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
     
   
 
@@ -193,8 +193,11 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a-->
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>
+        <!--a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a-->
+        <a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a>&nbsp;
+    
+        <!--a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a-->
+        <a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a>
     
   
 
@@ -206,93 +209,48 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
-  <li><a href="#技术路线" id="markdown-toc-技术路线">技术路线</a>    <ul>
-      <li><a href="#开源gis" id="markdown-toc-开源gis">开源GIS</a></li>
-      <li><a href="#商业gis" id="markdown-toc-商业gis">商业GIS</a></li>
-    </ul>
-  </li>
-  <li><a href="#主要技术" id="markdown-toc-主要技术">主要技术</a>    <ul>
-      <li><a href="#投影转换和坐标校正" id="markdown-toc-投影转换和坐标校正">投影转换和坐标校正</a></li>
-    </ul>
-  </li>
+  <li><a href="#常用sql" id="markdown-toc-常用sql">常用SQL</a></li>
 </ul>
 
-<p>GIS学习路线</p>
+<p>Oracle使用从入门到放弃</p>
 
-<h3 id="相关网站">相关网站</h3>
+<h3 id="常用sql">常用SQL</h3>
 
 <ul>
-  <li>
-    <p><a href="http://www.osgeo.org/">OSGeo</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.opengeospatial.org/">OGC</a>（开放地理空间联盟）
-是一个致力于为全球地理空间社区制定优质开放标准的国际非营利组织。这些标准是通过协商一致的过程完成的，任何人都可以免费使用来改善世界地理空间数据的共享。</p>
-  </li>
+  <li>主键自增长</li>
 </ul>
 
-<h3 id="技术路线">技术路线</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>--首先建一个表TEST
 
-<h5 id="开源gis">开源GIS</h5>
+create table TEST
+(
+  NID int PRIMARY KEY,
+  test1 varchar2(20),
+  test2 varchar2(20),
+  test3 varchar2(20),
+  test4 varchar2(20),
+  test5 varchar2(20)
+)
 
-<ul>
-  <li>postgis+geoserver/geotools+ol/leaflet</li>
-</ul>
+-- 建一个序列
+create sequence SEQ_TEST
+minvalue 1        --最小值
+nomaxvalue        --不设置最大值
+start with 1      --从1开始计数
+increment by 1    --每次加1个
+nocycle           --一直累加，不循环
+nocache;          --不建缓冲区
 
-<p>桌面GIS - QGIS，OpenEV</p>
+以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
+你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
 
-<p>GIS工作站 - GRASS，OSSIM</p>
-
-<p>GIS开发工具包 - GDAL / OGR，地理工具</p>
-
-<p>地理统计 - GNU R</p>
-
-<p>Web映射服务器 - MapGuide开源，Mapserver，GeoServer</p>
-
-<p>网页地图客户端 - MapBuilder</p>
-
-<p>元数据服务器 - Isite</p>
-
-<p>空间数据引擎 - PostGIS，myGIS</p>
-
-<p>C／S数据库 - PostgreSQL，mySQL，SQLite</p>
-
-<ul>
-  <li>
-    <p>矢量切片：</p>
-
-    <ol>
-      <li>Mapbox</li>
-      <li>Geoserver</li>
-      <li>titlecache工具可以切成geojson</li>
-    </ol>
-  </li>
-  <li>
-    <p>最短路径分析</p>
-  </li>
-</ul>
-
-<p>postgresql + postgis+ pgrouting</p>
-
-<h5 id="商业gis">商业GIS</h5>
-
-<ul>
-  <li>
-    <p>Arcgis平台</p>
-  </li>
-  <li>
-    <p>超图平台</p>
-  </li>
-</ul>
-
-<h3 id="主要技术">主要技术</h3>
-
-<h4 id="投影转换和坐标校正">投影转换和坐标校正</h4>
-
-<ul>
-  <li><a href="http://trac.osgeo.org/proj4j/">Proj4J</a></li>
-</ul>
+CREATE OR REPLACE TRIGGER tg_test 
+BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
+begin
+select seq_test.nextval into:new.nid from dual;
+end;
+</code></pre>
+</div>
 
 
         </article>
@@ -305,7 +263,20 @@
                 
                     
                 
+                    
+                
             
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
                 
                     
                 
@@ -316,15 +287,6 @@
                 
                     
                 
-            
-        
-            
-            
-                
-                    
-                
-            
-                
                     
                 
             
@@ -334,14 +296,11 @@
                 
                     
                 
-            
-        
-            
-            
-                
                     
                 
             
+                
+                    
                 
                     
                 
@@ -352,26 +311,20 @@
                 
                     
                 
+                    
+                
             
         
             
             
                 
                     
-                        
-                        <h2 id="similar_posts">Similar Posts</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃
-                            
-                            </a>
-                        </li>
-                        
-                        
+                
                     
                 
             
+                
+                    
                 
                     
                 
@@ -382,7 +335,11 @@
                 
                     
                 
+                    
+                
             
+                
+                    
                 
                     
                 
@@ -393,7 +350,11 @@
                 
                     
                 
+                    
+                
             
+                
+                    
                 
                     
                 
@@ -404,7 +365,11 @@
                 
                     
                 
+                    
+                
             
+                
+                    
                 
                     
                 
@@ -412,22 +377,35 @@
                 
                     
                 
+                    
+                
             
         
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
         
-            </ul>
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a></p>
         
     </div>
 </div>
