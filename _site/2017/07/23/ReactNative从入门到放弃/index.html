@@ -212,7 +212,7 @@
   <li><a href="#环境配置" id="markdown-toc-环境配置">环境配置</a></li>
   <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a>    <ul>
       <li><a href="#升级新版本" id="markdown-toc-升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></a></li>
-      <li><a href="#运行方法" id="markdown-toc-运行方法">运行方法</a></li>
+      <li><a href="#运行调试方法" id="markdown-toc-运行调试方法">运行调试方法</a></li>
       <li><a href="#npm常用命令" id="markdown-toc-npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</a></li>
     </ul>
   </li>
@@ -244,33 +244,22 @@ react-native init [ProjectName]
 
 <h4 id="升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></h4>
 
-<ol>
-  <li>
-    <p>安装Git并设置环境变量</p>
-  </li>
-  <li>
-    <p>安装react-native-git-upgrade工具模块</p>
-  </li>
-</ol>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+1. 安装Git并设置环境变量
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ npm install -g react-native-git-upgrade
+2. 安装react-native-git-upgrade工具模块
+ $npm install -g react-native-git-upgrade
+
+3. 进入项目目录下运行更新命令
+ $ react-native-git-upgrade
+ 这样会直接把react native升级到最新版本
+ 或者是：
+ $ react-native-git-upgrade X.Y.Z
+ 这样把react native升级到指定的X.Y.Z版本
 </code></pre>
 </div>
 
-<ol>
-  <li>进入项目目录下运行更新命令</li>
-</ol>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ react-native-git-upgrade
-# 这样会直接把react native升级到最新版本
-
-# 或者是：
-
-$ react-native-git-upgrade X.Y.Z
-# 这样把react native升级到指定的X.Y.Z版本
-</code></pre>
-</div>
-<h4 id="运行方法">运行方法</h4>
+<h4 id="运行调试方法">运行调试方法</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>To run your app on iOS:
    cd /Users/whs/AwesomeProject
@@ -282,6 +271,9 @@ To run your app on Android:
    cd /Users/whs/AwesomeProject
    Have an Android emulator running (quickest way to get started), or a device connected
    react-native run-android
+
+Google浏览器调试地址
+http://localhost:8081/debugger-ui   
 </code></pre>
 </div>
 <h4 id="npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</h4>
@@ -289,6 +281,7 @@ To run your app on Android:
 npm install npm@latest -g
 </code></pre>
 </div>
+<hr />
 
 <h2 id="参考资料">参考资料</h2>
 
@@ -305,13 +298,25 @@ npm install npm@latest -g
   <li>
     <p><a href="https://facebook.github.io/react/">React</a></p>
   </li>
+  <li>
+    <p><a href="http://blog.csdn.net/ElinaVampire/article/details/51813677">ReactNative组件生命周期</a></p>
+  </li>
 </ul>
 
 <h3 id="常用组件">常用组件</h3>
 
 <ul>
-  <li><a href="https://github.com/mapbox/react-native-mapbox-gl">mapbox/react-native-mapbox-gl</a></li>
+  <li>
+    <p>UI框架</p>
+
+    <p>1.<a href="https://react-native-training.github.io/react-native-elements/">React Native UI Toolkit</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/mapbox/react-native-mapbox-gl">mapbox/react-native-mapbox-gl</a></p>
+  </li>
 </ul>
+
+<hr />
 
 <h3 id="常见问题">常见问题</h3>
 
@@ -342,9 +347,10 @@ brew install wget
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 
 3.运行程序
-react-native run android
+react-native run-android
 </code></pre>
 </div>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
 </code></pre>
 </div>

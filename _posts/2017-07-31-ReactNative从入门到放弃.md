@@ -35,26 +35,22 @@ react-native init [ProjectName]
 
 #### [升级新版本](http://reactnative.cn/docs/0.46/upgrading.html)
 
+```
+
 1. 安装Git并设置环境变量
 
 2. 安装react-native-git-upgrade工具模块
-
-```
-$ npm install -g react-native-git-upgrade
-```
+ $npm install -g react-native-git-upgrade
 
 3. 进入项目目录下运行更新命令
-
+ $ react-native-git-upgrade
+ 这样会直接把react native升级到最新版本
+ 或者是：
+ $ react-native-git-upgrade X.Y.Z
+ 这样把react native升级到指定的X.Y.Z版本
 ```
-$ react-native-git-upgrade
-# 这样会直接把react native升级到最新版本
 
-# 或者是：
-
-$ react-native-git-upgrade X.Y.Z
-# 这样把react native升级到指定的X.Y.Z版本
-```
-#### 运行方法
+#### 运行调试方法
 
 ```
 To run your app on iOS:
@@ -67,12 +63,16 @@ To run your app on Android:
    cd /Users/whs/AwesomeProject
    Have an Android emulator running (quickest way to get started), or a device connected
    react-native run-android
+
+Google浏览器调试地址
+http://localhost:8081/debugger-ui   
 ```
 #### [npm](https://www.npmjs.com/)常用命令
 ```
 #更新
 npm install npm@latest -g
 ```
+---
 
 ## 参考资料
 
@@ -84,11 +84,21 @@ npm install npm@latest -g
 
 * [React](https://facebook.github.io/react/)
 
+* [ReactNative组件生命周期](http://blog.csdn.net/ElinaVampire/article/details/51813677)
+
+
+
 ### 常用组件
+
+* UI框架
+
+  1.[React Native UI Toolkit](https://react-native-training.github.io/react-native-elements/)
+
 
 * [mapbox/react-native-mapbox-gl](https://github.com/mapbox/react-native-mapbox-gl)
 
 
+---
 
 ### 常见问题
 
@@ -121,8 +131,9 @@ React Native unable to load script from assets index.android.bundle on windows
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 
 3.运行程序
-react-native run android
+react-native run-android
 ```
+
 ```
 error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
 ```
