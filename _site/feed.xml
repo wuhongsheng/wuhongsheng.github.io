@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Sep 2017 13:32:00 +0800</pubDate>
-    <lastBuildDate>Fri, 22 Sep 2017 13:32:00 +0800</lastBuildDate>
+    <pubDate>Fri, 22 Sep 2017 15:02:18 +0800</pubDate>
+    <lastBuildDate>Fri, 22 Sep 2017 15:02:18 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1004,81 +1004,199 @@ class BaiduStockPipline(object):
       </item>
     
       <item>
-        <title>Tomcat安装从入门到放弃</title>
+        <title>Python数据分析与展示从入门到放弃</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#准备及安装以mac为例&quot; id=&quot;markdown-toc-准备及安装以mac为例&quot;&gt;准备及安装(以Mac为例)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#遇到的问题&quot; id=&quot;markdown-toc-遇到的问题&quot;&gt;遇到的问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#python开发工具的选择&quot; id=&quot;markdown-toc-python开发工具的选择&quot;&gt;Python开发工具的选择&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#文本类&quot; id=&quot;markdown-toc-文本类&quot;&gt;文本类&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#集成类ide&quot; id=&quot;markdown-toc-集成类ide&quot;&gt;集成类（IDE）&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#anaconda-ide基本使用&quot; id=&quot;markdown-toc-anaconda-ide基本使用&quot;&gt;&lt;a href=&quot;https://www.continuum.io&quot;&gt;Anaconda&lt;/a&gt; IDE基本使用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用库介绍&quot; id=&quot;markdown-toc-常用库介绍&quot;&gt;常用库介绍&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#实战&quot; id=&quot;markdown-toc-实战&quot;&gt;实战&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-Tomcat安装及使用
+Python数据分析与展示
+&lt;a href=&quot;https://pan.baidu.com/s/1hsrDKXI&quot;&gt;参考资料&lt;/a&gt;
 
-&lt;h3 id=&quot;准备及安装以mac为例&quot;&gt;准备及安装(以Mac为例)&lt;/h3&gt;
+&lt;h3 id=&quot;python开发工具的选择&quot;&gt;Python开发工具的选择&lt;/h3&gt;
+
+&lt;h4 id=&quot;文本类&quot;&gt;文本类&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IDLE  自带的、默认、代码一般不超过300行&lt;/li&gt;
+  &lt;li&gt;Notepad++&lt;/li&gt;
+  &lt;li&gt;Sublime Text  专业的编程体验&lt;/li&gt;
+  &lt;li&gt;Vim &amp;amp; Emacs&lt;/li&gt;
+  &lt;li&gt;Atom&lt;/li&gt;
+  &lt;li&gt;Komodo Edit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;集成类ide&quot;&gt;集成类（IDE）&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;a href=&quot;http://tomcat.apache.org/download-90.cgi&quot;&gt;官网下载&lt;/a&gt;
+    PyCharm  社区版免费、专业版收费
   &lt;/li&gt;
   &lt;li&gt;
-    解压并移动到系统目录下
+    Wing  收费、调试、版本控制、同步
+  &lt;/li&gt;
+  &lt;li&gt;
+    PyDev &amp;amp; Eclipse   开源开放、自定义使用相对复杂
+  &lt;/li&gt;
+  &lt;li&gt;
+    PTVS &amp;amp; Visual Studio  丰富的调试功能
+  &lt;/li&gt;
+  &lt;li&gt;
+    Anaconda &amp;amp; Spyder  开源免费、支持800个库、和Canopy由同一个人领导开发  用于科学计算
+  &lt;/li&gt;
+  &lt;li&gt;
+    Canopy  收费、用于科学计算、支持超过500个库
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mv  apache-tomcat-9.0.0.M21 /usr/local
+&lt;h3 id=&quot;anaconda-ide基本使用&quot;&gt;&lt;a href=&quot;https://www.continuum.io&quot;&gt;Anaconda&lt;/a&gt; IDE基本使用&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://www.continuum.io/downloads&quot;&gt;下载&lt;/a&gt;（分为命令行和图形化安装，两种安装方式没有区别）
+  &lt;/li&gt;
+  &lt;li&gt;
+    安装（以命令行安装为例）：进入文件目录执行&lt;code class=&quot;highlighter-rouge&quot;&gt;bash Anaconda3-4.4.0-MacOSX-x86_64.sh&lt;/code&gt; -&amp;gt;然后就让你确认条款和安装目录(一直按回车键)
+  &lt;/li&gt;
+  &lt;li&gt;
+    主要工具
+
+    ** conda 包管理和环境管理工具
+
+    升级：&lt;code class=&quot;highlighter-rouge&quot;&gt;conda update conda&lt;/code&gt;
+
+    ** Spyder 编程工具
+
+    ** IPython 交互式编程环境
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;常用库介绍&quot;&gt;常用库介绍&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;http://www.python-requests.org&quot;&gt;NumPy&lt;/a&gt;是一个开源的Python科学计算基础库
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        主要特性：
+
+        &lt;ul&gt;
+          &lt;li&gt;一个强大的N维数组对象 ndarray&lt;/li&gt;
+          &lt;li&gt;广播功能函数&lt;/li&gt;
+          &lt;li&gt;整合C/C++/Fortran代码的工具&lt;/li&gt;
+          &lt;li&gt;线性代数、傅里叶变换、随机数生成等功能&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        调用方式  &lt;code class=&quot;highlighter-rouge&quot;&gt;import numpy as np&lt;/code&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;&quot;&gt;PIL&lt;/a&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        安装
+      &lt;/li&gt;
+      &lt;li&gt;
+        调用方式 &lt;code class=&quot;highlighter-rouge&quot;&gt;from PIL import Image&lt;/code&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;http://matplotlib.org/&quot;&gt;matplotlib&lt;/a&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;调用方式 &lt;code class=&quot;highlighter-rouge&quot;&gt;import matplotlib.pyplot  as plt&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;http://pandas.pydata.org/&quot;&gt;pandas&lt;/a&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;调用方式 &lt;code class=&quot;highlighter-rouge&quot;&gt;import pandas  as pd&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;实战&quot;&gt;实战&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    图像手绘处理
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://www.crummy.com/software/BeautifulSoup/&quot;&gt;BeautifulSoup&lt;/a&gt;
+
+    安装：
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip  install beautifulsoup4
+pip3 install beautifulsoup4
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+    &lt;/div&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;配置运行权限&lt;/li&gt;
-&lt;/ul&gt;
+    调用方式：&lt;code class=&quot;highlighter-rouge&quot;&gt;from bs4 import beautifulsoup&lt;/code&gt;
 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-chmod a+x startup.sh
-chmod +x catalina.sh
-&lt;/code&gt;
+    用途：解析HTML标签
+  &lt;/li&gt;
+  &lt;li&gt;
+    Re(正则表达式)库是Python的标准库
 
-&lt;ul&gt;
-  &lt;li&gt;配置环境变量&lt;/li&gt;
-&lt;/ul&gt;
+    用途：
+调用方式：&lt;code class=&quot;highlighter-rouge&quot;&gt;import re&lt;/code&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://scrapy.org/&quot;&gt;Scrapy爬虫框架&lt;/a&gt;
 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-open -e .bash_profile
-export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
-&lt;/code&gt;
+    安装：&lt;code class=&quot;highlighter-rouge&quot;&gt;pip install scrapy&lt;/code&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;启动Tomcat&lt;/li&gt;
-&lt;/ul&gt;
+    测试：&lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy ‐h&lt;/code&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;startup.sh  启动Tomcat
-shutdown.sh 关闭Tomcat
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+    使用：
 
-&lt;h3 id=&quot;遇到的问题&quot;&gt;遇到的问题&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;初始化一个工程&lt;/li&gt;
+    &lt;/ul&gt;
 
-&lt;strong&gt;startup之后一闪而过服务端没启动&lt;/strong&gt;
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy startproject [projectnaem]&lt;/code&gt;
 
-&lt;strong&gt;解决办法&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;建一个爬虫&lt;/li&gt;
+    &lt;/ul&gt;
 
-修复配置文件打印log,配置一定的内存
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy genspider [spidername] [url]&lt;/code&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;进入Tomcat根目录-&amp;gt;bin-&amp;gt;catalina修改&lt;/li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        配置产生的爬虫
+      &lt;/li&gt;
+      &lt;li&gt;
+        运行爬虫
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy crawl [spidername]&lt;/code&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Wed, 14 Jun 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        <pubDate>Thu, 15 Jun 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
         
-        <category>Tomcat</category>
+        <category>Python</category>
         
-        <category>Mac</category>
-        
-        <category>服务器</category>
+        <category>数据分析</category>
         
         
-        <category>Tomcat</category>
+        <category>Python</category>
         
       </item>
     
