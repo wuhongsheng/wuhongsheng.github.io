@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Sep 2017 14:44:15 +0800</pubDate>
-    <lastBuildDate>Wed, 20 Sep 2017 14:44:15 +0800</lastBuildDate>
+    <pubDate>Fri, 22 Sep 2017 13:32:00 +0800</pubDate>
+    <lastBuildDate>Fri, 22 Sep 2017 13:32:00 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -23,7 +23,8 @@ Oracle使用从入门到放弃
   &lt;li&gt;主键自增长&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--首先建一个表TEST
+&lt;pre class=&quot;prettyprint lang-sql&quot;&gt;
+--首先建一个表TEST
 
 create table BUSI_UPLOADINFO
 (
@@ -83,7 +84,7 @@ increment by 1    --每次加1个
 nocycle           --一直累加，不循环
 nocache;          --不建缓冲区
 
-以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
+-- 以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
 你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
 
 CREATE OR REPLACE TRIGGER tg_test 
@@ -91,8 +92,7 @@ BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
 begin
 select seq_test.nextval into:new.nid from dual;
 end;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/pre&gt;
 
 </description>
         <pubDate>Thu, 14 Sep 2017 16:14:54 +0800</pubDate>
