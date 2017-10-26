@@ -645,6 +645,7 @@ public class GreenDaoManager {
           <li><a href="#vectordrawable使用-1" id="markdown-toc-vectordrawable使用-1">VectorDrawable使用</a></li>
         </ul>
       </li>
+      <li><a href="#databinding" id="markdown-toc-databinding">Databinding</a></li>
     </ul>
   </li>
 </ul>
@@ -713,6 +714,8 @@ item中是正常状态下的显示。</p>
 
 <p>Databinding 中使用svg可能会出现找不到的问题
 android:drawableLeft=”@{@drawable/ic_password}”</p>
+
+<h4 id="databinding">Databinding</h4>
 
 
                 </div>
@@ -818,7 +821,30 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
 <p>列出当前已存在的SSH:<code class="highlighter-rouge">ls -al ~/.ssh</code></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># 下载项目
-git clone https://github.com/facebook/react-native.git
+git clone https://github.com/facebook/react-native.
+# 创建分支
+git branch [branchname]
+# 切换分支
+git checkout [branchname]
+# 命令加上-b参数表示创建并切换
+git checkout -b [branchname]
+# 查看当前分支(当前分支前面会标一个*号)
+git branch
+# 在新增分支上操作
+git add test.txt
+git commit -m "说明"
+# 切换回master分支
+git checkout master
+# 合并分支工作成果到master分支上
+git merge [branchname]
+# 删除新增的分支
+git branch -d [branchname]
+# 查看远程仓库信息
+git remote
+# 提交本地分支到远程仓库分支
+git push  dev orgin/dev 
+# 创建远程origin的dev分支到本地
+git checkout -b dev origin/dev
 </code></pre>
 </div>
 

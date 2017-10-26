@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Sep 2017 15:02:18 +0800</pubDate>
-    <lastBuildDate>Fri, 22 Sep 2017 15:02:18 +0800</lastBuildDate>
+    <pubDate>Mon, 23 Oct 2017 17:11:46 +0800</pubDate>
+    <lastBuildDate>Mon, 23 Oct 2017 17:11:46 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1006,11 +1006,6 @@ class BaiduStockPipline(object):
       <item>
         <title>Python数据分析与展示从入门到放弃</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#python开发工具的选择&quot; id=&quot;markdown-toc-python开发工具的选择&quot;&gt;Python开发工具的选择&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#文本类&quot; id=&quot;markdown-toc-文本类&quot;&gt;文本类&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#集成类ide&quot; id=&quot;markdown-toc-集成类ide&quot;&gt;集成类（IDE）&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#anaconda-ide基本使用&quot; id=&quot;markdown-toc-anaconda-ide基本使用&quot;&gt;&lt;a href=&quot;https://www.continuum.io&quot;&gt;Anaconda&lt;/a&gt; IDE基本使用&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#常用库介绍&quot; id=&quot;markdown-toc-常用库介绍&quot;&gt;常用库介绍&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#实战&quot; id=&quot;markdown-toc-实战&quot;&gt;实战&lt;/a&gt;&lt;/li&gt;
@@ -1018,42 +1013,6 @@ class BaiduStockPipline(object):
 
 Python数据分析与展示
 &lt;a href=&quot;https://pan.baidu.com/s/1hsrDKXI&quot;&gt;参考资料&lt;/a&gt;
-
-&lt;h3 id=&quot;python开发工具的选择&quot;&gt;Python开发工具的选择&lt;/h3&gt;
-
-&lt;h4 id=&quot;文本类&quot;&gt;文本类&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;IDLE  自带的、默认、代码一般不超过300行&lt;/li&gt;
-  &lt;li&gt;Notepad++&lt;/li&gt;
-  &lt;li&gt;Sublime Text  专业的编程体验&lt;/li&gt;
-  &lt;li&gt;Vim &amp;amp; Emacs&lt;/li&gt;
-  &lt;li&gt;Atom&lt;/li&gt;
-  &lt;li&gt;Komodo Edit&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;集成类ide&quot;&gt;集成类（IDE）&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    PyCharm  社区版免费、专业版收费
-  &lt;/li&gt;
-  &lt;li&gt;
-    Wing  收费、调试、版本控制、同步
-  &lt;/li&gt;
-  &lt;li&gt;
-    PyDev &amp;amp; Eclipse   开源开放、自定义使用相对复杂
-  &lt;/li&gt;
-  &lt;li&gt;
-    PTVS &amp;amp; Visual Studio  丰富的调试功能
-  &lt;/li&gt;
-  &lt;li&gt;
-    Anaconda &amp;amp; Spyder  开源免费、支持800个库、和Canopy由同一个人领导开发  用于科学计算
-  &lt;/li&gt;
-  &lt;li&gt;
-    Canopy  收费、用于科学计算、支持超过500个库
-  &lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h3 id=&quot;anaconda-ide基本使用&quot;&gt;&lt;a href=&quot;https://www.continuum.io&quot;&gt;Anaconda&lt;/a&gt; IDE基本使用&lt;/h3&gt;
 
@@ -1130,60 +1089,7 @@ Python数据分析与展示
 &lt;h3 id=&quot;实战&quot;&gt;实战&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    图像手绘处理
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://www.crummy.com/software/BeautifulSoup/&quot;&gt;BeautifulSoup&lt;/a&gt;
-
-    安装：
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip  install beautifulsoup4
-pip3 install beautifulsoup4
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-
-    调用方式：&lt;code class=&quot;highlighter-rouge&quot;&gt;from bs4 import beautifulsoup&lt;/code&gt;
-
-    用途：解析HTML标签
-  &lt;/li&gt;
-  &lt;li&gt;
-    Re(正则表达式)库是Python的标准库
-
-    用途：
-调用方式：&lt;code class=&quot;highlighter-rouge&quot;&gt;import re&lt;/code&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://scrapy.org/&quot;&gt;Scrapy爬虫框架&lt;/a&gt;
-
-    安装：&lt;code class=&quot;highlighter-rouge&quot;&gt;pip install scrapy&lt;/code&gt;
-
-    测试：&lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy ‐h&lt;/code&gt;
-
-    使用：
-
-    &lt;ul&gt;
-      &lt;li&gt;初始化一个工程&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy startproject [projectnaem]&lt;/code&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;建一个爬虫&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy genspider [spidername] [url]&lt;/code&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        配置产生的爬虫
-      &lt;/li&gt;
-      &lt;li&gt;
-        运行爬虫
-      &lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy crawl [spidername]&lt;/code&gt;
-  &lt;/li&gt;
+  &lt;li&gt;图像手绘处理&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>

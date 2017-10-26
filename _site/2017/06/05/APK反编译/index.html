@@ -248,22 +248,24 @@
     <p>3.将下载的jar包重命名为apktool.jar；</p>
 
     <p>4.将下载的apktool和apktool.jar移到/usr/local/bin目录</p>
-
-    <p><code class="highlighter-rouge">$ mv file /usr/local/bin</code></p>
-
-    <p><code class="highlighter-rouge">$ cp file /usr/local/bin</code></p>
-
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ mv file /usr/local/bin
+ $ cp file /usr/local/bin
+</code></pre>
+    </div>
     <p>5.将两个文件的权限设为可执行</p>
-
-    <p><code class="highlighter-rouge">$ chmod a+x file</code></p>
-
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ chmod a+x file
+</code></pre>
+    </div>
     <p>6.进入Apk所在目录执行反编译</p>
-
-    <p><code class="highlighter-rouge">$ apktool d xxx.apk</code></p>
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ apktool d xxx.apk
+</code></pre>
+    </div>
 
     <p>反编译失败解决方法</p>
 
-    <p><code class="highlighter-rouge">Exception in thread "main" brut.androlib.err.UndefinedResObject:</code></p>
+    <div class="highlighter-rouge"><pre class="highlight"><code> Exception in thread "main" brut.androlib.err.UndefinedResObject:
+</code></pre>
+    </div>
 
     <p>1.删除/Users/your user/Library/apktool/framework/1.apk;</p>
 
