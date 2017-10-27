@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 23 Oct 2017 17:11:46 +0800</pubDate>
-    <lastBuildDate>Mon, 23 Oct 2017 17:11:46 +0800</lastBuildDate>
+    <pubDate>Fri, 27 Oct 2017 08:54:49 +0800</pubDate>
+    <lastBuildDate>Fri, 27 Oct 2017 08:54:49 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1012,7 +1012,10 @@ class BaiduStockPipline(object):
 &lt;/ul&gt;
 
 Python数据分析与展示
+
 &lt;a href=&quot;https://pan.baidu.com/s/1hsrDKXI&quot;&gt;参考资料&lt;/a&gt;
+
+&lt;a href=&quot;http://wuhongsheng.top/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/&quot;&gt;Python爬虫从入门到放弃&lt;/a&gt;
 
 &lt;h3 id=&quot;anaconda-ide基本使用&quot;&gt;&lt;a href=&quot;https://www.continuum.io&quot;&gt;Anaconda&lt;/a&gt; IDE基本使用&lt;/h3&gt;
 
@@ -1088,8 +1091,50 @@ Python数据分析与展示
 
 &lt;h3 id=&quot;实战&quot;&gt;实战&lt;/h3&gt;
 
+#####图像手绘处理
+
 &lt;ul&gt;
-  &lt;li&gt;图像手绘处理&lt;/li&gt;
+  &lt;li&gt;源码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre class=&quot;prettyprint lang-py&quot;&gt;
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Spyder Editor
+
+This is a temporary script file.
+&quot;&quot;&quot;
+
+# -*- coding: utf-8 -*-
+from PIL import Image
+import numpy as np
+a = np.asanyarray(Image.open('../Downloads/test1.jpg').convert('L')).astype('float')
+
+depth =10.                       # (0-100)                         
+grad = np.gradient(a)            # 去图像灰度的梯度值
+grad_x,grad_y=grad               # 分别取横纵图像梯度值
+grad_x=grad_x*depth/100.
+grad_y=grad_y*depth/100.
+A = np.sqrt(grad_x**2 + grad_y**2 +1.)
+uni_x =grad_x/A
+uni_y = grad_y/A
+uni_z = 1./A
+
+vec_el = np.pi/2.2                  # 光源的俯视角度，弧度值
+vec_az = np.pi/4.                   # 光源的方位角度，弧度值
+dx =np.cos(vec_el)*np.cos(vec_az)   # 光源对X轴对影像
+dy = np.cos(vec_el)*np.sin(vec_az)  # 光源对Y轴对影像
+dz = np.sin(vec_el)                 # 光源对Z轴对影像
+
+b =255*(dx*uni_x + dy*uni_y +dz*uni_z)  # 光源归一化
+b =b.clip(0,255)
+
+im =Image.fromarray(b.astype('uint8'))  # 重构图像
+im.save('../Downloads/test1.jpg')
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;结果&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>

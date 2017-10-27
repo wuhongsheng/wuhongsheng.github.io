@@ -845,6 +845,22 @@ git remote
 git push  dev orgin/dev 
 # 创建远程origin的dev分支到本地
 git checkout -b dev origin/dev
+# 查看最近三次提交记录
+git log
+# 查看所有的提交
+git reflog
+# 回退版本
+# 彻底回退到某个版本（包括源码）
+git reset --hard [commitid] 
+# 只回退了commit的信息，不会恢复到index file一级
+git reset --soft [commitid]
+# 默认方式，只保留源码，回退commit和index信息
+git reset [commitid]
+# 工作区(work dict)和暂存区(stage)的比较
+git diff
+# 暂存区(stage)和分支(master)的比较
+git diff --cached
+
 </code></pre>
 </div>
 

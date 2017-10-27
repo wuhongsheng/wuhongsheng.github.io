@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Python数据分析与展示从入门到放弃</title>
-    <meta name="description" content="  Anaconda IDE基本使用  常用库介绍  实战Python数据分析与展示参考资料Anaconda IDE基本使用      下载（分为命令行和图形化安装，两种安装方式没有区别）        安装（以命令行安装为例）：进入文件目录执行bash Anaconda3-4.4.0-MacOSX-x86_64...">
+    <meta name="description" content="  Anaconda IDE基本使用  常用库介绍  实战Python数据分析与展示参考资料Python爬虫从入门到放弃Anaconda IDE基本使用      下载（分为命令行和图形化安装，两种安装方式没有区别）        安装（以命令行安装为例）：进入文件目录执行bash Anaconda3-4.4.0...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -214,8 +214,11 @@
   <li><a href="#实战" id="markdown-toc-实战">实战</a></li>
 </ul>
 
-<p>Python数据分析与展示
-<a href="https://pan.baidu.com/s/1hsrDKXI">参考资料</a></p>
+<p>Python数据分析与展示</p>
+
+<p><a href="https://pan.baidu.com/s/1hsrDKXI">参考资料</a></p>
+
+<p><a href="http://wuhongsheng.top/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></p>
 
 <h3 id="anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</h3>
 
@@ -291,8 +294,50 @@
 
 <h3 id="实战">实战</h3>
 
+<p>#####图像手绘处理</p>
+
 <ul>
-  <li>图像手绘处理</li>
+  <li>源码</li>
+</ul>
+
+<pre class="prettyprint lang-py">
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+# -*- coding: utf-8 -*-
+from PIL import Image
+import numpy as np
+a = np.asanyarray(Image.open('../Downloads/test1.jpg').convert('L')).astype('float')
+
+depth =10.                       # (0-100)                         
+grad = np.gradient(a)            # 去图像灰度的梯度值
+grad_x,grad_y=grad               # 分别取横纵图像梯度值
+grad_x=grad_x*depth/100.
+grad_y=grad_y*depth/100.
+A = np.sqrt(grad_x**2 + grad_y**2 +1.)
+uni_x =grad_x/A
+uni_y = grad_y/A
+uni_z = 1./A
+
+vec_el = np.pi/2.2                  # 光源的俯视角度，弧度值
+vec_az = np.pi/4.                   # 光源的方位角度，弧度值
+dx =np.cos(vec_el)*np.cos(vec_az)   # 光源对X轴对影像
+dy = np.cos(vec_el)*np.sin(vec_az)  # 光源对Y轴对影像
+dz = np.sin(vec_el)                 # 光源对Z轴对影像
+
+b =255*(dx*uni_x + dy*uni_y +dz*uni_z)  # 光源归一化
+b =b.clip(0,255)
+
+im =Image.fromarray(b.astype('uint8'))  # 重构图像
+im.save('../Downloads/test1.jpg')
+</pre>
+
+<ul>
+  <li>结果</li>
 </ul>
 
 
