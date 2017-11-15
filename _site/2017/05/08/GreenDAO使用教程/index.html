@@ -402,14 +402,20 @@ updateInTx(Iterable<T> entities)      批量更新数据
 ```
  
 查：
-```
+
 userDao.load(id)
  
 load(K key)    根据id查找数据
 loadByRowId(long rowId)        根据行号查找数据
 loadAll()      查找全部数据
 
-```
+
+模糊查询
+List<Pest> pestList=DaoManager.getInstance(TitanApplication.dbpath).getNewSession().getPestDao().queryBuilder()
+ .whereOr(PestDao.Properties.Cname.like("%"+keyword+"%"))
+.list();
+
+
 
 8.一对一、一对多关系
 
@@ -576,7 +582,7 @@ public class GreenDaoManager {
 
 
 
-</Teacher></Teacher></Teacher></T></K></T></T></pre>
+</Teacher></Teacher></Teacher></Pest></T></K></T></T></pre>
 
         </article>
         <hr>
@@ -740,7 +746,7 @@ public class GreenDaoManager {
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2017/05/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%92%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">普通程序员如何向人工智能靠拢</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/05/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">普通程序员如何向人工智能靠拢</a></p>
         
     </div>
 </div>

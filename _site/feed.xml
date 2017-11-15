@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 Oct 2017 08:54:49 +0800</pubDate>
-    <lastBuildDate>Fri, 27 Oct 2017 08:54:49 +0800</lastBuildDate>
+    <pubDate>Wed, 15 Nov 2017 16:28:34 +0800</pubDate>
+    <lastBuildDate>Wed, 15 Nov 2017 16:28:34 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -1037,7 +1037,16 @@ Python数据分析与展示
 
     ** IPython 交互式编程环境
   &lt;/li&gt;
+  &lt;li&gt;
+    常用命令
+  &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 更新Qt
+conda update qt pyqt
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;常用库介绍&quot;&gt;常用库介绍&lt;/h3&gt;
 

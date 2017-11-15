@@ -403,14 +403,20 @@ updateInTx(Iterable<T> entities)      批量更新数据
 ```
  
 查：
-```
+
 userDao.load(id)
  
 load(K key)    根据id查找数据
 loadByRowId(long rowId)        根据行号查找数据
 loadAll()      查找全部数据
 
-```
+
+模糊查询
+List<Pest> pestList=DaoManager.getInstance(TitanApplication.dbpath).getNewSession().getPestDao().queryBuilder()
+ .whereOr(PestDao.Properties.Cname.like("%"+keyword+"%"))
+.list();
+
+
 
 8.一对一、一对多关系
 
@@ -577,7 +583,7 @@ public class GreenDaoManager {
 
 
 
-</Teacher></Teacher></Teacher></T></K></T></T></pre>
+</Teacher></Teacher></Teacher></Pest></T></K></T></T></pre>
 
                 </div>
                 <div class="read-all">
@@ -1477,9 +1483,9 @@ index-pack failed
                     </li>
                     
                     <li>
-                        <a href="/category/#机器学习" class="categories-list-item" cate="机器学习">
+                        <a href="/category/#AI" class="categories-list-item" cate="AI">
                             <span class="name">
-                                机器学习
+                                AI
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1674,6 +1680,13 @@ index-pack failed
                       
                       
                       <a href="/tag/#GreenDAO" style="font-size: 9pt; color: #999;">GreenDAO</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#深度学习" style="font-size: 9pt; color: #999;">深度学习</a>
                     
                       
                       
