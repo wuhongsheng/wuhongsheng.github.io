@@ -3,7 +3,7 @@ layout: post
 title:  "TensorFlow从入门到精通"
 date:   2017-12-15 08:14:54
 categories: AI
-tags: AI
+tags: AI TensorFlow
 author: WHS
 ---
 
@@ -11,6 +11,13 @@ author: WHS
 {:toc}
 
 [TensorFlow™](https://tensorflow.google.cn/)是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。
+
+
+
+
+
+
+
 
 ### 安装
 
