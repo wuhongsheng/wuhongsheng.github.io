@@ -5,9 +5,69 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Jan 2018 12:58:21 +0800</pubDate>
-    <lastBuildDate>Wed, 03 Jan 2018 12:58:21 +0800</lastBuildDate>
+    <pubDate>Tue, 09 Jan 2018 21:23:04 +0800</pubDate>
+    <lastBuildDate>Tue, 09 Jan 2018 21:23:04 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>华为手机刷机</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#解决思路&quot; id=&quot;markdown-toc-解决思路&quot;&gt;解决思路&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+最近老妈的手机出现系统损坏的情况，开机时重复开机动画，进入不了系统界面。初步判断时老妈误操作删除系统文件，或者手机中毒。
+本来不太想动手的，我就说这手机也用几年，该换了。老妈回了一句，还说你是做软件的，这个问题都解决不了，明天拿给修手机的看看。这句刺激我了，于是动手解决问题，花了两个小时左右。最后在这里记录一下解决问题的经过。
+
+&lt;h3 id=&quot;解决思路&quot;&gt;解决思路&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    双清
+百度一下，进入手机Recovery模式(同时按住电源键和音量’-‘3秒即可进入)，进行双清(清理系统缓存信息、清理用户数据)操作。
+尝试后问题依然无法解决
+  &lt;/li&gt;
+  &lt;li&gt;
+    求助官方售后
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+打电话到华为售后，售后说可以通过华为的手机助手客户端修复，我尝试了也没有解决问题。客户端提示没有合适的系统包。可能是手机系统版本比较老了。
+
+然后再次电话到售后，问能不能刷机，获知，华为手机要刷机需要先解锁，我们都知道华为的系统是基于Android系统改造的，厂商在底层系统加了锁，意味着没办法随意刷机。必须先解锁，解锁需要提供手机型号、IMEI、序列号、产品识别码。其中序列号和产品识别码在手机包装盒上有，或者在手机系统信息里查询。但我现在到哪去找N年前的手机包装盒啊，手机也打不开，所以这条路也走不通。
+
+&lt;ul&gt;
+  &lt;li&gt;刷机&lt;/li&gt;
+&lt;/ul&gt;
+
+手机方面的专业术语，是指通过一定的方法更改或替换手机中原本存在的一些语言、图片、铃声、软件或者操作系统。通俗来讲，刷机就是给手机重装系统。
+
+后来在网上查询了解，华为手机可以在不开机的情况通过SD卡强制升级系统。好，说了这么多，终于到正题了，重装系统，步骤如下：
+
+&lt;ol&gt;
+  &lt;li&gt;准备一张 microSD 卡。&lt;/li&gt;
+  &lt;li&gt;登录华为终端官网 consumer.huawei.com/cn，搜索“G750-T01”， 然后下载软件升级包。&lt;/li&gt;
+  &lt;li&gt;在 microSD 卡根目录下创建一个【dload】文件夹。&lt;/li&gt;
+  &lt;li&gt;将软件升级包中的“UPDATE.APP”拷贝到 microSD 卡【dload】文 件夹中。&lt;/li&gt;
+  &lt;li&gt;将 microSD 卡插入手机&lt;/li&gt;
+  &lt;li&gt;断开手机跟电脑或其它设备(如充电器)的连接，并关机。&lt;/li&gt;
+  &lt;li&gt;同时按住音量上下键，然后按电源键。&lt;/li&gt;
+  &lt;li&gt;开机画面出来之后，放开电源键，继续按住音量上下键，直到进入升级界面后再松开音量上下键。
+整个升级过程大约需要 3 分钟。在升级过程中，请不要取出电池，建议您最好不要进行任何操作，静静等待。&lt;/li&gt;
+&lt;/ol&gt;
+
+等待几分钟后系统安装完成，手机重启，成功进入开机界面。大功告成！
+
+</description>
+        <pubDate>Sat, 06 Jan 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/</guid>
+        
+        <category>技能</category>
+        
+        
+        <category>刷机</category>
+        
+      </item>
     
       <item>
         <title>TensorFlow从入门到精通</title>
@@ -57,6 +117,8 @@ Python版本不匹配
         <guid isPermaLink="true">http://localhost:4000/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/</guid>
         
         <category>AI</category>
+        
+        <category>TensorFlow</category>
         
         
         <category>AI</category>
@@ -792,268 +854,6 @@ startup.sh
         
         
         <category>jenkins</category>
-        
-      </item>
-    
-      <item>
-        <title>Python爬虫从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#python开发工具的选择&quot; id=&quot;markdown-toc-python开发工具的选择&quot;&gt;Python开发工具的选择&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#文本类&quot; id=&quot;markdown-toc-文本类&quot;&gt;文本类&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#集成类ide&quot; id=&quot;markdown-toc-集成类ide&quot;&gt;集成类（IDE）&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用库介绍&quot; id=&quot;markdown-toc-常用库介绍&quot;&gt;常用库介绍&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#实战&quot; id=&quot;markdown-toc-实战&quot;&gt;实战&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#通用代码框架&quot; id=&quot;markdown-toc-通用代码框架&quot;&gt;通用代码框架&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#股票数据scrapy爬虫&quot; id=&quot;markdown-toc-股票数据scrapy爬虫&quot;&gt;股票数据Scrapy爬虫&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#相关资料&quot; id=&quot;markdown-toc-相关资料&quot;&gt;相关资料&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Python爬虫与信息提取
-&lt;a href=&quot;https://pan.baidu.com/s/1eSIMk9c&quot;&gt;参考资料&lt;/a&gt;
-
-&lt;h3 id=&quot;python开发工具的选择&quot;&gt;Python开发工具的选择&lt;/h3&gt;
-
-&lt;h4 id=&quot;文本类&quot;&gt;文本类&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;IDLE  自带的、默认、代码一般不超过300行&lt;/li&gt;
-  &lt;li&gt;Notepad++&lt;/li&gt;
-  &lt;li&gt;Sublime Text  专业的编程体验&lt;/li&gt;
-  &lt;li&gt;Vim &amp;amp; Emacs&lt;/li&gt;
-  &lt;li&gt;Atom&lt;/li&gt;
-  &lt;li&gt;Komodo Edit&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;集成类ide&quot;&gt;集成类（IDE）&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    PyCharm  社区版免费、专业版收费
-  &lt;/li&gt;
-  &lt;li&gt;
-    Wing  收费、调试、版本控制、同步
-  &lt;/li&gt;
-  &lt;li&gt;
-    PyDev &amp;amp; Eclipse   开源开放、自定义使用相对复杂
-  &lt;/li&gt;
-  &lt;li&gt;
-    PTVS &amp;amp; Visual Studio  丰富的调试功能
-  &lt;/li&gt;
-  &lt;li&gt;
-    Anaconda &amp;amp; Spyder  开源免费、支持800个库、和Canopy由同一个人领导开发  用于科学计算
-  &lt;/li&gt;
-  &lt;li&gt;
-    Canopy  收费、用于科学计算、支持超过500个库
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常用库介绍&quot;&gt;常用库介绍&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://www.python-requests.org&quot;&gt;Requests&lt;/a&gt;
-
-    安装：
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip  install requests
-pip3 install requests
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-    调用方式：&lt;code class=&quot;highlighter-rouge&quot;&gt;import requests&lt;/code&gt;
-
-    用途：发起请求、获取请求内容
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://www.crummy.com/software/BeautifulSoup/&quot;&gt;BeautifulSoup&lt;/a&gt;
-
-    安装：
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip  install beautifulsoup4
-pip3 install beautifulsoup4
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-
-    调用方式：&lt;code class=&quot;highlighter-rouge&quot;&gt;from bs4 import beautifulsoup&lt;/code&gt;
-
-    用途：解析HTML标签
-  &lt;/li&gt;
-  &lt;li&gt;
-    Re(正则表达式)库是Python的标准库
-
-    用途：
-调用方式：&lt;code class=&quot;highlighter-rouge&quot;&gt;import re&lt;/code&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://scrapy.org/&quot;&gt;Scrapy爬虫框架&lt;/a&gt;
-
-    安装：&lt;code class=&quot;highlighter-rouge&quot;&gt;pip3 install scrapy&lt;/code&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ```conda install -c conda-forge scrapy```
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-
-    升级：&lt;code class=&quot;highlighter-rouge&quot;&gt;pip3 install --upgrade scrapy&lt;/code&gt;
-
-    测试：&lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy ‐h&lt;/code&gt;
-
-    使用：
-
-    &lt;ul&gt;
-      &lt;li&gt;初始化一个工程&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy startproject [projectnaem]&lt;/code&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;建一个爬虫&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy genspider [spidername] [url]&lt;/code&gt;
-
-    **配置产生的爬虫
-
-    &lt;ul&gt;
-      &lt;li&gt;运行爬虫&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;code class=&quot;highlighter-rouge&quot;&gt;scrapy crawl [spidername]&lt;/code&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;实战&quot;&gt;实战&lt;/h3&gt;
-
-&lt;h4 id=&quot;通用代码框架&quot;&gt;通用代码框架&lt;/h4&gt;
-
-&lt;pre class=&quot;prettyprint lang-py&quot;&gt;
-   import requests
-   try:
-       r= requests.get([url],timeout=30)
-       r.raise_for_status()
-       r.encoding = r.apparent_encoding
-       return r=status_code
-   except:
-        return &quot;产生异常&quot;
-&lt;/pre&gt;
-
-&lt;h4 id=&quot;股票数据scrapy爬虫&quot;&gt;股票数据Scrapy爬虫&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;编写Spider&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre class=&quot;prettyprint lang-py&quot;&gt;
-    # -*- coding: utf-8 -*-
-  import scrapy
-  import re
-
-
-  class StocksSpider(scrapy.Spider):
-    name = 'stocks'
-    # allowed_domains = ['baidu.com']
-    # 东方财富网
-    start_urls = ['http://quote.eastmoney.com/stocklist.html']
-
-    def parse(self, response):
-         self.headers = {
-          'user-agent':'Mozilla/5.0'
-         }
-         for href in response.css('a::attr(href)').extract():
-            try:
-                stock = re.findall(r&quot;[s][hz]\d{6}&quot;,href)[0]
-                url = 'https://gupiao.baidu.com/stock/'+ stock+'.html'
-                yield scrapy.Request(url,callback=self.parse_stock)
-            except:
-                continue
-        
-    def parse_stock(self,response):
-        infoDict = {}
-        stockInfo = response.css('.stock-bets')
-        name = stockInfo.css('.bets-name').extract()[0]
-        keyList = stockInfo.css('dt').extract()
-        valueList = stockInfo.css('dd').extract()
-        for i in range(len(keyList)):
-            key = re.findall(r'&amp;gt;.*&amp;lt;dt&amp;gt;',keyList[i])[0][1:-5]
-            try:
-                 val = re.findall(r'\d+\.?.*&amp;lt;/dd&amp;gt;',valueList[i])[0][0:-5]
-            except:
-                 val = '--'
-            infoDict[key] = val
-
-        infoDict.update(
-            {'股票名称':re.findall('\s.*\(',name)[0].split()[0] + \
-             re.findall('\&amp;gt;.*\&amp;lt;',name)[0][1:-1]})            
-        yield infoDict
-  &lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;编写pipeline&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre class=&quot;prettyprint lang-py&quot;&gt;
-# -*- coding: utf-8 -*-
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
-
-class PythondemoPipeline(object):
-    def process_item(self, item, spider):
-        return item
-
-class BaiduStockPipline(object):
-    def open_spider(self,spider):
-        self.f = open('BaiduStockInfo.txt','w')
-        
-    def close_spider(self,spider):
-        self.f.close()
-
-    def process_item(self,item,spider):
-        try:
-            line = str(dict(item))+'\n'
-            self.f.write(line)
-        except:
-            pass
-        return item
-&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;配置pipeline&lt;/li&gt;
-&lt;/ul&gt;
-
-找到settings.py文件并修改配置
-
-&lt;ul&gt;
-  &lt;li&gt;结果如下：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/py_spider_result.png&quot; alt=&quot;&quot; /&gt;
-
-&lt;h3 id=&quot;相关资料&quot;&gt;相关资料&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&amp;amp;mid=2697266133&amp;amp;idx=1&amp;amp;sn=51426072d8ad4c4496795127e9c9f1ae&amp;amp;chksm=8376fce1b40175f76724b8be9d5bfcda3d3759c4fc30f9ee38f776dd832bd5171034e6a3e89d&amp;amp;mpshare=1&amp;amp;scene=23&amp;amp;srcid=0606X6JFFUGEK1P1JUuH9GXM%23rd&quot;&gt;那些你不知道的爬虫反爬虫套路&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://gashero.iteye.com/&quot;&gt;gashero的Geek前哨&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Thu, 15 Jun 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>Python</category>
-        
-        <category>爬虫</category>
-        
-        
-        <category>Python</category>
         
       </item>
     

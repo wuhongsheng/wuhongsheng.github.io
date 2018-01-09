@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>百度地图从入门到放弃</title>
-    <meta name="description" content="  常用方法  常见问题百度地图开发常用方法  坐标转换/** * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法  * 将 BD-09 坐标转换成GCJ-02 坐标  * bd_lat * @param bd_lon * @return */ public static TitanLoc...">
+    <title>华为手机刷机</title>
+    <meta name="description" content="  解决思路最近老妈的手机出现系统损坏的情况，开机时重复开机动画，进入不了系统界面。初步判断时老妈误操作删除系统文件，或者手机中毒。本来不太想动手的，我就说这手机也用几年，该换了。老妈回了一句，还说你是做软件的，这个问题都解决不了，明天拿给修手机的看看。这句刺激我了，于是动手解决问题，花了两个小时左右。最后在这里...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+    <link rel="canonical" href="http://localhost:4000/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -151,11 +151,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>百度地图从入门到放弃</h1>
+        <h1>华为手机刷机</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-06-20
+                <i class="fa fa-calendar"></i>2018-01-06
             </div>
 
             <div class="label-card">
@@ -176,7 +176,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#百度地图" title="Category: 百度地图" rel="category">百度地图</a>
+        <a href="/category/#刷机" title="Category: 刷机" rel="category">刷机</a>
     
   
 
@@ -193,11 +193,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a-->
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
-    
-        <!--a href="/tag/#%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE" title="Tag: 百度地图" rel="tag">百度地图</a-->
-        <a href="/tag/#百度地图" title="Tag: 百度地图" rel="tag">百度地图</a>
+        <!--a href="/tag/#%E6%8A%80%E8%83%BD" title="Tag: 技能" rel="tag">技能</a-->
+        <a href="/tag/#技能" title="Tag: 技能" rel="tag">技能</a>
     
   
 
@@ -209,55 +206,50 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#常用方法" id="markdown-toc-常用方法">常用方法</a></li>
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+  <li><a href="#解决思路" id="markdown-toc-解决思路">解决思路</a></li>
 </ul>
 
-<p><a href="http://lbsyun.baidu.com/">百度地图</a>开发</p>
+<p>最近老妈的手机出现系统损坏的情况，开机时重复开机动画，进入不了系统界面。初步判断时老妈误操作删除系统文件，或者手机中毒。
+本来不太想动手的，我就说这手机也用几年，该换了。老妈回了一句，还说你是做软件的，这个问题都解决不了，明天拿给修手机的看看。这句刺激我了，于是动手解决问题，花了两个小时左右。最后在这里记录一下解决问题的经过。</p>
 
-<h3 id="常用方法">常用方法</h3>
+<h3 id="解决思路">解决思路</h3>
 
 <ul>
-  <li>坐标转换</li>
+  <li>
+    <p>双清
+百度一下，进入手机Recovery模式(同时按住电源键和音量’-‘3秒即可进入)，进行双清(清理系统缓存信息、清理用户数据)操作。
+尝试后问题依然无法解决</p>
+  </li>
+  <li>
+    <p>求助官方售后</p>
+  </li>
 </ul>
 
-<pre class="prettyprint lang-java">
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
- * 将 BD-09 坐标转换成GCJ-02 坐标 
- * bd_lat * @param bd_lon * @return
- */
- public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
-        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
-        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
-        double gg_lon = z * Math.cos(theta);
-        double gg_lat = z * Math.sin(theta);
-        return new TitanLocation(gg_lon, gg_lat);
+<p>打电话到华为售后，售后说可以通过华为的手机助手客户端修复，我尝试了也没有解决问题。客户端提示没有合适的系统包。可能是手机系统版本比较老了。</p>
 
- }
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
- * @param gg_lat
- * @param gg_lon
- */
- public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
-        double x = gg_lon, y = gg_lat;
-        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
-        double bd_lon = z * Math.cos(theta) + 0.0065;
-        double bd_lat = z * Math.sin(theta) + 0.006;
-        return new TitanLocation(bd_lon, bd_lat);
- }
-</pre>
+<p>然后再次电话到售后，问能不能刷机，获知，华为手机要刷机需要先解锁，我们都知道华为的系统是基于Android系统改造的，厂商在底层系统加了锁，意味着没办法随意刷机。必须先解锁，解锁需要提供手机型号、IMEI、序列号、产品识别码。其中序列号和产品识别码在手机包装盒上有，或者在手机系统信息里查询。但我现在到哪去找N年前的手机包装盒啊，手机也打不开，所以这条路也走不通。</p>
 
-<h3 id="常见问题">常见问题</h3>
+<ul>
+  <li>刷机</li>
+</ul>
 
-<p><strong>错误描述</strong></p>
+<p>手机方面的专业术语，是指通过一定的方法更改或替换手机中原本存在的一些语言、图片、铃声、软件或者操作系统。通俗来讲，刷机就是给手机重装系统。</p>
 
-<p><strong>解决方法</strong></p>
+<p>后来在网上查询了解，华为手机可以在不开机的情况通过SD卡强制升级系统。好，说了这么多，终于到正题了，重装系统，步骤如下：</p>
 
-<p>集成百度导航需要将 targetSdkVersion 设为23</p>
+<ol>
+  <li>准备一张 microSD 卡。</li>
+  <li>登录华为终端官网 consumer.huawei.com/cn，搜索“G750-T01”， 然后下载软件升级包。</li>
+  <li>在 microSD 卡根目录下创建一个【dload】文件夹。</li>
+  <li>将软件升级包中的“UPDATE.APP”拷贝到 microSD 卡【dload】文 件夹中。</li>
+  <li>将 microSD 卡插入手机</li>
+  <li>断开手机跟电脑或其它设备(如充电器)的连接，并关机。</li>
+  <li>同时按住音量上下键，然后按电源键。</li>
+  <li>开机画面出来之后，放开电源键，继续按住音量上下键，直到进入升级界面后再松开音量上下键。
+整个升级过程大约需要 3 分钟。在升级过程中，请不要取出电池，建议您最好不要进行任何操作，静静等待。</li>
+</ol>
+
+<p>等待几分钟后系统安装完成，手机重启，成功进入开机界面。大功告成！</p>
 
 
         </article>
@@ -270,20 +262,7 @@
                 
                     
                 
-                    
-                
             
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
                 
                     
                 
@@ -294,11 +273,7 @@
                 
                     
                 
-                    
-                
             
-                
-                    
                 
                     
                 
@@ -309,8 +284,6 @@
                 
                     
                 
-                    
-                
             
         
             
@@ -318,20 +291,7 @@
                 
                     
                 
-                    
-                
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
                 
                     
                 
@@ -342,11 +302,14 @@
                 
                     
                 
-                    
-                
+            
+        
+            
             
                 
                     
+                
+            
                 
                     
                 
@@ -357,6 +320,15 @@
                 
                     
                 
+            
+        
+            
+            
+                
+                    
+                
+            
+                
                     
                 
             
@@ -366,11 +338,7 @@
                 
                     
                 
-                    
-                
             
-                
-                    
                 
                     
                 
@@ -381,11 +349,7 @@
                 
                     
                 
-                    
-                
             
-                
-                    
                 
                     
                 
@@ -396,13 +360,11 @@
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">TensorFlow从入门到精通</a></p>
         
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></p>
         
     </div>
 </div>
