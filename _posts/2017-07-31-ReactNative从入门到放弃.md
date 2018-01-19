@@ -50,6 +50,14 @@ react-native init [ProjectName]
  这样把react native升级到指定的X.Y.Z版本
 ```
 
+#### 降级版本
+
+```
+npm install --save react-native@版本号。
+通过上诉操作之后，别忘了更新一下模板。
+react-native upgrade
+```
+
 #### 运行调试方法
 
 ```
@@ -96,6 +104,8 @@ npm install npm@latest -g
 
 
 * [mapbox/react-native-mapbox-gl](https://github.com/mapbox/react-native-mapbox-gl)
+
+* [极光推送](https://github.com/jpush/jpush-react-native)
 
 
 ---
