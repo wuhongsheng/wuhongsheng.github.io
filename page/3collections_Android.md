@@ -179,6 +179,11 @@ type: page
 
   * [敏捷开发的持续改进(携程)](https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&mid=2697266154&idx=2&sn=99f4fd36b4bf5e9db333a0281f1a06e0&chksm=8376fcdeb40175c8faa97178df5ea595147315f0eeba220be90f9079dde1b377ba21e7a51226&mpshare=1&scene=23&srcid=0606urg3RHKx7D8LXandp0wy%23rd)
 
+## 性能优化
+
+* [Android性能优化之提高App启动速度和Splash页面设计](http://blog.csdn.net/chenliguan/article/details/53997436)
+
+
 ## 测试
 
 ## 常用工具
