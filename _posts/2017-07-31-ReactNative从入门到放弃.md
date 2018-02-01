@@ -3,7 +3,7 @@ layout: post
 title:  "React Native从入门到放弃"
 date:   2017-07-23 08:14:54
 categories: 跨平台
-tags:  RN 跨平台
+tags:  ReactNative 跨平台
 author: WHS
 ---
 
