@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>React Native从入门到放弃</title>
-    <meta name="description" content="React Native 开发指南使用JavaScript和React构建本地移动应用程序React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。">
+    <meta name="description" content="  环境配置  常用命令          升级新版本      降级版本      运行调试方法      npm常用命令        参考资料          常用组件      常见问题      React Native 开发指南使用JavaScript和React构建本地移动应用程序React Na...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -143,6 +143,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -193,8 +195,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#RN" title="Tag: RN" rel="tag">RN</a-->
-        <a href="/tag/#RN" title="Tag: RN" rel="tag">RN</a>&nbsp;
+        <!--a href="/tag/#ReactNative" title="Tag: ReactNative" rel="tag">ReactNative</a-->
+        <a href="/tag/#ReactNative" title="Tag: ReactNative" rel="tag">ReactNative</a>&nbsp;
     
         <!--a href="/tag/#%E8%B7%A8%E5%B9%B3%E5%8F%B0" title="Tag: 跨平台" rel="tag">跨平台</a-->
         <a href="/tag/#跨平台" title="Tag: 跨平台" rel="tag">跨平台</a>
@@ -212,6 +214,7 @@
   <li><a href="#环境配置" id="markdown-toc-环境配置">环境配置</a></li>
   <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a>    <ul>
       <li><a href="#升级新版本" id="markdown-toc-升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></a></li>
+      <li><a href="#降级版本" id="markdown-toc-降级版本">降级版本</a></li>
       <li><a href="#运行调试方法" id="markdown-toc-运行调试方法">运行调试方法</a></li>
       <li><a href="#npm常用命令" id="markdown-toc-npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</a></li>
     </ul>
@@ -256,6 +259,14 @@ react-native init [ProjectName]
  或者是：
  $ react-native-git-upgrade X.Y.Z
  这样把react native升级到指定的X.Y.Z版本
+</code></pre>
+</div>
+
+<h4 id="降级版本">降级版本</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save react-native@版本号。
+通过上诉操作之后，别忘了更新一下模板。
+react-native upgrade
 </code></pre>
 </div>
 
@@ -314,6 +325,9 @@ npm install npm@latest -g
   <li>
     <p><a href="https://github.com/mapbox/react-native-mapbox-gl">mapbox/react-native-mapbox-gl</a></p>
   </li>
+  <li>
+    <p><a href="https://github.com/jpush/jpush-react-native">极光推送</a></p>
+  </li>
 </ul>
 
 <hr />
@@ -369,30 +383,6 @@ react-native run-android
                     
                 
             
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
                 
                     
                 
@@ -432,9 +422,6 @@ react-native run-android
                     
                 
             
-        
-            
-            
                 
                     
                 
@@ -449,6 +436,33 @@ react-native run-android
                 
                     
                 
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
             
                 
                     

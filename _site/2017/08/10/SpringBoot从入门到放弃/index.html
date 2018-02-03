@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>SpringBoot从入门到放弃</title>
-    <meta name="description" content="  参考资料          ORM        常用命令和方法          程序部署        常见问题及解决方法SpringBoot从入门到放弃参考资料      SpringBoot官网        深入学习微框架：Spring Boot        为监控而生的数据库连接池！阿里云DRD...">
+    <meta name="description" content="  参考资料          ORM        常用命令和方法          程序部署                  Windows环境下          Linux/Unix环境下                      常见问题及解决方法SpringBoot从入门到放弃参考资料      S...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -143,6 +143,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -211,7 +213,11 @@
     </ul>
   </li>
   <li><a href="#常用命令和方法" id="markdown-toc-常用命令和方法">常用命令和方法</a>    <ul>
-      <li><a href="#程序部署" id="markdown-toc-程序部署">程序部署</a></li>
+      <li><a href="#程序部署" id="markdown-toc-程序部署">程序部署</a>        <ul>
+          <li><a href="#windows环境下" id="markdown-toc-windows环境下">Windows环境下</a></li>
+          <li><a href="#linuxunix环境下" id="markdown-toc-linuxunix环境下">Linux/Unix环境下</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
@@ -268,6 +274,83 @@ gradle build
 <div class="highlighter-rouge"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
 </code></pre>
 </div>
+<ul>
+  <li>后台部署
+通过jar部署后，关闭cmd窗口进程就停止了，因此需要让程序在后台运行</li>
+</ul>
+
+<h6 id="windows环境下">Windows环境下</h6>
+<ol>
+  <li>编写bat命令</li>
+  <li>安装AlwaysUp软件，如下图所示</li>
+</ol>
+
+<p><img src="https://pic4.zhimg.com/50/v2-8c9d646fd06e7b656704fb42b85ba247_hd.jpg" alt="" /></p>
+
+<ol>
+  <li>打开AlwaysUp点击工具栏的第一个按钮，如下图所示，选择上面编写的bat文件，并填写服务名称。</li>
+</ol>
+
+<p><img src="https://pic2.zhimg.com/50/v2-730bd4126c6c3066e649b78638550c3f_hd.jpg" alt="" /></p>
+
+<p>完成了创建之后，在列表中可以看到我们配置的服务，通过右键选择Start xxx就能在后台将该应用启动起来了。</p>
+
+<h6 id="linuxunix环境下">Linux/Unix环境下</h6>
+
+<p>####### nohup和Shell</p>
+
+<p>该方法主要通过使用nohup命令来实现，该命令的详细介绍如下：</p>
+
+<blockquote>
+  <p>nohup 命令</p>
+</blockquote>
+
+<p>用途：不挂断地运行命令。</p>
+
+<p>语法：nohup Command [ Arg … ][ &amp; ]</p>
+
+<p>描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 &amp;到命令的尾部。</p>
+
+<p>所以，我们只需要使用nohup java -jar yourapp.jar &amp;命令，就能让yourapp.jar在后台运行了。但是，为了方便管理，我们还可以通过Shell来编写一些用于启动应用的脚本，比如下面几个：</p>
+
+<ul>
+  <li>关闭应用的脚本：stop.sh</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps -ef | grep yourapp.jar | grep -v grep | awk <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span>  
+<span class="k">then  
+    </span><span class="nb">echo </span>Application is already stopped  
+<span class="k">else  
+    </span><span class="nb">echo kill</span> <span class="nv">$PID</span>  
+    <span class="nb">kill</span> <span class="nv">$PID</span>  
+<span class="k">fi</span>  
+</code></pre>
+</div>
+
+<ul>
+  <li>启动应用的脚本：start.sh</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="c">#!/bin/bash  </span>
+nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;  
+</code></pre>
+</div>
+
+<ul>
+  <li>整合了关闭和启动的脚本：run.sh，由于会先执行关闭应用，然后再启动应用，这样不会引起端口冲突等问题，适合在持续集成系统中进行反复调用。</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<span class="nb">echo </span>stop application  
+<span class="nb">source </span>stop.sh  
+<span class="nb">echo </span>start application  
+<span class="nb">source </span>start.sh  
+</code></pre>
+</div>
+<p>####### 系统服务</p>
 
 <h3 id="常见问题及解决方法">常见问题及解决方法</h3>
 
@@ -308,24 +391,6 @@ gradle build
                     
                 
             
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
                 
                     
                 
@@ -372,6 +437,24 @@ gradle build
                 
                     
                 
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
             
                 
                     

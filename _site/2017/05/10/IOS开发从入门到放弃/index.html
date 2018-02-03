@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Oracle使用从入门到放弃</title>
-    <meta name="description" content="  常用SQLOracle使用从入门到放弃常用SQL  主键自增长--首先建一个表TESTcreate table BUSI_UPLOADINFO(  ID int PRIMARY KEY,  ENENTTYPE int,  EVNNTSUBTYPE INT,  lAT number,  lON number, ...">
+    <title>IOS开发从入门到放弃</title>
+    <meta name="description" content="  开发环境IOS开发从入门到放弃开发环境  Xcode安装">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+    <link rel="canonical" href="http://localhost:4000/2017/05/10/IOS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -153,11 +153,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Oracle使用从入门到放弃</h1>
+        <h1>IOS开发从入门到放弃</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-09-14
+                <i class="fa fa-calendar"></i>2017-05-10
             </div>
 
             <div class="label-card">
@@ -178,7 +178,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
+        <a href="/category/#IOS" title="Category: IOS" rel="category">IOS</a>
     
   
 
@@ -195,11 +195,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a-->
-        <a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a>&nbsp;
-    
-        <!--a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a-->
-        <a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a>
+        <!--a href="/tag/#IOS" title="Tag: IOS" rel="tag">IOS</a-->
+        <a href="/tag/#IOS" title="Tag: IOS" rel="tag">IOS</a>
     
   
 
@@ -211,87 +208,16 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#常用sql" id="markdown-toc-常用sql">常用SQL</a></li>
+  <li><a href="#开发环境" id="markdown-toc-开发环境">开发环境</a></li>
 </ul>
 
-<p>Oracle使用从入门到放弃</p>
+<p>IOS开发从入门到放弃</p>
 
-<h3 id="常用sql">常用SQL</h3>
+<h3 id="开发环境">开发环境</h3>
 
 <ul>
-  <li>主键自增长</li>
+  <li>Xcode安装</li>
 </ul>
-
-<pre class="prettyprint lang-sql">
---首先建一个表TEST
-
-create table BUSI_UPLOADINFO
-(
-  ID int PRIMARY KEY,
-  ENENTTYPE int,
-  EVNNTSUBTYPE INT,
-  lAT number,
-  lON number,
-  INFO varchar2(100),
-  UPLOADTYPE int,
-  USERID Int,
-  USERNAME varchar2(20),
-  PHONE number,
-   REMARK varchar2(100),
-   REMARK1 varchar2(100),
-   REMARK2 varchar2(100),
-  ADDRESS VARCHAR2(100)
-
-)
-/
-COMMENT ON TABLE BUSI_UPLOADINFO IS '业务表-上报事件表'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ID IS '主键'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ENENTTYPE IS '事件类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.EVNNTSUBTYPE IS '事件子类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.lAT IS '纬度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.LON IS '经度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK1 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK2 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ADDRESS IS '地址信息'
-
--- 建一个序列
-create sequence SEQ_TEST
-minvalue 1        --最小值
-nomaxvalue        --不设置最大值
-start with 1      --从1开始计数
-increment by 1    --每次加1个
-nocycle           --一直累加，不循环
-nocache;          --不建缓冲区
-
--- 以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
-你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
-
-CREATE OR REPLACE TRIGGER tg_test 
-BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
-begin
-select seq_test.nextval into:new.nid from dual;
-end;
-</pre>
 
 
         </article>
@@ -304,11 +230,7 @@ end;
                 
                     
                 
-                    
-                
             
-                
-                    
                 
                     
                 
@@ -319,8 +241,6 @@ end;
                 
                     
                 
-                    
-                
             
         
             
@@ -328,20 +248,7 @@ end;
                 
                     
                 
-                    
-                
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
                 
                     
                 
@@ -352,11 +259,7 @@ end;
                 
                     
                 
-                    
-                
             
-                
-                    
                 
                     
                 
@@ -367,8 +270,6 @@ end;
                 
                     
                 
-                    
-                
             
         
             
@@ -376,20 +277,7 @@ end;
                 
                     
                 
-                    
-                
             
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
                 
                     
                 
@@ -400,11 +288,14 @@ end;
                 
                     
                 
-                    
-                
+            
+        
+            
             
                 
                     
+                
+            
                 
                     
                 
@@ -415,11 +306,14 @@ end;
                 
                     
                 
-                    
-                
+            
+        
+            
             
                 
                     
+                
+            
                 
                     
                 
@@ -430,13 +324,13 @@ end;
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/">智能硬件学习</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">TensorFlow从入门到精通</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a></p>
         
     </div>
 </div>

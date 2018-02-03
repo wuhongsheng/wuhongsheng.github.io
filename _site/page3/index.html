@@ -143,6 +143,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -155,6 +157,208 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python数据分析与展示从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Python" title="Category: Python" rel="category">Python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a>&nbsp;
+    
+        <a href="/tag/#数据分析" title="Tag: 数据分析" rel="tag">数据分析</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#anaconda-ide基本使用" id="markdown-toc-anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</a></li>
+  <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
+  <li><a href="#实战" id="markdown-toc-实战">实战</a></li>
+</ul>
+
+<p>Python数据分析与展示</p>
+
+<p><a href="https://pan.baidu.com/s/1hsrDKXI">参考资料</a></p>
+
+<p><a href="http://wuhongsheng.top/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></p>
+
+<h3 id="anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</h3>
+
+<ul>
+  <li>
+    <p><a href="https://www.continuum.io/downloads">下载</a>（分为命令行和图形化安装，两种安装方式没有区别）</p>
+  </li>
+  <li>
+    <p>安装（以命令行安装为例）：进入文件目录执行<code class="highlighter-rouge">bash Anaconda3-4.4.0-MacOSX-x86_64.sh</code> -&gt;然后就让你确认条款和安装目录(一直按回车键)</p>
+  </li>
+  <li>
+    <p>主要工具</p>
+
+    <p>** conda 包管理和环境管理工具</p>
+
+    <p>升级：<code class="highlighter-rouge">conda update conda</code></p>
+
+    <p>** Spyder 编程工具</p>
+
+    <p>** IPython 交互式编程环境</p>
+  </li>
+  <li>
+    <p>常用命令</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 更新Qt
+conda update qt pyqt
+
+</code></pre>
+</div>
+
+<h3 id="常用库介绍">常用库介绍</h3>
+
+<ul>
+  <li>
+    <p><a href="http://www.python-requests.org">NumPy</a>是一个开源的Python科学计算基础库</p>
+
+    <ul>
+      <li>
+        <p>主要特性：</p>
+
+        <ul>
+          <li>一个强大的N维数组对象 ndarray</li>
+          <li>广播功能函数</li>
+          <li>整合C/C++/Fortran代码的工具</li>
+          <li>线性代数、傅里叶变换、随机数生成等功能</li>
+        </ul>
+      </li>
+      <li>
+        <p>调用方式  <code class="highlighter-rouge">import numpy as np</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="">PIL</a></p>
+
+    <ul>
+      <li>
+        <p>安装</p>
+      </li>
+      <li>
+        <p>调用方式 <code class="highlighter-rouge">from PIL import Image</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="http://matplotlib.org/">matplotlib</a></p>
+
+    <ul>
+      <li>调用方式 <code class="highlighter-rouge">import matplotlib.pyplot  as plt</code></li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="http://pandas.pydata.org/">pandas</a></p>
+
+    <ul>
+      <li>调用方式 <code class="highlighter-rouge">import pandas  as pd</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="实战">实战</h3>
+
+<p>#####图像手绘处理</p>
+
+<ul>
+  <li>源码</li>
+</ul>
+
+<pre class="prettyprint lang-py">
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+# -*- coding: utf-8 -*-
+from PIL import Image
+import numpy as np
+a = np.asanyarray(Image.open('../Downloads/test1.jpg').convert('L')).astype('float')
+
+depth =10.                       # (0-100)                         
+grad = np.gradient(a)            # 去图像灰度的梯度值
+grad_x,grad_y=grad               # 分别取横纵图像梯度值
+grad_x=grad_x*depth/100.
+grad_y=grad_y*depth/100.
+A = np.sqrt(grad_x**2 + grad_y**2 +1.)
+uni_x =grad_x/A
+uni_y = grad_y/A
+uni_z = 1./A
+
+vec_el = np.pi/2.2                  # 光源的俯视角度，弧度值
+vec_az = np.pi/4.                   # 光源的方位角度，弧度值
+dx =np.cos(vec_el)*np.cos(vec_az)   # 光源对X轴对影像
+dy = np.cos(vec_el)*np.sin(vec_az)  # 光源对Y轴对影像
+dz = np.sin(vec_el)                 # 光源对Z轴对影像
+
+b =255*(dx*uni_x + dy*uni_y +dz*uni_z)  # 光源归一化
+b =b.clip(0,255)
+
+im =Image.fromarray(b.astype('uint8'))  # 重构图像
+im.save('../Downloads/test1.jpg')
+</pre>
+
+<ul>
+  <li>结果</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -702,86 +906,6 @@ dependencies {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/">智能硬件学习</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#智能硬件" title="Category: 智能硬件" rel="category">智能硬件</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#智能硬件" title="Tag: 智能硬件" rel="tag">智能硬件</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
-</ul>
-
-<p>智能硬件学习</p>
-
-<h3 id="相关网站">相关网站</h3>
-
-<ul>
-  <li>
-    <p><a href="https://www.hackster.io/">Hackster</a>
-致力于学习硬件的社区</p>
-  </li>
-  <li>
-    <p><a href="https://viktorkirilov.me/post/home-automation-raspberry-pi/">智能家居</a></p>
-  </li>
-  <li>
-    <p><a href="http://blog.csdn.net/tangxiaoyin/article/details/73743166">使用JavaScript和MQTT开发物联网应用</a></p>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -792,10 +916,10 @@ dependencies {
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/page2" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">3/5</span>
+          <span class="page_number ">3/6</span>
           
             <a href="/page4" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page5" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -808,6 +932,8 @@ dependencies {
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
@@ -826,8 +952,6 @@ dependencies {
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
                     
                         <li><a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -854,7 +978,7 @@ dependencies {
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">7</span>
+                            <span class="badge">8</span>
                         </a>
                     </li>
                     
@@ -907,6 +1031,15 @@ dependencies {
                         <a href="/category/#智能硬件" class="categories-list-item" cate="智能硬件">
                             <span class="name">
                                 智能硬件
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#IOS" class="categories-list-item" cate="IOS">
+                            <span class="name">
+                                IOS
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1056,6 +1189,13 @@ dependencies {
                       
                       
                       
+                      <a href="/tag/#Adb" style="font-size: 9pt; color: #999;">Adb</a>
+                    
+                      
+                      
+                      
+                      
+                      
                       <a href="/tag/#Android" style="font-size: 18pt; color: #000;">Android</a>
                     
                       
@@ -1127,6 +1267,13 @@ dependencies {
                       
                       
                       <a href="/tag/#智能硬件" style="font-size: 9pt; color: #999;">智能硬件</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS" style="font-size: 9pt; color: #999;">IOS</a>
                     
                       
                       
@@ -1217,7 +1364,7 @@ dependencies {
                       
                       
                       
-                      <a href="/tag/#RN" style="font-size: 9pt; color: #999;">RN</a>
+                      <a href="/tag/#ReactNative" style="font-size: 9pt; color: #999;">ReactNative</a>
                     
                       
                       
@@ -1281,6 +1428,13 @@ dependencies {
                       
                       
                       <a href="/tag/#技能" style="font-size: 9pt; color: #999;">技能</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#性能优化" style="font-size: 9pt; color: #999;">性能优化</a>
                     
                 </div>
             </div>

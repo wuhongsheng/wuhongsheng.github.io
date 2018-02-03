@@ -143,6 +143,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -155,6 +157,266 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-01-24
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#性能优化" title="Tag: 性能优化" rel="tag">性能优化</a>&nbsp;
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#背景资料" id="markdown-toc-背景资料">背景资料</a></li>
+  <li><a href="#常见问题及优化方式" id="markdown-toc-常见问题及优化方式">常见问题及优化方式</a>    <ul>
+      <li><a href="#启动主题切换" id="markdown-toc-启动主题切换">启动主题切换</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！</p>
+
+<h2 id="背景资料">背景资料</h2>
+
+<blockquote>
+  <p>应用的启动分为冷启动、热启动、温启动，而启动最慢、挑战最大的就是冷启动：系统和App本身都有更多的工作要从头开始！
+应用在冷启动之前，要执行三个任务：</p>
+</blockquote>
+
+<ol>
+  <li>加载启动App；</li>
+  <li>App启动之后立即展示出一个空白的Window；</li>
+  <li>创建App的进程；</li>
+</ol>
+
+<blockquote>
+  <p>而这三个任务执行完毕之后会马上执行以下任务：</p>
+</blockquote>
+
+<ol>
+  <li>建App对象；</li>
+  <li>启动Main Thread；</li>
+  <li>创建启动的Activity对象；</li>
+  <li>加载View；</li>
+  <li>布置屏幕；</li>
+  <li>进行第一次绘制；</li>
+</ol>
+
+<p>而一旦App进程完成了第一次绘制，系统进程就会用Main Activity替换已经展示的Background Window，此时用户就可以使用App了。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/4056837-36c808285a70cf1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="" /></p>
+
+<p>同样，Google也给出了启动加速的方向：</p>
+
+<blockquote>
+  <ol>
+    <li>利用提前展示出来的Window，快速展示出来一个界面，给用户快速反馈的体验；</li>
+    <li>避免在启动时做密集沉重的初始化（Heavy app initialization）；</li>
+    <li>定位问题：避免I/O操作、反序列化、网络操作、布局嵌套等。</li>
+  </ol>
+</blockquote>
+
+<p>可以通过以下命令测试启动耗时</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
+</code></pre>
+</div>
+
+<h2 id="常见问题及优化方式">常见问题及优化方式</h2>
+
+<h3 id="启动主题切换">启动主题切换</h3>
+
+<p>按照官方文档的说明：使用Activity的windowBackground主题属性来为启动的Activity提供一个简单的drawable。
+Layout XML file:</p>
+
+<pre class="prettyprint">
+	<code class="language-xml">
+	<?xml version="1.0" encoding="utf-8"?>
+     <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+       <!-- The background color, preferably the same as your normal theme -->
+       <item android:drawable="@android:color/white" />
+       <!-- Your product logo - 144dp color version of your app icon -->
+       <item>
+        <bitmap android:src="@mipmap/logo" android:gravity="center" />
+       </item>
+     </layer-list>
+    </code>
+</pre>
+
+<p>Style:</p>
+
+<pre class="prettyprint lang-xml">
+
+ <style name="AppTheme.launcher" parent="AppTheme.NoTitle">
+        <item name="android:windowBackground">@drawable/launcher</item>
+  </style>
+ 
+</pre>
+
+<p>Manifest file:</p>
+
+<pre class="prettyprint lang-xml">
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<activity android:name=".login.LoginActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+ </activity>
+ 
+</pre>
+
+<p>Activity:</p>
+
+<pre class="prettyprint lang-java">
+
+public class LoginActivity extends BaseActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_NoTitle);
+        super.onCreate(savedInstanceState);
+       
+    }
+}
+ 
+</pre>
+
+<p>实际测试发现，启动确实避免启动白屏的问题，但是无论时冷启动还是热启动都会有背景图，实测QQ、微信不是这样，判断
+它们是通过增加Splash Activity实现的。</p>
+
+<p>此外这样也可以解决白屏问题</p>
+
+<pre class="prettyprint lang-xml">
+<style name="AppTheme.launcher" parent="android:Theme.Translucent.NoTitleBar.Fullscreen">
+</pre>
+
+### Avoid Heavy App Initialization
+
+当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。
+
+应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。
+
+**诊断问题**
+
+您可以使用方法跟踪或内联跟踪来尝试诊断问题。
+
+**方法追踪**
+运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
+
+**内联追踪**
+使用内联追踪来调查可能的罪魁祸首，包括：
+你的应用程序的初始onCreate() 功能。
+任何全球单身人士对象您的应用程序初始化。
+任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
+
+**解决问题的办法**
+无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像[Dagger](https://google.github.io/dagger/) 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。
+
+
+
+
+
+### Heavy activity initialization
+
+活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：
+
+膨胀大型或复杂的布局。
+阻塞磁盘或网络I / O的屏幕绘图。
+加载和解码位图。
+栅格化VectorDrawable对象。
+初始化活动的其他子系统。
+诊断问题
+在这种情况下，方法跟踪和内联跟踪也是有用的。
+
+**方法追踪**
+当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。
+
+如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
+
+**内联追踪**
+使用内联追踪来调查可能的罪魁祸首，包括：
+
+你的应用程序的初始onCreate() 功能。
+它初始化的任何全局单例对象。
+任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
+**解决问题的办法**
+有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：
+
+视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
+通过减少冗余或嵌套布局来平整您的视图层次结构。
+不要在启动时不需要显示部分UI。相反，使用ViewStub对象作为应用程序可以在更适当的时间膨胀的子层次结构的占位符。
+在主线程上完成所有的资源初始化操作也会减慢启动速度。你可以解决这个问题如下：
+移动所有的资源初始化，以便应用程序可以在不同的线程上执行它。
+允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。
+
+
+
+### Diagnosing The Problem
+
+
+## 参考文章
+
+[Launch-Time Performance](https://developer.android.com/topic/performance/launch-time.html)
+
+[Android性能优化（一）之启动加速35%](https://www.jianshu.com/p/f5514b1a826c)
+
+
+</style></pre>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -217,14 +479,14 @@
 <h3 id="解决思路">解决思路</h3>
 
 <ul>
-  <li>
-    <p>双清
-百度一下，进入手机Recovery模式(同时按住电源键和音量’-‘3秒即可进入)，进行双清(清理系统缓存信息、清理用户数据)操作。
+  <li>双清</li>
+</ul>
+
+<p>百度一下，进入手机Recovery模式(同时按住电源键和音量’-‘3秒即可进入)，进行双清(清理系统缓存信息、清理用户数据)操作。
 尝试后问题依然无法解决</p>
-  </li>
-  <li>
-    <p>求助官方售后</p>
-  </li>
+
+<ul>
+  <li>求助官方售后</li>
 </ul>
 
 <p>打电话到华为售后，售后说可以通过华为的手机助手客户端修复，我尝试了也没有解决问题。客户端提示没有合适的系统包。可能是手机系统版本比较老了。</p>
@@ -720,156 +982,6 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#SpringBoot" title="Category: SpringBoot" rel="category">SpringBoot</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#SpringBoot" title="Tag: SpringBoot" rel="tag">SpringBoot</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
-      <li><a href="#orm" id="markdown-toc-orm">ORM</a></li>
-    </ul>
-  </li>
-  <li><a href="#常用命令和方法" id="markdown-toc-常用命令和方法">常用命令和方法</a>    <ul>
-      <li><a href="#程序部署" id="markdown-toc-程序部署">程序部署</a></li>
-    </ul>
-  </li>
-  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
-</ul>
-
-<p><a href="http://projects.spring.io/spring-boot/">SpringBoot</a>从入门到放弃</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<ul>
-  <li>
-    <p><a href="http://projects.spring.io/spring-boot/">SpringBoot官网</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.infoq.com/cn/articles/microframeworks1-spring-boot">深入学习微框架：Spring Boot</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/alibaba/druid">为监控而生的数据库连接池！阿里云DRDS</a></p>
-  </li>
-</ul>
-
-<h4 id="orm">ORM</h4>
-
-<ul>
-  <li>
-    <p><a href="">hibernate</a></p>
-  </li>
-  <li>
-    <p><a href="">JPA</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/mybatis/spring-boot-starter">MyBatis</a></p>
-  </li>
-</ul>
-
-<h3 id="常用命令和方法">常用命令和方法</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 构建项目
-gradle build
-</code></pre>
-</div>
-<h4 id="程序部署">程序部署</h4>
-
-<ul>
-  <li>War部署（传统方式）</li>
-</ul>
-
-<p>将War文件拷贝到Tomcat Webapp目录下</p>
-
-<ul>
-  <li>Jar部署</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
-</code></pre>
-</div>
-
-<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
-
-<p><strong>问题描述</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
-</code></pre>
-</div>
-
-<p><strong>解决办法</strong></p>
-
-<p>1.重启IDEA或者重启电脑（可能是Druid bug 导致）</p>
-
-<p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
-
-</code></pre>
-</div>
-<p><strong>解决办法</strong></p>
-
-<ul>
-  <li>配置文件增加
-    <div class="highlighter-rouge"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
-</code></pre>
-    </div>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -880,10 +992,10 @@ gradle build
             <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
             <span class="previous disable"><i class="fa fa-angle-left"></i></span>
           
-          <span class="page_number ">1/5</span>
+          <span class="page_number ">1/6</span>
           
             <a href="/page2" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page5" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -896,6 +1008,8 @@ gradle build
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
@@ -914,8 +1028,6 @@ gradle build
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
                     
                         <li><a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -942,7 +1054,7 @@ gradle build
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">7</span>
+                            <span class="badge">8</span>
                         </a>
                     </li>
                     
@@ -995,6 +1107,15 @@ gradle build
                         <a href="/category/#智能硬件" class="categories-list-item" cate="智能硬件">
                             <span class="name">
                                 智能硬件
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#IOS" class="categories-list-item" cate="IOS">
+                            <span class="name">
+                                IOS
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1144,6 +1265,13 @@ gradle build
                       
                       
                       
+                      <a href="/tag/#Adb" style="font-size: 9pt; color: #999;">Adb</a>
+                    
+                      
+                      
+                      
+                      
+                      
                       <a href="/tag/#Android" style="font-size: 18pt; color: #000;">Android</a>
                     
                       
@@ -1215,6 +1343,13 @@ gradle build
                       
                       
                       <a href="/tag/#智能硬件" style="font-size: 9pt; color: #999;">智能硬件</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS" style="font-size: 9pt; color: #999;">IOS</a>
                     
                       
                       
@@ -1305,7 +1440,7 @@ gradle build
                       
                       
                       
-                      <a href="/tag/#RN" style="font-size: 9pt; color: #999;">RN</a>
+                      <a href="/tag/#ReactNative" style="font-size: 9pt; color: #999;">ReactNative</a>
                     
                       
                       
@@ -1369,6 +1504,13 @@ gradle build
                       
                       
                       <a href="/tag/#技能" style="font-size: 9pt; color: #999;">技能</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#性能优化" style="font-size: 9pt; color: #999;">性能优化</a>
                     
                 </div>
             </div>

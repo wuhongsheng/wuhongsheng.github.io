@@ -143,6 +143,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -155,6 +157,380 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">常用Git命令及问题</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-03
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Git" title="Category: Git" rel="category">Git</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Git" title="Tag: Git" rel="tag">Git</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#git简介" id="markdown-toc-git简介">Git简介</a></li>
+  <li><a href="#git常用命令" id="markdown-toc-git常用命令">Git常用命令</a></li>
+  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+</ul>
+
+<p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。</p>
+
+<h3 id="git简介">Git简介</h3>
+
+<p>Git是什么？</p>
+
+<p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
+
+<p>Git的诞生</p>
+
+<p>很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。</p>
+
+<p>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？</p>
+
+<p>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！</p>
+
+<p>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p>
+
+<p>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
+
+<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。</p>
+
+<p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：</p>
+
+<p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。</p>
+
+<p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p>
+
+<p>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p>
+
+<h3 id="git常用命令">Git常用命令</h3>
+<p>git是分布式的代码管理工具，基于SSH协议。ssh的作用就是为了不用每次都输入账号和密码。
+生成的ssh密钥，分为公钥和私钥。公钥就是所要添加的ssh key（.pub文件）。公钥可以看成是一个锁头，私钥就是对应的钥匙。生成的ssh密钥是可以用到不同的地方的，比例同时添加到github,coding的平台。</p>
+
+<p><a href="http://www.jianshu.com/p/f008d9fe3f34">教程</a></p>
+
+<p>列出当前已存在的SSH:<code class="highlighter-rouge">ls -al ~/.ssh</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 下载项目
+git clone https://github.com/facebook/react-native.
+# 创建分支
+git branch [branchname]
+# 切换分支
+git checkout [branchname]
+# 命令加上-b参数表示创建并切换
+git checkout -b [branchname]
+# 查看当前分支(当前分支前面会标一个*号)
+git branch
+# 在新增分支上操作
+git add test.txt
+git commit -m "说明"
+# 切换回master分支
+git checkout master
+# 合并分支工作成果到master分支上
+git merge [branchname]
+# 删除新增的分支
+git branch -d [branchname]
+# 查看远程仓库信息
+git remote
+# 提交本地分支到远程仓库分支
+git push  dev orgin/dev 
+# 创建远程origin的dev分支到本地
+git checkout -b dev origin/dev
+# 查看最近三次提交记录
+git log
+# 查看所有的提交
+git reflog
+# 回退版本
+# 彻底回退到某个版本（包括源码）
+git reset --hard [commitid] 
+# 只回退了commit的信息，不会恢复到index file一级
+git reset --soft [commitid]
+# 默认方式，只保留源码，回退commit和index信息
+git reset [commitid]
+# 工作区(work dict)和暂存区(stage)的比较
+git diff
+# 暂存区(stage)和分支(master)的比较
+git diff --cached
+
+</code></pre>
+</div>
+
+<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
+
+<p><strong>错误代码：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
+java.lang.RuntimeException: Invocation failed Operation timed out
+	at org.jetbrains.git4idea.ssh.GitSSHXmlRpcClient.getLastSuccessful(GitSSHXmlRpcClient.java:230)
+	at org.jetbrains.git4idea.ssh.SSHMain.authenticate(SSHMain.java:212)
+	at org.jetbrains.git4idea.ssh.SSHMain.start(SSHMain.java:173)
+	at org.jetbrains.git4idea.ssh.SSHMain.main(SSHMain.java:138)
+Caused by: java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+</code></pre>
+</div>
+
+<p><strong>解决方法：</strong></p>
+
+<ol>
+  <li>Click File-&gt; Settings. Keyboard shortcut is Ctrl+Alt+S.</li>
+  <li>Search for “Version Control”</li>
+  <li>Choose “Git” under “version Control”</li>
+  <li>In the SSH executable dropdown, choose Native</li>
+</ol>
+
+<p><strong>错误代码：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Clone failed
+RPC failed; curl 56 SSLRead() return error -9806
+The remote end hung up unexpectedly
+early EOF
+index-pack failed
+</code></pre>
+</div>
+
+<p><strong>解决方法：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git config --global http.postBuffer 1048576000
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">Markdown入门指南</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-04-24
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Markdown" title="Category: Markdown" rel="category">Markdown</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Markdown" title="Tag: Markdown" rel="tag">Markdown</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#导语" id="markdown-toc-导语">导语</a></li>
+  <li><a href="#markdown-官方文档" id="markdown-toc-markdown-官方文档">Markdown 官方文档</a></li>
+  <li><a href="#使用-markdown-的优点" id="markdown-toc-使用-markdown-的优点">使用 Markdown 的优点</a></li>
+  <li><a href="#markdown-语法的简要规则" id="markdown-toc-markdown-语法的简要规则">Markdown 语法的简要规则</a>    <ul>
+      <li><a href="#标题" id="markdown-toc-标题">标题</a></li>
+      <li><a href="#列表" id="markdown-toc-列表">列表</a></li>
+      <li><a href="#引用" id="markdown-toc-引用">引用</a></li>
+      <li><a href="#图片和链接" id="markdown-toc-图片和链接">图片和链接</a></li>
+      <li><a href="#粗体与斜体" id="markdown-toc-粗体与斜体">粗体与斜体</a></li>
+      <li><a href="#表格" id="markdown-toc-表格">表格</a></li>
+      <li><a href="#代码框" id="markdown-toc-代码框">代码框</a></li>
+      <li><a href="#分割线" id="markdown-toc-分割线">分割线</a></li>
+    </ul>
+  </li>
+  <li><a href="#相关工具" id="markdown-toc-相关工具">相关工具</a></li>
+</ul>
+
+<p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。</p>
+
+<h3 id="导语">导语</h3>
+
+<blockquote>
+  <p>Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
+</blockquote>
+
+<h3 id="markdown-官方文档">Markdown 官方文档</h3>
+
+<blockquote>
+  <p>这里可以看到官方的Markdown语法规则文档，当然，后文我也会用自己的方式阐述这些语法的具体用法。</p>
+  <ul>
+    <li><a href="http://daringfireball.net/projects/markdown/syntax">创始人 John Gruber 的 Markdown 语法说明</a></li>
+    <li><a href="http://wowubuntu.com/markdown/#list">Markdown 中文版语法说明</a></li>
+  </ul>
+</blockquote>
+
+<h3 id="使用-markdown-的优点">使用 Markdown 的优点</h3>
+
+<ul>
+  <li>专注你的文字内容而不是排版样式，安心写作。</li>
+  <li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
+  <li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
+  <li>随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱。可读、直观、学习成本低。</li>
+</ul>
+
+<h3 id="markdown-语法的简要规则">Markdown 语法的简要规则</h3>
+
+<h4 id="标题">标题</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_title.jpg" alt="" /></p>
+
+<h4 id="列表">列表</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_list.jpg" alt="" /></p>
+
+<h4 id="引用">引用</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_quote.jpg" alt="" /></p>
+
+<h4 id="图片和链接">图片和链接</h4>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/md_img.jpg" alt="" /></p>
+
+<h4 id="粗体与斜体">粗体与斜体</h4>
+
+<p>Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就是粗体的语法，用一个 * 包含一段文本就是斜体的语法。</p>
+
+<p>例如：<strong>这里是粗体</strong> <em>这里是斜体</em></p>
+
+<h4 id="表格">表格</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+</code></pre>
+</div>
+
+<p>这种语法生成的表格如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tables</th>
+      <th style="text-align: center">Are</th>
+      <th style="text-align: right">Cool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>col 3 is</td>
+      <td style="text-align: center">right-aligned</td>
+      <td style="text-align: right">$1600</td>
+    </tr>
+    <tr>
+      <td>col 2 is</td>
+      <td style="text-align: center">centered</td>
+      <td style="text-align: right">$12</td>
+    </tr>
+    <tr>
+      <td>zebra stripes</td>
+      <td style="text-align: center">are neat</td>
+      <td style="text-align: right">$1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="代码框">代码框</h4>
+
+<p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。使用 tab 键即可缩进。</p>
+
+<h4 id="分割线">分割线</h4>
+
+<p>分割线的语法只需要三个 * 号，例如：</p>
+
+<hr />
+
+<h3 id="相关工具">相关工具</h3>
+
+<ul>
+  <li>
+    <p>图床工具</p>
+
+    <p><a href="https://portal.qiniu.com">七牛云</a></p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/04/24/Markdown%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -621,6 +997,8 @@
   <i class="fa fa-tags"></i>
   
     
+        <a href="/tag/#Adb" title="Tag: Adb" rel="tag">Adb</a>&nbsp;
+    
         <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
     
   
@@ -659,6 +1037,7 @@ export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
   <li>lsof -i:5037 查看adb端口占用进程</li>
   <li>rm -rf ~/.android 重置本地签名文件</li>
   <li>killalladb 结束所有adb相关进程</li>
+  <li>adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity //测量应用的启动时间</li>
   <li>未完待续……</li>
 </ul>
 
@@ -725,70 +1104,6 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/04/04/Jekyll-%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">Jekyll 搭建静态博客</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-04-04
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#jekyll" title="Category: jekyll" rel="category">jekyll</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#jekyll" title="Tag: jekyll" rel="tag">jekyll</a>&nbsp;
-    
-        <a href="/tag/#RubyGems" title="Tag: RubyGems" rel="tag">RubyGems</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p>一直以来都想搭建一个自己的博客，之前用过博客园的系统，感觉内容排版布局比较麻烦。后来在Github上看到有人使用jeklly,于是选择了在Github上用jekyll搭建博客。</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/04/04/Jekyll-%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -799,10 +1114,10 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/page4" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">5/5</span>
+          <span class="page_number ">5/6</span>
           
-            <span class="next disable"><i class="fa fa-angle-right"></i></span>
-            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+            <a href="/page6" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -815,6 +1130,8 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
@@ -833,8 +1150,6 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
                     
                         <li><a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -861,7 +1176,7 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">7</span>
+                            <span class="badge">8</span>
                         </a>
                     </li>
                     
@@ -914,6 +1229,15 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                         <a href="/category/#智能硬件" class="categories-list-item" cate="智能硬件">
                             <span class="name">
                                 智能硬件
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#IOS" class="categories-list-item" cate="IOS">
+                            <span class="name">
+                                IOS
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1063,6 +1387,13 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                       
                       
                       
+                      <a href="/tag/#Adb" style="font-size: 9pt; color: #999;">Adb</a>
+                    
+                      
+                      
+                      
+                      
+                      
                       <a href="/tag/#Android" style="font-size: 18pt; color: #000;">Android</a>
                     
                       
@@ -1134,6 +1465,13 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                       
                       
                       <a href="/tag/#智能硬件" style="font-size: 9pt; color: #999;">智能硬件</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#IOS" style="font-size: 9pt; color: #999;">IOS</a>
                     
                       
                       
@@ -1224,7 +1562,7 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                       
                       
                       
-                      <a href="/tag/#RN" style="font-size: 9pt; color: #999;">RN</a>
+                      <a href="/tag/#ReactNative" style="font-size: 9pt; color: #999;">ReactNative</a>
                     
                       
                       
@@ -1288,6 +1626,13 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
                       
                       
                       <a href="/tag/#技能" style="font-size: 9pt; color: #999;">技能</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#性能优化" style="font-size: 9pt; color: #999;">性能优化</a>
                     
                 </div>
             </div>
