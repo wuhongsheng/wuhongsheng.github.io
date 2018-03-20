@@ -332,6 +332,11 @@ index-pack failed
 <p><strong>解决方法：</strong></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>git config --global http.postBuffer 1048576000
+网上查查资料，才发现是淘宝的镜像源关闭了。
+解决方法，很简单，把旧的镜像删除，换成Rubby China.
+gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+gem sources -l
+gem install rails
 </code></pre>
 </div>
 
@@ -358,24 +363,6 @@ index-pack failed
                     
                 
             
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
                 
                     
                 
@@ -405,13 +392,6 @@ index-pack failed
                     
                 
             
-        
-            
-            
-                
-                    
-                
-            
                 
                     
                 
@@ -429,6 +409,31 @@ index-pack failed
                 
                     
                 
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
             
                 
                     

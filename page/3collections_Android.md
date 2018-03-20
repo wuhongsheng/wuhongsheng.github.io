@@ -183,6 +183,8 @@ type: page
 
 * [Android性能优化之提高App启动速度和Splash页面设计](http://blog.csdn.net/chenliguan/article/details/53997436)
 
+* [Android App优化](https://www.jianshu.com/p/4f10c9a10ac9)
+
 
 ## 测试
 

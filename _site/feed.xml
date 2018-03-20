@@ -5,9 +5,60 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 03 Feb 2018 18:05:29 +0800</pubDate>
-    <lastBuildDate>Sat, 03 Feb 2018 18:05:29 +0800</lastBuildDate>
+    <pubDate>Tue, 20 Mar 2018 13:44:27 +0800</pubDate>
+    <lastBuildDate>Tue, 20 Mar 2018 13:44:27 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>ArcServer发布可同步地图服务</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#操作流程以103arcserver为例&quot; id=&quot;markdown-toc-操作流程以103arcserver为例&quot;&gt;操作流程（以10.3ArcServer为例）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考链接&quot; id=&quot;markdown-toc-参考链接&quot;&gt;参考链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+从ArcGIS 10.2.1开始推出离在线一体化技术之后，数据的离在线一体化编辑一直是大家所关注的一个热点。数据存储在企业级地理数据库中，通过ArcGIS桌面软件加载后配图处理，并发布到ArcGIS for Server中，供移动端设备离线编辑使用，并可以同步回传版本化存档。这其中涉及多项配置操作，本篇文章主要针对FeatureService服务的发布流程做一个简单的介绍。以备查阅。
+ &lt;img src=&quot;https://images2015.cnblogs.com/blog/412448/201609/412448-20160909164428254-500287581.png&quot; alt=&quot;&quot; /&gt;
+
+&lt;h3 id=&quot;操作流程以103arcserver为例&quot;&gt;操作流程（以10.3ArcServer为例）&lt;/h3&gt;
+
+1.准备数据源（ArcSDE）-&amp;gt;2.添加GlobalId-&amp;gt;启用存档-&amp;gt;制作地图文档(MXD)-&amp;gt;新增数据库连接-&amp;gt;添加Server连接-&amp;gt;注册数据库到服务器-&amp;gt;发布服务
+
+&lt;ol&gt;
+  &lt;li&gt;
+    在CataLog中
+  &lt;/li&gt;
+  &lt;li&gt;
+    在增加GlobalId时可能会出现与数据锁冲突，如下图所示：执行SQL解除锁
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+``` select * from sde.table_locks for update``
+
+&lt;ol&gt;
+  &lt;li&gt;启用存档，这不没用问题&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;参考链接&quot;&gt;参考链接&lt;/h3&gt;
+
+&lt;a href=&quot;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm&quot;&gt;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm&lt;/a&gt;
+
+&lt;a href=&quot;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm&quot;&gt;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm&lt;/a&gt;
+
+&lt;a href=&quot;http://www.cnblogs.com/gis-luq/p/5857188.html&quot;&gt;http://www.cnblogs.com/gis-luq/p/5857188.html&lt;/a&gt;
+
+</description>
+        <pubDate>Wed, 07 Mar 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/</guid>
+        
+        <category>GIS</category>
+        
+        <category>ArcServer</category>
+        
+        
+        <category>GIS</category>
+        
+      </item>
     
       <item>
         <title>Android启动加速优化</title>
@@ -15,8 +66,12 @@
   &lt;li&gt;&lt;a href=&quot;#背景资料&quot; id=&quot;markdown-toc-背景资料&quot;&gt;背景资料&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#常见问题及优化方式&quot; id=&quot;markdown-toc-常见问题及优化方式&quot;&gt;常见问题及优化方式&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#启动主题切换&quot; id=&quot;markdown-toc-启动主题切换&quot;&gt;启动主题切换&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#avoid-heavy-app-initialization&quot; id=&quot;markdown-toc-avoid-heavy-app-initialization&quot;&gt;Avoid Heavy App Initialization&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#heavy-activity-initialization&quot; id=&quot;markdown-toc-heavy-activity-initialization&quot;&gt;Heavy activity initialization&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#diagnosing-the-problem&quot; id=&quot;markdown-toc-diagnosing-the-problem&quot;&gt;Diagnosing The Problem&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考文章&quot; id=&quot;markdown-toc-参考文章&quot;&gt;参考文章&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！
@@ -76,15 +131,17 @@ Layout XML file:
 
 &lt;pre class=&quot;prettyprint&quot;&gt;
 	&lt;code class=&quot;language-xml&quot;&gt;
-	&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-     &lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:opacity=&quot;opaque&quot;&gt;
-       &lt;!-- The background color, preferably the same as your normal theme --&gt;
-       &lt;item android:drawable=&quot;@android:color/white&quot; /&gt;
-       &lt;!-- Your product logo - 144dp color version of your app icon --&gt;
-       &lt;item&gt;
-        &lt;bitmap android:src=&quot;@mipmap/logo&quot; android:gravity=&quot;center&quot; /&gt;
-       &lt;/item&gt;
-     &lt;/layer-list&gt;
+	  &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
+         &amp;lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:opacity=&quot;opaque&quot;&amp;gt;
+           &lt;!-- The background color, preferably the same as your normal theme --&gt;
+           &amp;lt;item android:drawable=&quot;@android:color/white&quot;/&amp;gt;
+           &lt;!-- Your product logo - 144dp color version of your app icon --&gt;
+           &amp;lt;item&amp;gt;
+             &amp;lt;bitmap
+               android:src=&quot;@mipmap/logo&quot;
+               android:gravity=&quot;center&quot;/&amp;gt;
+             &amp;lt;/item&amp;gt;
+        &amp;lt;/layer-list&amp;gt;
     &lt;/code&gt;
 &lt;/pre&gt;
 
@@ -92,9 +149,9 @@ Style:
 
 &lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
 
- &lt;style name=&quot;AppTheme.launcher&quot; parent=&quot;AppTheme.NoTitle&quot;&gt;
-        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/launcher&lt;/item&gt;
-  &lt;/style&gt;
+ &amp;lt;style name=&quot;AppTheme.launcher&quot; parent=&quot;AppTheme.NoTitle&quot;&amp;gt;
+         &amp;lt;item name=&quot;android:windowBackground&quot;&amp;gt;@drawable/launcher &amp;lt;/item&amp;gt;
+  &amp;lt;/style&amp;gt;
  
 &lt;/pre&gt;
 
@@ -102,14 +159,17 @@ Manifest file:
 
 &lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
 
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
 
-&lt;activity android:name=&quot;.login.LoginActivity&quot; android:screenOrientation=&quot;portrait&quot; android:theme=&quot;@style/AppTheme.launcher&quot;&gt;
-            &lt;intent-filter&gt;
-                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
-                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
-            &lt;/intent-filter&gt;
- &lt;/activity&gt;
+&amp;lt;activity android:name=&quot;.login.LoginActivity&quot;
+            android:screenOrientation=&quot;portrait&quot;
+            android:theme=&quot;@style/AppTheme.launcher&quot;
+            &amp;gt;
+            &amp;lt;intent-filter&amp;gt;
+                &amp;lt;action android:name=&quot;android.intent.action.MAIN&quot; /&amp;gt;
+                &amp;lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&amp;gt;
+            &amp;lt;/intent-filter&amp;gt;
+ &amp;lt;/activity&amp;gt;
  
 &lt;/pre&gt;
 
@@ -135,36 +195,32 @@ public class LoginActivity extends BaseActivity {
 此外这样也可以解决白屏问题
 
 &lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
-&lt;style name=&quot;AppTheme.launcher&quot; parent=&quot;android:Theme.Translucent.NoTitleBar.Fullscreen&quot;&gt;
+&amp;lt;style name=&quot;AppTheme.launcher&quot; parent=&quot;android:Theme.Translucent.NoTitleBar.Fullscreen&quot;/&amp;gt;
 &lt;/pre&gt;
 
-### Avoid Heavy App Initialization
+&lt;h3 id=&quot;avoid-heavy-app-initialization&quot;&gt;Avoid Heavy App Initialization&lt;/h3&gt;
 
 当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。
 
 应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。
 
-**诊断问题**
+&lt;strong&gt;诊断问题&lt;/strong&gt;
 
 您可以使用方法跟踪或内联跟踪来尝试诊断问题。
 
-**方法追踪**
+&lt;strong&gt;方法追踪&lt;/strong&gt;
 运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
 
-**内联追踪**
+&lt;strong&gt;内联追踪&lt;/strong&gt;
 使用内联追踪来调查可能的罪魁祸首，包括：
 你的应用程序的初始onCreate() 功能。
 任何全球单身人士对象您的应用程序初始化。
 任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
 
-**解决问题的办法**
-无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像[Dagger](https://google.github.io/dagger/) 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。
+&lt;strong&gt;解决问题的办法&lt;/strong&gt;
+无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像&lt;a href=&quot;https://google.github.io/dagger/&quot;&gt;Dagger&lt;/a&gt; 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。
 
-
-
-
-
-### Heavy activity initialization
+&lt;h3 id=&quot;heavy-activity-initialization&quot;&gt;Heavy activity initialization&lt;/h3&gt;
 
 活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：
 
@@ -176,18 +232,18 @@ public class LoginActivity extends BaseActivity {
 诊断问题
 在这种情况下，方法跟踪和内联跟踪也是有用的。
 
-**方法追踪**
+&lt;strong&gt;方法追踪&lt;/strong&gt;
 当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。
 
 如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
 
-**内联追踪**
+&lt;strong&gt;内联追踪&lt;/strong&gt;
 使用内联追踪来调查可能的罪魁祸首，包括：
 
 你的应用程序的初始onCreate() 功能。
 它初始化的任何全局单例对象。
 任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
-**解决问题的办法**
+&lt;strong&gt;解决问题的办法&lt;/strong&gt;
 有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：
 
 视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
@@ -197,19 +253,14 @@ public class LoginActivity extends BaseActivity {
 移动所有的资源初始化，以便应用程序可以在不同的线程上执行它。
 允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。
 
+&lt;h3 id=&quot;diagnosing-the-problem&quot;&gt;Diagnosing The Problem&lt;/h3&gt;
 
+&lt;h2 id=&quot;参考文章&quot;&gt;参考文章&lt;/h2&gt;
 
-### Diagnosing The Problem
+&lt;a href=&quot;https://developer.android.com/topic/performance/launch-time.html&quot;&gt;Launch-Time Performance&lt;/a&gt;
 
+&lt;a href=&quot;https://www.jianshu.com/p/f5514b1a826c&quot;&gt;Android性能优化（一）之启动加速35%&lt;/a&gt;
 
-## 参考文章
-
-[Launch-Time Performance](https://developer.android.com/topic/performance/launch-time.html)
-
-[Android性能优化（一）之启动加速35%](https://www.jianshu.com/p/f5514b1a826c)
-
-
-&lt;/style&gt;&lt;/pre&gt;
 </description>
         <pubDate>Wed, 24 Jan 2018 16:14:54 +0800</pubDate>
         <link>http://localhost:4000/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/</link>
@@ -972,73 +1023,6 @@ so文件重复，如bugly同时使用手动集成和自动集成会出现此问�
         
         
         <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>百度地图从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用方法&quot; id=&quot;markdown-toc-常用方法&quot;&gt;常用方法&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;a href=&quot;http://lbsyun.baidu.com/&quot;&gt;百度地图&lt;/a&gt;开发
-
-&lt;h3 id=&quot;常用方法&quot;&gt;常用方法&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;坐标转换&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
- * 将 BD-09 坐标转换成GCJ-02 坐标 
- * bd_lat * @param bd_lon * @return
- */
- public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
-        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
-        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
-        double gg_lon = z * Math.cos(theta);
-        double gg_lat = z * Math.sin(theta);
-        return new TitanLocation(gg_lon, gg_lat);
-
- }
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
- * @param gg_lat
- * @param gg_lon
- */
- public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
-        double x = gg_lon, y = gg_lat;
-        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
-        double bd_lon = z * Math.cos(theta) + 0.0065;
-        double bd_lat = z * Math.sin(theta) + 0.006;
-        return new TitanLocation(bd_lon, bd_lat);
- }
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
-
-&lt;strong&gt;错误描述&lt;/strong&gt;
-
-&lt;strong&gt;解决方法&lt;/strong&gt;
-
-集成百度导航需要将 targetSdkVersion 设为23
-
-</description>
-        <pubDate>Tue, 20 Jun 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>GIS</category>
-        
-        <category>百度地图</category>
-        
-        
-        <category>百度地图</category>
         
       </item>
     

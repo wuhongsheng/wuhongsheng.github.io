@@ -160,6 +160,102 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-03-07
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
+    
+        <a href="/tag/#ArcServer" title="Tag: ArcServer" rel="tag">ArcServer</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#操作流程以103arcserver为例" id="markdown-toc-操作流程以103arcserver为例">操作流程（以10.3ArcServer为例）</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
+</ul>
+
+<p>从ArcGIS 10.2.1开始推出离在线一体化技术之后，数据的离在线一体化编辑一直是大家所关注的一个热点。数据存储在企业级地理数据库中，通过ArcGIS桌面软件加载后配图处理，并发布到ArcGIS for Server中，供移动端设备离线编辑使用，并可以同步回传版本化存档。这其中涉及多项配置操作，本篇文章主要针对FeatureService服务的发布流程做一个简单的介绍。以备查阅。
+ <img src="https://images2015.cnblogs.com/blog/412448/201609/412448-20160909164428254-500287581.png" alt="" /></p>
+
+<h3 id="操作流程以103arcserver为例">操作流程（以10.3ArcServer为例）</h3>
+
+<p>1.准备数据源（ArcSDE）-&gt;2.添加GlobalId-&gt;启用存档-&gt;制作地图文档(MXD)-&gt;新增数据库连接-&gt;添加Server连接-&gt;注册数据库到服务器-&gt;发布服务</p>
+
+<ol>
+  <li>
+    <p>在CataLog中</p>
+  </li>
+  <li>
+    <p>在增加GlobalId时可能会出现与数据锁冲突，如下图所示：执行SQL解除锁</p>
+  </li>
+</ol>
+
+<p>``` select * from sde.table_locks for update``</p>
+
+<ol>
+  <li>启用存档，这不没用问题</li>
+</ol>
+
+<h3 id="参考链接">参考链接</h3>
+
+<p><a href="https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm">https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm</a></p>
+
+<p><a href="https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm">https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm</a></p>
+
+<p><a href="http://www.cnblogs.com/gis-luq/p/5857188.html">http://www.cnblogs.com/gis-luq/p/5857188.html</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a>
                 </h2>
                 <div class="label">
@@ -215,8 +311,12 @@
   <li><a href="#背景资料" id="markdown-toc-背景资料">背景资料</a></li>
   <li><a href="#常见问题及优化方式" id="markdown-toc-常见问题及优化方式">常见问题及优化方式</a>    <ul>
       <li><a href="#启动主题切换" id="markdown-toc-启动主题切换">启动主题切换</a></li>
+      <li><a href="#avoid-heavy-app-initialization" id="markdown-toc-avoid-heavy-app-initialization">Avoid Heavy App Initialization</a></li>
+      <li><a href="#heavy-activity-initialization" id="markdown-toc-heavy-activity-initialization">Heavy activity initialization</a></li>
+      <li><a href="#diagnosing-the-problem" id="markdown-toc-diagnosing-the-problem">Diagnosing The Problem</a></li>
     </ul>
   </li>
+  <li><a href="#参考文章" id="markdown-toc-参考文章">参考文章</a></li>
 </ul>
 
 <p>随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！</p>
@@ -276,15 +376,17 @@ Layout XML file:</p>
 
 <pre class="prettyprint">
 	<code class="language-xml">
-	<?xml version="1.0" encoding="utf-8"?>
-     <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
-       <!-- The background color, preferably the same as your normal theme -->
-       <item android:drawable="@android:color/white" />
-       <!-- Your product logo - 144dp color version of your app icon -->
-       <item>
-        <bitmap android:src="@mipmap/logo" android:gravity="center" />
-       </item>
-     </layer-list>
+	  &lt;?xml version="1.0" encoding="utf-8"?&gt;
+         &lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque"&gt;
+           <!-- The background color, preferably the same as your normal theme -->
+           &lt;item android:drawable="@android:color/white"/&gt;
+           <!-- Your product logo - 144dp color version of your app icon -->
+           &lt;item&gt;
+             &lt;bitmap
+               android:src="@mipmap/logo"
+               android:gravity="center"/&gt;
+             &lt;/item&gt;
+        &lt;/layer-list&gt;
     </code>
 </pre>
 
@@ -292,9 +394,9 @@ Layout XML file:</p>
 
 <pre class="prettyprint lang-xml">
 
- <style name="AppTheme.launcher" parent="AppTheme.NoTitle">
-        <item name="android:windowBackground">@drawable/launcher</item>
-  </style>
+ &lt;style name="AppTheme.launcher" parent="AppTheme.NoTitle"&gt;
+         &lt;item name="android:windowBackground"&gt;@drawable/launcher &lt;/item&gt;
+  &lt;/style&gt;
  
 </pre>
 
@@ -302,14 +404,17 @@ Layout XML file:</p>
 
 <pre class="prettyprint lang-xml">
 
-<?xml version="1.0" encoding="utf-8"?>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
 
-<activity android:name=".login.LoginActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.launcher">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
- </activity>
+&lt;activity android:name=".login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.launcher"
+            &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+ &lt;/activity&gt;
  
 </pre>
 
@@ -335,81 +440,72 @@ public class LoginActivity extends BaseActivity {
 <p>此外这样也可以解决白屏问题</p>
 
 <pre class="prettyprint lang-xml">
-<style name="AppTheme.launcher" parent="android:Theme.Translucent.NoTitleBar.Fullscreen">
+&lt;style name="AppTheme.launcher" parent="android:Theme.Translucent.NoTitleBar.Fullscreen"/&gt;
 </pre>
 
-### Avoid Heavy App Initialization
+<h3 id="avoid-heavy-app-initialization">Avoid Heavy App Initialization</h3>
 
-当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。
+<p>当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。</p>
 
-应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。
+<p>应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。</p>
 
-**诊断问题**
+<p><strong>诊断问题</strong></p>
 
-您可以使用方法跟踪或内联跟踪来尝试诊断问题。
+<p>您可以使用方法跟踪或内联跟踪来尝试诊断问题。</p>
 
-**方法追踪**
-运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
+<p><strong>方法追踪</strong>
+运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
 
-**内联追踪**
+<p><strong>内联追踪</strong>
 使用内联追踪来调查可能的罪魁祸首，包括：
 你的应用程序的初始onCreate() 功能。
 任何全球单身人士对象您的应用程序初始化。
-任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
+任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。</p>
 
-**解决问题的办法**
-无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像[Dagger](https://google.github.io/dagger/) 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。
+<p><strong>解决问题的办法</strong>
+无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像<a href="https://google.github.io/dagger/">Dagger</a> 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。</p>
 
+<h3 id="heavy-activity-initialization">Heavy activity initialization</h3>
 
+<p>活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：</p>
 
-
-
-### Heavy activity initialization
-
-活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：
-
-膨胀大型或复杂的布局。
+<p>膨胀大型或复杂的布局。
 阻塞磁盘或网络I / O的屏幕绘图。
 加载和解码位图。
 栅格化VectorDrawable对象。
 初始化活动的其他子系统。
 诊断问题
-在这种情况下，方法跟踪和内联跟踪也是有用的。
+在这种情况下，方法跟踪和内联跟踪也是有用的。</p>
 
-**方法追踪**
-当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。
+<p><strong>方法追踪</strong>
+当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。</p>
 
-如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
+<p>如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
 
-**内联追踪**
-使用内联追踪来调查可能的罪魁祸首，包括：
+<p><strong>内联追踪</strong>
+使用内联追踪来调查可能的罪魁祸首，包括：</p>
 
-你的应用程序的初始onCreate() 功能。
+<p>你的应用程序的初始onCreate() 功能。
 它初始化的任何全局单例对象。
 任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
-**解决问题的办法**
-有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：
+<strong>解决问题的办法</strong>
+有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：</p>
 
-视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
+<p>视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
 通过减少冗余或嵌套布局来平整您的视图层次结构。
 不要在启动时不需要显示部分UI。相反，使用ViewStub对象作为应用程序可以在更适当的时间膨胀的子层次结构的占位符。
 在主线程上完成所有的资源初始化操作也会减慢启动速度。你可以解决这个问题如下：
 移动所有的资源初始化，以便应用程序可以在不同的线程上执行它。
-允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。
+允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。</p>
 
+<h3 id="diagnosing-the-problem">Diagnosing The Problem</h3>
 
+<h2 id="参考文章">参考文章</h2>
 
-### Diagnosing The Problem
+<p><a href="https://developer.android.com/topic/performance/launch-time.html">Launch-Time Performance</a></p>
 
+<p><a href="https://www.jianshu.com/p/f5514b1a826c">Android性能优化（一）之启动加速35%</a></p>
 
-## 参考文章
-
-[Launch-Time Performance](https://developer.android.com/topic/performance/launch-time.html)
-
-[Android性能优化（一）之启动加速35%](https://www.jianshu.com/p/f5514b1a826c)
-
-
-</style></pre>
 
                 </div>
                 <div class="read-all">
@@ -852,136 +948,6 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-16
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Linux" title="Category: Linux" rel="category">Linux</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Contos" title="Tag: Contos" rel="tag">Contos</a>&nbsp;
-    
-        <a href="/tag/#Linux" title="Tag: Linux" rel="tag">Linux</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#常用命令和方法以阿里云centos为例" id="markdown-toc-常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</a>    <ul>
-      <li><a href="#安装apache" id="markdown-toc-安装apache">安装Apache</a></li>
-      <li><a href="#安装php及扩展" id="markdown-toc-安装php及扩展">安装PHP及扩展</a></li>
-      <li><a href="#安装git" id="markdown-toc-安装git">安装Git</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<h3 id="常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</h3>
-
-<hr />
-
-<h4 id="安装apache">安装Apache</h4>
-<ul>
-  <li>安装Apache
-    <div class="highlighter-rouge"><pre class="highlight"><code># yum install httpd httpd-devel 
-# service httpd start 
-</code></pre>
-    </div>
-  </li>
-  <li>开启80端口（阿里云需要设置安全组策略设置如下）</li>
-</ul>
-
-<p><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/25475/cn_zh/1495786224289/Image%201.png" alt="" /></p>
-
-<ul>
-  <li>测试安装
-访问服务器公网地址可以看到Apache说明安装成功</li>
-</ul>
-
-<h4 id="安装php及扩展">安装PHP及扩展</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code># yum install php php-devel
-
-# yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
-
-安装完需要重启Apache
-# httpd restart
-</code></pre>
-</div>
-
-<h4 id="安装git">安装Git</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># yum install git
-查看版本
-# git version
-
-配置Git用户信息
-# git config --global user.name "woider"
-# git config --global user.email "woider@gmail.com"
-
-查看ssh key 是否存在,如果不存在需要生成
-# ls -al ~/.ssh
-
-生成ssh key(生成 ssh key 过程中，会让你填写 passphrase，连按三次回车跳过即可)
-# ssh-keygen -t rsa -C "woider@gmail.com" 
-
-查看ssh key(id_rsa 为私钥，id_rsa.pub 为公钥  SSH KEY 公钥，用于 GitHub 身份验证)
-登录 GitHub，打开 Personal settings 页面，选择 SSH and GPG keys 选项：
-# vim ~/.ssh/id_rsa.pub
-
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1009,6 +975,8 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
+                    
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
@@ -1026,8 +994,6 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                         <li><a href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
-                    
-                        <li><a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -1135,7 +1101,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                             <span class="name">
                                 GIS
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1363,7 +1329,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 10pt; color: #888;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11pt; color: #777;">GIS</a>
                     
                       
                       
@@ -1511,6 +1477,13 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       <a href="/tag/#性能优化" style="font-size: 9pt; color: #999;">性能优化</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#ArcServer" style="font-size: 9pt; color: #999;">ArcServer</a>
                     
                 </div>
             </div>

@@ -160,6 +160,313 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Python" title="Category: Python" rel="category">Python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a>&nbsp;
+    
+        <a href="/tag/#爬虫" title="Tag: 爬虫" rel="tag">爬虫</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#python开发工具的选择" id="markdown-toc-python开发工具的选择">Python开发工具的选择</a>    <ul>
+      <li><a href="#文本类" id="markdown-toc-文本类">文本类</a></li>
+      <li><a href="#集成类ide" id="markdown-toc-集成类ide">集成类（IDE）</a></li>
+    </ul>
+  </li>
+  <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
+  <li><a href="#实战" id="markdown-toc-实战">实战</a>    <ul>
+      <li><a href="#通用代码框架" id="markdown-toc-通用代码框架">通用代码框架</a></li>
+      <li><a href="#股票数据scrapy爬虫" id="markdown-toc-股票数据scrapy爬虫">股票数据Scrapy爬虫</a></li>
+    </ul>
+  </li>
+  <li><a href="#相关资料" id="markdown-toc-相关资料">相关资料</a></li>
+</ul>
+
+<p>Python爬虫与信息提取
+<a href="https://pan.baidu.com/s/1eSIMk9c">参考资料</a></p>
+
+<h3 id="python开发工具的选择">Python开发工具的选择</h3>
+
+<h4 id="文本类">文本类</h4>
+
+<ul>
+  <li>IDLE  自带的、默认、代码一般不超过300行</li>
+  <li>Notepad++</li>
+  <li>Sublime Text  专业的编程体验</li>
+  <li>Vim &amp; Emacs</li>
+  <li>Atom</li>
+  <li>Komodo Edit</li>
+</ul>
+
+<h4 id="集成类ide">集成类（IDE）</h4>
+
+<ul>
+  <li>
+    <p>PyCharm  社区版免费、专业版收费</p>
+  </li>
+  <li>
+    <p>Wing  收费、调试、版本控制、同步</p>
+  </li>
+  <li>
+    <p>PyDev &amp; Eclipse   开源开放、自定义使用相对复杂</p>
+  </li>
+  <li>
+    <p>PTVS &amp; Visual Studio  丰富的调试功能</p>
+  </li>
+  <li>
+    <p>Anaconda &amp; Spyder  开源免费、支持800个库、和Canopy由同一个人领导开发  用于科学计算</p>
+  </li>
+  <li>
+    <p>Canopy  收费、用于科学计算、支持超过500个库</p>
+  </li>
+</ul>
+
+<h3 id="常用库介绍">常用库介绍</h3>
+
+<ul>
+  <li>
+    <p><a href="http://www.python-requests.org">Requests</a></p>
+
+    <p>安装：</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>pip  install requests
+pip3 install requests
+</code></pre>
+    </div>
+    <p>调用方式：<code class="highlighter-rouge">import requests</code></p>
+
+    <p>用途：发起请求、获取请求内容</p>
+  </li>
+  <li>
+    <p><a href="https://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a></p>
+
+    <p>安装：</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>pip  install beautifulsoup4
+pip3 install beautifulsoup4
+</code></pre>
+    </div>
+
+    <p>调用方式：<code class="highlighter-rouge">from bs4 import beautifulsoup</code></p>
+
+    <p>用途：解析HTML标签</p>
+  </li>
+  <li>
+    <p>Re(正则表达式)库是Python的标准库</p>
+
+    <p>用途：
+调用方式：<code class="highlighter-rouge">import re</code></p>
+  </li>
+  <li>
+    <p><a href="https://scrapy.org/">Scrapy爬虫框架</a></p>
+
+    <p>安装：<code class="highlighter-rouge">pip3 install scrapy</code></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> ```conda install -c conda-forge scrapy```
+</code></pre>
+    </div>
+
+    <p>升级：<code class="highlighter-rouge">pip3 install --upgrade scrapy</code></p>
+
+    <p>测试：<code class="highlighter-rouge">scrapy ‐h</code></p>
+
+    <p>使用：</p>
+
+    <ul>
+      <li>初始化一个工程</li>
+    </ul>
+
+    <p><code class="highlighter-rouge">scrapy startproject [projectnaem]</code></p>
+
+    <ul>
+      <li>建一个爬虫</li>
+    </ul>
+
+    <p><code class="highlighter-rouge">scrapy genspider [spidername] [url]</code></p>
+
+    <p>**配置产生的爬虫</p>
+
+    <ul>
+      <li>运行爬虫</li>
+    </ul>
+
+    <p><code class="highlighter-rouge">scrapy crawl [spidername]</code></p>
+  </li>
+</ul>
+
+<h3 id="实战">实战</h3>
+
+<h4 id="通用代码框架">通用代码框架</h4>
+
+<pre class="prettyprint lang-py">
+   import requests
+   try:
+       r= requests.get([url],timeout=30)
+       r.raise_for_status()
+       r.encoding = r.apparent_encoding
+       return r=status_code
+   except:
+        return "产生异常"
+</pre>
+
+<h4 id="股票数据scrapy爬虫">股票数据Scrapy爬虫</h4>
+
+<ul>
+  <li>编写Spider</li>
+</ul>
+
+<pre class="prettyprint lang-py">
+    # -*- coding: utf-8 -*-
+  import scrapy
+  import re
+
+
+  class StocksSpider(scrapy.Spider):
+    name = 'stocks'
+    # allowed_domains = ['baidu.com']
+    # 东方财富网
+    start_urls = ['http://quote.eastmoney.com/stocklist.html']
+
+    def parse(self, response):
+         self.headers = {
+          'user-agent':'Mozilla/5.0'
+         }
+         for href in response.css('a::attr(href)').extract():
+            try:
+                stock = re.findall(r"[s][hz]\d{6}",href)[0]
+                url = 'https://gupiao.baidu.com/stock/'+ stock+'.html'
+                yield scrapy.Request(url,callback=self.parse_stock)
+            except:
+                continue
+        
+    def parse_stock(self,response):
+        infoDict = {}
+        stockInfo = response.css('.stock-bets')
+        name = stockInfo.css('.bets-name').extract()[0]
+        keyList = stockInfo.css('dt').extract()
+        valueList = stockInfo.css('dd').extract()
+        for i in range(len(keyList)):
+            key = re.findall(r'&gt;.*&lt;dt&gt;',keyList[i])[0][1:-5]
+            try:
+                 val = re.findall(r'\d+\.?.*&lt;/dd&gt;',valueList[i])[0][0:-5]
+            except:
+                 val = '--'
+            infoDict[key] = val
+
+        infoDict.update(
+            {'股票名称':re.findall('\s.*\(',name)[0].split()[0] + \
+             re.findall('\&gt;.*\&lt;',name)[0][1:-1]})            
+        yield infoDict
+  </pre>
+
+<ul>
+  <li>编写pipeline</li>
+</ul>
+
+<pre class="prettyprint lang-py">
+# -*- coding: utf-8 -*-
+
+# Define your item pipelines here
+#
+# Don't forget to add your pipeline to the ITEM_PIPELINES setting
+# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+
+
+class PythondemoPipeline(object):
+    def process_item(self, item, spider):
+        return item
+
+class BaiduStockPipline(object):
+    def open_spider(self,spider):
+        self.f = open('BaiduStockInfo.txt','w')
+        
+    def close_spider(self,spider):
+        self.f.close()
+
+    def process_item(self,item,spider):
+        try:
+            line = str(dict(item))+'\n'
+            self.f.write(line)
+        except:
+            pass
+        return item
+</pre>
+
+<ul>
+  <li>配置pipeline</li>
+</ul>
+
+<p>找到settings.py文件并修改配置</p>
+
+<ul>
+  <li>结果如下：</li>
+</ul>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/py_spider_result.png" alt="" /></p>
+
+<h3 id="相关资料">相关资料</h3>
+
+<ul>
+  <li>
+    <p><a href="https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&amp;mid=2697266133&amp;idx=1&amp;sn=51426072d8ad4c4496795127e9c9f1ae&amp;chksm=8376fce1b40175f76724b8be9d5bfcda3d3759c4fc30f9ee38f776dd832bd5171034e6a3e89d&amp;mpshare=1&amp;scene=23&amp;srcid=0606X6JFFUGEK1P1JUuH9GXM%23rd">那些你不知道的爬虫反爬虫套路</a></p>
+  </li>
+  <li>
+    <p><a href="http://gashero.iteye.com/">gashero的Geek前哨</a></p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python数据分析与展示从入门到放弃</a>
                 </h2>
                 <div class="label">
@@ -798,114 +1105,6 @@ dependencies {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-11
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
-  <li><a href="#android初级" id="markdown-toc-android初级">Android初级</a></li>
-  <li><a href="#android中级" id="markdown-toc-android中级">Android中级</a></li>
-  <li><a href="#android高级" id="markdown-toc-android高级">Android高级</a></li>
-</ul>
-
-<p>Android学习路线</p>
-
-<h3 id="基础知识">基础知识</h3>
-
-<ul>
-  <li>Java基础知识（Java线程）
-<a href="http://www.cnblogs.com/tjudzj/p/4443066.html">Java访问修饰符</a></li>
-  <li>开发坏境搭建（JDK、AS）</li>
-  <li><a href="http://wuhongsheng.top/2017/04/11/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Android开发代码规范</a></li>
-  <li>Android四大组件，Activity启动模式、生命周期管理，Fragement生命周期。</li>
-</ul>
-
-<h3 id="android初级">Android初级</h3>
-
-<ul>
-  <li>用户界面及自定义控件</li>
-  <li>资源文件的使用</li>
-  <li>数据持久化（Sqlite、File、Sharedpreferences）</li>
-  <li>MeterialDesign</li>
-  <li></li>
-</ul>
-
-<h3 id="android中级">Android中级</h3>
-
-<ul>
-  <li>图形和动画绘制</li>
-  <li>网络编程（Http、Socket、Bluetooth、NFC）</li>
-  <li>屏幕适配（dp和px换算）</li>
-  <li>单元测试</li>
-  <li>进程间通信（4种方式）</li>
-</ul>
-
-<h3 id="android高级">Android高级</h3>
-
-<ul>
-  <li>NDK编程</li>
-  <li>传感器应用</li>
-  <li>地图应用</li>
-  <li>跨平台开发</li>
-  <li>Android性能优化（UI、电量、内存）</li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -933,6 +1132,8 @@ dependencies {
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
+                    
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
@@ -950,8 +1151,6 @@ dependencies {
                         <li><a href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a></li>
                     
                         <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
-                    
-                        <li><a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -1059,7 +1258,7 @@ dependencies {
                             <span class="name">
                                 GIS
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1287,7 +1486,7 @@ dependencies {
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 10pt; color: #888;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11pt; color: #777;">GIS</a>
                     
                       
                       
@@ -1435,6 +1634,13 @@ dependencies {
                       
                       
                       <a href="/tag/#性能优化" style="font-size: 9pt; color: #999;">性能优化</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#ArcServer" style="font-size: 9pt; color: #999;">ArcServer</a>
                     
                 </div>
             </div>

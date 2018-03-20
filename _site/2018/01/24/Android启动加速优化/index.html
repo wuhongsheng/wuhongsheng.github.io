@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Android启动加速优化</title>
-    <meta name="description" content="  背景资料  常见问题及优化方式          启动主题切换      随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！背景资料  应用...">
+    <meta name="description" content="  背景资料  常见问题及优化方式          启动主题切换      Avoid Heavy App Initialization      Heavy activity initialization      Diagnosing The Problem        参考文章随着项目版本的迭代，App...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -214,8 +214,12 @@
   <li><a href="#背景资料" id="markdown-toc-背景资料">背景资料</a></li>
   <li><a href="#常见问题及优化方式" id="markdown-toc-常见问题及优化方式">常见问题及优化方式</a>    <ul>
       <li><a href="#启动主题切换" id="markdown-toc-启动主题切换">启动主题切换</a></li>
+      <li><a href="#avoid-heavy-app-initialization" id="markdown-toc-avoid-heavy-app-initialization">Avoid Heavy App Initialization</a></li>
+      <li><a href="#heavy-activity-initialization" id="markdown-toc-heavy-activity-initialization">Heavy activity initialization</a></li>
+      <li><a href="#diagnosing-the-problem" id="markdown-toc-diagnosing-the-problem">Diagnosing The Problem</a></li>
     </ul>
   </li>
+  <li><a href="#参考文章" id="markdown-toc-参考文章">参考文章</a></li>
 </ul>
 
 <p>随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！</p>
@@ -275,15 +279,17 @@ Layout XML file:</p>
 
 <pre class="prettyprint">
 	<code class="language-xml">
-	<?xml version="1.0" encoding="utf-8"?>
-     <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
-       <!-- The background color, preferably the same as your normal theme -->
-       <item android:drawable="@android:color/white" />
-       <!-- Your product logo - 144dp color version of your app icon -->
-       <item>
-        <bitmap android:src="@mipmap/logo" android:gravity="center" />
-       </item>
-     </layer-list>
+	  &lt;?xml version="1.0" encoding="utf-8"?&gt;
+         &lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque"&gt;
+           <!-- The background color, preferably the same as your normal theme -->
+           &lt;item android:drawable="@android:color/white"/&gt;
+           <!-- Your product logo - 144dp color version of your app icon -->
+           &lt;item&gt;
+             &lt;bitmap
+               android:src="@mipmap/logo"
+               android:gravity="center"/&gt;
+             &lt;/item&gt;
+        &lt;/layer-list&gt;
     </code>
 </pre>
 
@@ -291,9 +297,9 @@ Layout XML file:</p>
 
 <pre class="prettyprint lang-xml">
 
- <style name="AppTheme.launcher" parent="AppTheme.NoTitle">
-        <item name="android:windowBackground">@drawable/launcher</item>
-  </style>
+ &lt;style name="AppTheme.launcher" parent="AppTheme.NoTitle"&gt;
+         &lt;item name="android:windowBackground"&gt;@drawable/launcher &lt;/item&gt;
+  &lt;/style&gt;
  
 </pre>
 
@@ -301,14 +307,17 @@ Layout XML file:</p>
 
 <pre class="prettyprint lang-xml">
 
-<?xml version="1.0" encoding="utf-8"?>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
 
-<activity android:name=".login.LoginActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.launcher">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
- </activity>
+&lt;activity android:name=".login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.launcher"
+            &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+ &lt;/activity&gt;
  
 </pre>
 
@@ -334,86 +343,92 @@ public class LoginActivity extends BaseActivity {
 <p>此外这样也可以解决白屏问题</p>
 
 <pre class="prettyprint lang-xml">
-<style name="AppTheme.launcher" parent="android:Theme.Translucent.NoTitleBar.Fullscreen">
+&lt;style name="AppTheme.launcher" parent="android:Theme.Translucent.NoTitleBar.Fullscreen"/&gt;
 </pre>
 
-### Avoid Heavy App Initialization
+<h3 id="avoid-heavy-app-initialization">Avoid Heavy App Initialization</h3>
 
-当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。
+<p>当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。</p>
 
-应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。
+<p>应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。</p>
 
-**诊断问题**
+<p><strong>诊断问题</strong></p>
 
-您可以使用方法跟踪或内联跟踪来尝试诊断问题。
+<p>您可以使用方法跟踪或内联跟踪来尝试诊断问题。</p>
 
-**方法追踪**
-运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
+<p><strong>方法追踪</strong>
+运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
 
-**内联追踪**
+<p><strong>内联追踪</strong>
 使用内联追踪来调查可能的罪魁祸首，包括：
 你的应用程序的初始onCreate() 功能。
 任何全球单身人士对象您的应用程序初始化。
-任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
+任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。</p>
 
-**解决问题的办法**
-无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像[Dagger](https://google.github.io/dagger/) 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。
+<p><strong>解决问题的办法</strong>
+无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像<a href="https://google.github.io/dagger/">Dagger</a> 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。</p>
 
+<h3 id="heavy-activity-initialization">Heavy activity initialization</h3>
 
+<p>活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：</p>
 
-
-
-### Heavy activity initialization
-
-活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：
-
-膨胀大型或复杂的布局。
+<p>膨胀大型或复杂的布局。
 阻塞磁盘或网络I / O的屏幕绘图。
 加载和解码位图。
 栅格化VectorDrawable对象。
 初始化活动的其他子系统。
 诊断问题
-在这种情况下，方法跟踪和内联跟踪也是有用的。
+在这种情况下，方法跟踪和内联跟踪也是有用的。</p>
 
-**方法追踪**
-当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。
+<p><strong>方法追踪</strong>
+当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。</p>
 
-如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
+<p>如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
 
-**内联追踪**
-使用内联追踪来调查可能的罪魁祸首，包括：
+<p><strong>内联追踪</strong>
+使用内联追踪来调查可能的罪魁祸首，包括：</p>
 
-你的应用程序的初始onCreate() 功能。
+<p>你的应用程序的初始onCreate() 功能。
 它初始化的任何全局单例对象。
 任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
-**解决问题的办法**
-有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：
+<strong>解决问题的办法</strong>
+有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：</p>
 
-视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
+<p>视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
 通过减少冗余或嵌套布局来平整您的视图层次结构。
 不要在启动时不需要显示部分UI。相反，使用ViewStub对象作为应用程序可以在更适当的时间膨胀的子层次结构的占位符。
 在主线程上完成所有的资源初始化操作也会减慢启动速度。你可以解决这个问题如下：
 移动所有的资源初始化，以便应用程序可以在不同的线程上执行它。
-允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。
+允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。</p>
 
+<h3 id="diagnosing-the-problem">Diagnosing The Problem</h3>
 
+<h2 id="参考文章">参考文章</h2>
 
-### Diagnosing The Problem
+<p><a href="https://developer.android.com/topic/performance/launch-time.html">Launch-Time Performance</a></p>
 
+<p><a href="https://www.jianshu.com/p/f5514b1a826c">Android性能优化（一）之启动加速35%</a></p>
 
-## 参考文章
-
-[Launch-Time Performance](https://developer.android.com/topic/performance/launch-time.html)
-
-[Android性能优化（一）之启动加速35%](https://www.jianshu.com/p/f5514b1a826c)
-
-
-</style></pre>
 
         </article>
         <hr>
 
         
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
         
             
             
@@ -538,21 +553,6 @@ public class LoginActivity extends BaseActivity {
                 
             
         
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
         
             </ul>
         
@@ -565,6 +565,8 @@ public class LoginActivity extends BaseActivity {
     </div>
     <div class="nex">
 
+        
+        <p><strong>下一篇</strong> <a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></p>
         
     </div>
 </div>
