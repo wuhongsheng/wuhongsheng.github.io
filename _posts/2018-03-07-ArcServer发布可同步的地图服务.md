@@ -21,15 +21,15 @@ author: WHS
 
 ### 操作流程（以10.3ArcServer为例）
 
-1.准备数据源（ArcSDE）->2.添加GlobalId->启用存档->制作地图文档(MXD)->新增数据库连接->添加Server连接->注册数据库到服务器->发布服务
+1.准备数据源（ArcSDE）->2.添加GlobalId->3.启用存档->4.制作地图文档(MXD)->5.新增数据库连接->6.添加Server连接->7.注册数据库到服务器->8.发布服务
 
 1. 在CataLog中
 
 2. 在增加GlobalId时可能会出现与数据锁冲突，如下图所示：执行SQL解除锁
 
-``` select * from sde.table_locks for update``
+``` select * from sde.table_locks for update```
 
-3. 启用存档，这不没用问题
+3. 启用存档，这不用没问题
 
 
 

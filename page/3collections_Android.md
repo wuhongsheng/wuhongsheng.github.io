@@ -122,14 +122,6 @@ type: page
 
 
 
-
-
-
-
-
-
-
-
 ## 跨平台技术
 
 * [React Native](https://github.com/facebook/react-native/)
@@ -151,6 +143,8 @@ type: page
 ## 架构方面
 
 #### 组件化模块化
+
+[Google官方指导](https://developer.android.google.cn/topic/libraries/architecture/guide.html)
 
 [Android 模块化探索与实践](http://baronzhang.com/blog/Framework/Android-%E6%A8%A1%E5%9D%97%E5%8C%96%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5/)
 

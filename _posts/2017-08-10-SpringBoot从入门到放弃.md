@@ -50,11 +50,20 @@ gradle build
 ```
 java -jar build/libs/gs-rest-service-0.1.0.jar
 ```
-* 后台部署
+* [后台部署](https://www.cnblogs.com/kedarui/p/6439768.html)
 通过jar部署后，关闭cmd窗口进程就停止了，因此需要让程序在后台运行
+
 
 ###### Windows环境下
 1. 编写bat命令
+
+```
+@echo off
+
+java -jar tserver-scly_0.0.1.jar>log\batchLog%date:~0,4%%date:~5,2%%date:~8,2%.log
+
+@pause
+```
 2. 安装AlwaysUp软件，如下图所示
 
 ![](https://pic4.zhimg.com/50/v2-8c9d646fd06e7b656704fb42b85ba247_hd.jpg)
