@@ -20,21 +20,20 @@ author: WHS
 
 1. 使用VPN下载
 
-我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。
+   我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。
 
 
 
 2. 手动下载配置
 
-[参考文章](https://blog.csdn.net/fuchaosz/article/details/51567808)
+   [参考文章](https://blog.csdn.net/fuchaosz/article/details/51567808)
 
-既然有大神写了，而且比较详细，我就不再班门弄斧了。
+   既然有大神写了，而且比较详细，我就不再班门弄斧了。
 
 
 3. 使用国内镜像地址
 
-使用阿里云的国内镜像仓库地址，就可以快速的下载需要的文件
-修改项目根目录下的文件 build.gradle ：
+   使用阿里云的国内镜像仓库地址，就可以快速的下载需要的文件修改项目根目录下的文件 build.gradle ：
 
 ```
 buildscript {

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "TensorFlow从入门到精通"
+title:  "TensorFlow环境配置"
 date:   2017-12-15 08:14:54
 categories: AI
 tags: AI TensorFlow

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "GIS 开发从入门到放弃"
-date:   2017-05-31 08:14:54
+title:  "ArcgisRuntime For Android开发"
+date:   2018-05-15 08:14:54
 categories: GIS
 tags:  GIS
 author: WHS
@@ -10,7 +10,7 @@ author: WHS
 * content
 {:toc}
 
-GIS学习路线
+ArcgisRuntime For Android 开发
 
 
 
