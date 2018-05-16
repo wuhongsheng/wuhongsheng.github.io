@@ -100,6 +100,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -145,6 +147,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -157,6 +161,356 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/05/15/ArcgisRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcgisRuntime For Android开发</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-05-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+</ul>
+
+<p>ArcgisRuntime For Android 开发</p>
+
+<h5 id="常见问题">常见问题</h5>
+
+<ol>
+  <li>编辑空间数据</li>
+</ol>
+
+<ul>
+  <li>问题描述</li>
+</ul>
+
+<p>添加空间数据时出现一下问题</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
+</code></pre>
+</div>
+
+<ul>
+  <li>问题原因及解决方法</li>
+</ul>
+
+<p>可能是新增空间数据字段类型和地图服务图层字段类型不匹配</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/05/15/ArcgisRuntime-For-Android%E5%BC%80%E5%8F%91/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-04-20
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#SVN" title="Category: SVN" rel="category">SVN</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#SVN" title="Tag: SVN" rel="tag">SVN</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#svn简介" id="markdown-toc-svn简介">SVN简介</a></li>
+  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+</ul>
+
+<p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。</p>
+
+<h3 id="svn简介">SVN简介</h3>
+
+<h3 id="常用命令">常用命令</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
+svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
+
+</code></pre>
+</div>
+
+<p>第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Error validating server certificate for 'https://172.17.1.8:443':  
+ - The certificate is not issued by a trusted authority. Use the  
+   fingerprint to validate the certificate manually!  
+ - The certificate hostname does not match.  
+Certificate information:  
+ - Hostname: BJ-AD-FS.hyc-tec.net  
+ - Valid: from Fri, 03 May 2013 01:18:50 GMT until Mon, 01 May 2023 01:18:50 GMT  
+ - Issuer: BJ-AD-FS.hyc-tec.net  
+ - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
+(R)eject, accept (t)emporarily or accept (p)ermanently?   
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-03-07
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#AS" title="Tag: AS" rel="tag">AS</a>&nbsp;
+    
+        <a href="/tag/#Gradle" title="Tag: Gradle" rel="tag">Gradle</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#apk拆分" id="markdown-toc-apk拆分">APK拆分</a></li>
+</ul>
+
+<p>相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法</p>
+
+<h4 id="apk拆分">APK拆分</h4>
+
+<p>通过 APK 拆分，您可以高效地基于屏幕密度或 ABI 创建多个 APK。 例如，您可以利用 APK 拆分创建单独的 hdpi 和 mdpi 版本应用，同时仍将它们视为一个变体，并允许其共享测试应用、javac、dx 和 ProGuard 设置。</p>
+
+<p>如需了解有关使用 APK 拆分的详细信息，请参阅 [APK 拆分}(http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits).</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-03-07
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#AS" title="Tag: AS" rel="tag">AS</a>&nbsp;
+    
+        <a href="/tag/#Gradle" title="Tag: Gradle" rel="tag">Gradle</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p>相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法</p>
+
+<ol>
+  <li>
+    <p>使用VPN下载</p>
+
+    <p>我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。</p>
+  </li>
+  <li>
+    <p>手动下载配置</p>
+
+    <p><a href="https://blog.csdn.net/fuchaosz/article/details/51567808">参考文章</a></p>
+
+    <p>既然有大神写了，而且比较详细，我就不再班门弄斧了。</p>
+  </li>
+  <li>
+    <p>使用国内镜像地址</p>
+
+    <p>使用阿里云的国内镜像仓库地址，就可以快速的下载需要的文件修改项目根目录下的文件 build.gradle ：</p>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>buildscript {
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+}
+
+allprojects {
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+}
+</code></pre>
+</div>
+
+<p>然后重新构建项目就可以了</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -221,7 +575,7 @@
 
 <h3 id="操作流程以103arcserver为例">操作流程（以10.3ArcServer为例）</h3>
 
-<p>1.准备数据源（ArcSDE）-&gt;2.添加GlobalId-&gt;启用存档-&gt;制作地图文档(MXD)-&gt;新增数据库连接-&gt;添加Server连接-&gt;注册数据库到服务器-&gt;发布服务</p>
+<p>1.准备数据源（ArcSDE）-&gt;2.添加GlobalId-&gt;3.启用存档-&gt;4.制作地图文档(MXD)-&gt;5.新增数据库连接-&gt;6.添加Server连接-&gt;7.注册数据库到服务器-&gt;8.发布服务</p>
 
 <ol>
   <li>
@@ -232,10 +586,10 @@
   </li>
 </ol>
 
-<p>``` select * from sde.table_locks for update``</p>
+<p><code class="highlighter-rouge">select * from sde.table_locks for update</code></p>
 
 <ol>
-  <li>启用存档，这不没用问题</li>
+  <li>启用存档，这不用没问题</li>
 </ol>
 
 <h3 id="参考链接">参考链接</h3>
@@ -374,8 +728,7 @@
 <p>按照官方文档的说明：使用Activity的windowBackground主题属性来为启动的Activity提供一个简单的drawable。
 Layout XML file:</p>
 
-<pre class="prettyprint">
-	<code class="language-xml">
+<pre class="prettyprint lang-xml">
 	  &lt;?xml version="1.0" encoding="utf-8"?&gt;
          &lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque"&gt;
            <!-- The background color, preferably the same as your normal theme -->
@@ -387,7 +740,6 @@ Layout XML file:</p>
                android:gravity="center"/&gt;
              &lt;/item&gt;
         &lt;/layer-list&gt;
-    </code>
 </pre>
 
 <p>Style:</p>
@@ -514,440 +866,6 @@ public class LoginActivity extends BaseActivity {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-01-06
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#刷机" title="Category: 刷机" rel="category">刷机</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#技能" title="Tag: 技能" rel="tag">技能</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#解决思路" id="markdown-toc-解决思路">解决思路</a></li>
-</ul>
-
-<p>最近老妈的手机出现系统损坏的情况，开机时重复开机动画，进入不了系统界面。初步判断时老妈误操作删除系统文件，或者手机中毒。
-本来不太想动手的，我就说这手机也用几年，该换了。老妈回了一句，还说你是做软件的，这个问题都解决不了，明天拿给修手机的看看。这句刺激我了，于是动手解决问题，花了两个小时左右。最后在这里记录一下解决问题的经过。</p>
-
-<h3 id="解决思路">解决思路</h3>
-
-<ul>
-  <li>双清</li>
-</ul>
-
-<p>百度一下，进入手机Recovery模式(同时按住电源键和音量’-‘3秒即可进入)，进行双清(清理系统缓存信息、清理用户数据)操作。
-尝试后问题依然无法解决</p>
-
-<ul>
-  <li>求助官方售后</li>
-</ul>
-
-<p>打电话到华为售后，售后说可以通过华为的手机助手客户端修复，我尝试了也没有解决问题。客户端提示没有合适的系统包。可能是手机系统版本比较老了。</p>
-
-<p>然后再次电话到售后，问能不能刷机，获知，华为手机要刷机需要先解锁，我们都知道华为的系统是基于Android系统改造的，厂商在底层系统加了锁，意味着没办法随意刷机。必须先解锁，解锁需要提供手机型号、IMEI、序列号、产品识别码。其中序列号和产品识别码在手机包装盒上有，或者在手机系统信息里查询。但我现在到哪去找N年前的手机包装盒啊，手机也打不开，所以这条路也走不通。</p>
-
-<ul>
-  <li>刷机</li>
-</ul>
-
-<p>手机方面的专业术语，是指通过一定的方法更改或替换手机中原本存在的一些语言、图片、铃声、软件或者操作系统。通俗来讲，刷机就是给手机重装系统。</p>
-
-<p>后来在网上查询了解，华为手机可以在不开机的情况通过SD卡强制升级系统。好，说了这么多，终于到正题了，重装系统，步骤如下：</p>
-
-<ol>
-  <li>准备一张 microSD 卡。</li>
-  <li>登录华为终端官网 consumer.huawei.com/cn，搜索“G750-T01”， 然后下载软件升级包。</li>
-  <li>在 microSD 卡根目录下创建一个【dload】文件夹。</li>
-  <li>将软件升级包中的“UPDATE.APP”拷贝到 microSD 卡【dload】文 件夹中。</li>
-  <li>将 microSD 卡插入手机</li>
-  <li>断开手机跟电脑或其它设备(如充电器)的连接，并关机。</li>
-  <li>同时按住音量上下键，然后按电源键。</li>
-  <li>开机画面出来之后，放开电源键，继续按住音量上下键，直到进入升级界面后再松开音量上下键。
-整个升级过程大约需要 3 分钟。在升级过程中，请不要取出电池，建议您最好不要进行任何操作，静静等待。</li>
-</ol>
-
-<p>等待几分钟后系统安装完成，手机重启，成功进入开机界面。大功告成！</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">TensorFlow从入门到精通</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-12-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#AI" title="Category: AI" rel="category">AI</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a>&nbsp;
-    
-        <a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#安装" id="markdown-toc-安装">安装</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-</ul>
-
-<p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
-
-<h3 id="安装">安装</h3>
-
-<p>您必须选择安装TensorFlow的机制。支持的选择如下：</p>
-<ul>
-  <li>virtualenv （官方推荐）</li>
-  <li>“native” pip</li>
-  <li>Docker</li>
-  <li>installing from sources, which is documented in a separate guide.</li>
-</ul>
-
-<h3 id="常用命令">常用命令</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 启用
-$ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
-$ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
-(tensorflow)$                           # 启用成功
-# 关闭
-(tensorflow)$ deactivate 
-</code></pre>
-</div>
-
-<h3 id="常见问题">常见问题</h3>
-
-<p><strong>问题描述</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-</code></pre>
-</div>
-
-<p><strong>原因及解决办法</strong></p>
-
-<p>Python版本不匹配</p>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-09-14
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a>&nbsp;
-    
-        <a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常用sql" id="markdown-toc-常用sql">常用SQL</a></li>
-</ul>
-
-<p>Oracle使用从入门到放弃</p>
-
-<h3 id="常用sql">常用SQL</h3>
-
-<ul>
-  <li>主键自增长</li>
-</ul>
-
-<pre class="prettyprint lang-sql">
---首先建一个表TEST
-
-create table BUSI_UPLOADINFO
-(
-  ID int PRIMARY KEY,
-  ENENTTYPE int,
-  EVNNTSUBTYPE INT,
-  lAT number,
-  lON number,
-  INFO varchar2(100),
-  UPLOADTYPE int,
-  USERID Int,
-  USERNAME varchar2(20),
-  PHONE number,
-   REMARK varchar2(100),
-   REMARK1 varchar2(100),
-   REMARK2 varchar2(100),
-  ADDRESS VARCHAR2(100)
-
-)
-/
-COMMENT ON TABLE BUSI_UPLOADINFO IS '业务表-上报事件表'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ID IS '主键'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ENENTTYPE IS '事件类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.EVNNTSUBTYPE IS '事件子类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.lAT IS '纬度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.LON IS '经度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK1 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK2 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ADDRESS IS '地址信息'
-
--- 建一个序列
-create sequence SEQ_TEST
-minvalue 1        --最小值
-nomaxvalue        --不设置最大值
-start with 1      --从1开始计数
-increment by 1    --每次加1个
-nocycle           --一直累加，不循环
-nocache;          --不建缓冲区
-
--- 以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
-你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
-
-CREATE OR REPLACE TRIGGER tg_test 
-BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
-begin
-select seq_test.nextval into:new.nid from dual;
-end;
-</pre>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-30
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Spatialite" title="Tag: Spatialite" rel="tag">Spatialite</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#常用sql语句" id="markdown-toc-常用sql语句">常用SQL语句()</a></li>
-</ul>
-
-<p>Sptialite使用从入门到放弃</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<p><a href="http://www.gaia-gis.it/gaia-sins/">官网</a></p>
-
-<p><a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html">spatialite-cookbook</a></p>
-
-<h3 id="常用sql语句">常用SQL语句()</h3>
-
-<p>CGCS2000 4490(国家2000坐标系SRID)</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 插入点数据
-INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
-
-# 导出Shapfile
-select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -958,10 +876,10 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
             <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
             <span class="previous disable"><i class="fa fa-angle-left"></i></span>
           
-          <span class="page_number ">1/6</span>
+          <span class="page_number ">1/7</span>
           
             <a href="/page2" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -975,25 +893,25 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2018/05/15/ArcgisRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcgisRuntime For Android开发</a></li>
+                    
+                        <li><a href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a></li>
+                    
+                        <li><a href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a></li>
+                    
+                        <li><a href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a></li>
+                    
                         <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
                     
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
-                        <li><a href="/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">TensorFlow从入门到精通</a></li>
+                        <li><a href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a></li>
+                    
+                        <li><a href="/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TensorFlow学习笔记</a></li>
                     
                         <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
                     
                 </ul>
             </div>
@@ -1020,7 +938,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">8</span>
+                            <span class="badge">10</span>
                         </a>
                     </li>
                     
@@ -1056,7 +974,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                             <span class="name">
                                 AI
                             </span>
-                            <span class="badge">2</span>
+                            <span class="badge">3</span>
                         </a>
                     </li>
                     
@@ -1101,7 +1019,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                             <span class="name">
                                 GIS
                             </span>
-                            <span class="badge">2</span>
+                            <span class="badge">3</span>
                         </a>
                     </li>
                     
@@ -1190,6 +1108,15 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                         <a href="/category/#刷机" class="categories-list-item" cate="刷机">
                             <span class="name">
                                 刷机
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#SVN" class="categories-list-item" cate="SVN">
+                            <span class="name">
+                                SVN
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1294,7 +1221,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 10pt; color: #888;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11pt; color: #777;">AI</a>
                     
                       
                       
@@ -1329,7 +1256,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 11pt; color: #777;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 12pt; color: #666;">GIS</a>
                     
                       
                       
@@ -1462,7 +1389,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 9pt; color: #999;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 10pt; color: #888;">TensorFlow</a>
                     
                       
                       
@@ -1484,6 +1411,27 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       <a href="/tag/#ArcServer" style="font-size: 9pt; color: #999;">ArcServer</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#AS" style="font-size: 10pt; color: #888;">AS</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Gradle" style="font-size: 10pt; color: #888;">Gradle</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SVN" style="font-size: 9pt; color: #999;">SVN</a>
                     
                 </div>
             </div>

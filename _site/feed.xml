@@ -5,9 +5,179 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Mar 2018 13:44:27 +0800</pubDate>
-    <lastBuildDate>Tue, 20 Mar 2018 13:44:27 +0800</lastBuildDate>
+    <pubDate>Wed, 16 May 2018 09:18:44 +0800</pubDate>
+    <lastBuildDate>Wed, 16 May 2018 09:18:44 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>ArcgisRuntime For Android开发</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+ArcgisRuntime For Android 开发
+
+&lt;h5 id=&quot;常见问题&quot;&gt;常见问题&lt;/h5&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;编辑空间数据&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;问题描述&lt;/li&gt;
+&lt;/ul&gt;
+
+添加空间数据时出现一下问题
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;问题原因及解决方法&lt;/li&gt;
+&lt;/ul&gt;
+
+可能是新增空间数据字段类型和地图服务图层字段类型不匹配
+
+</description>
+        <pubDate>Tue, 15 May 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/05/15/ArcgisRuntime-For-Android%E5%BC%80%E5%8F%91/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/05/15/ArcgisRuntime-For-Android%E5%BC%80%E5%8F%91/</guid>
+        
+        <category>GIS</category>
+        
+        
+        <category>GIS</category>
+        
+      </item>
+    
+      <item>
+        <title>常用SVN命令及问题</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#svn简介&quot; id=&quot;markdown-toc-svn简介&quot;&gt;SVN简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。
+
+&lt;h3 id=&quot;svn简介&quot;&gt;SVN简介&lt;/h3&gt;
+
+&lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
+svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error validating server certificate for 'https://172.17.1.8:443':  
+ - The certificate is not issued by a trusted authority. Use the  
+   fingerprint to validate the certificate manually!  
+ - The certificate hostname does not match.  
+Certificate information:  
+ - Hostname: BJ-AD-FS.hyc-tec.net  
+ - Valid: from Fri, 03 May 2013 01:18:50 GMT until Mon, 01 May 2023 01:18:50 GMT  
+ - Issuer: BJ-AD-FS.hyc-tec.net  
+ - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
+(R)eject, accept (t)emporarily or accept (p)ermanently?   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 20 Apr 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/</guid>
+        
+        <category>SVN</category>
+        
+        
+        <category>SVN</category>
+        
+      </item>
+    
+      <item>
+        <title>Android APK打包技巧</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#apk拆分&quot; id=&quot;markdown-toc-apk拆分&quot;&gt;APK拆分&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法
+
+&lt;h4 id=&quot;apk拆分&quot;&gt;APK拆分&lt;/h4&gt;
+
+通过 APK 拆分，您可以高效地基于屏幕密度或 ABI 创建多个 APK。 例如，您可以利用 APK 拆分创建单独的 hdpi 和 mdpi 版本应用，同时仍将它们视为一个变体，并允许其共享测试应用、javac、dx 和 ProGuard 设置。
+
+如需了解有关使用 APK 拆分的详细信息，请参阅 [APK 拆分}(http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits).
+
+</description>
+        <pubDate>Wed, 07 Mar 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/03/07/Android-APK%E6%89%93%E5%8C%85/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/07/Android-APK%E6%89%93%E5%8C%85/</guid>
+        
+        <category>AS</category>
+        
+        <category>Gradle</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
+    
+      <item>
+        <title>AndroidStudio手动下载配置Gradle</title>
+        <description>
+相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法
+
+&lt;ol&gt;
+  &lt;li&gt;
+    使用VPN下载
+
+    我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。
+  &lt;/li&gt;
+  &lt;li&gt;
+    手动下载配置
+
+    &lt;a href=&quot;https://blog.csdn.net/fuchaosz/article/details/51567808&quot;&gt;参考文章&lt;/a&gt;
+
+    既然有大神写了，而且比较详细，我就不再班门弄斧了。
+  &lt;/li&gt;
+  &lt;li&gt;
+    使用国内镜像地址
+
+    使用阿里云的国内镜像仓库地址，就可以快速的下载需要的文件修改项目根目录下的文件 build.gradle ：
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;buildscript {
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+}
+
+allprojects {
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+然后重新构建项目就可以了
+
+</description>
+        <pubDate>Wed, 07 Mar 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/</guid>
+        
+        <category>AS</category>
+        
+        <category>Gradle</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
     
       <item>
         <title>ArcServer发布可同步地图服务</title>
@@ -21,7 +191,7 @@
 
 &lt;h3 id=&quot;操作流程以103arcserver为例&quot;&gt;操作流程（以10.3ArcServer为例）&lt;/h3&gt;
 
-1.准备数据源（ArcSDE）-&amp;gt;2.添加GlobalId-&amp;gt;启用存档-&amp;gt;制作地图文档(MXD)-&amp;gt;新增数据库连接-&amp;gt;添加Server连接-&amp;gt;注册数据库到服务器-&amp;gt;发布服务
+1.准备数据源（ArcSDE）-&amp;gt;2.添加GlobalId-&amp;gt;3.启用存档-&amp;gt;4.制作地图文档(MXD)-&amp;gt;5.新增数据库连接-&amp;gt;6.添加Server连接-&amp;gt;7.注册数据库到服务器-&amp;gt;8.发布服务
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -32,10 +202,10 @@
   &lt;/li&gt;
 &lt;/ol&gt;
 
-``` select * from sde.table_locks for update``
+&lt;code class=&quot;highlighter-rouge&quot;&gt;select * from sde.table_locks for update&lt;/code&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;启用存档，这不没用问题&lt;/li&gt;
+  &lt;li&gt;启用存档，这不用没问题&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;参考链接&quot;&gt;参考链接&lt;/h3&gt;
@@ -129,8 +299,7 @@
 按照官方文档的说明：使用Activity的windowBackground主题属性来为启动的Activity提供一个简单的drawable。
 Layout XML file:
 
-&lt;pre class=&quot;prettyprint&quot;&gt;
-	&lt;code class=&quot;language-xml&quot;&gt;
+&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
 	  &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
          &amp;lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:opacity=&quot;opaque&quot;&amp;gt;
            &lt;!-- The background color, preferably the same as your normal theme --&gt;
@@ -142,7 +311,6 @@ Layout XML file:
                android:gravity=&quot;center&quot;/&amp;gt;
              &amp;lt;/item&amp;gt;
         &amp;lt;/layer-list&amp;gt;
-    &lt;/code&gt;
 &lt;/pre&gt;
 
 Style:
@@ -336,7 +504,7 @@ public class LoginActivity extends BaseActivity {
       </item>
     
       <item>
-        <title>TensorFlow从入门到精通</title>
+        <title>TensorFlow环境配置</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#安装&quot; id=&quot;markdown-toc-安装&quot;&gt;安装&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
@@ -379,8 +547,62 @@ $ source ~/tensorflow/bin/activate.csh  # csh or tcsh
 Python版本不匹配
 </description>
         <pubDate>Fri, 15 Dec 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/</guid>
+        <link>http://localhost:4000/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+        
+        <category>AI</category>
+        
+        <category>TensorFlow</category>
+        
+        
+        <category>AI</category>
+        
+      </item>
+    
+      <item>
+        <title>TensorFlow学习笔记</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#基本概念&quot; id=&quot;markdown-toc-基本概念&quot;&gt;基本概念&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#分类&quot; id=&quot;markdown-toc-分类&quot;&gt;分类&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#使用入门&quot; id=&quot;markdown-toc-使用入门&quot;&gt;使用入门&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&quot;https://tensorflow.google.cn/&quot;&gt;TensorFlow™&lt;/a&gt;是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。
+
+&lt;h3 id=&quot;基本概念&quot;&gt;基本概念&lt;/h3&gt;
+
+以常见的分类问题来介绍机器学习的基本概念
+
+&lt;ul&gt;
+  &lt;li&gt;
+    模型是特征列与标签的对应关系
+  &lt;/li&gt;
+  &lt;li&gt;
+    样本是由特征列和标签组成的数据
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;分类&quot;&gt;分类&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://developers.google.cn/machine-learning/glossary/#supervised_machine_learning&quot;&gt;监督式机器学习监&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://developers.google.cn/machine-learning/glossary/#unsupervised_machine_learning&quot;&gt;非监督式学习&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;使用入门&quot;&gt;使用入门&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tensorflow.google.cn/get_started/&quot;&gt;官方教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 15 Dec 2017 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
         
         <category>AI</category>
         
@@ -487,542 +709,6 @@ end;
         
         
         <category>DB</category>
-        
-      </item>
-    
-      <item>
-        <title>Spatialite使用从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用sql语句&quot; id=&quot;markdown-toc-常用sql语句&quot;&gt;常用SQL语句()&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Sptialite使用从入门到放弃
-
-&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
-
-&lt;a href=&quot;http://www.gaia-gis.it/gaia-sins/&quot;&gt;官网&lt;/a&gt;
-
-&lt;a href=&quot;http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html&quot;&gt;spatialite-cookbook&lt;/a&gt;
-
-&lt;h3 id=&quot;常用sql语句&quot;&gt;常用SQL语句()&lt;/h3&gt;
-
-CGCS2000 4490(国家2000坐标系SRID)
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 插入点数据
-INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
-
-# 导出Shapfile
-select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Wed, 30 Aug 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>Spatialite</category>
-        
-        
-        <category>DB</category>
-        
-      </item>
-    
-      <item>
-        <title>Centos使用从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用命令和方法以阿里云centos为例&quot; id=&quot;markdown-toc-常用命令和方法以阿里云centos为例&quot;&gt;常用命令和方法(以阿里云Centos为例)&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#安装apache&quot; id=&quot;markdown-toc-安装apache&quot;&gt;安装Apache&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#安装php及扩展&quot; id=&quot;markdown-toc-安装php及扩展&quot;&gt;安装PHP及扩展&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#安装git&quot; id=&quot;markdown-toc-安装git&quot;&gt;安装Git&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。
-
-&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
-
-&lt;h3 id=&quot;常用命令和方法以阿里云centos为例&quot;&gt;常用命令和方法(以阿里云Centos为例)&lt;/h3&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;安装apache&quot;&gt;安装Apache&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;安装Apache
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install httpd httpd-devel 
-# service httpd start 
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;开启80端口（阿里云需要设置安全组策略设置如下）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;img src=&quot;http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/25475/cn_zh/1495786224289/Image%201.png&quot; alt=&quot;&quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;测试安装
-访问服务器公网地址可以看到Apache说明安装成功&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;安装php及扩展&quot;&gt;安装PHP及扩展&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install php php-devel
-
-# yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
-
-安装完需要重启Apache
-# httpd restart
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;安装git&quot;&gt;安装Git&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum install git
-查看版本
-# git version
-
-配置Git用户信息
-# git config --global user.name &quot;woider&quot;
-# git config --global user.email &quot;woider@gmail.com&quot;
-
-查看ssh key 是否存在,如果不存在需要生成
-# ls -al ~/.ssh
-
-生成ssh key(生成 ssh key 过程中，会让你填写 passphrase，连按三次回车跳过即可)
-# ssh-keygen -t rsa -C &quot;woider@gmail.com&quot; 
-
-查看ssh key(id_rsa 为私钥，id_rsa.pub 为公钥  SSH KEY 公钥，用于 GitHub 身份验证)
-登录 GitHub，打开 Personal settings 页面，选择 SSH and GPG keys 选项：
-# vim ~/.ssh/id_rsa.pub
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Wed, 16 Aug 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>Contos</category>
-        
-        <category>Linux</category>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>SpringBoot从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#orm&quot; id=&quot;markdown-toc-orm&quot;&gt;ORM&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用命令和方法&quot; id=&quot;markdown-toc-常用命令和方法&quot;&gt;常用命令和方法&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#程序部署&quot; id=&quot;markdown-toc-程序部署&quot;&gt;程序部署&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#windows环境下&quot; id=&quot;markdown-toc-windows环境下&quot;&gt;Windows环境下&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#linuxunix环境下&quot; id=&quot;markdown-toc-linuxunix环境下&quot;&gt;Linux/Unix环境下&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见问题及解决方法&quot; id=&quot;markdown-toc-常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;a href=&quot;http://projects.spring.io/spring-boot/&quot;&gt;SpringBoot&lt;/a&gt;从入门到放弃
-
-&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://projects.spring.io/spring-boot/&quot;&gt;SpringBoot官网&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://www.infoq.com/cn/articles/microframeworks1-spring-boot&quot;&gt;深入学习微框架：Spring Boot&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/alibaba/druid&quot;&gt;为监控而生的数据库连接池！阿里云DRDS&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;orm&quot;&gt;ORM&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;&quot;&gt;hibernate&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;&quot;&gt;JPA&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/mybatis/spring-boot-starter&quot;&gt;MyBatis&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常用命令和方法&quot;&gt;常用命令和方法&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 构建项目
-gradle build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;程序部署&quot;&gt;程序部署&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;War部署（传统方式）&lt;/li&gt;
-&lt;/ul&gt;
-
-将War文件拷贝到Tomcat Webapp目录下
-
-&lt;ul&gt;
-  &lt;li&gt;Jar部署&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java -jar build/libs/gs-rest-service-0.1.0.jar
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;后台部署
-通过jar部署后，关闭cmd窗口进程就停止了，因此需要让程序在后台运行&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6 id=&quot;windows环境下&quot;&gt;Windows环境下&lt;/h6&gt;
-&lt;ol&gt;
-  &lt;li&gt;编写bat命令&lt;/li&gt;
-  &lt;li&gt;安装AlwaysUp软件，如下图所示&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;img src=&quot;https://pic4.zhimg.com/50/v2-8c9d646fd06e7b656704fb42b85ba247_hd.jpg&quot; alt=&quot;&quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开AlwaysUp点击工具栏的第一个按钮，如下图所示，选择上面编写的bat文件，并填写服务名称。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;img src=&quot;https://pic2.zhimg.com/50/v2-730bd4126c6c3066e649b78638550c3f_hd.jpg&quot; alt=&quot;&quot; /&gt;
-
-完成了创建之后，在列表中可以看到我们配置的服务，通过右键选择Start xxx就能在后台将该应用启动起来了。
-
-&lt;h6 id=&quot;linuxunix环境下&quot;&gt;Linux/Unix环境下&lt;/h6&gt;
-
-####### nohup和Shell
-
-该方法主要通过使用nohup命令来实现，该命令的详细介绍如下：
-
-&lt;blockquote&gt;
-  nohup 命令
-&lt;/blockquote&gt;
-
-用途：不挂断地运行命令。
-
-语法：nohup Command [ Arg … ][ &amp;amp; ]
-
-描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 &amp;amp;到命令的尾部。
-
-所以，我们只需要使用nohup java -jar yourapp.jar &amp;amp;命令，就能让yourapp.jar在后台运行了。但是，为了方便管理，我们还可以通过Shell来编写一些用于启动应用的脚本，比如下面几个：
-
-&lt;ul&gt;
-  &lt;li&gt;关闭应用的脚本：stop.sh&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash  &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;PID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;ps -ef | grep yourapp.jar | grep -v grep | awk &lt;span class=&quot;s1&quot;&gt;'{ print $2 }'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;  
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;  
-&lt;span class=&quot;k&quot;&gt;then  
-    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Application is already stopped  
-&lt;span class=&quot;k&quot;&gt;else  
-    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo kill&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt;  
-    &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PID&lt;/span&gt;  
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;启动应用的脚本：start.sh&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash  &lt;/span&gt;
-nohup java -jar yourapp.jar --server.port&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;8888 &amp;amp;  
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;整合了关闭和启动的脚本：run.sh，由于会先执行关闭应用，然后再启动应用，这样不会引起端口冲突等问题，适合在持续集成系统中进行反复调用。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash  &lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;stop application  
-&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;stop.sh  
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;start application  
-&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;start.sh  
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-####### 系统服务
-
-&lt;h3 id=&quot;常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/h3&gt;
-
-&lt;strong&gt;问题描述&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;druid 连接池 {dataSource-1} inited 是卡住
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;strong&gt;解决办法&lt;/strong&gt;
-
-1.重启IDEA或者重启电脑（可能是Druid bug 导致）
-
-&lt;strong&gt;问题描述&lt;/strong&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Unregistering JMX-exposed beans on shutdown
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;strong&gt;解决办法&lt;/strong&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;配置文件增加
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Thu, 10 Aug 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>SpringBoot</category>
-        
-        
-        <category>SpringBoot</category>
-        
-      </item>
-    
-      <item>
-        <title>React Native从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#环境配置&quot; id=&quot;markdown-toc-环境配置&quot;&gt;环境配置&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#升级新版本&quot; id=&quot;markdown-toc-升级新版本&quot;&gt;&lt;a href=&quot;http://reactnative.cn/docs/0.46/upgrading.html&quot;&gt;升级新版本&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#降级版本&quot; id=&quot;markdown-toc-降级版本&quot;&gt;降级版本&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#运行调试方法&quot; id=&quot;markdown-toc-运行调试方法&quot;&gt;运行调试方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#npm常用命令&quot; id=&quot;markdown-toc-npm常用命令&quot;&gt;&lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt;常用命令&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#常用组件&quot; id=&quot;markdown-toc-常用组件&quot;&gt;常用组件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;a href=&quot;http://facebook.github.io/react-native/&quot;&gt;React Native&lt;/a&gt; 开发指南
-
-使用JavaScript和React构建本地移动应用程序
-React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。
-
-&lt;h2 id=&quot;环境配置&quot;&gt;环境配置&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1.安装node.js
-
-2.安装react-native命令行工具
-npm install -g react-native-cli
-
-3.新建项目
-react-native init [ProjectName]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;常用命令&quot;&gt;常用命令&lt;/h2&gt;
-
-&lt;h4 id=&quot;升级新版本&quot;&gt;&lt;a href=&quot;http://reactnative.cn/docs/0.46/upgrading.html&quot;&gt;升级新版本&lt;/a&gt;&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-1. 安装Git并设置环境变量
-
-2. 安装react-native-git-upgrade工具模块
- $npm install -g react-native-git-upgrade
-
-3. 进入项目目录下运行更新命令
- $ react-native-git-upgrade
- 这样会直接把react native升级到最新版本
- 或者是：
- $ react-native-git-upgrade X.Y.Z
- 这样把react native升级到指定的X.Y.Z版本
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;降级版本&quot;&gt;降级版本&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install --save react-native@版本号。
-通过上诉操作之后，别忘了更新一下模板。
-react-native upgrade
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;运行调试方法&quot;&gt;运行调试方法&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;To run your app on iOS:
-   cd /Users/whs/AwesomeProject
-   react-native run-ios
-   - or -
-   Open ios/AwesomeProject.xcodeproj in Xcode
-   Hit the Run button
-To run your app on Android:
-   cd /Users/whs/AwesomeProject
-   Have an Android emulator running (quickest way to get started), or a device connected
-   react-native run-android
-
-Google浏览器调试地址
-http://localhost:8081/debugger-ui   
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;npm常用命令&quot;&gt;&lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt;常用命令&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#更新
-npm install npm@latest -g
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://facebook.github.io/react-native/&quot;&gt;官网&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://www.jianshu.com/p/b88944250b25&quot;&gt;写给移动开发者的 React Native 指南&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://reactnative.cn/post/3634&quot;&gt;React Native 中文网&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;http://blog.csdn.net/ElinaVampire/article/details/51813677&quot;&gt;ReactNative组件生命周期&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常用组件&quot;&gt;常用组件&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    UI框架
-
-    1.&lt;a href=&quot;https://react-native-training.github.io/react-native-elements/&quot;&gt;React Native UI Toolkit&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/mapbox/react-native-mapbox-gl&quot;&gt;mapbox/react-native-mapbox-gl&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://github.com/jpush/jpush-react-native&quot;&gt;极光推送&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
-
-&lt;strong&gt;问题描述&lt;/strong&gt;
-
-我是在Mac环境下，利用facebook开源的react-native创建原生app项目缓慢的问题
-
-&lt;strong&gt;解决办法&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1.确定自己的环境配置是否有问题
-2.打开终端，输入命令行
-brew install wget
-
-3.npm config set registry=http://registry.npm.taobao.org/
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;strong&gt;问题描述&lt;/strong&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;React Native unable to load script from assets index.android.bundle on windows
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;strong&gt;解决办法&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1.在工程目录里建assets目录
-
-2.运行命令
- react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
-
-3.运行程序
-react-native run-android
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;error: bundling failed: &quot;Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;amp;&amp;amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`.&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Sun, 23 Jul 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>ReactNative</category>
-        
-        <category>跨平台</category>
-        
-        
-        <category>跨平台</category>
-        
-      </item>
-    
-      <item>
-        <title>Android开发问题集锦</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Android开发问题集锦
-
-&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
-
-模拟器Menu键
-
-&lt;code class=&quot;highlighter-rouge&quot;&gt;⌘+M&lt;/code&gt;
-
-&lt;strong&gt;错误描述&lt;/strong&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/android_error_1.png&quot; alt=&quot;&quot; /&gt;
-
-&lt;strong&gt;解决方法&lt;/strong&gt;
-
-so文件重复，如bugly同时使用手动集成和自动集成会出现此问题
-
-&lt;strong&gt;错误描述&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
-   - with linked exception:
-  [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
-    at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;strong&gt;原因及解决方法&lt;/strong&gt;
-
-大概意思：win下，databinding布局文件中的中文字符串非UTF-8编码
-
-&lt;ul&gt;
-  &lt;li&gt;中文使用@string/name引入；&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Fri, 30 Jun 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/</guid>
-        
-        <category>Android</category>
-        
-        
-        <category>Android</category>
         
       </item>
     

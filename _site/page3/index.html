@@ -100,6 +100,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -145,6 +147,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -157,6 +161,989 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-08-10
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#SpringBoot" title="Category: SpringBoot" rel="category">SpringBoot</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#SpringBoot" title="Tag: SpringBoot" rel="tag">SpringBoot</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
+      <li><a href="#orm" id="markdown-toc-orm">ORM</a></li>
+    </ul>
+  </li>
+  <li><a href="#常用命令和方法" id="markdown-toc-常用命令和方法">常用命令和方法</a>    <ul>
+      <li><a href="#程序部署" id="markdown-toc-程序部署">程序部署</a>        <ul>
+          <li><a href="#windows环境下" id="markdown-toc-windows环境下">Windows环境下</a></li>
+          <li><a href="#linuxunix环境下" id="markdown-toc-linuxunix环境下">Linux/Unix环境下</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+</ul>
+
+<p><a href="http://projects.spring.io/spring-boot/">SpringBoot</a>从入门到放弃</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ul>
+  <li>
+    <p><a href="http://projects.spring.io/spring-boot/">SpringBoot官网</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.infoq.com/cn/articles/microframeworks1-spring-boot">深入学习微框架：Spring Boot</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/alibaba/druid">为监控而生的数据库连接池！阿里云DRDS</a></p>
+  </li>
+</ul>
+
+<h4 id="orm">ORM</h4>
+
+<ul>
+  <li>
+    <p><a href="">hibernate</a></p>
+  </li>
+  <li>
+    <p><a href="">JPA</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/mybatis/spring-boot-starter">MyBatis</a></p>
+  </li>
+</ul>
+
+<h3 id="常用命令和方法">常用命令和方法</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 构建项目
+gradle build
+</code></pre>
+</div>
+<h4 id="程序部署">程序部署</h4>
+
+<ul>
+  <li>War部署（传统方式）</li>
+</ul>
+
+<p>将War文件拷贝到Tomcat Webapp目录下</p>
+
+<ul>
+  <li>Jar部署</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
+</code></pre>
+</div>
+<ul>
+  <li><a href="https://www.cnblogs.com/kedarui/p/6439768.html">后台部署</a>
+通过jar部署后，关闭cmd窗口进程就停止了，因此需要让程序在后台运行</li>
+</ul>
+
+<h6 id="windows环境下">Windows环境下</h6>
+<ol>
+  <li>编写bat命令</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@echo off
+
+java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2%.log
+
+@pause
+</code></pre>
+</div>
+<ol>
+  <li>安装AlwaysUp软件，如下图所示</li>
+</ol>
+
+<p><img src="https://pic4.zhimg.com/50/v2-8c9d646fd06e7b656704fb42b85ba247_hd.jpg" alt="" /></p>
+
+<ol>
+  <li>打开AlwaysUp点击工具栏的第一个按钮，如下图所示，选择上面编写的bat文件，并填写服务名称。</li>
+</ol>
+
+<p><img src="https://pic2.zhimg.com/50/v2-730bd4126c6c3066e649b78638550c3f_hd.jpg" alt="" /></p>
+
+<p>完成了创建之后，在列表中可以看到我们配置的服务，通过右键选择Start xxx就能在后台将该应用启动起来了。</p>
+
+<h6 id="linuxunix环境下">Linux/Unix环境下</h6>
+
+<p>####### nohup和Shell</p>
+
+<p>该方法主要通过使用nohup命令来实现，该命令的详细介绍如下：</p>
+
+<blockquote>
+  <p>nohup 命令</p>
+</blockquote>
+
+<p>用途：不挂断地运行命令。</p>
+
+<p>语法：nohup Command [ Arg … ][ &amp; ]</p>
+
+<p>描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 &amp;到命令的尾部。</p>
+
+<p>所以，我们只需要使用nohup java -jar yourapp.jar &amp;命令，就能让yourapp.jar在后台运行了。但是，为了方便管理，我们还可以通过Shell来编写一些用于启动应用的脚本，比如下面几个：</p>
+
+<ul>
+  <li>关闭应用的脚本：stop.sh</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps -ef | grep yourapp.jar | grep -v grep | awk <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span>  
+<span class="k">then  
+    </span><span class="nb">echo </span>Application is already stopped  
+<span class="k">else  
+    </span><span class="nb">echo kill</span> <span class="nv">$PID</span>  
+    <span class="nb">kill</span> <span class="nv">$PID</span>  
+<span class="k">fi</span>  
+</code></pre>
+</div>
+
+<ul>
+  <li>启动应用的脚本：start.sh</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="c">#!/bin/bash  </span>
+nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;  
+</code></pre>
+</div>
+
+<ul>
+  <li>整合了关闭和启动的脚本：run.sh，由于会先执行关闭应用，然后再启动应用，这样不会引起端口冲突等问题，适合在持续集成系统中进行反复调用。</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<span class="nb">echo </span>stop application  
+<span class="nb">source </span>stop.sh  
+<span class="nb">echo </span>start application  
+<span class="nb">source </span>start.sh  
+</code></pre>
+</div>
+<p>####### 系统服务</p>
+
+<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
+
+<p><strong>问题描述</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
+</code></pre>
+</div>
+
+<p><strong>解决办法</strong></p>
+
+<p>1.重启IDEA或者重启电脑（可能是Druid bug 导致）</p>
+
+<p><strong>问题描述</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
+
+</code></pre>
+</div>
+<p><strong>解决办法</strong></p>
+
+<ul>
+  <li>配置文件增加
+    <div class="highlighter-rouge"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-07-23
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#跨平台" title="Category: 跨平台" rel="category">跨平台</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#ReactNative" title="Tag: ReactNative" rel="tag">ReactNative</a>&nbsp;
+    
+        <a href="/tag/#跨平台" title="Tag: 跨平台" rel="tag">跨平台</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#环境配置" id="markdown-toc-环境配置">环境配置</a></li>
+  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a>    <ul>
+      <li><a href="#升级新版本" id="markdown-toc-升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></a></li>
+      <li><a href="#降级版本" id="markdown-toc-降级版本">降级版本</a></li>
+      <li><a href="#运行调试方法" id="markdown-toc-运行调试方法">运行调试方法</a></li>
+      <li><a href="#npm常用命令" id="markdown-toc-npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</a></li>
+    </ul>
+  </li>
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
+      <li><a href="#常用组件" id="markdown-toc-常用组件">常用组件</a></li>
+      <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><a href="http://facebook.github.io/react-native/">React Native</a> 开发指南</p>
+
+<p>使用JavaScript和React构建本地移动应用程序
+React Native允许您仅使用JavaScript构建移动应用程序。它使用与React相同的设计，让您从声明组件构成丰富的移动UI。</p>
+
+<h2 id="环境配置">环境配置</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1.安装node.js
+
+2.安装react-native命令行工具
+npm install -g react-native-cli
+
+3.新建项目
+react-native init [ProjectName]
+</code></pre>
+</div>
+
+<h2 id="常用命令">常用命令</h2>
+
+<h4 id="升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+1. 安装Git并设置环境变量
+
+2. 安装react-native-git-upgrade工具模块
+ $npm install -g react-native-git-upgrade
+
+3. 进入项目目录下运行更新命令
+ $ react-native-git-upgrade
+ 这样会直接把react native升级到最新版本
+ 或者是：
+ $ react-native-git-upgrade X.Y.Z
+ 这样把react native升级到指定的X.Y.Z版本
+</code></pre>
+</div>
+
+<h4 id="降级版本">降级版本</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save react-native@版本号。
+通过上诉操作之后，别忘了更新一下模板。
+react-native upgrade
+</code></pre>
+</div>
+
+<h4 id="运行调试方法">运行调试方法</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>To run your app on iOS:
+   cd /Users/whs/AwesomeProject
+   react-native run-ios
+   - or -
+   Open ios/AwesomeProject.xcodeproj in Xcode
+   Hit the Run button
+To run your app on Android:
+   cd /Users/whs/AwesomeProject
+   Have an Android emulator running (quickest way to get started), or a device connected
+   react-native run-android
+
+Google浏览器调试地址
+http://localhost:8081/debugger-ui   
+</code></pre>
+</div>
+<h4 id="npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>#更新
+npm install npm@latest -g
+</code></pre>
+</div>
+<hr />
+
+<h2 id="参考资料">参考资料</h2>
+
+<ul>
+  <li>
+    <p><a href="http://facebook.github.io/react-native/">官网</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.jianshu.com/p/b88944250b25">写给移动开发者的 React Native 指南</a></p>
+  </li>
+  <li>
+    <p><a href="http://reactnative.cn/post/3634">React Native 中文网</a></p>
+  </li>
+  <li>
+    <p><a href="https://facebook.github.io/react/">React</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.csdn.net/ElinaVampire/article/details/51813677">ReactNative组件生命周期</a></p>
+  </li>
+</ul>
+
+<h3 id="常用组件">常用组件</h3>
+
+<ul>
+  <li>
+    <p>UI框架</p>
+
+    <p>1.<a href="https://react-native-training.github.io/react-native-elements/">React Native UI Toolkit</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/mapbox/react-native-mapbox-gl">mapbox/react-native-mapbox-gl</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/jpush/jpush-react-native">极光推送</a></p>
+  </li>
+  <li>
+    <p>网络</p>
+
+    <p>1.<a href="https://github.com/github/fetch">fetch</a></p>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="常见问题">常见问题</h3>
+
+<p><strong>问题描述</strong></p>
+
+<p>我是在Mac环境下，利用facebook开源的react-native创建原生app项目缓慢的问题</p>
+
+<p><strong>解决办法</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1.确定自己的环境配置是否有问题
+2.打开终端，输入命令行
+brew install wget
+
+3.npm config set registry=http://registry.npm.taobao.org/
+
+</code></pre>
+</div>
+
+<p><strong>问题描述</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
+</code></pre>
+</div>
+<p><strong>解决办法</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1.在工程目录里建assets目录
+
+2.运行命令
+ react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+3.运行程序
+react-native run-android
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
+</code></pre>
+</div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+</ul>
+
+<p>Android开发问题集锦</p>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p>模拟器Menu键</p>
+
+<p><code class="highlighter-rouge">⌘+M</code></p>
+
+<p><strong>错误描述</strong></p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/android_error_1.png" alt="" /></p>
+
+<p><strong>解决方法</strong></p>
+
+<p>so文件重复，如bugly同时使用手动集成和自动集成会出现此问题</p>
+
+<p><strong>错误描述</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
+   - with linked exception:
+  [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
+    at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
+</code></pre>
+</div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<p>大概意思：win下，databinding布局文件中的中文字符串非UTF-8编码</p>
+
+<ul>
+  <li>中文使用@string/name引入；</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-20
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#百度地图" title="Category: 百度地图" rel="category">百度地图</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
+    
+        <a href="/tag/#百度地图" title="Tag: 百度地图" rel="tag">百度地图</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常用方法" id="markdown-toc-常用方法">常用方法</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+</ul>
+
+<p><a href="http://lbsyun.baidu.com/">百度地图</a>开发</p>
+
+<h3 id="常用方法">常用方法</h3>
+
+<ul>
+  <li>坐标转换</li>
+</ul>
+
+<pre class="prettyprint lang-java">
+/**
+ * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
+ * 将 BD-09 坐标转换成GCJ-02 坐标 
+ * bd_lat * @param bd_lon * @return
+ */
+ public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
+        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
+        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
+        double gg_lon = z * Math.cos(theta);
+        double gg_lat = z * Math.sin(theta);
+        return new TitanLocation(gg_lon, gg_lat);
+
+ }
+/**
+ * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
+ * @param gg_lat
+ * @param gg_lon
+ */
+ public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
+        double x = gg_lon, y = gg_lat;
+        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
+        double bd_lon = z * Math.cos(theta) + 0.0065;
+        double bd_lat = z * Math.sin(theta) + 0.006;
+        return new TitanLocation(bd_lon, bd_lat);
+ }
+</pre>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p><strong>错误描述</strong></p>
+
+<p><strong>解决方法</strong></p>
+
+<p>集成百度导航需要将 targetSdkVersion 设为23</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-16
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#jenkins" title="Category: jenkins" rel="category">jenkins</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#jenkins" title="Tag: jenkins" rel="tag">jenkins</a>&nbsp;
+    
+        <a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#升级" id="markdown-toc-升级">升级</a></li>
+  <li><a href="#新建和配置项目" id="markdown-toc-新建和配置项目">新建和配置项目</a>    <ul>
+      <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><a href="https://jenkins.io/">Jenkins</a>安装及使用</p>
+
+<p>Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：</p>
+<ul>
+  <li>持续的软件版本发布/测试项目。</li>
+  <li>监控外部调用执行的工作。</li>
+  <li>对于Android来说，可以自动打包、Android lint 检查、自动测试等。</li>
+</ul>
+
+<hr />
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://www.cnblogs.com/wnfindbug/p/5784476.html">jenkins git gradle android自动化构建配置</a></p>
+
+<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
+
+<ul>
+  <li>
+    <p>JDK、SDK、GRADLE配置(包括环境变量)</p>
+  </li>
+  <li>
+    <p><a href="http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/">安装Tomcat</a></p>
+  </li>
+  <li>
+    <p>下载<a href="https://jenkins.io/doc/">Jenkins.war</a>并复制到Tomcat webapps目录下</p>
+  </li>
+  <li>
+    <p>配置Jenkins环境变量(启动web容器之前)
+1.Windows
+Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkins 。
+可以通过设置环境变量来修改，例如： JENKINS_HOME=C:\jenkins，然后重新启动jenkins。</p>
+  </li>
+  <li>
+    <p>Jenkins unlock</p>
+  </li>
+</ul>
+
+<p>打开主目录找到改文件(windows用notpad++打开password文件)</p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins_unlock.jpg" alt="" /></p>
+
+<ul>
+  <li>
+    <p>配置Plugin</p>
+  </li>
+  <li>
+    <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）一定要先配置，后面配会比较麻烦</p>
+  </li>
+  <li>
+    <p>系统配置
+1.配置环境变量</p>
+
+    <ul>
+      <li>
+        <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a></p>
+      </li>
+      <li>
+        <p>AndrodSDK</p>
+
+        <p>1.<a href="">下载</a></p>
+      </li>
+      <li>
+        <p>Gradle
+1.<a href="http://services.gradle.org/distributions">下载</a>
+2.设置环境变量
+3.
+2.配置全局Tools</p>
+      </li>
+    </ul>
+
+    <p>3.配置邮件服务</p>
+
+    <ul>
+      <li>在系统设置中找到Jenkins Locaction项填入Jenkins URL和系统管理员邮件地址，系统管理员邮件地址一定要配置，否则发不了邮件通知。因为邮件通知都是由系统管理员的邮箱发出来的。</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193043944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。</li>
+    </ul>
+
+    <p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E9%85%8D%E7%BD%AE.png" alt="" /></p>
+
+    <ul>
+      <li>配好以后勾选“通过发送测试邮件测试配置”</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193124369?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>填入接收测试邮件的地址，点击“Test configuration”。如果配置正确就会在下面显示Email was successfully sent</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193149854?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <p>2.配置Gradle环境</p>
+    <ul>
+      <li>
+        <p><a href="http://services.gradle.org/distributions">下载地址</a></p>
+      </li>
+      <li>
+        <p>上传到linux并解压： unzip gradle-2.14.1-all.zip</p>
+      </li>
+      <li>
+        <p>配置环境变量：</p>
+      </li>
+    </ul>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
+  export PATH=$PATH:$GRADLE_HOME/bin
+</code></pre>
+    </div>
+    <p>　</p>
+    <ul>
+      <li>
+        <p>source命令使配置生效：source .bash_profile(source 文件名)</p>
+      </li>
+      <li>
+        <p>检验配置是否生效：echo $GRADLE_HOME</p>
+      </li>
+    </ul>
+
+    <p>3.配置Java环境</p>
+
+    <ul>
+      <li>配置环境变量：</li>
+    </ul>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+  export PATH=$JAVA_HOME/bin:$PATH:
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p>　</p>
+
+<h3 id="升级">升级</h3>
+
+<hr />
+
+<h3 id="新建和配置项目">新建和配置项目</h3>
+
+<p><a href="http://wangkuiwu.github.io/2015/08/07/jenkins-02/">教程</a></p>
+
+<ul>
+  <li>导出编译文件</li>
+</ul>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-out.png" alt="" /></p>
+
+<ul>
+  <li>构建</li>
+</ul>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-build.png" alt="" /></p>
+
+<h4 id="常见问题及解决方法">常见问题及解决方法</h4>
+
+<p><strong>登陆失败</strong></p>
+
+<p>提示登陆信息无效</p>
+
+<p><strong>解决方法</strong></p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
+  </li>
+  <li>
+    <p>打开config.xml文件并修改配置信息(windows系统可能会保存在这个路径下C:\Windows\System32\config\systemprofile)</p>
+  </li>
+</ul>
+
+<pre class="prettyprint lang-xml">
+
+ &lt;!--修改成false--&gt;
+ &lt;useSecurity&gt;true&lt;/useSecurity&gt;
+ &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
+ &lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
+ &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
+ &lt;/authorizationStrategy&gt;
+ &lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
+   &lt;disableSignup&gt;true&lt;/disableSignup&gt;
+   &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
+ &lt;/securityRealm&gt;
+ 
+</pre>
+
+<p><strong>SDK许可问题</strong></p>
+
+<p><strong>解决办法</strong></p>
+
+<ul>
+  <li>Linux</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "$ANDROID_HOME/licenses"
+echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" &gt; "$ANDROID_HOME/licenses/android-sdk-license"
+</code></pre>
+</div>
+<ul>
+  <li>Windows</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "%ANDROID_HOME%\licenses"
+echo |set /p="8933bad161af4178b1185d1a37fbf41ea5269c55" &gt;"%ANDROID_HOME%\licenses\android-sdk-license"
+</code></pre>
+</div>
+
+<ul>
+  <li>配置运行权限</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+chmod a+x startup.sh
+chmod +x catalina.sh
+</code></p>
+
+<ul>
+  <li>配置环境变量</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+open -e .bash_profile
+export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
+</code></p>
+
+<ul>
+  <li>启动Tomcat</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+startup.sh
+</code></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -217,6 +1204,7 @@
       <li><a href="#集成类ide" id="markdown-toc-集成类ide">集成类（IDE）</a></li>
     </ul>
   </li>
+  <li><a href="#开发环境安装" id="markdown-toc-开发环境安装">开发环境安装</a></li>
   <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
   <li><a href="#实战" id="markdown-toc-实战">实战</a>    <ul>
       <li><a href="#通用代码框架" id="markdown-toc-通用代码框架">通用代码框架</a></li>
@@ -264,6 +1252,10 @@
     <p>Canopy  收费、用于科学计算、支持超过500个库</p>
   </li>
 </ul>
+
+<h3 id="开发环境安装">开发环境安装</h3>
+
+<p>Mac是自带Python(2.x版本)环境的，如果需要Python 3.x版本需要手动安装</p>
 
 <h3 id="常用库介绍">常用库介绍</h3>
 
@@ -326,7 +1318,7 @@ pip3 install beautifulsoup4
 
     <p><code class="highlighter-rouge">scrapy genspider [spidername] [url]</code></p>
 
-    <p>**配置产生的爬虫</p>
+    <p>*配置产生的爬虫</p>
 
     <ul>
       <li>运行爬虫</li>
@@ -465,646 +1457,6 @@ class BaiduStockPipline(object):
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python数据分析与展示从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Python" title="Category: Python" rel="category">Python</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a>&nbsp;
-    
-        <a href="/tag/#数据分析" title="Tag: 数据分析" rel="tag">数据分析</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#anaconda-ide基本使用" id="markdown-toc-anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</a></li>
-  <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
-  <li><a href="#实战" id="markdown-toc-实战">实战</a></li>
-</ul>
-
-<p>Python数据分析与展示</p>
-
-<p><a href="https://pan.baidu.com/s/1hsrDKXI">参考资料</a></p>
-
-<p><a href="http://wuhongsheng.top/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></p>
-
-<h3 id="anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</h3>
-
-<ul>
-  <li>
-    <p><a href="https://www.continuum.io/downloads">下载</a>（分为命令行和图形化安装，两种安装方式没有区别）</p>
-  </li>
-  <li>
-    <p>安装（以命令行安装为例）：进入文件目录执行<code class="highlighter-rouge">bash Anaconda3-4.4.0-MacOSX-x86_64.sh</code> -&gt;然后就让你确认条款和安装目录(一直按回车键)</p>
-  </li>
-  <li>
-    <p>主要工具</p>
-
-    <p>** conda 包管理和环境管理工具</p>
-
-    <p>升级：<code class="highlighter-rouge">conda update conda</code></p>
-
-    <p>** Spyder 编程工具</p>
-
-    <p>** IPython 交互式编程环境</p>
-  </li>
-  <li>
-    <p>常用命令</p>
-  </li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 更新Qt
-conda update qt pyqt
-
-</code></pre>
-</div>
-
-<h3 id="常用库介绍">常用库介绍</h3>
-
-<ul>
-  <li>
-    <p><a href="http://www.python-requests.org">NumPy</a>是一个开源的Python科学计算基础库</p>
-
-    <ul>
-      <li>
-        <p>主要特性：</p>
-
-        <ul>
-          <li>一个强大的N维数组对象 ndarray</li>
-          <li>广播功能函数</li>
-          <li>整合C/C++/Fortran代码的工具</li>
-          <li>线性代数、傅里叶变换、随机数生成等功能</li>
-        </ul>
-      </li>
-      <li>
-        <p>调用方式  <code class="highlighter-rouge">import numpy as np</code></p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><a href="">PIL</a></p>
-
-    <ul>
-      <li>
-        <p>安装</p>
-      </li>
-      <li>
-        <p>调用方式 <code class="highlighter-rouge">from PIL import Image</code></p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><a href="http://matplotlib.org/">matplotlib</a></p>
-
-    <ul>
-      <li>调用方式 <code class="highlighter-rouge">import matplotlib.pyplot  as plt</code></li>
-    </ul>
-  </li>
-  <li>
-    <p><a href="http://pandas.pydata.org/">pandas</a></p>
-
-    <ul>
-      <li>调用方式 <code class="highlighter-rouge">import pandas  as pd</code></li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="实战">实战</h3>
-
-<p>#####图像手绘处理</p>
-
-<ul>
-  <li>源码</li>
-</ul>
-
-<pre class="prettyprint lang-py">
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
-# -*- coding: utf-8 -*-
-from PIL import Image
-import numpy as np
-a = np.asanyarray(Image.open('../Downloads/test1.jpg').convert('L')).astype('float')
-
-depth =10.                       # (0-100)                         
-grad = np.gradient(a)            # 去图像灰度的梯度值
-grad_x,grad_y=grad               # 分别取横纵图像梯度值
-grad_x=grad_x*depth/100.
-grad_y=grad_y*depth/100.
-A = np.sqrt(grad_x**2 + grad_y**2 +1.)
-uni_x =grad_x/A
-uni_y = grad_y/A
-uni_z = 1./A
-
-vec_el = np.pi/2.2                  # 光源的俯视角度，弧度值
-vec_az = np.pi/4.                   # 光源的方位角度，弧度值
-dx =np.cos(vec_el)*np.cos(vec_az)   # 光源对X轴对影像
-dy = np.cos(vec_el)*np.sin(vec_az)  # 光源对Y轴对影像
-dz = np.sin(vec_el)                 # 光源对Z轴对影像
-
-b =255*(dx*uni_x + dy*uni_y +dz*uni_z)  # 光源归一化
-b =b.clip(0,255)
-
-im =Image.fromarray(b.astype('uint8'))  # 重构图像
-im.save('../Downloads/test1.jpg')
-</pre>
-
-<ul>
-  <li>结果</li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-14
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Tomcat" title="Category: Tomcat" rel="category">Tomcat</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Tomcat" title="Tag: Tomcat" rel="tag">Tomcat</a>&nbsp;
-    
-        <a href="/tag/#Mac" title="Tag: Mac" rel="tag">Mac</a>&nbsp;
-    
-        <a href="/tag/#服务器" title="Tag: 服务器" rel="tag">服务器</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
-  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
-</ul>
-
-<p>Tomcat安装及使用</p>
-
-<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
-
-<ul>
-  <li>
-    <p><a href="http://tomcat.apache.org/download-90.cgi">官网下载</a></p>
-  </li>
-  <li>
-    <p>解压并移动到系统目录下</p>
-  </li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mv  apache-tomcat-9.0.0.M21 /usr/local
-</code></pre>
-</div>
-
-<ul>
-  <li>配置运行权限</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-chmod a+x startup.sh
-chmod +x catalina.sh
-</code></p>
-
-<ul>
-  <li>配置环境变量</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-open -e .bash_profile
-export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
-</code></p>
-
-<ul>
-  <li>启动Tomcat</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>startup.sh  启动Tomcat
-shutdown.sh 关闭Tomcat
-</code></pre>
-</div>
-
-<h3 id="遇到的问题">遇到的问题</h3>
-
-<p><strong>startup之后一闪而过服务端没启动</strong></p>
-
-<p><strong>解决办法</strong></p>
-
-<p>修复配置文件打印log,配置一定的内存</p>
-
-<ul>
-  <li>进入Tomcat根目录-&gt;bin-&gt;catalina修改</li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-05
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#反编译" title="Category: 反编译" rel="category">反编译</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#反编译" title="Tag: 反编译" rel="tag">反编译</a>&nbsp;
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p>Android Apk反编译学习路线</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-31
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
-  <li><a href="#技术路线" id="markdown-toc-技术路线">技术路线</a>    <ul>
-      <li><a href="#开源gis" id="markdown-toc-开源gis">开源GIS</a></li>
-      <li><a href="#商业gis" id="markdown-toc-商业gis">商业GIS</a></li>
-    </ul>
-  </li>
-  <li><a href="#主要技术" id="markdown-toc-主要技术">主要技术</a>    <ul>
-      <li><a href="#投影转换和坐标校正" id="markdown-toc-投影转换和坐标校正">投影转换和坐标校正</a></li>
-      <li><a href="#矢量切片" id="markdown-toc-矢量切片">矢量切片</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>GIS学习路线</p>
-
-<h3 id="相关网站">相关网站</h3>
-
-<ul>
-  <li>
-    <p><a href="http://www.osgeo.org/">OSGeo</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.opengeospatial.org/">OGC</a>（开放地理空间联盟）
-是一个致力于为全球地理空间社区制定优质开放标准的国际非营利组织。这些标准是通过协商一致的过程完成的，任何人都可以免费使用来改善世界地理空间数据的共享。</p>
-  </li>
-</ul>
-
-<h3 id="技术路线">技术路线</h3>
-
-<h5 id="开源gis">开源GIS</h5>
-
-<ul>
-  <li>postgis+geoserver/geotools+ol/leaflet</li>
-</ul>
-
-<p>桌面GIS - QGIS，OpenEV</p>
-
-<p>GIS工作站 - GRASS，OSSIM</p>
-
-<p>GIS开发工具包 - GDAL / OGR，地理工具</p>
-
-<p>地理统计 - GNU R</p>
-
-<p>Web映射服务器 - MapGuide开源，Mapserver，GeoServer</p>
-
-<p>网页地图客户端 - MapBuilder</p>
-
-<p>元数据服务器 - Isite</p>
-
-<p>空间数据引擎 - PostGIS，myGIS</p>
-
-<p>C／S数据库 - PostgreSQL，mySQL，SQLite</p>
-
-<ul>
-  <li>
-    <p>矢量切片：</p>
-
-    <ol>
-      <li>Mapbox</li>
-      <li>Geoserver</li>
-      <li>titlecache工具可以切成geojson</li>
-    </ol>
-  </li>
-  <li>
-    <p>最短路径分析</p>
-  </li>
-</ul>
-
-<p>postgresql + postgis+ pgrouting</p>
-
-<h5 id="商业gis">商业GIS</h5>
-
-<ul>
-  <li>
-    <p>Arcgis平台</p>
-  </li>
-  <li>
-    <p>超图平台</p>
-  </li>
-</ul>
-
-<h3 id="主要技术">主要技术</h3>
-
-<h4 id="投影转换和坐标校正">投影转换和坐标校正</h4>
-
-<ul>
-  <li><a href="http://trac.osgeo.org/proj4j/">Proj4J</a></li>
-</ul>
-
-<h4 id="矢量切片">矢量切片</h4>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-30
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Kotlin" title="Category: Kotlin" rel="category">Kotlin</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Kotlin" title="Tag: Kotlin" rel="tag">Kotlin</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#相关网站及资料" id="markdown-toc-相关网站及资料">相关网站及资料</a></li>
-  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
-</ul>
-
-<p>Kotlin学习路线</p>
-
-<h3 id="相关网站及资料">相关网站及资料</h3>
-
-<ul>
-  <li>
-    <p><a href="http://kotlinlang.org/docs/tutorials/kotlin-android.html">Kotlin官网</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">《Kotlin for android developers》中文翻译版</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md">from-java-to-kotlin</a></p>
-  </li>
-  <li>
-    <p><a href="https://juejin.im/post/591dd9f544d904006c9fbb96">Kotlin 资源大全</a></p>
-  </li>
-</ul>
-
-<h3 id="遇到的问题">遇到的问题</h3>
-
-<p><strong>问题描述</strong></p>
-
-<p>kotlin与Databinding冲突</p>
-
-<p><strong>解决办法</strong>
-需要在app moudle的build.gradle里面添加</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>kapt {
-    generateStubs = true
-}
-dependencies {
-    kapt 'com.android.databinding:compiler:2.2.3'//与Gradle版本一致
-}
-</code></pre>
-</div>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1115,10 +1467,10 @@ dependencies {
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/page2" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">3/6</span>
+          <span class="page_number ">3/7</span>
           
             <a href="/page4" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page6" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -1132,25 +1484,25 @@ dependencies {
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2018/05/15/ArcgisRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcgisRuntime For Android开发</a></li>
+                    
+                        <li><a href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a></li>
+                    
+                        <li><a href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a></li>
+                    
+                        <li><a href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a></li>
+                    
                         <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
                     
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
-                        <li><a href="/2017/12/15/TensorFlow%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A/">TensorFlow从入门到精通</a></li>
+                        <li><a href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a></li>
+                    
+                        <li><a href="/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TensorFlow学习笔记</a></li>
                     
                         <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/08/10/SpringBoot%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">SpringBoot从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/07/23/ReactNative%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">React Native从入门到放弃</a></li>
-                    
-                        <li><a href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/">Android开发问题集锦</a></li>
                     
                 </ul>
             </div>
@@ -1177,7 +1529,7 @@ dependencies {
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">8</span>
+                            <span class="badge">10</span>
                         </a>
                     </li>
                     
@@ -1213,7 +1565,7 @@ dependencies {
                             <span class="name">
                                 AI
                             </span>
-                            <span class="badge">2</span>
+                            <span class="badge">3</span>
                         </a>
                     </li>
                     
@@ -1258,7 +1610,7 @@ dependencies {
                             <span class="name">
                                 GIS
                             </span>
-                            <span class="badge">2</span>
+                            <span class="badge">3</span>
                         </a>
                     </li>
                     
@@ -1347,6 +1699,15 @@ dependencies {
                         <a href="/category/#刷机" class="categories-list-item" cate="刷机">
                             <span class="name">
                                 刷机
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#SVN" class="categories-list-item" cate="SVN">
+                            <span class="name">
+                                SVN
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1451,7 +1812,7 @@ dependencies {
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 10pt; color: #888;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11pt; color: #777;">AI</a>
                     
                       
                       
@@ -1486,7 +1847,7 @@ dependencies {
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 11pt; color: #777;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 12pt; color: #666;">GIS</a>
                     
                       
                       
@@ -1619,7 +1980,7 @@ dependencies {
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 9pt; color: #999;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 10pt; color: #888;">TensorFlow</a>
                     
                       
                       
@@ -1641,6 +2002,27 @@ dependencies {
                       
                       
                       <a href="/tag/#ArcServer" style="font-size: 9pt; color: #999;">ArcServer</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#AS" style="font-size: 10pt; color: #888;">AS</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Gradle" style="font-size: 10pt; color: #888;">Gradle</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#SVN" style="font-size: 9pt; color: #999;">SVN</a>
                     
                 </div>
             </div>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>GIS 开发从入门到放弃</title>
-    <meta name="description" content="  相关网站  技术路线          开源GIS      商业GIS        主要技术          投影转换和坐标校正      矢量切片      GIS学习路线相关网站      OSGeo        OGC（开放地理空间联盟）是一个致力于为全球地理空间社区制定优质开放标准的国际非营利...">
+    <meta name="description" content="  相关网站  技术路线          开源GIS                  相关组织          技术路线          主要软件和工具          商业GIS                      主要技术          投影转换和坐标校正      矢量切片      最...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -100,6 +100,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -127,6 +129,8 @@
                             <i class="fa fa-heart"></i>About
                         </a>
                     </li>
+                    
+                
                     
                 
                     
@@ -210,13 +214,19 @@
         <ul id="markdown-toc">
   <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
   <li><a href="#技术路线" id="markdown-toc-技术路线">技术路线</a>    <ul>
-      <li><a href="#开源gis" id="markdown-toc-开源gis">开源GIS</a></li>
-      <li><a href="#商业gis" id="markdown-toc-商业gis">商业GIS</a></li>
+      <li><a href="#开源gis" id="markdown-toc-开源gis">开源GIS</a>        <ul>
+          <li><a href="#相关组织" id="markdown-toc-相关组织">相关组织</a></li>
+          <li><a href="#技术路线-1" id="markdown-toc-技术路线-1">技术路线</a></li>
+          <li><a href="#主要软件和工具" id="markdown-toc-主要软件和工具">主要软件和工具</a></li>
+          <li><a href="#商业gis" id="markdown-toc-商业gis">商业GIS</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li><a href="#主要技术" id="markdown-toc-主要技术">主要技术</a>    <ul>
       <li><a href="#投影转换和坐标校正" id="markdown-toc-投影转换和坐标校正">投影转换和坐标校正</a></li>
       <li><a href="#矢量切片" id="markdown-toc-矢量切片">矢量切片</a></li>
+      <li><a href="#最短路径分析" id="markdown-toc-最短路径分析">最短路径分析</a></li>
     </ul>
   </li>
 </ul>
@@ -237,11 +247,18 @@
 
 <h3 id="技术路线">技术路线</h3>
 
-<h5 id="开源gis">开源GIS</h5>
+<h4 id="开源gis">开源GIS</h4>
 
+<h6 id="相关组织">相关组织</h6>
+
+<p><a href="https://github.com/OSGeo">OSGeo</a></p>
+
+<h6 id="技术路线-1">技术路线</h6>
 <ul>
   <li>postgis+geoserver/geotools+ol/leaflet</li>
 </ul>
+
+<h6 id="主要软件和工具">主要软件和工具</h6>
 
 <p>桌面GIS - QGIS，OpenEV</p>
 
@@ -261,23 +278,6 @@
 
 <p>C／S数据库 - PostgreSQL，mySQL，SQLite</p>
 
-<ul>
-  <li>
-    <p>矢量切片：</p>
-
-    <ol>
-      <li>Mapbox</li>
-      <li>Geoserver</li>
-      <li>titlecache工具可以切成geojson</li>
-    </ol>
-  </li>
-  <li>
-    <p>最短路径分析</p>
-  </li>
-</ul>
-
-<p>postgresql + postgis+ pgrouting</p>
-
 <h5 id="商业gis">商业GIS</h5>
 
 <ul>
@@ -294,10 +294,27 @@
 <h4 id="投影转换和坐标校正">投影转换和坐标校正</h4>
 
 <ul>
-  <li><a href="http://trac.osgeo.org/proj4j/">Proj4J</a></li>
+  <li>
+    <p><a href="https://github.com/OSGeo/proj.4">PROJ</a></p>
+  </li>
+  <li>
+    <p><a href="http://trac.osgeo.org/proj4j/">Proj4J</a> JAVA Lib</p>
+  </li>
 </ul>
 
 <h4 id="矢量切片">矢量切片</h4>
+
+<ol>
+  <li>Mapbox</li>
+  <li>Geoserver</li>
+  <li>titlecache工具可以切成geojson</li>
+</ol>
+
+<h4 id="最短路径分析">最短路径分析</h4>
+
+<ul>
+  <li>postgresql + postgis+ pgrouting</li>
+</ul>
 
 
         </article>
@@ -312,6 +329,51 @@
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2018/05/15/ArcgisRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcgisRuntime For Android开发
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                         
                         <li class="relatedPost">
                             <a href="http://localhost:4000/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务
@@ -373,38 +435,6 @@
                 
                     
                 
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
             
                 
                     

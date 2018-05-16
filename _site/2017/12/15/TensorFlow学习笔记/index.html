@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Python数据分析与展示从入门到放弃</title>
-    <meta name="description" content="  Anaconda IDE基本使用  常用库介绍  实战Python数据分析与展示参考资料Python爬虫从入门到放弃Anaconda IDE基本使用      下载（分为命令行和图形化安装，两种安装方式没有区别）        安装（以命令行安装为例）：进入文件目录执行bash Anaconda3-4.4.0...">
+    <title>TensorFlow学习笔记</title>
+    <meta name="description" content="  基本概念  分类  使用入门TensorFlow™是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFl...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+    <link rel="canonical" href="http://localhost:4000/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -157,11 +157,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Python数据分析与展示从入门到放弃</h1>
+        <h1>TensorFlow学习笔记</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-06-15
+                <i class="fa fa-calendar"></i>2017-12-15
             </div>
 
             <div class="label-card">
@@ -182,7 +182,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Python" title="Category: Python" rel="category">Python</a>
+        <a href="/category/#AI" title="Category: AI" rel="category">AI</a>
     
   
 
@@ -199,11 +199,11 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a-->
-        <a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a>&nbsp;
+        <!--a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a-->
+        <a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a>&nbsp;
     
-        <!--a href="/tag/#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90" title="Tag: 数据分析" rel="tag">数据分析</a-->
-        <a href="/tag/#数据分析" title="Tag: 数据分析" rel="tag">数据分析</a>
+        <!--a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a-->
+        <a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a>
     
   
 
@@ -215,144 +215,41 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#anaconda-ide基本使用" id="markdown-toc-anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</a></li>
-  <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
-  <li><a href="#实战" id="markdown-toc-实战">实战</a></li>
+  <li><a href="#基本概念" id="markdown-toc-基本概念">基本概念</a></li>
+  <li><a href="#分类" id="markdown-toc-分类">分类</a></li>
+  <li><a href="#使用入门" id="markdown-toc-使用入门">使用入门</a></li>
 </ul>
 
-<p>Python数据分析与展示</p>
+<p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
 
-<p><a href="https://pan.baidu.com/s/1hsrDKXI">参考资料</a></p>
+<h3 id="基本概念">基本概念</h3>
 
-<p><a href="http://wuhongsheng.top/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></p>
-
-<h3 id="anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</h3>
+<p>以常见的分类问题来介绍机器学习的基本概念</p>
 
 <ul>
   <li>
-    <p><a href="https://www.continuum.io/downloads">下载</a>（分为命令行和图形化安装，两种安装方式没有区别）</p>
+    <p>模型是特征列与标签的对应关系</p>
   </li>
   <li>
-    <p>安装（以命令行安装为例）：进入文件目录执行<code class="highlighter-rouge">bash Anaconda3-4.4.0-MacOSX-x86_64.sh</code> -&gt;然后就让你确认条款和安装目录(一直按回车键)</p>
-  </li>
-  <li>
-    <p>主要工具</p>
-
-    <p>** conda 包管理和环境管理工具</p>
-
-    <p>升级：<code class="highlighter-rouge">conda update conda</code></p>
-
-    <p>** Spyder 编程工具</p>
-
-    <p>** IPython 交互式编程环境</p>
-  </li>
-  <li>
-    <p>常用命令</p>
+    <p>样本是由特征列和标签组成的数据</p>
   </li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 更新Qt
-conda update qt pyqt
-
-</code></pre>
-</div>
-
-<h3 id="常用库介绍">常用库介绍</h3>
+<h3 id="分类">分类</h3>
 
 <ul>
   <li>
-    <p><a href="http://www.python-requests.org">NumPy</a>是一个开源的Python科学计算基础库</p>
-
-    <ul>
-      <li>
-        <p>主要特性：</p>
-
-        <ul>
-          <li>一个强大的N维数组对象 ndarray</li>
-          <li>广播功能函数</li>
-          <li>整合C/C++/Fortran代码的工具</li>
-          <li>线性代数、傅里叶变换、随机数生成等功能</li>
-        </ul>
-      </li>
-      <li>
-        <p>调用方式  <code class="highlighter-rouge">import numpy as np</code></p>
-      </li>
-    </ul>
+    <p><a href="https://developers.google.cn/machine-learning/glossary/#supervised_machine_learning">监督式机器学习监</a></p>
   </li>
   <li>
-    <p><a href="">PIL</a></p>
-
-    <ul>
-      <li>
-        <p>安装</p>
-      </li>
-      <li>
-        <p>调用方式 <code class="highlighter-rouge">from PIL import Image</code></p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><a href="http://matplotlib.org/">matplotlib</a></p>
-
-    <ul>
-      <li>调用方式 <code class="highlighter-rouge">import matplotlib.pyplot  as plt</code></li>
-    </ul>
-  </li>
-  <li>
-    <p><a href="http://pandas.pydata.org/">pandas</a></p>
-
-    <ul>
-      <li>调用方式 <code class="highlighter-rouge">import pandas  as pd</code></li>
-    </ul>
+    <p><a href="https://developers.google.cn/machine-learning/glossary/#unsupervised_machine_learning">非监督式学习</a></p>
   </li>
 </ul>
 
-<h3 id="实战">实战</h3>
-
-<p>#####图像手绘处理</p>
+<h3 id="使用入门">使用入门</h3>
 
 <ul>
-  <li>源码</li>
-</ul>
-
-<pre class="prettyprint lang-py">
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
-# -*- coding: utf-8 -*-
-from PIL import Image
-import numpy as np
-a = np.asanyarray(Image.open('../Downloads/test1.jpg').convert('L')).astype('float')
-
-depth =10.                       # (0-100)                         
-grad = np.gradient(a)            # 去图像灰度的梯度值
-grad_x,grad_y=grad               # 分别取横纵图像梯度值
-grad_x=grad_x*depth/100.
-grad_y=grad_y*depth/100.
-A = np.sqrt(grad_x**2 + grad_y**2 +1.)
-uni_x =grad_x/A
-uni_y = grad_y/A
-uni_z = 1./A
-
-vec_el = np.pi/2.2                  # 光源的俯视角度，弧度值
-vec_az = np.pi/4.                   # 光源的方位角度，弧度值
-dx =np.cos(vec_el)*np.cos(vec_az)   # 光源对X轴对影像
-dy = np.cos(vec_el)*np.sin(vec_az)  # 光源对Y轴对影像
-dz = np.sin(vec_el)                 # 光源对Z轴对影像
-
-b =255*(dx*uni_x + dy*uni_y +dz*uni_z)  # 光源归一化
-b =b.clip(0,255)
-
-im =Image.fromarray(b.astype('uint8'))  # 重构图像
-im.save('../Downloads/test1.jpg')
-</pre>
-
-<ul>
-  <li>结果</li>
+  <li><a href="https://tensorflow.google.cn/get_started/">官方教程</a></li>
 </ul>
 
 
@@ -452,20 +349,17 @@ im.save('../Downloads/test1.jpg')
             
                 
                     
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
+                        
+                        <h2 id="similar_posts">Similar Posts</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置
+                            
+                            </a>
+                        </li>
+                        
+                        
                     
                 
                     
@@ -493,18 +387,29 @@ im.save('../Downloads/test1.jpg')
                 
             
         
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+            </ul>
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Tomcat安装从入门到放弃</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a></p>
         
     </div>
 </div>

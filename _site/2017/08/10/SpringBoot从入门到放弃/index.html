@@ -100,6 +100,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -127,6 +129,8 @@
                             <i class="fa fa-heart"></i>About
                         </a>
                     </li>
+                    
+                
                     
                 
                     
@@ -275,13 +279,23 @@ gradle build
 </code></pre>
 </div>
 <ul>
-  <li>后台部署
+  <li><a href="https://www.cnblogs.com/kedarui/p/6439768.html">后台部署</a>
 通过jar部署后，关闭cmd窗口进程就停止了，因此需要让程序在后台运行</li>
 </ul>
 
 <h6 id="windows环境下">Windows环境下</h6>
 <ol>
   <li>编写bat命令</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@echo off
+
+java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2%.log
+
+@pause
+</code></pre>
+</div>
+<ol>
   <li>安装AlwaysUp软件，如下图所示</li>
 </ol>
 
@@ -391,6 +405,42 @@ nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;
                     
                 
             
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
                 
                     
                 
@@ -430,42 +480,6 @@ nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;
                 
                     
                 
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
             
                 
                     
