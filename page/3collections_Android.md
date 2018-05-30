@@ -23,21 +23,19 @@ type: page
 * [Ubuntu下全命令行搭建Android开发环境](http://qianngchn.github.io/wiki/8.html)
 
 
-## DESIGN
+## UI／UX
 
-* [Material Design](https://md.gl)
+* 常用的资源站
+  
+  [Medium UX Design collection频道](https://medium.com/tag/design-thinking)(需要科学上网)
+
+* [Material Design](https://material.io/)
 
 * [Material Design 指南](是一个动态文档，包含跨平台和跨设备的视觉、交互和动画设计指南。)
 
 * [COLOR TOOL](https://md.gl/color/#!/?view.left=0&view.right=0)
 
 * [Android 设计准则](https://developer.android.google.cn/design/index.html)
-
-#### UI／UX
-
-* 常用的资源站
-  
-  [Medium UX Design collection频道](https://medium.com/tag/design-thinking)(需要科学上网)
 
 ## 学习资料
 
@@ -82,22 +80,8 @@ type: page
 
 [Android APK反编译就这么简单详解(附图)](http://blog.csdn.net/vipzjyno1/article/details/21039349/#reply)
 
-### 插件化
 
-* [Android 插件技术实战总结](https://mp.weixin.qq.cos/1p5Y0f5XdVXN2EZYT0AM_A)
-
-* [Droid Plugin](https://github.com/DroidPluginTeam/DroidPlugin)
-
-  DroidPlugin 是***360手机助手***在Android系统上实现了一种新的***插件机制***:它可以在无需安装、修改的情况下运行APK文件,此机制对改进大型APP的架构，实现多团队协作开发具有一定的好处。
-
-* [滴滴插件化项目VirtualAPK开源](http://www.infoq.com/cn/news/2017/06/VirtualAPK-opensource)
-
-## 常用UI控件
-
-* [UltraViewPager](https://github.com/alibaba/UltraViewPager)是一个封装多种特性的ViewPager，主要是为多页面切换场景提供统一解决方案
-
-
-## 开源库
+## 常用框架
 
 ##### UI
 
@@ -108,11 +92,14 @@ type: page
 
   [大神详解](http://gank.io/post/560e15be2dca930e00da1083#toc_10)
 
+* [UltraViewPager](https://github.com/alibaba/UltraViewPager)是一个封装多种特性的ViewPager，主要是为多页面切换场景提供统一解决方案
+
 ##### 数据库
 
 * [greenDAO](https://github.com/greenrobot/greenDAO/)
 
 * [Realm数据库 从入门到“放弃”](http://www.jianshu.com/p/50e0efb66bdf)
+
 ##### 路由
 
 * [DeepLinkDispatch](https://github.com/airbnb/DeepLinkDispatch)
@@ -121,13 +108,27 @@ type: page
 
 * [dagger2](https://github.com/google/dagger)
 
-##### 网络库
+##### 网络访问
 
 * [Retrofit](http://square.github.io/retrofit/)
 
 * [谈谈网络库和Retrofit](http://www.jianshu.com/p/74db8711c2f8)
 
+###### 图片加载
 
+* Android-Universal-Image-Loader、Glide、Fresco、Picasso
+
+###### 缓存框架
+
+* DiskLruCache、 Robospice
+
+###### 事件总线
+
+* EventBus、Otto
+
+###### 安全加固
+
+* 360加固宝、爱加密
 
 
 
@@ -164,6 +165,20 @@ type: page
 [携程移动App架构优化之旅](http://www.infoq.com/cn/articles/ctrip-app-architecture)
 
 [简单聊聊Android Architecture Componets](http://blog.isming.me//2017/05/18/android-architecture-components-guide/)
+
+[阿里动态组件化框架](https://github.com/alibaba/atlas/)
+
+* 插件化
+
+
+1. [Android 插件技术实战总结](https://mp.weixin.qq.cos/1p5Y0f5XdVXN2EZYT0AM_A)
+
+2. [Droid Plugin](https://github.com/DroidPluginTeam/DroidPlugin)
+
+  DroidPlugin 是***360手机助手***在Android系统上实现了一种新的***插件机制***:它可以在无需安装、修改的情况下运行APK文件,此机制对改进大型APP的架构，实现多团队协作开发具有一定的好处。
+
+3. [滴滴插件化项目VirtualAPK开源](http://www.infoq.com/cn/news/2017/06/VirtualAPK-opensource)
+
 
 ## 持续改进(Continuous Improvement)
 

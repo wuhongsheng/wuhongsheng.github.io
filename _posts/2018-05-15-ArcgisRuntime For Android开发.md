@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "ArcgisRuntime For Android开发"
+title:  "ArcGISRuntime For Android开发"
 date:   2018-05-15 08:14:54
 categories: GIS
 tags:  GIS
@@ -10,7 +10,7 @@ author: WHS
 * content
 {:toc}
 
-ArcgisRuntime For Android 开发
+ArcGISRuntime For Android 开发
 
 
 
