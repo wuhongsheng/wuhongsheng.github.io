@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 31 May 2018 10:13:33 +0800</pubDate>
-    <lastBuildDate>Thu, 31 May 2018 10:13:33 +0800</lastBuildDate>
+    <pubDate>Thu, 31 May 2018 14:32:00 +0800</pubDate>
+    <lastBuildDate>Thu, 31 May 2018 14:32:00 +0800</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -600,6 +600,7 @@ Python版本不匹配
   &lt;li&gt;&lt;a href=&quot;#基本概念&quot; id=&quot;markdown-toc-基本概念&quot;&gt;基本概念&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#分类&quot; id=&quot;markdown-toc-分类&quot;&gt;分类&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#使用入门&quot; id=&quot;markdown-toc-使用入门&quot;&gt;使用入门&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见的七个步骤&quot; id=&quot;markdown-toc-常见的七个步骤&quot;&gt;常见的七个步骤&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;a href=&quot;https://tensorflow.google.cn/&quot;&gt;TensorFlow™&lt;/a&gt;是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。
@@ -633,6 +634,37 @@ Python版本不匹配
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://tensorflow.google.cn/get_started/&quot;&gt;官方教程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;常见的七个步骤&quot;&gt;常见的七个步骤&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    搜集数据
+  &lt;/li&gt;
+  &lt;li&gt;
+    数据准备
+  &lt;/li&gt;
+  &lt;li&gt;
+    选择模型
+  &lt;/li&gt;
+  &lt;li&gt;
+    训练模型
+  &lt;/li&gt;
+  &lt;li&gt;
+    评估模型
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+推荐训练和评估所用的数据比例是4:1或7:3。选取何种比例取决于原始数据集的规模。如果你的数据非常多，那么用于验证的数据可能就不需要那么多了。
+
+&lt;ol&gt;
+  &lt;li&gt;
+    参数微调
+  &lt;/li&gt;
+  &lt;li&gt;
+    预测
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 </description>
         <pubDate>Fri, 15 Dec 2017 16:14:54 +0800</pubDate>

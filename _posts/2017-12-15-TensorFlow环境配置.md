@@ -19,23 +19,37 @@ author: WHS
 
 
 
-### 安装
+### [安装（以MacOS为例）](https://tensorflow.google.cn/install/install_mac#ValidateYourInstallation)
 
 您必须选择安装TensorFlow的机制。支持的选择如下：
 * virtualenv （官方推荐）
+
+  1. 启用终端
+  2. 通过以下命令安装pip 和 Virtualenv：
+  ```
+   $ virtualenv --system-site-packages targetDirectory # for Python 2.7
+   $ virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
+  ```
+
 * "native" pip
 * Docker
 * installing from sources, which is documented in a separate guide.
 
+
+
 ### 常用命令
 
 ```
-# 启用
+# 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
+$ cd 
 $ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
 $ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
 (tensorflow)$                           # 启用成功
 # 关闭
 (tensorflow)$ deactivate 
+# 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控培训进度)
+tensorboard --logdir tf_files/training_summaries &
+
 ```
 
 ### 常见问题

@@ -25,6 +25,8 @@ author: WHS
 
 * 样本是由特征列和标签组成的数据
 
+
+
 ### 分类
 
 * [监督式机器学习监](https://developers.google.cn/machine-learning/glossary/#supervised_machine_learning)
@@ -36,5 +38,32 @@ author: WHS
 
 * [官方教程](https://tensorflow.google.cn/get_started/)
 
+
+### 常见的七个步骤
+
+1. 搜集数据
+
+2. 数据准备
+
+3. 选择模型
+
+4. 训练模型
+
+5. 评估模型
+
+推荐训练和评估所用的数据比例是4:1或7:3。选取何种比例取决于原始数据集的规模。如果你的数据非常多，那么用于验证的数据可能就不需要那么多了。
+
+6. 参数微调
+
+7. 预测
+
+### 常见应用场景
+
+* [基于TensorflowLite在移动端实现人声识别](http://www.infoq.com/cn/articles/speaker-dentification-based-on-tensorflowlite?utm_source=articles_about_mobile&utm_medium=link&utm_campaign=mobile)
+
+
+### 相关教程
+
+* [TensorFlow Codelabs](https://codelabs.tensorflowers.cn/)
 
 

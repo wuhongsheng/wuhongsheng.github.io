@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>TensorFlow学习笔记</title>
-    <meta name="description" content="  基本概念  分类  使用入门TensorFlow™是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFl...">
+    <meta name="description" content="  基本概念  分类  使用入门  常见的七个步骤TensorFlow™是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -218,6 +218,7 @@
   <li><a href="#基本概念" id="markdown-toc-基本概念">基本概念</a></li>
   <li><a href="#分类" id="markdown-toc-分类">分类</a></li>
   <li><a href="#使用入门" id="markdown-toc-使用入门">使用入门</a></li>
+  <li><a href="#常见的七个步骤" id="markdown-toc-常见的七个步骤">常见的七个步骤</a></li>
 </ul>
 
 <p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
@@ -251,6 +252,37 @@
 <ul>
   <li><a href="https://tensorflow.google.cn/get_started/">官方教程</a></li>
 </ul>
+
+<h3 id="常见的七个步骤">常见的七个步骤</h3>
+
+<ol>
+  <li>
+    <p>搜集数据</p>
+  </li>
+  <li>
+    <p>数据准备</p>
+  </li>
+  <li>
+    <p>选择模型</p>
+  </li>
+  <li>
+    <p>训练模型</p>
+  </li>
+  <li>
+    <p>评估模型</p>
+  </li>
+</ol>
+
+<p>推荐训练和评估所用的数据比例是4:1或7:3。选取何种比例取决于原始数据集的规模。如果你的数据非常多，那么用于验证的数据可能就不需要那么多了。</p>
+
+<ol>
+  <li>
+    <p>参数微调</p>
+  </li>
+  <li>
+    <p>预测</p>
+  </li>
+</ol>
 
 
         </article>
