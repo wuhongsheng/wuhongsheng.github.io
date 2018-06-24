@@ -27,6 +27,12 @@ author: WHS
   1. 启用终端
   2. 通过以下命令安装pip 和 Virtualenv：
   ```
+   $ sudo easy_install pip
+   $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade virtualenv 
+
+  ```
+  3. 通过使用以下某种格式发出命令来创建一个 Virtualenv 环境：
+  ```
    $ virtualenv --system-site-packages targetDirectory # for Python 2.7
    $ virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
   ```
@@ -45,11 +51,21 @@ $ cd
 $ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
 $ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
 (tensorflow)$                           # 启用成功
+
+# 通过发出以下命令来激活该 conda 环境
+source activate tensorflow
+
 # 关闭
 (tensorflow)$ deactivate 
-# 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控培训进度)
+# 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控训练进度)
 tensorboard --logdir tf_files/training_summaries &
 
+# 升级TensorFlow
+$ pip3 install --upgrade tensorflow 
+
+# 卸载TensorFlow
+$ pip uninstall tensorflow
+$ pip3 uninstall tensorflow 
 ```
 
 ### 常见问题
@@ -63,3 +79,28 @@ tensorboard --logdir tf_files/training_summaries &
 **原因及解决办法**
 
 Python版本不匹配
+
+**问题描述**
+```
+>>> import tensorflow as tf
+Traceback (most recent call last):
+  File "/Users/whs/anaconda3/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 18, in swig_import_helper
+    fp, pathname, description = imp.find_module('_pywrap_tensorflow_internal', [dirname(__file__)])
+  File "/Users/whs/anaconda3/lib/python3.6/imp.py", line 297, in find_module
+    raise ImportError(_ERR_MSG.format(name), name=name)
+ImportError: No module named '_pywrap_tensorflow_internal'
+```
+**原因及解决方法**
+```
+tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
+删除tensorflow 
+rm -r ~/tensorflow
+重新安装
+ (targetDirectory)$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade tensorflow      # for Python 2.7
+
+```
+
+
+
+
+

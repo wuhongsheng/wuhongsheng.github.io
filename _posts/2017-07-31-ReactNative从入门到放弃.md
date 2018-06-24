@@ -148,6 +148,45 @@ React Native unable to load script from assets index.android.bundle on windows
 react-native run-android
 ```
 
+**问题描述**
+
+```
+Installing build/Build/Products/Debug-iphonesimulator/SCLYGZ.app
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=2):
+Failed to install the requested application
+An application bundle was not found at the provided path.
+Provide a valid path to the desired application bundle.
+Print: Entry, ":CFBundleIdentifier", Does Not Exist
+```
+
+**解决方法**
+
+使用Xcode打卡项目运行解决问题
+
+**问题描述**
+
+```
+Users/whs/Library/Developer/Xcode/DerivedData/SCLYGZ-cwawqpsnahyurjgkghwavkkokijl/Build/Intermediates.noindex/SCLYGZ.build/Debug-iphonesimulator/SCLYGZ.build/Script-00DD1BFF1BD5951E006B06BC.sh: line 3: ../node_modules/react-native/scripts/react-native-xcode.sh: No such file or directory
+```
+
+**解决方法**
+
+change ../node_modules/react-native/packager/react-native-xcode.sh 
+to ../node_modules/react-native/scripts/react-native-xcode.sh
+
+Open in Xcode -> Select your Project -> "Build Phases" tab -> "Bundle React Native code and images"
+Then change the above paths.
+
+或者
+```
+rm -rf node_modules 
+rm -rf ~/.rncache
+npm install
+```
+
+
+
+
 ```
 error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
 ```

@@ -77,6 +77,9 @@ ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
 # 查看变量
 echo $IMAGE_SIZE
 224
+
+# 通过发出以下命令来激活该 conda 环境
+source activate tensorflow
 ```
 **启动TensorBoard**
 
@@ -187,6 +190,17 @@ tulips (score = 0.00032)
 
 
 或者去[TensorFlow游乐场](http://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.74359&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)玩一下吧！
+
+
+### 常见问题及解决方法
+
+**问题**
+```
+InvalidArgumentError (see above for traceback): Expected image (JPEG, PNG, or GIF), got unknown format starting with '\000\005\026\007\000\002\000\000Mac OS X'
+```
+
+**解决方法**
+
 
 
 
