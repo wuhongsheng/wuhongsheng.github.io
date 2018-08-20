@@ -168,6 +168,8 @@ type: page
 
 [阿里动态组件化框架](https://github.com/alibaba/atlas/)
 
+[微信Android模块化架构重构实践](https://mp.weixin.qq.com/s/6Q818XA5FaHd7jJMFBG60w)
+
 * 插件化
 
 

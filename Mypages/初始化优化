@@ -1,0 +1,30 @@
+初始化优化
+
+CommonLibrary : BaseApplication -> PreferenceUtil ImageLoader
+
+
+moduleapp : MyApplication -> GlobalConfig  LogManager
+
+app : DeviceApplication
+
+
+后台定位服务化
+
+组件化&模块化
+
+* 现有组件化方案梳理
+* 工具类整理
+* 依赖整理
+
+要求：
+最小化模块之间的依赖关系
+完全消除循环依赖
+模块应尽可能小
+
+
+性能优化
+
+离线引擎服务重启
+
+
+

@@ -15,7 +15,7 @@ author: WHS
 
 
 
-
+* [Gradle下载地址](http://services.gradle.org/distributions/)
 
 
 1. 使用VPN下载
