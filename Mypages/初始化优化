@@ -10,6 +10,8 @@ app : DeviceApplication
 
 后台定位服务化
 
+日志优化
+
 组件化&模块化
 
 * 现有组件化方案梳理
