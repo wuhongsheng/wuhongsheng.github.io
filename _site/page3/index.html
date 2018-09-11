@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -161,6 +163,360 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-09-14
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a>&nbsp;
+    
+        <a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常用sql" id="markdown-toc-常用sql">常用SQL</a></li>
+</ul>
+
+<p>Oracle使用从入门到放弃</p>
+
+<h3 id="常用sql">常用SQL</h3>
+
+<ul>
+  <li>主键自增长</li>
+</ul>
+
+<pre class="prettyprint lang-sql">
+--首先建一个表TEST
+
+create table BUSI_UPLOADINFO
+(
+  ID int PRIMARY KEY,
+  ENENTTYPE int,
+  EVNNTSUBTYPE INT,
+  lAT number,
+  lON number,
+  INFO varchar2(100),
+  UPLOADTYPE int,
+  USERID Int,
+  USERNAME varchar2(20),
+  PHONE number,
+   REMARK varchar2(100),
+   REMARK1 varchar2(100),
+   REMARK2 varchar2(100),
+  ADDRESS VARCHAR2(100)
+
+)
+/
+COMMENT ON TABLE BUSI_UPLOADINFO IS '业务表-上报事件表'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.ID IS '主键'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.ENENTTYPE IS '事件类型'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.EVNNTSUBTYPE IS '事件子类型'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.lAT IS '纬度'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.LON IS '经度'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK1 IS '备用字段'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK2 IS '备用字段'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
+/
+COMMENT ON COLUMN BUSI_UPLOADINFO.ADDRESS IS '地址信息'
+
+-- 建一个序列
+create sequence SEQ_TEST
+minvalue 1        --最小值
+nomaxvalue        --不设置最大值
+start with 1      --从1开始计数
+increment by 1    --每次加1个
+nocycle           --一直累加，不循环
+nocache;          --不建缓冲区
+
+-- 以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
+你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
+
+CREATE OR REPLACE TRIGGER tg_test 
+BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
+begin
+select seq_test.nextval into:new.nid from dual;
+end;
+</pre>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-08-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Spatialite" title="Tag: Spatialite" rel="tag">Spatialite</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+  <li><a href="#常用sql语句" id="markdown-toc-常用sql语句">常用SQL语句()</a></li>
+</ul>
+
+<p>Sptialite使用从入门到放弃</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://www.gaia-gis.it/gaia-sins/">官网</a></p>
+
+<p><a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html">spatialite-cookbook</a></p>
+
+<h3 id="常用sql语句">常用SQL语句()</h3>
+
+<p>CGCS2000 4490(国家2000坐标系SRID)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 插入点数据
+INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
+
+# 导出Shapfile
+select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
+</code></pre></div></div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-08-16
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Linux" title="Category: Linux" rel="category">Linux</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Contos" title="Tag: Contos" rel="tag">Contos</a>&nbsp;
+    
+        <a href="/tag/#Linux" title="Tag: Linux" rel="tag">Linux</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+  <li><a href="#常用命令和方法以阿里云centos为例" id="markdown-toc-常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</a>    <ul>
+      <li><a href="#安装apache" id="markdown-toc-安装apache">安装Apache</a></li>
+      <li><a href="#安装php及扩展" id="markdown-toc-安装php及扩展">安装PHP及扩展</a></li>
+      <li><a href="#安装git" id="markdown-toc-安装git">安装Git</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<h3 id="常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</h3>
+
+<hr />
+
+<h4 id="安装apache">安装Apache</h4>
+<ul>
+  <li>安装Apache
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install httpd httpd-devel 
+# service httpd start 
+</code></pre></div>    </div>
+  </li>
+  <li>开启80端口（阿里云需要设置安全组策略设置如下）</li>
+</ul>
+
+<p><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/25475/cn_zh/1495786224289/Image%201.png" alt="" /></p>
+
+<ul>
+  <li>测试安装
+访问服务器公网地址可以看到Apache说明安装成功</li>
+</ul>
+
+<h4 id="安装php及扩展">安装PHP及扩展</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install php php-devel
+
+# yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
+
+安装完需要重启Apache
+# httpd restart
+</code></pre></div></div>
+
+<h4 id="安装git">安装Git</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install git
+查看版本
+# git version
+
+配置Git用户信息
+# git config --global user.name "woider"
+# git config --global user.email "woider@gmail.com"
+
+查看ssh key 是否存在,如果不存在需要生成
+# ls -al ~/.ssh
+
+生成ssh key(生成 ssh key 过程中，会让你填写 passphrase，连按三次回车跳过即可)
+# ssh-keygen -t rsa -C "woider@gmail.com" 
+
+查看ssh key(id_rsa 为私钥，id_rsa.pub 为公钥  SSH KEY 公钥，用于 GitHub 身份验证)
+登录 GitHub，打开 Personal settings 页面，选择 SSH and GPG keys 选项：
+# vim ~/.ssh/id_rsa.pub
+
+</code></pre></div></div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -261,10 +617,9 @@
 
 <h3 id="常用命令和方法">常用命令和方法</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 构建项目
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 构建项目
 gradle build
-</code></pre>
-</div>
+</code></pre></div></div>
 <h4 id="程序部署">程序部署</h4>
 
 <ul>
@@ -277,9 +632,8 @@ gradle build
   <li>Jar部署</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
+</code></pre></div></div>
 <ul>
   <li><a href="https://www.cnblogs.com/kedarui/p/6439768.html">后台部署</a>
 通过jar部署后，关闭cmd窗口进程就停止了，因此需要让程序在后台运行</li>
@@ -290,13 +644,12 @@ gradle build
   <li>编写bat命令</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@echo off
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@echo off
 
 java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2%.log
 
 @pause
-</code></pre>
-</div>
+</code></pre></div></div>
 <ol>
   <li>安装AlwaysUp软件，如下图所示</li>
 </ol>
@@ -333,65 +686,59 @@ java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2
   <li>关闭应用的脚本：stop.sh</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
-<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps -ef | grep yourapp.jar | grep -v grep | awk <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
-<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span>  
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps <span class="nt">-ef</span> | <span class="nb">grep </span>yourapp.jar | <span class="nb">grep</span> <span class="nt">-v</span> <span class="nb">grep</span> | awk <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span>  
 <span class="k">then  
     </span><span class="nb">echo </span>Application is already stopped  
 <span class="k">else  
     </span><span class="nb">echo kill</span> <span class="nv">$PID</span>  
     <span class="nb">kill</span> <span class="nv">$PID</span>  
 <span class="k">fi</span>  
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>启动应用的脚本：start.sh</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c">#!/bin/bash  </span>
-nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;  
-</code></pre>
-</div>
+nohup java <span class="nt">-jar</span> yourapp.jar <span class="nt">--server</span>.port<span class="o">=</span>8888 &amp;  
+</code></pre></div></div>
 
 <ul>
   <li>整合了关闭和启动的脚本：run.sh，由于会先执行关闭应用，然后再启动应用，这样不会引起端口冲突等问题，适合在持续集成系统中进行反复调用。</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
 <span class="nb">echo </span>stop application  
 <span class="nb">source </span>stop.sh  
 <span class="nb">echo </span>start application  
 <span class="nb">source </span>start.sh  
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>####### 系统服务</p>
 
 <h3 id="常见问题及解决方法">常见问题及解决方法</h3>
 
 <p><strong>问题描述</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
+</code></pre></div></div>
 
 <p><strong>解决办法</strong></p>
 
 <p>1.重启IDEA或者重启电脑（可能是Druid bug 导致）</p>
 
 <p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><strong>解决办法</strong></p>
 
 <ul>
   <li>配置文件增加
-    <div class="highlighter-rouge"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -459,10 +806,10 @@ nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;
                     <ul id="markdown-toc">
   <li><a href="#环境配置" id="markdown-toc-环境配置">环境配置</a></li>
   <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a>    <ul>
-      <li><a href="#升级新版本" id="markdown-toc-升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></a></li>
+      <li><a href="#升级新版本" id="markdown-toc-升级新版本">升级新版本</a></li>
       <li><a href="#降级版本" id="markdown-toc-降级版本">降级版本</a></li>
       <li><a href="#运行调试方法" id="markdown-toc-运行调试方法">运行调试方法</a></li>
-      <li><a href="#npm常用命令" id="markdown-toc-npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</a></li>
+      <li><a href="#npm常用命令" id="markdown-toc-npm常用命令">npm常用命令</a></li>
     </ul>
   </li>
   <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a>    <ul>
@@ -479,21 +826,20 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
 
 <h2 id="环境配置">环境配置</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1.安装node.js
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.安装node.js
 
 2.安装react-native命令行工具
 npm install -g react-native-cli
 
 3.新建项目
 react-native init [ProjectName]
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="常用命令">常用命令</h2>
 
 <h4 id="升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 1. 安装Git并设置环境变量
 
 2. 安装react-native-git-upgrade工具模块
@@ -505,20 +851,18 @@ react-native init [ProjectName]
  或者是：
  $ react-native-git-upgrade X.Y.Z
  这样把react native升级到指定的X.Y.Z版本
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="降级版本">降级版本</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save react-native@版本号。
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-native@版本号。
 通过上诉操作之后，别忘了更新一下模板。
 react-native upgrade
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="运行调试方法">运行调试方法</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>To run your app on iOS:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To run your app on iOS:
    cd /Users/whs/AwesomeProject
    react-native run-ios
    - or -
@@ -531,13 +875,11 @@ To run your app on Android:
 
 Google浏览器调试地址
 http://localhost:8081/debugger-ui   
-</code></pre>
-</div>
+</code></pre></div></div>
 <h4 id="npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code>#更新
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#更新
 npm install npm@latest -g
-</code></pre>
-</div>
+</code></pre></div></div>
 <hr />
 
 <h2 id="参考资料">参考资料</h2>
@@ -591,34 +933,63 @@ npm install npm@latest -g
 
 <p><strong>解决办法</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1.确定自己的环境配置是否有问题
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.确定自己的环境配置是否有问题
 2.打开终端，输入命令行
 brew install wget
 
 3.npm config set registry=http://registry.npm.taobao.org/
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
+</code></pre></div></div>
 <p><strong>解决办法</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1.在工程目录里建assets目录
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.在工程目录里建assets目录
 
 2.运行命令
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 
 3.运行程序
 react-native run-android
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
-</code></pre>
-</div>
+<p><strong>问题描述</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Installing build/Build/Products/Debug-iphonesimulator/SCLYGZ.app
+An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=2):
+Failed to install the requested application
+An application bundle was not found at the provided path.
+Provide a valid path to the desired application bundle.
+Print: Entry, ":CFBundleIdentifier", Does Not Exist
+</code></pre></div></div>
+
+<p><strong>解决方法</strong></p>
+
+<p>使用Xcode打卡项目运行解决问题</p>
+
+<p><strong>问题描述</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Users/whs/Library/Developer/Xcode/DerivedData/SCLYGZ-cwawqpsnahyurjgkghwavkkokijl/Build/Intermediates.noindex/SCLYGZ.build/Debug-iphonesimulator/SCLYGZ.build/Script-00DD1BFF1BD5951E006B06BC.sh: line 3: ../node_modules/react-native/scripts/react-native-xcode.sh: No such file or directory
+</code></pre></div></div>
+
+<p><strong>解决方法</strong></p>
+
+<p>change ../node_modules/react-native/packager/react-native-xcode.sh 
+to ../node_modules/react-native/scripts/react-native-xcode.sh</p>
+
+<p>Open in Xcode -&gt; Select your Project -&gt; “Build Phases” tab -&gt; “Bundle React Native code and images”
+Then change the above paths.</p>
+
+<p>或者</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm -rf node_modules 
+rm -rf ~/.rncache
+npm install
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
+</code></pre></div></div>
 
 
                 </div>
@@ -701,12 +1072,11 @@ react-native run-android
 
 <p><strong>错误描述</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
    - with linked exception:
   [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
     at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>原因及解决方法</strong></p>
 
@@ -716,743 +1086,23 @@ react-native run-android
   <li>中文使用@string/name引入；</li>
 </ul>
 
+<p><strong>错误描述</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.lang.NullPointerException: null value in entry: libOutputDir=null
+ at com.google.common.collect.CollectPreconditions.checkEntryNotNull(CollectPreconditions.java:33)
+ at com.google.common.collect.ImmutableMap.entryOf(ImmutableMap.java:135)
+ at com.google.common.collect.ImmutableMap$Builder.put(ImmutableMap.java:206)
+ at com.google.common.collect.ImmutableSortedMap$Builder.put(ImmutableSortedMap.java:371)
+</code></pre></div></div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<p>删除项目根目录.gradle文件夹</p>
+
 
                 </div>
                 <div class="read-all">
                     <a  href="/2017/06/30/Android%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-20
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#百度地图" title="Category: 百度地图" rel="category">百度地图</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
-    
-        <a href="/tag/#百度地图" title="Tag: 百度地图" rel="tag">百度地图</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常用方法" id="markdown-toc-常用方法">常用方法</a></li>
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-</ul>
-
-<p><a href="http://lbsyun.baidu.com/">百度地图</a>开发</p>
-
-<h3 id="常用方法">常用方法</h3>
-
-<ul>
-  <li>坐标转换</li>
-</ul>
-
-<pre class="prettyprint lang-java">
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 
- * 将 BD-09 坐标转换成GCJ-02 坐标 
- * bd_lat * @param bd_lon * @return
- */
- public static TitanLocation bd09_To_Gcj02(double bd_lon, double bd_lat) {
-        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
-        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
-        double gg_lon = z * Math.cos(theta);
-        double gg_lat = z * Math.sin(theta);
-        return new TitanLocation(gg_lon, gg_lat);
-
- }
-/**
- * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 将 GCJ-02 坐标转换成 BD-09 坐标
- * @param gg_lat
- * @param gg_lon
- */
- public static TitanLocation gcj02_To_Bd09(double gg_lon,double gg_lat) {
-        double x = gg_lon, y = gg_lat;
-        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
-        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
-        double bd_lon = z * Math.cos(theta) + 0.0065;
-        double bd_lat = z * Math.sin(theta) + 0.006;
-        return new TitanLocation(bd_lon, bd_lat);
- }
-</pre>
-
-<h3 id="常见问题">常见问题</h3>
-
-<p><strong>错误描述</strong></p>
-
-<p><strong>解决方法</strong></p>
-
-<p>集成百度导航需要将 targetSdkVersion 设为23</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-16
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#jenkins" title="Category: jenkins" rel="category">jenkins</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#jenkins" title="Tag: jenkins" rel="tag">jenkins</a>&nbsp;
-    
-        <a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
-  <li><a href="#升级" id="markdown-toc-升级">升级</a></li>
-  <li><a href="#新建和配置项目" id="markdown-toc-新建和配置项目">新建和配置项目</a>    <ul>
-      <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p><a href="https://jenkins.io/">Jenkins</a>安装及使用</p>
-
-<p>Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：</p>
-<ul>
-  <li>持续的软件版本发布/测试项目。</li>
-  <li>监控外部调用执行的工作。</li>
-  <li>对于Android来说，可以自动打包、Android lint 检查、自动测试等。</li>
-</ul>
-
-<hr />
-
-<h3 id="参考资料">参考资料</h3>
-
-<p><a href="http://www.cnblogs.com/wnfindbug/p/5784476.html">jenkins git gradle android自动化构建配置</a></p>
-
-<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
-
-<ul>
-  <li>
-    <p>JDK、SDK、GRADLE配置(包括环境变量)</p>
-  </li>
-  <li>
-    <p><a href="http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/">安装Tomcat</a></p>
-  </li>
-  <li>
-    <p>下载<a href="https://jenkins.io/doc/">Jenkins.war</a>并复制到Tomcat webapps目录下</p>
-  </li>
-  <li>
-    <p>配置Jenkins环境变量(启动web容器之前)
-1.Windows
-Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkins 。
-可以通过设置环境变量来修改，例如： JENKINS_HOME=C:\jenkins，然后重新启动jenkins。</p>
-  </li>
-  <li>
-    <p>Jenkins unlock</p>
-  </li>
-</ul>
-
-<p>打开主目录找到改文件(windows用notpad++打开password文件)</p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins_unlock.jpg" alt="" /></p>
-
-<ul>
-  <li>
-    <p>配置Plugin</p>
-  </li>
-  <li>
-    <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）一定要先配置，后面配会比较麻烦</p>
-  </li>
-  <li>
-    <p>系统配置
-1.配置环境变量</p>
-
-    <ul>
-      <li>
-        <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a></p>
-      </li>
-      <li>
-        <p>AndrodSDK</p>
-
-        <p>1.<a href="">下载</a></p>
-      </li>
-      <li>
-        <p>Gradle
-1.<a href="http://services.gradle.org/distributions">下载</a>
-2.设置环境变量
-3.
-2.配置全局Tools</p>
-      </li>
-    </ul>
-
-    <p>3.配置邮件服务</p>
-
-    <ul>
-      <li>在系统设置中找到Jenkins Locaction项填入Jenkins URL和系统管理员邮件地址，系统管理员邮件地址一定要配置，否则发不了邮件通知。因为邮件通知都是由系统管理员的邮箱发出来的。</li>
-    </ul>
-
-    <p><img src="http://img.blog.csdn.net/20161103193043944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
-
-    <ul>
-      <li>找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。</li>
-    </ul>
-
-    <p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E9%85%8D%E7%BD%AE.png" alt="" /></p>
-
-    <ul>
-      <li>配好以后勾选“通过发送测试邮件测试配置”</li>
-    </ul>
-
-    <p><img src="http://img.blog.csdn.net/20161103193124369?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
-
-    <ul>
-      <li>填入接收测试邮件的地址，点击“Test configuration”。如果配置正确就会在下面显示Email was successfully sent</li>
-    </ul>
-
-    <p><img src="http://img.blog.csdn.net/20161103193149854?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
-
-    <p>2.配置Gradle环境</p>
-    <ul>
-      <li>
-        <p><a href="http://services.gradle.org/distributions">下载地址</a></p>
-      </li>
-      <li>
-        <p>上传到linux并解压： unzip gradle-2.14.1-all.zip</p>
-      </li>
-      <li>
-        <p>配置环境变量：</p>
-      </li>
-    </ul>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
-  export PATH=$PATH:$GRADLE_HOME/bin
-</code></pre>
-    </div>
-    <p>　</p>
-    <ul>
-      <li>
-        <p>source命令使配置生效：source .bash_profile(source 文件名)</p>
-      </li>
-      <li>
-        <p>检验配置是否生效：echo $GRADLE_HOME</p>
-      </li>
-    </ul>
-
-    <p>3.配置Java环境</p>
-
-    <ul>
-      <li>配置环境变量：</li>
-    </ul>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
-  export PATH=$JAVA_HOME/bin:$PATH:
-</code></pre>
-    </div>
-  </li>
-</ul>
-
-<p>　</p>
-
-<h3 id="升级">升级</h3>
-
-<hr />
-
-<h3 id="新建和配置项目">新建和配置项目</h3>
-
-<p><a href="http://wangkuiwu.github.io/2015/08/07/jenkins-02/">教程</a></p>
-
-<ul>
-  <li>导出编译文件</li>
-</ul>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-out.png" alt="" /></p>
-
-<ul>
-  <li>构建</li>
-</ul>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-build.png" alt="" /></p>
-
-<h4 id="常见问题及解决方法">常见问题及解决方法</h4>
-
-<p><strong>登陆失败</strong></p>
-
-<p>提示登陆信息无效</p>
-
-<p><strong>解决方法</strong></p>
-
-<ul>
-  <li>
-    <p><code class="highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
-  </li>
-  <li>
-    <p>打开config.xml文件并修改配置信息(windows系统可能会保存在这个路径下C:\Windows\System32\config\systemprofile)</p>
-  </li>
-</ul>
-
-<pre class="prettyprint lang-xml">
-
- &lt;!--修改成false--&gt;
- &lt;useSecurity&gt;true&lt;/useSecurity&gt;
- &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
- &lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
- &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
- &lt;/authorizationStrategy&gt;
- &lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
-   &lt;disableSignup&gt;true&lt;/disableSignup&gt;
-   &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
- &lt;/securityRealm&gt;
- 
-</pre>
-
-<p><strong>SDK许可问题</strong></p>
-
-<p><strong>解决办法</strong></p>
-
-<ul>
-  <li>Linux</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "$ANDROID_HOME/licenses"
-echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" &gt; "$ANDROID_HOME/licenses/android-sdk-license"
-</code></pre>
-</div>
-<ul>
-  <li>Windows</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mkdir "%ANDROID_HOME%\licenses"
-echo |set /p="8933bad161af4178b1185d1a37fbf41ea5269c55" &gt;"%ANDROID_HOME%\licenses\android-sdk-license"
-</code></pre>
-</div>
-
-<ul>
-  <li>配置运行权限</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-chmod a+x startup.sh
-chmod +x catalina.sh
-</code></p>
-
-<ul>
-  <li>配置环境变量</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-open -e .bash_profile
-export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
-</code></p>
-
-<ul>
-  <li>启动Tomcat</li>
-</ul>
-
-<p><code class="highlighter-rouge">
-startup.sh
-</code></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-06-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Python" title="Category: Python" rel="category">Python</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a>&nbsp;
-    
-        <a href="/tag/#爬虫" title="Tag: 爬虫" rel="tag">爬虫</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#python开发工具的选择" id="markdown-toc-python开发工具的选择">Python开发工具的选择</a>    <ul>
-      <li><a href="#文本类" id="markdown-toc-文本类">文本类</a></li>
-      <li><a href="#集成类ide" id="markdown-toc-集成类ide">集成类（IDE）</a></li>
-    </ul>
-  </li>
-  <li><a href="#开发环境安装" id="markdown-toc-开发环境安装">开发环境安装</a></li>
-  <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
-  <li><a href="#实战" id="markdown-toc-实战">实战</a>    <ul>
-      <li><a href="#通用代码框架" id="markdown-toc-通用代码框架">通用代码框架</a></li>
-      <li><a href="#股票数据scrapy爬虫" id="markdown-toc-股票数据scrapy爬虫">股票数据Scrapy爬虫</a></li>
-    </ul>
-  </li>
-  <li><a href="#相关资料" id="markdown-toc-相关资料">相关资料</a></li>
-</ul>
-
-<p>Python爬虫与信息提取
-<a href="https://pan.baidu.com/s/1eSIMk9c">参考资料</a></p>
-
-<h3 id="python开发工具的选择">Python开发工具的选择</h3>
-
-<h4 id="文本类">文本类</h4>
-
-<ul>
-  <li>IDLE  自带的、默认、代码一般不超过300行</li>
-  <li>Notepad++</li>
-  <li>Sublime Text  专业的编程体验</li>
-  <li>Vim &amp; Emacs</li>
-  <li>Atom</li>
-  <li>Komodo Edit</li>
-</ul>
-
-<h4 id="集成类ide">集成类（IDE）</h4>
-
-<ul>
-  <li>
-    <p>PyCharm  社区版免费、专业版收费</p>
-  </li>
-  <li>
-    <p>Wing  收费、调试、版本控制、同步</p>
-  </li>
-  <li>
-    <p>PyDev &amp; Eclipse   开源开放、自定义使用相对复杂</p>
-  </li>
-  <li>
-    <p>PTVS &amp; Visual Studio  丰富的调试功能</p>
-  </li>
-  <li>
-    <p>Anaconda &amp; Spyder  开源免费、支持800个库、和Canopy由同一个人领导开发  用于科学计算</p>
-  </li>
-  <li>
-    <p>Canopy  收费、用于科学计算、支持超过500个库</p>
-  </li>
-</ul>
-
-<h3 id="开发环境安装">开发环境安装</h3>
-
-<p>Mac是自带Python(2.x版本)环境的，如果需要Python 3.x版本需要手动安装</p>
-
-<h3 id="常用库介绍">常用库介绍</h3>
-
-<ul>
-  <li>
-    <p><a href="http://www.python-requests.org">Requests</a></p>
-
-    <p>安装：</p>
-    <div class="highlighter-rouge"><pre class="highlight"><code>pip  install requests
-pip3 install requests
-</code></pre>
-    </div>
-    <p>调用方式：<code class="highlighter-rouge">import requests</code></p>
-
-    <p>用途：发起请求、获取请求内容</p>
-  </li>
-  <li>
-    <p><a href="https://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a></p>
-
-    <p>安装：</p>
-    <div class="highlighter-rouge"><pre class="highlight"><code>pip  install beautifulsoup4
-pip3 install beautifulsoup4
-</code></pre>
-    </div>
-
-    <p>调用方式：<code class="highlighter-rouge">from bs4 import beautifulsoup</code></p>
-
-    <p>用途：解析HTML标签</p>
-  </li>
-  <li>
-    <p>Re(正则表达式)库是Python的标准库</p>
-
-    <p>用途：
-调用方式：<code class="highlighter-rouge">import re</code></p>
-  </li>
-  <li>
-    <p><a href="https://scrapy.org/">Scrapy爬虫框架</a></p>
-
-    <p>安装：<code class="highlighter-rouge">pip3 install scrapy</code></p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code> ```conda install -c conda-forge scrapy```
-</code></pre>
-    </div>
-
-    <p>升级：<code class="highlighter-rouge">pip3 install --upgrade scrapy</code></p>
-
-    <p>测试：<code class="highlighter-rouge">scrapy ‐h</code></p>
-
-    <p>使用：</p>
-
-    <ul>
-      <li>初始化一个工程</li>
-    </ul>
-
-    <p><code class="highlighter-rouge">scrapy startproject [projectnaem]</code></p>
-
-    <ul>
-      <li>建一个爬虫</li>
-    </ul>
-
-    <p><code class="highlighter-rouge">scrapy genspider [spidername] [url]</code></p>
-
-    <p>*配置产生的爬虫</p>
-
-    <ul>
-      <li>运行爬虫</li>
-    </ul>
-
-    <p><code class="highlighter-rouge">scrapy crawl [spidername]</code></p>
-  </li>
-</ul>
-
-<h3 id="实战">实战</h3>
-
-<h4 id="通用代码框架">通用代码框架</h4>
-
-<pre class="prettyprint lang-py">
-   import requests
-   try:
-       r= requests.get([url],timeout=30)
-       r.raise_for_status()
-       r.encoding = r.apparent_encoding
-       return r=status_code
-   except:
-        return "产生异常"
-</pre>
-
-<h4 id="股票数据scrapy爬虫">股票数据Scrapy爬虫</h4>
-
-<ul>
-  <li>编写Spider</li>
-</ul>
-
-<pre class="prettyprint lang-py">
-    # -*- coding: utf-8 -*-
-  import scrapy
-  import re
-
-
-  class StocksSpider(scrapy.Spider):
-    name = 'stocks'
-    # allowed_domains = ['baidu.com']
-    # 东方财富网
-    start_urls = ['http://quote.eastmoney.com/stocklist.html']
-
-    def parse(self, response):
-         self.headers = {
-          'user-agent':'Mozilla/5.0'
-         }
-         for href in response.css('a::attr(href)').extract():
-            try:
-                stock = re.findall(r"[s][hz]\d{6}",href)[0]
-                url = 'https://gupiao.baidu.com/stock/'+ stock+'.html'
-                yield scrapy.Request(url,callback=self.parse_stock)
-            except:
-                continue
-        
-    def parse_stock(self,response):
-        infoDict = {}
-        stockInfo = response.css('.stock-bets')
-        name = stockInfo.css('.bets-name').extract()[0]
-        keyList = stockInfo.css('dt').extract()
-        valueList = stockInfo.css('dd').extract()
-        for i in range(len(keyList)):
-            key = re.findall(r'&gt;.*&lt;dt&gt;',keyList[i])[0][1:-5]
-            try:
-                 val = re.findall(r'\d+\.?.*&lt;/dd&gt;',valueList[i])[0][0:-5]
-            except:
-                 val = '--'
-            infoDict[key] = val
-
-        infoDict.update(
-            {'股票名称':re.findall('\s.*\(',name)[0].split()[0] + \
-             re.findall('\&gt;.*\&lt;',name)[0][1:-1]})            
-        yield infoDict
-  </pre>
-
-<ul>
-  <li>编写pipeline</li>
-</ul>
-
-<pre class="prettyprint lang-py">
-# -*- coding: utf-8 -*-
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
-
-class PythondemoPipeline(object):
-    def process_item(self, item, spider):
-        return item
-
-class BaiduStockPipline(object):
-    def open_spider(self,spider):
-        self.f = open('BaiduStockInfo.txt','w')
-        
-    def close_spider(self,spider):
-        self.f.close()
-
-    def process_item(self,item,spider):
-        try:
-            line = str(dict(item))+'\n'
-            self.f.write(line)
-        except:
-            pass
-        return item
-</pre>
-
-<ul>
-  <li>配置pipeline</li>
-</ul>
-
-<p>找到settings.py文件并修改配置</p>
-
-<ul>
-  <li>结果如下：</li>
-</ul>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/py_spider_result.png" alt="" /></p>
-
-<h3 id="相关资料">相关资料</h3>
-
-<ul>
-  <li>
-    <p><a href="https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&amp;mid=2697266133&amp;idx=1&amp;sn=51426072d8ad4c4496795127e9c9f1ae&amp;chksm=8376fce1b40175f76724b8be9d5bfcda3d3759c4fc30f9ee38f776dd832bd5171034e6a3e89d&amp;mpshare=1&amp;scene=23&amp;srcid=0606X6JFFUGEK1P1JUuH9GXM%23rd">那些你不知道的爬虫反爬虫套路</a></p>
-  </li>
-  <li>
-    <p><a href="http://gashero.iteye.com/">gashero的Geek前哨</a></p>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -1484,6 +1134,12 @@ class BaiduStockPipline(object):
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a></li>
+                    
+                        <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
+                    
+                        <li><a href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a></li>
+                    
                         <li><a href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a></li>
                     
                         <li><a href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a></li>
@@ -1497,12 +1153,6 @@ class BaiduStockPipline(object):
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
-                    
-                        <li><a href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a></li>
-                    
-                        <li><a href="/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TensorFlow学习笔记</a></li>
-                    
-                        <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -1529,7 +1179,7 @@ class BaiduStockPipline(object):
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">10</span>
+                            <span class="badge">11</span>
                         </a>
                     </li>
                     
@@ -1565,7 +1215,7 @@ class BaiduStockPipline(object):
                             <span class="name">
                                 AI
                             </span>
-                            <span class="badge">3</span>
+                            <span class="badge">4</span>
                         </a>
                     </li>
                     
@@ -1713,6 +1363,15 @@ class BaiduStockPipline(object):
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="/category/#产品" class="categories-list-item" cate="产品">
+                            <span class="name">
+                                产品
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -1743,13 +1402,6 @@ class BaiduStockPipline(object):
                       
                       
                       <a href="/tag/#RubyGems" style="font-size: 9pt; color: #999;">RubyGems</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#Adb" style="font-size: 9pt; color: #999;">Adb</a>
                     
                       
                       
@@ -1812,7 +1464,7 @@ class BaiduStockPipline(object):
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 11pt; color: #777;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #666;">AI</a>
                     
                       
                       
@@ -1847,7 +1499,7 @@ class BaiduStockPipline(object):
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 12pt; color: #666;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #666;">GIS</a>
                     
                       
                       
@@ -1980,7 +1632,7 @@ class BaiduStockPipline(object):
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 10pt; color: #888;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 11pt; color: #777;">TensorFlow</a>
                     
                       
                       
@@ -2023,6 +1675,20 @@ class BaiduStockPipline(object):
                       
                       
                       <a href="/tag/#SVN" style="font-size: 9pt; color: #999;">SVN</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#原型设计" style="font-size: 9pt; color: #999;">原型设计</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#产品" style="font-size: 9pt; color: #999;">产品</a>
                     
                 </div>
             </div>

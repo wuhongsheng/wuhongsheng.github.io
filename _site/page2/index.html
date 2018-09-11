@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -161,6 +163,497 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-03-07
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#AS" title="Tag: AS" rel="tag">AS</a>&nbsp;
+    
+        <a href="/tag/#Gradle" title="Tag: Gradle" rel="tag">Gradle</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p>相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法</p>
+
+<ul>
+  <li><a href="http://services.gradle.org/distributions/">Gradle下载地址</a></li>
+</ul>
+
+<ol>
+  <li>
+    <p>使用VPN下载</p>
+
+    <p>我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。</p>
+  </li>
+  <li>
+    <p>手动下载配置</p>
+
+    <p><a href="https://blog.csdn.net/fuchaosz/article/details/51567808">参考文章</a></p>
+
+    <p>既然有大神写了，而且比较详细，我就不再班门弄斧了。</p>
+  </li>
+  <li>
+    <p>使用国内镜像地址</p>
+
+    <p>使用阿里云的国内镜像仓库地址，就可以快速的下载需要的文件修改项目根目录下的文件 build.gradle ：</p>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+}
+
+allprojects {
+    repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+}
+</code></pre></div></div>
+
+<p>然后重新构建项目就可以了</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-03-07
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
+    
+        <a href="/tag/#ArcServer" title="Tag: ArcServer" rel="tag">ArcServer</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#操作流程以103arcserver为例" id="markdown-toc-操作流程以103arcserver为例">操作流程（以10.3ArcServer为例）</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
+</ul>
+
+<p>从ArcGIS 10.2.1开始推出离在线一体化技术之后，数据的离在线一体化编辑一直是大家所关注的一个热点。数据存储在企业级地理数据库中，通过ArcGIS桌面软件加载后配图处理，并发布到ArcGIS for Server中，供移动端设备离线编辑使用，并可以同步回传版本化存档。这其中涉及多项配置操作，本篇文章主要针对FeatureService服务的发布流程做一个简单的介绍。以备查阅。
+ <img src="https://images2015.cnblogs.com/blog/412448/201609/412448-20160909164428254-500287581.png" alt="" /></p>
+
+<h3 id="操作流程以103arcserver为例">操作流程（以10.3ArcServer为例）</h3>
+
+<p>1.准备数据源（ArcSDE）-&gt;2.添加GlobalId-&gt;3.启用存档-&gt;4.制作地图文档(MXD)-&gt;5.新增数据库连接-&gt;6.添加Server连接-&gt;7.注册数据库到服务器-&gt;8.发布服务</p>
+
+<ol>
+  <li>在CataLog中连接数据库、新建数据集、新建图层</li>
+</ol>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E8%BF%9E%E6%8E%A5SDE.png" alt="连接SDE" /></p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E8%A6%81%E7%B4%A0%E9%9B%86.png" alt="新建数据集" /></p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E8%A6%81%E7%B4%A0%E7%B1%BB.png" alt="新建要素类" /></p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%AE%B5.png" alt="添加字段" /></p>
+
+<ol>
+  <li>添加GlobalId</li>
+</ol>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0Globalid.png" alt="添加GlobalId" /></p>
+
+<p>在增加GlobalId时可能会出现与数据锁冲突，如下图所示：执行SQL解除锁
+   <code class="highlighter-rouge">select * from sde.table_locks for update
+  </code></p>
+
+<ol>
+  <li>启用存档，这不用没问题</li>
+</ol>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E5%90%AF%E7%94%A8%E5%AD%98%E6%A1%A3.png" alt="启用存档" /></p>
+
+<ol>
+  <li>
+    <p>保存mxd文件</p>
+  </li>
+  <li>
+    <p>新建数据库连接</p>
+  </li>
+  <li>
+    <p>添加Server连接</p>
+  </li>
+  <li>
+    <p>注册数据库到服务器</p>
+  </li>
+  <li>
+    <p>发布地图服务</p>
+  </li>
+</ol>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E5%8F%91%E5%B8%83%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1.png" alt="发布地图服务" /></p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E5%BC%80%E5%90%AF%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD.jpg" alt="开启同步功能" /></p>
+
+<h3 id="参考链接">参考链接</h3>
+
+<p><a href="https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm">https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm</a></p>
+
+<p><a href="https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm">https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm</a></p>
+
+<p><a href="http://www.cnblogs.com/gis-luq/p/5857188.html">http://www.cnblogs.com/gis-luq/p/5857188.html</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-01-24
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#性能优化" title="Tag: 性能优化" rel="tag">性能优化</a>&nbsp;
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#背景资料" id="markdown-toc-背景资料">背景资料</a></li>
+  <li><a href="#常见问题及优化方式" id="markdown-toc-常见问题及优化方式">常见问题及优化方式</a>    <ul>
+      <li><a href="#启动主题切换" id="markdown-toc-启动主题切换">启动主题切换</a></li>
+      <li><a href="#avoid-heavy-app-initialization" id="markdown-toc-avoid-heavy-app-initialization">Avoid Heavy App Initialization</a></li>
+      <li><a href="#heavy-activity-initialization" id="markdown-toc-heavy-activity-initialization">Heavy activity initialization</a></li>
+      <li><a href="#diagnosing-the-problem" id="markdown-toc-diagnosing-the-problem">Diagnosing The Problem</a></li>
+    </ul>
+  </li>
+  <li><a href="#参考文章" id="markdown-toc-参考文章">参考文章</a></li>
+</ul>
+
+<p>随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！</p>
+
+<h2 id="背景资料">背景资料</h2>
+
+<blockquote>
+  <p>应用的启动分为冷启动、热启动、温启动，而启动最慢、挑战最大的就是冷启动：系统和App本身都有更多的工作要从头开始！
+应用在冷启动之前，要执行三个任务：</p>
+</blockquote>
+
+<ol>
+  <li>加载启动App；</li>
+  <li>App启动之后立即展示出一个空白的Window；</li>
+  <li>创建App的进程；</li>
+</ol>
+
+<blockquote>
+  <p>而这三个任务执行完毕之后会马上执行以下任务：</p>
+</blockquote>
+
+<ol>
+  <li>建App对象；</li>
+  <li>启动Main Thread；</li>
+  <li>创建启动的Activity对象；</li>
+  <li>加载View；</li>
+  <li>布置屏幕；</li>
+  <li>进行第一次绘制；</li>
+</ol>
+
+<p>而一旦App进程完成了第一次绘制，系统进程就会用Main Activity替换已经展示的Background Window，此时用户就可以使用App了。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/4056837-36c808285a70cf1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="" /></p>
+
+<p>同样，Google也给出了启动加速的方向：</p>
+
+<blockquote>
+  <ol>
+    <li>利用提前展示出来的Window，快速展示出来一个界面，给用户快速反馈的体验；</li>
+    <li>避免在启动时做密集沉重的初始化（Heavy app initialization）；</li>
+    <li>定位问题：避免I/O操作、反序列化、网络操作、布局嵌套等。</li>
+  </ol>
+</blockquote>
+
+<p>可以通过以下命令测试启动耗时</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
+</code></pre></div></div>
+
+<h2 id="常见问题及优化方式">常见问题及优化方式</h2>
+
+<h3 id="启动主题切换">启动主题切换</h3>
+
+<p>按照官方文档的说明：使用Activity的windowBackground主题属性来为启动的Activity提供一个简单的drawable。
+Layout XML file:</p>
+
+<pre class="prettyprint lang-xml">
+	  &lt;?xml version="1.0" encoding="utf-8"?&gt;
+         &lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque"&gt;
+           <!-- The background color, preferably the same as your normal theme -->
+           &lt;item android:drawable="@android:color/white"/&gt;
+           <!-- Your product logo - 144dp color version of your app icon -->
+           &lt;item&gt;
+             &lt;bitmap
+               android:src="@mipmap/logo"
+               android:gravity="center"/&gt;
+             &lt;/item&gt;
+        &lt;/layer-list&gt;
+</pre>
+
+<p>Style:</p>
+
+<pre class="prettyprint lang-xml">
+
+ &lt;style name="AppTheme.launcher" parent="AppTheme.NoTitle"&gt;
+         &lt;item name="android:windowBackground"&gt;@drawable/launcher &lt;/item&gt;
+  &lt;/style&gt;
+ 
+</pre>
+
+<p>Manifest file:</p>
+
+<pre class="prettyprint lang-xml">
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;activity android:name=".login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.launcher"
+            &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+ &lt;/activity&gt;
+ 
+</pre>
+
+<p>Activity:</p>
+
+<pre class="prettyprint lang-java">
+
+public class LoginActivity extends BaseActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_NoTitle);
+        super.onCreate(savedInstanceState);
+       
+    }
+}
+ 
+</pre>
+
+<p>实际测试发现，启动确实避免启动白屏的问题，但是无论时冷启动还是热启动都会有背景图，实测QQ、微信不是这样，判断
+它们是通过增加Splash Activity实现的。</p>
+
+<p>此外这样也可以解决白屏问题</p>
+
+<pre class="prettyprint lang-xml">
+&lt;style name="AppTheme.launcher" parent="android:Theme.Translucent.NoTitleBar.Fullscreen"/&gt;
+</pre>
+
+<h3 id="avoid-heavy-app-initialization">Avoid Heavy App Initialization</h3>
+
+<p>当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。</p>
+
+<p>应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。</p>
+
+<p><strong>诊断问题</strong></p>
+
+<p>您可以使用方法跟踪或内联跟踪来尝试诊断问题。</p>
+
+<p><strong>方法追踪</strong>
+运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
+
+<p><strong>内联追踪</strong>
+使用内联追踪来调查可能的罪魁祸首，包括：
+你的应用程序的初始onCreate() 功能。
+任何全球单身人士对象您的应用程序初始化。
+任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。</p>
+
+<p><strong>解决问题的办法</strong>
+无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像<a href="https://google.github.io/dagger/">Dagger</a> 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。</p>
+
+<h3 id="heavy-activity-initialization">Heavy activity initialization</h3>
+
+<p>活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：</p>
+
+<p>膨胀大型或复杂的布局。
+阻塞磁盘或网络I / O的屏幕绘图。
+加载和解码位图。
+栅格化VectorDrawable对象。
+初始化活动的其他子系统。
+诊断问题
+在这种情况下，方法跟踪和内联跟踪也是有用的。</p>
+
+<p><strong>方法追踪</strong>
+当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。</p>
+
+<p>如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
+
+<p><strong>内联追踪</strong>
+使用内联追踪来调查可能的罪魁祸首，包括：</p>
+
+<p>你的应用程序的初始onCreate() 功能。
+它初始化的任何全局单例对象。
+任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
+<strong>解决问题的办法</strong>
+有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：</p>
+
+<p>视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
+通过减少冗余或嵌套布局来平整您的视图层次结构。
+不要在启动时不需要显示部分UI。相反，使用ViewStub对象作为应用程序可以在更适当的时间膨胀的子层次结构的占位符。
+在主线程上完成所有的资源初始化操作也会减慢启动速度。你可以解决这个问题如下：
+移动所有的资源初始化，以便应用程序可以在不同的线程上执行它。
+允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。</p>
+
+<h3 id="diagnosing-the-problem">Diagnosing The Problem</h3>
+
+<h2 id="参考文章">参考文章</h2>
+
+<p><a href="https://developer.android.com/topic/performance/launch-time.html">Launch-Time Performance</a></p>
+
+<p><a href="https://www.jianshu.com/p/f5514b1a826c">Android性能优化（一）之启动加速35%</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -321,18 +814,34 @@
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
-  <li><a href="#安装" id="markdown-toc-安装">安装</a></li>
+  <li><a href="#安装以macos为例" id="markdown-toc-安装以macos为例">安装（以MacOS为例）</a></li>
   <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
   <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
 </ul>
 
 <p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
 
-<h3 id="安装">安装</h3>
+<h3 id="安装以macos为例"><a href="https://tensorflow.google.cn/install/install_mac#ValidateYourInstallation">安装（以MacOS为例）</a></h3>
 
 <p>您必须选择安装TensorFlow的机制。支持的选择如下：</p>
 <ul>
-  <li>virtualenv （官方推荐）</li>
+  <li>
+    <p>virtualenv （官方推荐）</p>
+
+    <ol>
+      <li>启用终端</li>
+      <li>通过以下命令安装pip 和 Virtualenv：
+```
+ $ sudo easy_install pip
+ $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple –upgrade virtualenv</li>
+    </ol>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3. 通过使用以下某种格式发出命令来创建一个 Virtualenv 环境：
+</code></pre></div>    </div>
+    <p>$ virtualenv –system-site-packages targetDirectory # for Python 2.7
+ $ virtualenv –system-site-packages -p python3 targetDirectory # for Python 3.n
+```</p>
+  </li>
   <li>“native” pip</li>
   <li>Docker</li>
   <li>installing from sources, which is documented in a separate guide.</li>
@@ -340,26 +849,57 @@
 
 <h3 id="常用命令">常用命令</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 启用
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
+$ cd 
 $ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
 $ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
 (tensorflow)$                           # 启用成功
+
+# 通过发出以下命令来激活该 conda 环境
+source activate tensorflow
+
 # 关闭
 (tensorflow)$ deactivate 
-</code></pre>
-</div>
+# 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控训练进度)
+tensorboard --logdir tf_files/training_summaries &amp;
+
+# 升级TensorFlow
+$ pip3 install --upgrade tensorflow 
+
+# 卸载TensorFlow
+$ pip uninstall tensorflow
+$ pip3 uninstall tensorflow 
+</code></pre></div></div>
 
 <h3 id="常见问题">常见问题</h3>
 
 <p><strong>问题描述</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+</code></pre></div></div>
 
 <p><strong>原因及解决办法</strong></p>
 
 <p>Python版本不匹配</p>
+
+<p><strong>问题描述</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import tensorflow as tf
+Traceback (most recent call last):
+  File "/Users/whs/anaconda3/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 18, in swig_import_helper
+    fp, pathname, description = imp.find_module('_pywrap_tensorflow_internal', [dirname(__file__)])
+  File "/Users/whs/anaconda3/lib/python3.6/imp.py", line 297, in find_module
+    raise ImportError(_ERR_MSG.format(name), name=name)
+ImportError: No module named '_pywrap_tensorflow_internal'
+</code></pre></div></div>
+<p><strong>原因及解决方法</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
+删除tensorflow 
+rm -r ~/tensorflow
+重新安装
+ (targetDirectory)$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade tensorflow      # for Python 2.7
+
+</code></pre></div></div>
+
 
                 </div>
                 <div class="read-all">
@@ -426,6 +966,8 @@ $ source ~/tensorflow/bin/activate.csh  # csh or tcsh
   <li><a href="#分类" id="markdown-toc-分类">分类</a></li>
   <li><a href="#使用入门" id="markdown-toc-使用入门">使用入门</a></li>
   <li><a href="#常见的七个步骤" id="markdown-toc-常见的七个步骤">常见的七个步骤</a></li>
+  <li><a href="#常见应用场景" id="markdown-toc-常见应用场景">常见应用场景</a></li>
+  <li><a href="#相关教程" id="markdown-toc-相关教程">相关教程</a></li>
 </ul>
 
 <p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
@@ -491,368 +1033,22 @@ $ source ~/tensorflow/bin/activate.csh  # csh or tcsh
   </li>
 </ol>
 
+<h3 id="常见应用场景">常见应用场景</h3>
+
+<ul>
+  <li><a href="http://www.infoq.com/cn/articles/speaker-dentification-based-on-tensorflowlite?utm_source=articles_about_mobile&amp;utm_medium=link&amp;utm_campaign=mobile">基于TensorflowLite在移动端实现人声识别</a></li>
+</ul>
+
+<h3 id="相关教程">相关教程</h3>
+
+<ul>
+  <li><a href="https://codelabs.tensorflowers.cn/">TensorFlow Codelabs</a></li>
+</ul>
+
 
                 </div>
                 <div class="read-all">
                     <a  href="/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-09-14
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Oracle" title="Tag: Oracle" rel="tag">Oracle</a>&nbsp;
-    
-        <a href="/tag/#DB" title="Tag: DB" rel="tag">DB</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常用sql" id="markdown-toc-常用sql">常用SQL</a></li>
-</ul>
-
-<p>Oracle使用从入门到放弃</p>
-
-<h3 id="常用sql">常用SQL</h3>
-
-<ul>
-  <li>主键自增长</li>
-</ul>
-
-<pre class="prettyprint lang-sql">
---首先建一个表TEST
-
-create table BUSI_UPLOADINFO
-(
-  ID int PRIMARY KEY,
-  ENENTTYPE int,
-  EVNNTSUBTYPE INT,
-  lAT number,
-  lON number,
-  INFO varchar2(100),
-  UPLOADTYPE int,
-  USERID Int,
-  USERNAME varchar2(20),
-  PHONE number,
-   REMARK varchar2(100),
-   REMARK1 varchar2(100),
-   REMARK2 varchar2(100),
-  ADDRESS VARCHAR2(100)
-
-)
-/
-COMMENT ON TABLE BUSI_UPLOADINFO IS '业务表-上报事件表'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ID IS '主键'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ENENTTYPE IS '事件类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.EVNNTSUBTYPE IS '事件子类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.lAT IS '纬度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.LON IS '经度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK1 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK2 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ADDRESS IS '地址信息'
-
--- 建一个序列
-create sequence SEQ_TEST
-minvalue 1        --最小值
-nomaxvalue        --不设置最大值
-start with 1      --从1开始计数
-increment by 1    --每次加1个
-nocycle           --一直累加，不循环
-nocache;          --不建缓冲区
-
--- 以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
-你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
-
-CREATE OR REPLACE TRIGGER tg_test 
-BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
-begin
-select seq_test.nextval into:new.nid from dual;
-end;
-</pre>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Spatialite使用从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-30
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#DB" title="Category: DB" rel="category">DB</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Spatialite" title="Tag: Spatialite" rel="tag">Spatialite</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#常用sql语句" id="markdown-toc-常用sql语句">常用SQL语句()</a></li>
-</ul>
-
-<p>Sptialite使用从入门到放弃</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<p><a href="http://www.gaia-gis.it/gaia-sins/">官网</a></p>
-
-<p><a href="http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html">spatialite-cookbook</a></p>
-
-<h3 id="常用sql语句">常用SQL语句()</h3>
-
-<p>CGCS2000 4490(国家2000坐标系SRID)</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># 插入点数据
-INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
-
-# 导出Shapfile
-select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/30/Spatialite%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Centos使用从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-08-16
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Linux" title="Category: Linux" rel="category">Linux</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Contos" title="Tag: Contos" rel="tag">Contos</a>&nbsp;
-    
-        <a href="/tag/#Linux" title="Tag: Linux" rel="tag">Linux</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-  <li><a href="#常用命令和方法以阿里云centos为例" id="markdown-toc-常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</a>    <ul>
-      <li><a href="#安装apache" id="markdown-toc-安装apache">安装Apache</a></li>
-      <li><a href="#安装php及扩展" id="markdown-toc-安装php及扩展">安装PHP及扩展</a></li>
-      <li><a href="#安装git" id="markdown-toc-安装git">安装Git</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<h3 id="常用命令和方法以阿里云centos为例">常用命令和方法(以阿里云Centos为例)</h3>
-
-<hr />
-
-<h4 id="安装apache">安装Apache</h4>
-<ul>
-  <li>安装Apache
-    <div class="highlighter-rouge"><pre class="highlight"><code># yum install httpd httpd-devel 
-# service httpd start 
-</code></pre>
-    </div>
-  </li>
-  <li>开启80端口（阿里云需要设置安全组策略设置如下）</li>
-</ul>
-
-<p><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/25475/cn_zh/1495786224289/Image%201.png" alt="" /></p>
-
-<ul>
-  <li>测试安装
-访问服务器公网地址可以看到Apache说明安装成功</li>
-</ul>
-
-<h4 id="安装php及扩展">安装PHP及扩展</h4>
-<div class="highlighter-rouge"><pre class="highlight"><code># yum install php php-devel
-
-# yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
-
-安装完需要重启Apache
-# httpd restart
-</code></pre>
-</div>
-
-<h4 id="安装git">安装Git</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># yum install git
-查看版本
-# git version
-
-配置Git用户信息
-# git config --global user.name "woider"
-# git config --global user.email "woider@gmail.com"
-
-查看ssh key 是否存在,如果不存在需要生成
-# ls -al ~/.ssh
-
-生成ssh key(生成 ssh key 过程中，会让你填写 passphrase，连按三次回车跳过即可)
-# ssh-keygen -t rsa -C "woider@gmail.com" 
-
-查看ssh key(id_rsa 为私钥，id_rsa.pub 为公钥  SSH KEY 公钥，用于 GitHub 身份验证)
-登录 GitHub，打开 Personal settings 页面，选择 SSH and GPG keys 选项：
-# vim ~/.ssh/id_rsa.pub
-
-</code></pre>
-</div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/08/16/Centos%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -884,6 +1080,12 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a></li>
+                    
+                        <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
+                    
+                        <li><a href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a></li>
+                    
                         <li><a href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a></li>
                     
                         <li><a href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a></li>
@@ -897,12 +1099,6 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
-                    
-                        <li><a href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a></li>
-                    
-                        <li><a href="/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TensorFlow学习笔记</a></li>
-                    
-                        <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -929,7 +1125,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">10</span>
+                            <span class="badge">11</span>
                         </a>
                     </li>
                     
@@ -965,7 +1161,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                             <span class="name">
                                 AI
                             </span>
-                            <span class="badge">3</span>
+                            <span class="badge">4</span>
                         </a>
                     </li>
                     
@@ -1113,6 +1309,15 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="/category/#产品" class="categories-list-item" cate="产品">
+                            <span class="name">
+                                产品
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -1143,13 +1348,6 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       <a href="/tag/#RubyGems" style="font-size: 9pt; color: #999;">RubyGems</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#Adb" style="font-size: 9pt; color: #999;">Adb</a>
                     
                       
                       
@@ -1212,7 +1410,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 11pt; color: #777;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #666;">AI</a>
                     
                       
                       
@@ -1247,7 +1445,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 12pt; color: #666;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #666;">GIS</a>
                     
                       
                       
@@ -1380,7 +1578,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 10pt; color: #888;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 11pt; color: #777;">TensorFlow</a>
                     
                       
                       
@@ -1423,6 +1621,20 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       <a href="/tag/#SVN" style="font-size: 9pt; color: #999;">SVN</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#原型设计" style="font-size: 9pt; color: #999;">原型设计</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#产品" style="font-size: 9pt; color: #999;">产品</a>
                     
                 </div>
             </div>

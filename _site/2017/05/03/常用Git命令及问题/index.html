@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>常用Git命令及问题</title>
-    <meta name="description" content="  Git简介  Git常用命令  常见问题及解决方法Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git简介Git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。Git的诞生很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系...">
+    <meta name="description" content="  Git简介  Git常用命令  参考文章  常见问题及解决方法Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git简介Git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。Git的诞生很多人都知道，Linus在1991年创建了开源的Linux，从此，...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -97,6 +97,8 @@
                             <i class="fa fa-th-list"></i>Categories
                         </a>
                     </li>
+                    
+                
                     
                 
                     
@@ -214,6 +216,7 @@
         <ul id="markdown-toc">
   <li><a href="#git简介" id="markdown-toc-git简介">Git简介</a></li>
   <li><a href="#git常用命令" id="markdown-toc-git常用命令">Git常用命令</a></li>
+  <li><a href="#参考文章" id="markdown-toc-参考文章">参考文章</a></li>
   <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
 </ul>
 
@@ -249,13 +252,58 @@
 
 <h3 id="git常用命令">Git常用命令</h3>
 <p>git是分布式的代码管理工具，基于SSH协议。ssh的作用就是为了不用每次都输入账号和密码。
-生成的ssh密钥，分为公钥和私钥。公钥就是所要添加的ssh key（.pub文件）。公钥可以看成是一个锁头，私钥就是对应的钥匙。生成的ssh密钥是可以用到不同的地方的，比例同时添加到github,coding的平台。</p>
+生成的ssh密钥，分为公钥和私钥。公钥就是所要添加的ssh key（.pub文件）。公钥可以看成是一个锁头，私钥就是对应的钥匙。生成的ssh密钥是可以用到不同的地方的，比例同时添加到github,coding,gitlab的平台。</p>
 
 <p><a href="http://www.jianshu.com/p/f008d9fe3f34">教程</a></p>
 
-<p>列出当前已存在的SSH:<code class="highlighter-rouge">ls -al ~/.ssh</code></p>
+<ul>
+  <li>MAC环境下</li>
+</ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 下载项目
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 列出当前已存在的SSH:
+ls -al ~/.ssh
+
+# 生成新的ssh
+ssh-keygen -t rsa -C "hwwu3@iflytek.com" -b 4096
+
+# 复制ssh公钥
+
+pbcopy &lt; ~/.ssh/id_rsa_gitlab.pub（Mac）
+cat ~/.ssh/id_rsa_gitlab.pub | clip (Git Bash)
+# 添加公钥到平台
+
+# 测试连接
+
+ssh -T git@你的gitlab服务器地址
+# 第一次连接会提示
+Are you sure you want to continue connecting (yes/no)? yes
+输入yes，回车 如果设了密码，会让你输入密码：
+输入密码，如果密码正确的话，就会提示Welcome to GitLab, username!
+
+# 编写config文件,告诉本地git到不同的国家带不同的钥匙
+#gitlab
+Host gitlab
+        HostName gitlab.*.com
+        IdentityFile ~/.ssh/gitlab_id_rsa
+
+#github
+Host github
+        HostName github.com
+        IdentityFile ~/.ssh/github_id_rsa
+
+# 配置仓库
+#gitlab
+cd ~/workspace/gitlab
+git init
+git config --global user.name 'personal'
+git config --global user.email 'personal@company.com'
+</code></pre></div></div>
+
+<ul>
+  <li>WINDOWS环境下</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 下载项目
 git clone https://github.com/facebook/react-native.
 # 创建分支
 git branch [branchname]
@@ -263,17 +311,28 @@ git branch [branchname]
 git checkout [branchname]
 # 命令加上-b参数表示创建并切换
 git checkout -b [branchname]
+
 # 查看当前分支(当前分支前面会标一个*号)
 git branch
+# 查看远程分支
+git branch -r
+
 # 在新增分支上操作
 git add test.txt
+# Stage ALL(new,modified,deleted) files
+git add .
+git add -A
 git commit -m "说明"
 # 切换回master分支
 git checkout master
 # 合并分支工作成果到master分支上
 git merge [branchname]
-# 删除新增的分支
+
+# 删除本地新增的分支
 git branch -d [branchname]
+# 删除远程分支
+git push origin :[branchname]
+
 # 查看远程仓库信息
 git remote
 # 提交本地分支到远程仓库分支
@@ -284,6 +343,7 @@ git checkout -b dev origin/dev
 git log
 # 查看所有的提交
 git reflog
+
 # 回退版本
 # 彻底回退到某个版本（包括源码）
 git reset --hard [commitid] 
@@ -296,14 +356,17 @@ git diff
 # 暂存区(stage)和分支(master)的比较
 git diff --cached
 
-</code></pre>
-</div>
+</code></pre></div></div>
+
+<h3 id="参考文章">参考文章</h3>
+
+<p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰教程</a></p>
 
 <h3 id="常见问题及解决方法">常见问题及解决方法</h3>
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
 java.lang.RuntimeException: Invocation failed Operation timed out
 	at org.jetbrains.git4idea.ssh.GitSSHXmlRpcClient.getLastSuccessful(GitSSHXmlRpcClient.java:230)
 	at org.jetbrains.git4idea.ssh.SSHMain.authenticate(SSHMain.java:212)
@@ -311,8 +374,7 @@ java.lang.RuntimeException: Invocation failed Operation timed out
 	at org.jetbrains.git4idea.ssh.SSHMain.main(SSHMain.java:138)
 Caused by: java.net.ConnectException: Operation timed out
 	at java.net.PlainSocketImpl.socketConnect(Native Method)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>解决方法：</strong></p>
 
@@ -325,24 +387,22 @@ Caused by: java.net.ConnectException: Operation timed out
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Clone failed
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Clone failed
 RPC failed; curl 56 SSLRead() return error -9806
 The remote end hung up unexpectedly
 early EOF
 index-pack failed
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>解决方法：</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git config --global http.postBuffer 1048576000
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global http.postBuffer 1048576000
 网上查查资料，才发现是淘宝的镜像源关闭了。
 解决方法，很简单，把旧的镜像删除，换成Rubby China.
 gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
 gem sources -l
 gem install rails
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
         </article>
@@ -363,6 +423,35 @@ gem install rails
                     
                 
             
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -409,39 +498,6 @@ gem install rails
             
         
             
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
             
                 
                     

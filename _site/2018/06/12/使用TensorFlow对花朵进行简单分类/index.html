@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TensorFlow环境配置</title>
-    <meta name="description" content="  安装（以MacOS为例）  常用命令  常见问题TensorFlow™是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU...">
+    <title>使用TensorFlow对花朵进行简单分类</title>
+    <meta name="description" content="  主要步骤  下一步  常见问题及解决方法  参考我们将使用转移学习，这意味着我们从一个已经接受另一个问题培训的模型开始。然后我们将重新训练类似的问题。从头开始深入学习可能需要几天时间，但可以在短时间内完成转移学习。我们将使用在ImageNet大型视觉识别挑战数据集上训练的模型。这些模型可以区分达尔马提亚或洗碗...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+    <link rel="canonical" href="http://localhost:4000/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -159,11 +159,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>TensorFlow环境配置</h1>
+        <h1>使用TensorFlow对花朵进行简单分类</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-12-15
+                <i class="fa fa-calendar"></i>2018-06-12
             </div>
 
             <div class="label-card">
@@ -217,91 +217,210 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#安装以macos为例" id="markdown-toc-安装以macos为例">安装（以MacOS为例）</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+  <li><a href="#主要步骤" id="markdown-toc-主要步骤">主要步骤</a></li>
+  <li><a href="#下一步" id="markdown-toc-下一步">下一步</a></li>
+  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
 </ul>
 
-<p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
+<p>我们将使用转移学习，这意味着我们从一个已经接受另一个问题培训的模型开始。然后我们将重新训练类似的问题。从头开始深入学习可能需要几天时间，但可以在短时间内完成转移学习。</p>
 
-<h3 id="安装以macos为例"><a href="https://tensorflow.google.cn/install/install_mac#ValidateYourInstallation">安装（以MacOS为例）</a></h3>
+<p>我们将使用在ImageNet大型视觉识别挑战数据集上训练的模型。这些模型可以区分达尔马提亚或洗碗机等1,000个不同的类别。您将可以选择模型架构，因此您可以确定问题的速度，大小和准确性之间的正确折中。</p>
 
-<p>您必须选择安装TensorFlow的机制。支持的选择如下：</p>
+<p>我们将使用这个相同的模型，但重新训练它可以根据我们自己的例子区分少数类。</p>
+
+<h3 id="主要步骤">主要步骤</h3>
+
 <ul>
   <li>
-    <p>virtualenv （官方推荐）</p>
-
-    <ol>
-      <li>启用终端</li>
-      <li>通过以下命令安装pip 和 Virtualenv：
-```
- $ sudo easy_install pip
- $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple –upgrade virtualenv</li>
-    </ol>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3. 通过使用以下某种格式发出命令来创建一个 Virtualenv 环境：
-</code></pre></div>    </div>
-    <p>$ virtualenv –system-site-packages targetDirectory # for Python 2.7
- $ virtualenv –system-site-packages -p python3 targetDirectory # for Python 3.n
-```</p>
+    <p><a href="http://wuhongsheng.top/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">安装TensorFlow</a></p>
   </li>
-  <li>“native” pip</li>
-  <li>Docker</li>
-  <li>installing from sources, which is documented in a separate guide.</li>
+  <li>
+    <p>克隆git存储库</p>
+  </li>
 </ul>
 
-<h3 id="常用命令">常用命令</h3>
+<p>此代码中使用的所有代码都包含在此git存储库中。克隆存储库并cd放入其中。这是我们将要工作的地方。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
-$ cd 
-$ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
-$ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
-(tensorflow)$                           # 启用成功
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/googlecodelabs/tensorflow-for-poets-2
+
+cd tensorflow-for-poets-2
+</code></pre></div></div>
+
+<ul>
+  <li>下载训练图像</li>
+</ul>
+
+<p>在开始任何培训之前，您需要一组图像来教授模型有关您想要识别的新课程。我们创建了创作共用许可花卉照片的档案，以供初次使用。通过调用以下两个命令下载照片（218 MB）：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://download.tensorflow.org/example_images/flower_photos.tgz \
+    | tar xz -C tf_files
+</code></pre></div></div>
+
+<p>你现在应该有一个花卉照片的副本。通过发出以下命令来确认工作目录的内容：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls tf_files / flower_photos
+
+daisy/
+dandelion/
+roses/
+sunflowers/
+tulip/
+LICENSE.txt
+</code></pre></div></div>
+<ul>
+  <li>再训练网络</li>
+</ul>
+
+<p><strong>配置你的MobileNet</strong></p>
+
+<p>在这个练习中，我们将重新培训一个MobileNet。MobileNet是一个小型高效卷积神经网络。“卷积”意味着在图像中的每个位置执行相同的计算。</p>
+
+<p>MobileNet可以通过两种方式进行配置：</p>
+
+<p>输入图像分辨率：128,160,192或224px。毫不奇怪，摄入更高分辨率的图像需要更多的处理时间，但会导致更好的分类准确性。
+模型的相对大小作为最大的MobileNet的一小部分：1.0,0.75,0.50或0.25。
+这个codelab我们将使用224 0.5。</p>
+
+<p>使用推荐的设置，通常只需几分钟即可在笔记本电脑上进行再培训。您将在Linux shell变量中传递设置。在shell中设置这些变量：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAGE_SIZE=224
+ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+
+# 查看变量
+echo $IMAGE_SIZE
+224
 
 # 通过发出以下命令来激活该 conda 环境
 source activate tensorflow
-
-# 关闭
-(tensorflow)$ deactivate 
-# 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控训练进度)
-tensorboard --logdir tf_files/training_summaries &amp;
-
-# 升级TensorFlow
-$ pip3 install --upgrade tensorflow 
-
-# 卸载TensorFlow
-$ pip uninstall tensorflow
-$ pip3 uninstall tensorflow 
 </code></pre></div></div>
+<p><strong>启动TensorBoard</strong></p>
 
-<h3 id="常见问题">常见问题</h3>
-
-<p><strong>问题描述</strong></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-</code></pre></div></div>
-
-<p><strong>原因及解决办法</strong></p>
-
-<p>Python版本不匹配</p>
-
-<p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import tensorflow as tf
-Traceback (most recent call last):
-  File "/Users/whs/anaconda3/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 18, in swig_import_helper
-    fp, pathname, description = imp.find_module('_pywrap_tensorflow_internal', [dirname(__file__)])
-  File "/Users/whs/anaconda3/lib/python3.6/imp.py", line 297, in find_module
-    raise ImportError(_ERR_MSG.format(name), name=name)
-ImportError: No module named '_pywrap_tensorflow_internal'
-</code></pre></div></div>
-<p><strong>原因及解决方法</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
-删除tensorflow 
-rm -r ~/tensorflow
-重新安装
- (targetDirectory)$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade tensorflow      # for Python 2.7
+<p>在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控培训进度。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorboard --logdir tf_files/training_summaries &amp;
 
 </code></pre></div></div>
+<p><strong>查看再训练脚本</strong></p>
+
+<p>重新训练脚本来自TensorFlow Hub回购，但不作为pip包的一部分进行安装。所以为了简单起见，我将它包含在codelab存储库中。您可以使用该python命令运行脚本。花一点时间浏览一下“帮助”。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain -h
+
+</code></pre></div></div>
+
+<p><strong>运行训练脚本</strong></p>
+
+<p>如引言中所述，ImageNet模型是具有数百万个参数的网络，可以区分大量的类。我们只训练该网络的最后一层，因此训练将在合理的时间内结束。</p>
+
+<p>用一个大命令开始你的再训练（注意–summaries_dir选项，发送训练进度报告到tensorboard监测的目录）：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain \
+  --bottleneck_dir = tf_files / bottlenecks \
+  --how_many_training_steps = 500 \
+  --model_dir = tf_files / models / \
+  --summaries_dir = tf_files / training_summaries /“$ {ARCHITECTURE}”\
+  --output_graph = tf_files / retrained_graph.pb \
+  --output_labels = tf_files / retrained_labels.txt \
+  --architecture =“$ {ARCHITECTURE}”\
+  --image_dir = tf_files / flower_photos
+</code></pre></div></div>
+
+<p>请注意，此步骤需要一段时间。</p>
+
+<p>该脚本下载预先训练好的模型，添加一个新的最终图层，并在您下载的花卉照片上训练该图层。</p>
+
+<p>ImageNet不包括我们在这里培训的任何这些花卉物种。但是，使ImageNet可以区分1,000个类别的信息种类对区分其他对象也很有用。通过使用这个预先训练的网络，我们将这些信息用作最终分类层的输入，以区分我们的花类。</p>
+
+<ul>
+  <li>使用再训练模型</li>
+</ul>
+
+<p>再训练脚本将数据写入以下两个文件：</p>
+
+<p>tf_files/retrained_graph.pb，其中包含所选网络的一个版本，并在您的类别上重新培训最后一层。
+tf_files/retrained_labels.txt，这是一个包含标签的文本文件。</p>
+
+<p><strong>分类图像</strong></p>
+
+<p>codelab repo还包含tensorflow的label_image.py示例的副本，您可以使用它来测试您的网络。花一点时间阅读此脚本的帮助：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image -h
+
+</code></pre></div></div>
+<p>现在，让我们在雏菊的这个图像上运行脚本：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image \
+    --graph=tf_files/retrained_graph.pb  \
+    --image=tf_files/flower_photos/daisy/21652746_cc379e0eea_m.jpg
+</code></pre></div></div>
+<p>每次执行都会打印出花标的列表，在大多数情况下，正确的花在顶部（尽管每个重新训练的模型可能略有不同）。</p>
+
+<p>你可能会得到这样的雏菊照片的结果：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>daisy (score = 0.99071)
+sunflowers (score = 0.00595)
+dandelion (score = 0.00252)
+roses (score = 0.00049)
+tulips (score = 0.00032)
+</code></pre></div></div>
+
+<ul>
+  <li>可选训练参数</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--learning_rate 
+#参数控制训练期间最后一层更新的大小(比如0.005，训练需要更长的时间，但总体精度可能会增加。值越高learning_rate，比如1.0，可以训练速度更快，但通常会降低精度，甚至使培训不稳定。)
+
+--summaries_dir 
+#是控制张量板中名称的选项。之前我们使用过：
+</code></pre></div></div>
+
+<ul>
+  <li>根据自己数据进行训练</li>
+</ul>
+
+<p>看到脚本处理花图像后，您可以开始观察网络教学以识别不同的类别。</p>
+
+<p>从理论上讲，你需要做的就是运行该工具，指定一组特定的子文件夹。每个子文件夹都按照您的某个类别命名，并仅包含该类别的图像。</p>
+
+<p>如果您完成此步骤并传递子目录的根文件夹作为参数的–image_dir参数，那么脚本应该训练您提供的图像，就像它为花一样。</p>
+
+<p>分类脚本使用文件夹名称作为标签名称，每个文件夹内的图像应该是与该标签对应的图片，如花卉档案中所示：</p>
+
+<p><img src="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/img/9444bbae4d5d9ab1.png" alt="" /></p>
+
+<h3 id="下一步">下一步</h3>
+
+<p>恭喜，您迈出了深入学习的更大的世界！</p>
+
+<p>您可以在<a href="https://tensorflow.google.cn/">TensorFlow网站</a>或TensorFlow GitHub <a href="https://github.com/tensorflow/">项目</a>中查看有关使用TensorFlow的更多信息。TensorFlow还有许多其他资源，包括<a href="https://groups.google.com/a/tensorflow.org/forum/#!forum/discuss">讨论组</a>和<a href="https://www.tfimgs.cn/resources/pdfs/45166.pdf">白皮书</a>。</p>
+
+<p>如果您有兴趣在移动设备上运行TensorFlow，请尝试本教程的第二部分：有三个版本：</p>
+
+<p><a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-tflite/index.html#">TFLite Android</a>
+<a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-ios/index.html#0">TFLite iOS</a>
+<a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2/index.html#0">TFMobile Android</a></p>
+
+<p>或者去<a href="http://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=circle&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.74359&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">TensorFlow游乐场</a>玩一下吧！</p>
+
+<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
+
+<p><strong>问题</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>InvalidArgumentError (see above for traceback): Expected image (JPEG, PNG, or GIF), got unknown format starting with '\000\005\026\007\000\002\000\000Mac OS X'
+</code></pre></div></div>
+
+<p><strong>解决方法</strong></p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+  <li>
+    <p><a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/index.html#0">TensorFlow Codelabs</a></p>
+  </li>
+  <li>
+    <p><a href="https://tensorflow.google.cn/tutorials/image_retraining">retraining tutorial</a></p>
+  </li>
+  <li>
+    <p><a href="https://petewarden.com/2016/02/28/tensorflow-for-poets/">Pete Warden’s TensorFlow for Poets blog</a></p>
+  </li>
+</ul>
 
 
         </article>
@@ -322,12 +441,114 @@ rm -r ~/tensorflow
             
                 
                     
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
                         
                         <li class="relatedPost">
-                            <a href="http://localhost:4000/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类
+                            <a href="http://localhost:4000/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置
                             
                             </a>
                         </li>
@@ -345,108 +566,6 @@ rm -r ~/tensorflow
                 
             
         
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-        
         
             </ul>
         
@@ -454,13 +573,13 @@ rm -r ~/tensorflow
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TensorFlow学习笔记</a></p>
+        <p><strong>上一篇</strong> <a href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></p>
+        <p><strong>下一篇</strong> <a href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a></p>
         
     </div>
 </div>

@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -228,13 +230,12 @@
 
 <p>CGCS2000 4490(国家2000坐标系SRID)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 插入点数据
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 插入点数据
 INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
 
 # 导出Shapfile
 select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
         </article>
@@ -255,6 +256,35 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                     
                 
             
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -301,39 +331,6 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
             
         
             
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
             
                 
                     

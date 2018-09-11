@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -233,12 +235,11 @@
 
 <p><strong>错误描述</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>错误: Exception while handling step android.databinding.annotationprocessor.ProcessExpressions@572da56d javax.xml.bind.UnmarshalException
    - with linked exception:
   [org.apache.xerces.impl.io.MalformedByteSequenceException: Invalid byte 2 of 2-byte UTF-8 sequence.]
     at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:333)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>原因及解决方法</strong></p>
 
@@ -247,6 +248,19 @@
 <ul>
   <li>中文使用@string/name引入；</li>
 </ul>
+
+<p><strong>错误描述</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.lang.NullPointerException: null value in entry: libOutputDir=null
+ at com.google.common.collect.CollectPreconditions.checkEntryNotNull(CollectPreconditions.java:33)
+ at com.google.common.collect.ImmutableMap.entryOf(ImmutableMap.java:135)
+ at com.google.common.collect.ImmutableMap$Builder.put(ImmutableMap.java:206)
+ at com.google.common.collect.ImmutableSortedMap$Builder.put(ImmutableSortedMap.java:371)
+</code></pre></div></div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<p>删除项目根目录.gradle文件夹</p>
 
 
         </article>
@@ -258,63 +272,12 @@
             
                 
                     
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
                         
                         <li class="relatedPost">
-                            <a href="http://localhost:4000/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化
+                            <a href="http://localhost:4000/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化
                             
                             </a>
                         </li>
@@ -330,6 +293,35 @@
                     
                 
             
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -358,6 +350,33 @@
                 
                     
                 
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+        
+            
             
                 
                     

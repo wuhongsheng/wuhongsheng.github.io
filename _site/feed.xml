@@ -5,9 +5,389 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 31 May 2018 14:32:00 +0800</pubDate>
-    <lastBuildDate>Thu, 31 May 2018 14:32:00 +0800</lastBuildDate>
-    <generator>Jekyll v3.4.3</generator>
+    <pubDate>Tue, 11 Sep 2018 13:50:17 +0800</pubDate>
+    <lastBuildDate>Tue, 11 Sep 2018 13:50:17 +0800</lastBuildDate>
+    <generator>Jekyll v3.7.4</generator>
+    
+      <item>
+        <title>Android 性能优化</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#什么事内存泄漏&quot; id=&quot;markdown-toc-什么事内存泄漏&quot;&gt;什么事内存泄漏&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#为什么内存泄漏不好&quot; id=&quot;markdown-toc-为什么内存泄漏不好&quot;&gt;为什么内存泄漏不好&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#如何识别&quot; id=&quot;markdown-toc-如何识别&quot;&gt;如何识别&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见的内存泄漏的原因&quot; id=&quot;markdown-toc-常见的内存泄漏的原因&quot;&gt;常见的内存泄漏的原因&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#anr问题&quot; id=&quot;markdown-toc-anr问题&quot;&gt;ANR问题&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#如何避免anr&quot; id=&quot;markdown-toc-如何避免anr&quot;&gt;如何避免ANR&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#性能优化指标&quot; id=&quot;markdown-toc-性能优化指标&quot;&gt;性能优化指标&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+每个应用程序都需要内存作为执行其工作的资源。为了确保Android中的每个应用程序都有足够的内存，Android系统需要有效地管理内存分配。当内存不足时，Android运行时会触发垃圾收集（GC）。GC的目的是通过清理不再有用的对象来回收内存。简而言之，为用户提供服务的所有内容都应保存在内存中，其他所有内容都将从内存中消失以释放资源。
+但是，如果以不良方式编写代码，从可访问对象以某种方式引用未使用的对象，GC会将未使用的对象标记为有用对象，因此无法删除它们。这称为内存泄漏。
+
+&lt;h3 id=&quot;什么事内存泄漏&quot;&gt;什么事内存泄漏&lt;/h3&gt;
+
+每个应用程序都需要内存作为执行其工作的资源。为了确保Android中的每个应用程序都有足够的内存，Android系统需要有效地管理内存分配。当内存不足时，Android运行时会触发垃圾收集（GC）。GC的目的是通过清理不再有用的对象来回收内存。简而言之，为用户提供服务的所有内容都应保存在内存中，其他所有内容都将从内存中消失以释放资源。
+但是，如果以不良方式编写代码，从可访问对象以某种方式引用未使用的对象，GC会将未使用的对象标记为有用对象，因此无法删除它们。这称为内存泄漏。
+
+Java中有四种GC根：
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;strong&gt;局部变量&lt;/strong&gt;由一个线程堆栈保持活动状态。这不是真实对象虚拟参考，因此不可见。对于所有意图和目的，局部变量是GC根。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong&gt;活动Java线程&lt;/strong&gt;始终被视为活动对象，因此是GC根。这对于线程局部变量尤为重要。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong&gt;静态变量&lt;/strong&gt;由其类引用。这一事实使它们成为事实上的GC根源。类本身可以被垃圾收集，这将删除所有引用的静态变量。当我们一般使用应用程序服务器，OSGi容器或类加载器时，这一点特别重要。我们将在“问题模式”部分讨论相关问题。
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;strong&gt;JNI引用&lt;/strong&gt;是本机代码作为JNI调用的一部分创建的Java对象。这样创建的对象是专门处理的，因为JVM不知道它是否被本机代码引用。这些对象代表了一种非常特殊的GC根形式，我们将在下面的“问题模式”部分中详细介绍。
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;为什么内存泄漏不好&quot;&gt;为什么内存泄漏不好&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    界面卡顿
+  &lt;/li&gt;
+  &lt;li&gt;
+    ANR
+
+    &lt;ol&gt;
+      &lt;li&gt;在5秒内无响应输入事件（如按键或屏幕触摸事件）&lt;/li&gt;
+      &lt;li&gt;BroadcastReceiver尚未在10秒内完成执行。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    OOM-&amp;gt;崩溃
+  &lt;/li&gt;
+  &lt;li&gt;
+    在QA/测试中很难找到内存泄漏问题。它们难以复制。崩溃报告通常很难推理，因为它可以在Android系统拒绝内存分配的任何时间发生。
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;如何识别&quot;&gt;如何识别&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;LeakCanary工具&lt;/li&gt;
+&lt;/ul&gt;
+
+它会为您的应用中的活动创建弱引用。（您也可以通过向任何其他对象添加监视来自定义它。）然后检查GC之后是否清除了引用。如果没有，它会将堆转储到.hprof文件中并进行分析以确认是否存在泄漏。如果有，则显示通知，并在单独的应用程序中显示泄漏发生的参考树。
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://developer.android.google.cn/studio/profile/am-hprof&quot;&gt;HPROF Viewer and Analyzer&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://developer.android.google.cn/studio/profile/memory-profiler&quot;&gt;Memory Profiler&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;常见的内存泄漏的原因&quot;&gt;常见的内存泄漏的原因&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Leak activity to a static reference&lt;/li&gt;
+  &lt;li&gt;Leak activity to a worker thread&lt;/li&gt;
+  &lt;li&gt;Leak thread itself&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;anr问题&quot;&gt;ANR问题&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;导出 traces.txt 文件&lt;/li&gt;
+&lt;/ul&gt;
+
+通过adb导出 data/anr/traces.txt
+
+&lt;h4 id=&quot;如何避免anr&quot;&gt;如何避免ANR&lt;/h4&gt;
+
+不要在主线程(UI线程)里面做繁重的操作.
+
+&lt;h3 id=&quot;性能优化指标&quot;&gt;性能优化指标&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;启动时间&lt;/li&gt;
+  &lt;li&gt;界面切换是否卡顿&lt;/li&gt;
+  &lt;li&gt;过度绘制&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;a href=&quot;https://android.jlelse.eu/memory-leak-patterns-in-android-4741a7fcb570&quot;&gt;Memory Leak Patterns in Android&lt;/a&gt;
+
+&lt;a href=&quot;https://www.dynatrace.com/resources/ebooks/javabook/how-garbage-collection-works/&quot;&gt;Java Memory Management&lt;/a&gt;
+
+</description>
+        <pubDate>Wed, 15 Aug 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
+        
+        <category>Android</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
+    
+      <item>
+        <title>使用TensorFlow对花朵进行简单分类</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#主要步骤&quot; id=&quot;markdown-toc-主要步骤&quot;&gt;主要步骤&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#下一步&quot; id=&quot;markdown-toc-下一步&quot;&gt;下一步&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题及解决方法&quot; id=&quot;markdown-toc-常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+我们将使用转移学习，这意味着我们从一个已经接受另一个问题培训的模型开始。然后我们将重新训练类似的问题。从头开始深入学习可能需要几天时间，但可以在短时间内完成转移学习。
+
+我们将使用在ImageNet大型视觉识别挑战数据集上训练的模型。这些模型可以区分达尔马提亚或洗碗机等1,000个不同的类别。您将可以选择模型架构，因此您可以确定问题的速度，大小和准确性之间的正确折中。
+
+我们将使用这个相同的模型，但重新训练它可以根据我们自己的例子区分少数类。
+
+&lt;h3 id=&quot;主要步骤&quot;&gt;主要步骤&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;http://wuhongsheng.top/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/&quot;&gt;安装TensorFlow&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    克隆git存储库
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+此代码中使用的所有代码都包含在此git存储库中。克隆存储库并cd放入其中。这是我们将要工作的地方。
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/googlecodelabs/tensorflow-for-poets-2
+
+cd tensorflow-for-poets-2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下载训练图像&lt;/li&gt;
+&lt;/ul&gt;
+
+在开始任何培训之前，您需要一组图像来教授模型有关您想要识别的新课程。我们创建了创作共用许可花卉照片的档案，以供初次使用。通过调用以下两个命令下载照片（218 MB）：
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl http://download.tensorflow.org/example_images/flower_photos.tgz \
+    | tar xz -C tf_files
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+你现在应该有一个花卉照片的副本。通过发出以下命令来确认工作目录的内容：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls tf_files / flower_photos
+
+daisy/
+dandelion/
+roses/
+sunflowers/
+tulip/
+LICENSE.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;再训练网络&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;strong&gt;配置你的MobileNet&lt;/strong&gt;
+
+在这个练习中，我们将重新培训一个MobileNet。MobileNet是一个小型高效卷积神经网络。“卷积”意味着在图像中的每个位置执行相同的计算。
+
+MobileNet可以通过两种方式进行配置：
+
+输入图像分辨率：128,160,192或224px。毫不奇怪，摄入更高分辨率的图像需要更多的处理时间，但会导致更好的分类准确性。
+模型的相对大小作为最大的MobileNet的一小部分：1.0,0.75,0.50或0.25。
+这个codelab我们将使用224 0.5。
+
+使用推荐的设置，通常只需几分钟即可在笔记本电脑上进行再培训。您将在Linux shell变量中传递设置。在shell中设置这些变量：
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IMAGE_SIZE=224
+ARCHITECTURE=&quot;mobilenet_0.50_${IMAGE_SIZE}&quot;
+
+# 查看变量
+echo $IMAGE_SIZE
+224
+
+# 通过发出以下命令来激活该 conda 环境
+source activate tensorflow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;strong&gt;启动TensorBoard&lt;/strong&gt;
+
+在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控培训进度。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tensorboard --logdir tf_files/training_summaries &amp;amp;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;strong&gt;查看再训练脚本&lt;/strong&gt;
+
+重新训练脚本来自TensorFlow Hub回购，但不作为pip包的一部分进行安装。所以为了简单起见，我将它包含在codelab存储库中。您可以使用该python命令运行脚本。花一点时间浏览一下“帮助”。
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python -m scripts.retrain -h
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;strong&gt;运行训练脚本&lt;/strong&gt;
+
+如引言中所述，ImageNet模型是具有数百万个参数的网络，可以区分大量的类。我们只训练该网络的最后一层，因此训练将在合理的时间内结束。
+
+用一个大命令开始你的再训练（注意–summaries_dir选项，发送训练进度报告到tensorboard监测的目录）：
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python -m scripts.retrain \
+  --bottleneck_dir = tf_files / bottlenecks \
+  --how_many_training_steps = 500 \
+  --model_dir = tf_files / models / \
+  --summaries_dir = tf_files / training_summaries /“$ {ARCHITECTURE}”\
+  --output_graph = tf_files / retrained_graph.pb \
+  --output_labels = tf_files / retrained_labels.txt \
+  --architecture =“$ {ARCHITECTURE}”\
+  --image_dir = tf_files / flower_photos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+请注意，此步骤需要一段时间。
+
+该脚本下载预先训练好的模型，添加一个新的最终图层，并在您下载的花卉照片上训练该图层。
+
+ImageNet不包括我们在这里培训的任何这些花卉物种。但是，使ImageNet可以区分1,000个类别的信息种类对区分其他对象也很有用。通过使用这个预先训练的网络，我们将这些信息用作最终分类层的输入，以区分我们的花类。
+
+&lt;ul&gt;
+  &lt;li&gt;使用再训练模型&lt;/li&gt;
+&lt;/ul&gt;
+
+再训练脚本将数据写入以下两个文件：
+
+tf_files/retrained_graph.pb，其中包含所选网络的一个版本，并在您的类别上重新培训最后一层。
+tf_files/retrained_labels.txt，这是一个包含标签的文本文件。
+
+&lt;strong&gt;分类图像&lt;/strong&gt;
+
+codelab repo还包含tensorflow的label_image.py示例的副本，您可以使用它来测试您的网络。花一点时间阅读此脚本的帮助：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python -m scripts.label_image -h
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+现在，让我们在雏菊的这个图像上运行脚本：
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python -m scripts.label_image \
+    --graph=tf_files/retrained_graph.pb  \
+    --image=tf_files/flower_photos/daisy/21652746_cc379e0eea_m.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+每次执行都会打印出花标的列表，在大多数情况下，正确的花在顶部（尽管每个重新训练的模型可能略有不同）。
+
+你可能会得到这样的雏菊照片的结果：
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;daisy (score = 0.99071)
+sunflowers (score = 0.00595)
+dandelion (score = 0.00252)
+roses (score = 0.00049)
+tulips (score = 0.00032)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可选训练参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--learning_rate 
+#参数控制训练期间最后一层更新的大小(比如0.005，训练需要更长的时间，但总体精度可能会增加。值越高learning_rate，比如1.0，可以训练速度更快，但通常会降低精度，甚至使培训不稳定。)
+
+--summaries_dir 
+#是控制张量板中名称的选项。之前我们使用过：
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据自己数据进行训练&lt;/li&gt;
+&lt;/ul&gt;
+
+看到脚本处理花图像后，您可以开始观察网络教学以识别不同的类别。
+
+从理论上讲，你需要做的就是运行该工具，指定一组特定的子文件夹。每个子文件夹都按照您的某个类别命名，并仅包含该类别的图像。
+
+如果您完成此步骤并传递子目录的根文件夹作为参数的–image_dir参数，那么脚本应该训练您提供的图像，就像它为花一样。
+
+分类脚本使用文件夹名称作为标签名称，每个文件夹内的图像应该是与该标签对应的图片，如花卉档案中所示：
+
+&lt;img src=&quot;https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/img/9444bbae4d5d9ab1.png&quot; alt=&quot;&quot; /&gt;
+
+&lt;h3 id=&quot;下一步&quot;&gt;下一步&lt;/h3&gt;
+
+恭喜，您迈出了深入学习的更大的世界！
+
+您可以在&lt;a href=&quot;https://tensorflow.google.cn/&quot;&gt;TensorFlow网站&lt;/a&gt;或TensorFlow GitHub &lt;a href=&quot;https://github.com/tensorflow/&quot;&gt;项目&lt;/a&gt;中查看有关使用TensorFlow的更多信息。TensorFlow还有许多其他资源，包括&lt;a href=&quot;https://groups.google.com/a/tensorflow.org/forum/#!forum/discuss&quot;&gt;讨论组&lt;/a&gt;和&lt;a href=&quot;https://www.tfimgs.cn/resources/pdfs/45166.pdf&quot;&gt;白皮书&lt;/a&gt;。
+
+如果您有兴趣在移动设备上运行TensorFlow，请尝试本教程的第二部分：有三个版本：
+
+&lt;a href=&quot;https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-tflite/index.html#&quot;&gt;TFLite Android&lt;/a&gt;
+&lt;a href=&quot;https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-ios/index.html#0&quot;&gt;TFLite iOS&lt;/a&gt;
+&lt;a href=&quot;https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2/index.html#0&quot;&gt;TFMobile Android&lt;/a&gt;
+
+或者去&lt;a href=&quot;http://playground.tensorflow.org/#activation=tanh&amp;amp;batchSize=10&amp;amp;dataset=circle&amp;amp;regDataset=reg-plane&amp;amp;learningRate=0.03&amp;amp;regularizationRate=0&amp;amp;noise=0&amp;amp;networkShape=4,2&amp;amp;seed=0.74359&amp;amp;showTestData=false&amp;amp;discretize=false&amp;amp;percTrainData=50&amp;amp;x=true&amp;amp;y=true&amp;amp;xTimesY=false&amp;amp;xSquared=false&amp;amp;ySquared=false&amp;amp;cosX=false&amp;amp;sinX=false&amp;amp;cosY=false&amp;amp;sinY=false&amp;amp;collectStats=false&amp;amp;problem=classification&amp;amp;initZero=false&amp;amp;hideText=false&quot;&gt;TensorFlow游乐场&lt;/a&gt;玩一下吧！
+
+&lt;h3 id=&quot;常见问题及解决方法&quot;&gt;常见问题及解决方法&lt;/h3&gt;
+
+&lt;strong&gt;问题&lt;/strong&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;InvalidArgumentError (see above for traceback): Expected image (JPEG, PNG, or GIF), got unknown format starting with '\000\005\026\007\000\002\000\000Mac OS X'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;strong&gt;解决方法&lt;/strong&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/index.html#0&quot;&gt;TensorFlow Codelabs&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://tensorflow.google.cn/tutorials/image_retraining&quot;&gt;retraining tutorial&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://petewarden.com/2016/02/28/tensorflow-for-poets/&quot;&gt;Pete Warden’s TensorFlow for Poets blog&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 12 Jun 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/</guid>
+        
+        <category>AI</category>
+        
+        <category>TensorFlow</category>
+        
+        
+        <category>AI</category>
+        
+      </item>
+    
+      <item>
+        <title>产品原型设计</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#google教程&quot; id=&quot;markdown-toc-google教程&quot;&gt;Google教程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;google教程&quot;&gt;Google教程&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&amp;amp;mid=2652046181&amp;amp;idx=1&amp;amp;sn=50ac9cf4c8b645a64f73335d13094f77&amp;amp;chksm=808ca320b7fb2a36d2013d8722cdad38dba9abea8486ca6c4d841777c7e3b7a729f9e2df45c6&amp;amp;scene=21#wechat_redirect&quot;&gt;上篇&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&amp;amp;mid=2652046404&amp;amp;idx=1&amp;amp;sn=40757c4cb8abe5ecad83d789923ba87a&amp;amp;chksm=808ca401b7fb2d17a8ddc3c51c83a1b5cbe2c0f57eaef24e6e8db75cae54b13b3d9d51b26fbe&amp;amp;scene=21#wechat_redirect&quot;&gt;中篇&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;https://mp.weixin.qq.com/s/Zht9agRrayFRgU39XJ6H3g&quot;&gt;下篇&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 01 Jun 2018 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/</guid>
+        
+        <category>原型设计</category>
+        
+        <category>产品</category>
+        
+        
+        <category>产品</category>
+        
+      </item>
     
       <item>
         <title>ArcGISRuntime For Android开发</title>
@@ -29,9 +409,8 @@ ArcGISRuntime For Android 开发
 
 添加空间数据时出现一下问题
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;问题原因及解决方法&lt;/li&gt;
@@ -64,14 +443,13 @@ SVN是Subversion的简称，是一个开放源代码的版本控制系统，相�
 
 &lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
 svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error validating server certificate for 'https://172.17.1.8:443':  
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error validating server certificate for 'https://172.17.1.8:443':  
  - The certificate is not issued by a trusted authority. Use the  
    fingerprint to validate the certificate manually!  
  - The certificate hostname does not match.  
@@ -81,8 +459,7 @@ Certificate information:
  - Issuer: BJ-AD-FS.hyc-tec.net  
  - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
 (R)eject, accept (t)emporarily or accept (p)ermanently?   
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 </description>
         <pubDate>Fri, 20 Apr 2018 16:14:54 +0800</pubDate>
@@ -129,6 +506,10 @@ APK拆分常用方法
         <description>
 相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法
 
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://services.gradle.org/distributions/&quot;&gt;Gradle下载地址&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;ol&gt;
   &lt;li&gt;
     使用VPN下载
@@ -149,7 +530,7 @@ APK拆分常用方法
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;buildscript {
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;buildscript {
     repositories {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
@@ -160,8 +541,7 @@ allprojects {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 然后重新构建项目就可以了
 
@@ -323,9 +703,8 @@ allprojects {
 
 可以通过以下命令测试启动耗时
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;常见问题及优化方式&quot;&gt;常见问题及优化方式&lt;/h2&gt;
 
@@ -535,247 +914,6 @@ public class LoginActivity extends BaseActivity {
         
         
         <category>刷机</category>
-        
-      </item>
-    
-      <item>
-        <title>TensorFlow环境配置</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#安装&quot; id=&quot;markdown-toc-安装&quot;&gt;安装&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;a href=&quot;https://tensorflow.google.cn/&quot;&gt;TensorFlow™&lt;/a&gt;是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。
-
-&lt;h3 id=&quot;安装&quot;&gt;安装&lt;/h3&gt;
-
-您必须选择安装TensorFlow的机制。支持的选择如下：
-&lt;ul&gt;
-  &lt;li&gt;virtualenv （官方推荐）&lt;/li&gt;
-  &lt;li&gt;“native” pip&lt;/li&gt;
-  &lt;li&gt;Docker&lt;/li&gt;
-  &lt;li&gt;installing from sources, which is documented in a separate guide.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 启用
-$ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
-$ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
-(tensorflow)$                           # 启用成功
-# 关闭
-(tensorflow)$ deactivate 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
-
-&lt;strong&gt;问题描述&lt;/strong&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;strong&gt;原因及解决办法&lt;/strong&gt;
-
-Python版本不匹配
-</description>
-        <pubDate>Fri, 15 Dec 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
-        
-        <category>AI</category>
-        
-        <category>TensorFlow</category>
-        
-        
-        <category>AI</category>
-        
-      </item>
-    
-      <item>
-        <title>TensorFlow学习笔记</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#基本概念&quot; id=&quot;markdown-toc-基本概念&quot;&gt;基本概念&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#分类&quot; id=&quot;markdown-toc-分类&quot;&gt;分类&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#使用入门&quot; id=&quot;markdown-toc-使用入门&quot;&gt;使用入门&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见的七个步骤&quot; id=&quot;markdown-toc-常见的七个步骤&quot;&gt;常见的七个步骤&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;a href=&quot;https://tensorflow.google.cn/&quot;&gt;TensorFlow™&lt;/a&gt;是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。
-
-&lt;h3 id=&quot;基本概念&quot;&gt;基本概念&lt;/h3&gt;
-
-以常见的分类问题来介绍机器学习的基本概念
-
-&lt;ul&gt;
-  &lt;li&gt;
-    模型是特征列与标签的对应关系
-  &lt;/li&gt;
-  &lt;li&gt;
-    样本是由特征列和标签组成的数据
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;分类&quot;&gt;分类&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://developers.google.cn/machine-learning/glossary/#supervised_machine_learning&quot;&gt;监督式机器学习监&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href=&quot;https://developers.google.cn/machine-learning/glossary/#unsupervised_machine_learning&quot;&gt;非监督式学习&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;使用入门&quot;&gt;使用入门&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://tensorflow.google.cn/get_started/&quot;&gt;官方教程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;常见的七个步骤&quot;&gt;常见的七个步骤&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    搜集数据
-  &lt;/li&gt;
-  &lt;li&gt;
-    数据准备
-  &lt;/li&gt;
-  &lt;li&gt;
-    选择模型
-  &lt;/li&gt;
-  &lt;li&gt;
-    训练模型
-  &lt;/li&gt;
-  &lt;li&gt;
-    评估模型
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-推荐训练和评估所用的数据比例是4:1或7:3。选取何种比例取决于原始数据集的规模。如果你的数据非常多，那么用于验证的数据可能就不需要那么多了。
-
-&lt;ol&gt;
-  &lt;li&gt;
-    参数微调
-  &lt;/li&gt;
-  &lt;li&gt;
-    预测
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Fri, 15 Dec 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-        
-        <category>AI</category>
-        
-        <category>TensorFlow</category>
-        
-        
-        <category>AI</category>
-        
-      </item>
-    
-      <item>
-        <title>Oracle使用从入门到放弃</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用sql&quot; id=&quot;markdown-toc-常用sql&quot;&gt;常用SQL&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-Oracle使用从入门到放弃
-
-&lt;h3 id=&quot;常用sql&quot;&gt;常用SQL&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;主键自增长&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre class=&quot;prettyprint lang-sql&quot;&gt;
---首先建一个表TEST
-
-create table BUSI_UPLOADINFO
-(
-  ID int PRIMARY KEY,
-  ENENTTYPE int,
-  EVNNTSUBTYPE INT,
-  lAT number,
-  lON number,
-  INFO varchar2(100),
-  UPLOADTYPE int,
-  USERID Int,
-  USERNAME varchar2(20),
-  PHONE number,
-   REMARK varchar2(100),
-   REMARK1 varchar2(100),
-   REMARK2 varchar2(100),
-  ADDRESS VARCHAR2(100)
-
-)
-/
-COMMENT ON TABLE BUSI_UPLOADINFO IS '业务表-上报事件表'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ID IS '主键'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ENENTTYPE IS '事件类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.EVNNTSUBTYPE IS '事件子类型'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.lAT IS '纬度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.LON IS '经度'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK1 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK2 IS '备用字段'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.INFO IS '描述信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.REMARK IS '备注'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.USERNAME IS '用户信息'
-/
-COMMENT ON COLUMN BUSI_UPLOADINFO.ADDRESS IS '地址信息'
-
--- 建一个序列
-create sequence SEQ_TEST
-minvalue 1        --最小值
-nomaxvalue        --不设置最大值
-start with 1      --从1开始计数
-increment by 1    --每次加1个
-nocycle           --一直累加，不循环
-nocache;          --不建缓冲区
-
--- 以上代码完成了一个序列(sequence)的建立过程,名称为SEQ_TEST,范围是从1开始到无限大(无限大的程度是由你机器决定的),nocycle 是决定不循环,如果你设置了最大值那么你可以用cycle 会使seq到最大之后循环.对于nocache顺便说一下如果你给出了cache值那么系统将自动读取你的cache值大小个seq,这样在反复操作时会加快运行速度,但如果遭遇意外情况如当机了或oracle死了,则下次取出的seq值将和上次的不连贯.(如果连不连贯无所谓建议用cache,因为时间就是金钱呀!)
-你只有了表和序列还不够，最好再建一个触发器来执行它！代码如下：
-
-CREATE OR REPLACE TRIGGER tg_test 
-BEFORE INSERT ON test FOR EACH ROW WHEN (new.nid is null)
-begin
-select seq_test.nextval into:new.nid from dual;
-end;
-&lt;/pre&gt;
-
-</description>
-        <pubDate>Thu, 14 Sep 2017 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-        
-        <category>Oracle</category>
-        
-        <category>DB</category>
-        
-        
-        <category>DB</category>
         
       </item>
     

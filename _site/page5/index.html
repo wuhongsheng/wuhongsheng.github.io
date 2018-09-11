@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -161,6 +163,379 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-31
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
+  <li><a href="#技术路线" id="markdown-toc-技术路线">技术路线</a>    <ul>
+      <li><a href="#开源gis" id="markdown-toc-开源gis">开源GIS</a>        <ul>
+          <li><a href="#相关组织" id="markdown-toc-相关组织">相关组织</a></li>
+          <li><a href="#技术路线-1" id="markdown-toc-技术路线-1">技术路线</a></li>
+          <li><a href="#主要软件和工具" id="markdown-toc-主要软件和工具">主要软件和工具</a></li>
+          <li><a href="#商业gis" id="markdown-toc-商业gis">商业GIS</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#主要技术" id="markdown-toc-主要技术">主要技术</a>    <ul>
+      <li><a href="#投影转换和坐标校正" id="markdown-toc-投影转换和坐标校正">投影转换和坐标校正</a></li>
+      <li><a href="#矢量切片" id="markdown-toc-矢量切片">矢量切片</a></li>
+      <li><a href="#最短路径分析" id="markdown-toc-最短路径分析">最短路径分析</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>GIS学习路线</p>
+
+<h3 id="相关网站">相关网站</h3>
+
+<ul>
+  <li>
+    <p><a href="http://www.osgeo.org/">OSGeo</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.opengeospatial.org/">OGC</a>（开放地理空间联盟）
+是一个致力于为全球地理空间社区制定优质开放标准的国际非营利组织。这些标准是通过协商一致的过程完成的，任何人都可以免费使用来改善世界地理空间数据的共享。</p>
+  </li>
+</ul>
+
+<h3 id="技术路线">技术路线</h3>
+
+<h4 id="开源gis">开源GIS</h4>
+
+<h6 id="相关组织">相关组织</h6>
+
+<p><a href="https://github.com/OSGeo">OSGeo</a></p>
+
+<h6 id="技术路线-1">技术路线</h6>
+<ul>
+  <li>postgis+geoserver/geotools+ol/leaflet</li>
+</ul>
+
+<h6 id="主要软件和工具">主要软件和工具</h6>
+
+<p>桌面GIS - QGIS，OpenEV</p>
+
+<p>GIS工作站 - GRASS，OSSIM</p>
+
+<p>GIS开发工具包 - GDAL / OGR，地理工具</p>
+
+<p>地理统计 - GNU R</p>
+
+<p>Web映射服务器 - MapGuide开源，Mapserver，GeoServer</p>
+
+<p>网页地图客户端 - MapBuilder</p>
+
+<p>元数据服务器 - Isite</p>
+
+<p>空间数据引擎 - PostGIS，myGIS</p>
+
+<p>C／S数据库 - PostgreSQL，mySQL，SQLite</p>
+
+<h5 id="商业gis">商业GIS</h5>
+
+<ul>
+  <li>
+    <p>Arcgis平台</p>
+  </li>
+  <li>
+    <p>超图平台</p>
+  </li>
+</ul>
+
+<h3 id="主要技术">主要技术</h3>
+
+<h4 id="投影转换和坐标校正">投影转换和坐标校正</h4>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/OSGeo/proj.4">PROJ</a></p>
+  </li>
+  <li>
+    <p><a href="http://trac.osgeo.org/proj4j/">Proj4J</a> JAVA Lib</p>
+  </li>
+</ul>
+
+<h4 id="矢量切片">矢量切片</h4>
+
+<ol>
+  <li>Mapbox</li>
+  <li>Geoserver</li>
+  <li>titlecache工具可以切成geojson</li>
+</ol>
+
+<h4 id="最短路径分析">最短路径分析</h4>
+
+<ul>
+  <li>postgresql + postgis+ pgrouting</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Kotlin 从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-30
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Kotlin" title="Category: Kotlin" rel="category">Kotlin</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Kotlin" title="Tag: Kotlin" rel="tag">Kotlin</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#相关网站及资料" id="markdown-toc-相关网站及资料">相关网站及资料</a></li>
+  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
+</ul>
+
+<p>Kotlin学习路线</p>
+
+<h3 id="相关网站及资料">相关网站及资料</h3>
+
+<ul>
+  <li>
+    <p><a href="http://kotlinlang.org/docs/tutorials/kotlin-android.html">Kotlin官网</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">《Kotlin for android developers》中文翻译版</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/MindorksOpenSource/from-java-to-kotlin/blob/master/README-ZH.md">from-java-to-kotlin</a></p>
+  </li>
+  <li>
+    <p><a href="https://juejin.im/post/591dd9f544d904006c9fbb96">Kotlin 资源大全</a></p>
+  </li>
+  <li>
+    <p><a href="https://mp.weixin.qq.com/s/1mp5F4A-pqkaRknY6kAKzA">31 天，从浅到深轻松学习 Kotlin</a></p>
+  </li>
+</ul>
+
+<h3 id="遇到的问题">遇到的问题</h3>
+
+<p><strong>问题描述</strong></p>
+
+<p>kotlin与Databinding冲突</p>
+
+<p><strong>解决办法</strong>
+需要在app moudle的build.gradle里面添加</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kapt {
+    generateStubs = true
+}
+dependencies {
+    kapt 'com.android.databinding:compiler:2.2.3'//与Gradle版本一致
+}
+</code></pre></div></div>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/30/Kotlin%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">Android学习路线</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-11
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
+  <li><a href="#android初级" id="markdown-toc-android初级">Android初级</a></li>
+  <li><a href="#android中级" id="markdown-toc-android中级">Android中级</a></li>
+  <li><a href="#android高级" id="markdown-toc-android高级">Android高级</a></li>
+</ul>
+
+<p>Android学习路线</p>
+
+<h3 id="基础知识">基础知识</h3>
+
+<ul>
+  <li>Java基础知识（Java线程）
+<a href="http://www.cnblogs.com/tjudzj/p/4443066.html">Java访问修饰符</a></li>
+  <li>开发坏境搭建（JDK、AS）</li>
+  <li><a href="http://wuhongsheng.top/2017/04/11/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Android开发代码规范</a></li>
+  <li>Android四大组件，Activity启动模式、生命周期管理，Fragement生命周期。</li>
+</ul>
+
+<h3 id="android初级">Android初级</h3>
+
+<ul>
+  <li>用户界面及自定义控件</li>
+  <li>资源文件的使用</li>
+  <li>数据持久化（Sqlite、File、Sharedpreferences）</li>
+  <li>MeterialDesign</li>
+  <li></li>
+</ul>
+
+<h3 id="android中级">Android中级</h3>
+
+<ul>
+  <li>图形和动画绘制</li>
+  <li>网络编程（Http、Socket、Bluetooth、NFC）</li>
+  <li>屏幕适配（dp和px换算）</li>
+  <li>单元测试</li>
+  <li>进程间通信（4种方式）</li>
+</ul>
+
+<h3 id="android高级">Android高级</h3>
+
+<ul>
+  <li>NDK编程</li>
+  <li>传感器应用</li>
+  <li>地图应用</li>
+  <li>跨平台开发</li>
+  <li>Android性能优化（UI、电量、内存）</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/11/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -402,7 +777,7 @@
 
 <h3 id="常用命令">常用命令</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 查看端口
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看端口
 lsof -i :8081 
 # kill进程
 kill [pid] 
@@ -414,665 +789,12 @@ source .bash_profile
 cd ../ 
 # ping
 ping www.baidu.com
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
                 </div>
                 <div class="read-all">
                     <a  href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">普通程序员如何向人工智能靠拢</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-09
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#AI" title="Category: AI" rel="category">AI</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#深度学习" title="Tag: 深度学习" rel="tag">深度学习</a>&nbsp;
-    
-        <a href="/tag/#机器学习" title="Tag: 机器学习" rel="tag">机器学习</a>&nbsp;
-    
-        <a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
-</ul>
-
-<p>深度学习是机器学习的一个分支，利用大量数据教会计算机只有人类才会的事情，例如图像识别、自然语言理解</p>
-
-<h3 id="参考资料">参考资料</h3>
-
-<p><a href="http://www.infoq.com/cn/news/2017/05/ordinary-programmer-approach-art?utm_source=news_about_architecture-design&amp;utm_medium=link&amp;utm_campaign=architecture-design">普通程序员如何向人工智能靠拢</a></p>
-
-<p><a href="https://google.ai/">Google.ai</a></p>
-
-<p><a href="https://developers.google.cn/machine-learning/crash-course/">机器学习Google官方教程</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">GreenDAO使用教程</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-08
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>&nbsp;
-    
-        <a href="/tag/#GreenDAO" title="Tag: GreenDAO" rel="tag">GreenDAO</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p><a href="http://greenrobot.org/greendao/">GreenDAO</a> 使用教程
-<a href="http://blog.csdn.net/Hi_AndG/article/details/54695725">GreenDao3.2.0使用教程</a></p>
-
-<ol>
-  <li>集成环境</li>
-</ol>
-
-<pre class="prettyprint lang-java">
-// In your root build.gradle file:
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral() // add repository
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
-    }
-}
- 
-// In your app projects build.gradle file:
-apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao' // apply plugin
- 
-dependencies {
-    compile 'org.greenrobot:greendao:3.2.2' // add library
-}
-</pre>
-
-<ol>
-  <li>在Gradle中配置数据库版本信息等</li>
-</ol>
-
-<pre class="prettyprint lang-java">
-greendao {
-        //当前数据库版本
-        schemaVersion 1
-        //由GreenDao自动生成代码所在的包名，默认的是在项目包下面新建一个gen。
-        daoPackage 'com.titan.data.greendao'
-        //设置自动生成代码的目录
-        targetGenDir 'src/main/java'
-    }
-</pre>
-
-<p>3.在项目中定义实体类</p>
-
-<pre class="prettyprint lang-java">
-@Entity
-public class TrackPoint  {
-    @Id(autoincrement = true)
-    private Long id;
-    /**上传时间*/
-    @NotNull
-    @Property(nameInDb = "TIME")
-    private String time;
-    /**经度*/
-    @Property(nameInDb = "LON")
-    private double lon;
-    /**纬度*/
-    @Property(nameInDb = "LAT")
-    private double lat;
-    /**用户id*/
-    @Property(nameInDb = "USERID")
-    private String userid;
-    }
-</pre>
-
-<p>注解：</p>
-
-<p>@Entity   标识实体类，greenDAO会映射成sqlite的一个表，表名为实体类名的大写形式</p>
-
-<p>@Id 标识主键，该字段的类型为long或Long类型，autoincrement设置是否自动增长</p>
-
-<p>@Property       标识该属性在表中对应的列名称, nameInDb设置名称</p>
-
-<p>@Transient      标识该属性将不会映射到表中，也就是没有这列</p>
-
-<p>@NotNull         设置表中当前列的值不可为空</p>
-
-<p>@Convert         指定自定义类型(@linkPropertyConverter)</p>
-
-<p>@Generated   greenDAO运行所产生的构造函数或者方法，被此标注的代码可以变更或者下次运行时清除</p>
-
-<p>@Index    使用@Index作为一个属性来创建一个索引；定义多列索引(@link Entity#indexes())</p>
-
-<p>@JoinEntity     定义表连接关系</p>
-
-<p>@JoinProperty         定义名称和引用名称属性关系</p>
-
-<p>@Keep     注解的代码段在GreenDao下次运行时保持不变</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>      1.注解实体类：默认禁止修改此类
-      2.注解其他代码段，默认禁止修改注解的代码段
-</code></pre>
-</div>
-
-<p>@OrderBy        指定排序</p>
-
-<p>@ToMany         定义与多个实体对象的关系</p>
-
-<p>@ToOne  定义与另一个实体（一个实体对象）的关系</p>
-
-<p>@Unique 向数据库列添加了一个唯一的约束</p>
-
-<p>4.生成相关代码</p>
-
-<p>定义好了之后按ctrl+F9（或者工具栏build下面的Make Project）对项目进行重新构建，再
-daoPackage的目录下就会自动生成代码</p>
-
-<p>5.新建一个类，实例化greenDAO所需要的几个关键对象，DaoMaster，DaoSession，代码如下：</p>
-
-<pre class="prettyprint lang-java">
-public class GreenDaoManager {
-    private DaoMaster mDaoMaster;
-    private DaoSession mDaoSession;
-    private static volatile GreenDaoManager mInstance = null;
-    private GreenDaoManager(){
-        if (mInstance == null) {
-            DaoMaster.DevOpenHelper devOpenHelper = new
-            DaoMaster.DevOpenHelper(App.getContext(), "user.db");
-            mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
-            mDaoSession = mDaoMaster.newSession();
-        }
-    }
-    public static GreenDaoManager getInstance() {
-        if (mInstance == null) {
-            synchronized (GreenDaoManager.class) {                
-            if (mInstance == null) {
-                    mInstance = new GreenDaoManager();
-                }
-            }
-        }
-        return mInstance;
-    }
-    public DaoMaster getMaster() {
-        return mDaoMaster;
-    }
-    public DaoSession getSession() {
-        return mDaoSession;
-    }
-    public DaoSession getNewSession() {
-        mDaoSession = mDaoMaster.newSession();
-        return mDaoSession;
-    }
-}
-</pre>
-
-<p>6.然后在Application中初始化：</p>
-
-<p><code class="highlighter-rouge">GreenDaoManager.getInstance();</code></p>
-
-<p>7.数据库增、删、查、改</p>
-
-<p>首先获得UserDao的对象</p>
-
-<pre class="prettyprint lang-java">
-UserDao userDao=GreenDaoManager.getInstance().getNewSession().getUserDao();
-</pre>
-
-<p>增：</p>
-
-<pre class="prettyprint lang-java">
-User user = new User(null, name, age, studentId);
-userDao.insert(user);
-
-
-insert(T entity)       当指定主键在表中存在时会发生异常
-insertOrReplace(T entity)      当指定主键在表中存在时会覆盖数据
-insertInTx(Iterable<T> entities)      批量插入数据
-&lt;/pre&gt;
-s
- 
-删：
-```
-User user = new User(null, name, age, studentId);    
-userDao.delete(user)
- 
-delete(T entity)       删除数据
-deleteByKey(K key)     指定主键删除数据
-deleteInTx(Iterable<T> entities)      批量删除数据
-deleteByKeyInTx(Iterable<K> keys)      批量按数据删除数据        
-deleteAll()    删除所有数据
-```
-改：
-```
-User user = new User(id, name, age, studentId);
-userDao.update(user);
- 
-update(T entity)       修改数据，主键需相同
-updateInTx(Iterable<T> entities)      批量更新数据
-```
- 
-查：
-
-userDao.load(id)
- 
-load(K key)    根据id查找数据
-loadByRowId(long rowId)        根据行号查找数据
-loadAll()      查找全部数据
-
-
-模糊查询
-List<Pest> pestList=DaoManager.getInstance(TitanApplication.dbpath).getNewSession().getPestDao().queryBuilder()
- .whereOr(PestDao.Properties.Cname.like("%"+keyword+"%"))
-.list();
-
-
-
-8.一对一、一对多关系
-
-greenDAO目前只支持一对一和一对多关系，并不支持多对多关系
-
-一对一：
-```
-private Long studentId;
-@ToOne(joinProperty = "studentId")
-private Studentstudent;
-```
-
-```
-@Generated(hash = 313494093)
-public Student getStudent() {
-    Long __key = this.studentId;
-    if (student__resolvedKey == null || !student__resolvedKey.equals(__key)) {
-        final DaoSession daoSession = this.daoSession;
-        if (daoSession == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        StudentDao targetDao = daoSession.getStudentDao();
-        Student studentNew = targetDao.load(__key);
-        synchronized (this) {
-            student = studentNew;
-            student__resolvedKey = __key;
-        }
-    }
-    return student;
-}
-```
-使用@ToOne标记，joinProperty指定一个字段，如果没有定义，会自动生成一个字段，get方法时自动生成的，使用@Generated标记，代表自动生成的，无需动代码。
-
- 
-
-一对多（有三种映射形式）：
-```
-@ToMany(referencedJoinProperty = "teacherId")
-private List<Teacher> teacherList;
-```
-
- referencedJoinProperty：指定目标实体中与源实体相对应的外键。
-```
-@ToMany(joinProperties = {
-        @JoinProperty(name="studentTag",referencedName = "teacherTag")
-})
-private List<Teacher> teacherList;
-```
-JoinProperty: 对于复杂一点的关系可以定义一组@JoinProperty注解。每个@JoinProperty注解都需要有源实体中的源属性和对应实体中的引用属性。
-```
-@ToMany
-@JoinEntity(
-        entity = Teacher.class,
-        sourceProperty = "teacherId",
-        targetProperty = "id"
-)
-private List<Teacher> teacherList;
-```
-@JoinEntity：在做NM多对多映射的时候使用
-
-9.数据库升级
-
-数据库升级最麻烦的就是数据保存的问题，下面是数据库升级时执行的代码。
-```
-/** WARNING: Drops all table on Upgrade! Use only during development. */
-public static class DevOpenHelper extends OpenHelper {
-    public DevOpenHelper(Context context, String name) {
-        super(context, name);
-    }
-
-    public DevOpenHelper(Context context, String name, CursorFactory factory) {
-        super(context, name, factory);
-    }
-
-    @Override
-    public void onUpgrade(Database db, int oldVersion, int newVersion) {
-        Log.i("greenDAO", "Upgrading schema from version " + oldVersion + " to " + newVersion + " by dropping all tables");
-        dropAllTables(db, true);
-        onCreate(db);
-    }
-}
-```
-第一句注释的话已经告诉我们数据库升级时会删除所有的表，重新创建。所以我们可以自定义一个类继承OpenHelper，在升级时先生成临时表，删除旧表创建新表后，再把临时表的数据导入进去。有牛人已经做出这个项目来了，我就厚颜无耻选择直接用了。
-
-在project的gradle添加
-```
-allprojects {
-    repositories {
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
-}
-```
-
-在app的gradle添加：
-```
-compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
-注意：要是使用的还是greenDAO3.0以前的版本，添加的是
-
-compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.0.1'
-```
-
-新建一个类
-```
-public class MySQLiteOpenHelperextendsDaoMaster.OpenHelper{
-    public MySQLiteOpenHelper(Contextcontext,Stringname){
-        super(context,name);
-    }
-    public MySQLiteOpenHelper(Contextcontext,String name,SQLiteDatabase.CursorFactoryfactory) {
-        super(context,name,factory);
-    }
-    @Override
-    public void onUpgrade(SQLiteDatabasedb,int oldVersion,intnewVersion) {
-        Log.d(“SQLite”,“数据库从”+oldVersion+“升级到”+newVersion);
-        MigrationHelper.migrate(db,UserDao.class,StudentDao.class);
-    }
-}
-```
-
-在GreenDaoManager修改代码：
-```
-public class GreenDaoManager {
-    private DaoMaster mDaoMaster;
-    private DaoSession mDaoSession;
-    private static volatile GreenDaoManager mInstance = null; 
-    private GreenDaoManager(){
-        if (mInstance == null) {
-            //重写MySQLiteOpenHelper数据库升级，数据不丢失
-            //MyApplication.getContext()上下文表示了数据库存储路径为手机内存
-            //DEBUG表示是否打印debug
-            MigrationHelper.DEBUG = true;
-            MySQLiteOpenHelper helper = new
-                    MySQLiteOpenHelper(App.getContext(),"user.db",null);
-            mDaoMaster = new DaoMaster(helper.getWritableDatabase());
-            mDaoSession = mDaoMaster.newSession();
-        }
-    }
-
-    public static GreenDaoManager getInstance() {
-        if (mInstance == null) {
-            synchronized (GreenDaoManager.class) {                if (mInstance == null) {
-                    mInstance = new GreenDaoManager();
-                }
-            }
-        }
-        return mInstance;
-    }
-    public DaoMaster getMaster() {
-        return mDaoMaster;
-    }
-    public DaoSession getSession() {
-        return mDaoSession;
-    }
-    public DaoSession getNewSession() {
-        mDaoSession = mDaoMaster.newSession();
-        return mDaoSession;
-    }
-}
-```
-注意：migrate(SQLiteDatabase db, Class... daoClasses); 里面的参数是全部的实体类，就是要生成的表。
-要生成的表。
-
-
-
-
-
-</Teacher></Teacher></Teacher></Pest></T></K></T></T></pre>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/08/GreenDAO%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-08
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#uiueux" id="markdown-toc-uiueux">UI/UE/UX</a>    <ul>
-      <li><a href="#rippledrawable---波纹效果" id="markdown-toc-rippledrawable---波纹效果">RippleDrawable - 波纹效果</a></li>
-      <li><a href="#vectordrawable使用" id="markdown-toc-vectordrawable使用">VectorDrawable使用</a>        <ul>
-          <li><a href="#vectordrawable优点" id="markdown-toc-vectordrawable优点">VectorDrawable优点</a></li>
-          <li><a href="#vectordrawable使用-1" id="markdown-toc-vectordrawable使用-1">VectorDrawable使用</a></li>
-        </ul>
-      </li>
-      <li><a href="#databinding" id="markdown-toc-databinding">Databinding</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>Android 开发技巧</p>
-
-<h3 id="uiueux">UI/UE/UX</h3>
-
-<h4 id="rippledrawable---波纹效果">RippleDrawable - 波纹效果</h4>
-
-<ul>
-  <li>使用Android 提供的属性</li>
-</ul>
-
-<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackground"</code></p>
-
-<p>扩散到View边界</p>
-
-<p><code class="highlighter-rouge">android:foreground="?android:attr/selectableItemBackgroundBorderless</code></p>
-
-<p>设置后，会从孩子往父亲找一个依附的色。如果View往上找的时候，亲生父亲没背景色，会继续向上查找直到最顶端。找到了最顶端的爷爷，这个时候才绘制。然而，如果父亲的兄弟又绘制了颜色，且盖住了最顶端的绘制，会导致看不到效果。如果有一定的透明度，结果就显而易见了。
-特别注意：
-当把硬件加速给关闭时，这个效果是没有的。
-这是API 21的新属性，老版本无法使用.</p>
-
-<ul>
-  <li>自定义</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;!-- A green ripple drawn atop a black rectangle. --&gt;
-&lt;ripple android:color="#ff00ff00"&gt;
-    &lt;item android:drawable="@android:color/black" /&gt;
-&lt;/ripple&gt;
- 
-&lt;!-- A blue ripple drawn atop a drawable resource. --&gt;
-&lt;ripple android:color="#ff0000ff"&gt;
-    &lt;item android:drawable="@drawable/my_drawable" /&gt;
-&lt;/ripple&gt;
-</code></pre>
-</div>
-
-<p>android:color中是点击响应色，也是波纹扩散色。
-item中是正常状态下的显示。</p>
-
-<p>一般使用时会和原有的selector配合，原有的selector负责5.0以下显示效果，
-新的selector内部含有ripple标签放在drawable-v21中，保证点击效果。</p>
-
-<hr />
-
-<h4 id="vectordrawable使用">VectorDrawable使用</h4>
-
-<h6 id="vectordrawable优点">VectorDrawable优点</h6>
-
-<ul>
-  <li>
-    <p>VectorDrawable图像可以自动进行适配，不需要通过分辨率来设置不同的图片Vector图像可以大幅度减少图像的体积。</p>
-  </li>
-  <li>
-    <p>svg图像导出工具方便，从而转换成Vector图像功能强大，前端已经广泛使用。</p>
-  </li>
-</ul>
-
-<h6 id="vectordrawable使用-1">VectorDrawable使用</h6>
-
-<p><a href="http://www.jianshu.com/p/18c9bd860394">VectorDrawable—5.0</a></p>
-
-<p>Databinding 中使用svg可能会出现找不到的问题
-android:drawableLeft=”@{@drawable/ic_password}”</p>
-
-<h4 id="databinding">Databinding</h4>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -1104,6 +826,12 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a></li>
+                    
+                        <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
+                    
+                        <li><a href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a></li>
+                    
                         <li><a href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a></li>
                     
                         <li><a href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a></li>
@@ -1117,12 +845,6 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                         <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
-                    
-                        <li><a href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a></li>
-                    
-                        <li><a href="/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TensorFlow学习笔记</a></li>
-                    
-                        <li><a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></li>
                     
                 </ul>
             </div>
@@ -1149,7 +871,7 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">10</span>
+                            <span class="badge">11</span>
                         </a>
                     </li>
                     
@@ -1185,7 +907,7 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                             <span class="name">
                                 AI
                             </span>
-                            <span class="badge">3</span>
+                            <span class="badge">4</span>
                         </a>
                     </li>
                     
@@ -1333,6 +1055,15 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="/category/#产品" class="categories-list-item" cate="产品">
+                            <span class="name">
+                                产品
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -1363,13 +1094,6 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                       
                       
                       <a href="/tag/#RubyGems" style="font-size: 9pt; color: #999;">RubyGems</a>
-                    
-                      
-                      
-                      
-                      
-                      
-                      <a href="/tag/#Adb" style="font-size: 9pt; color: #999;">Adb</a>
                     
                       
                       
@@ -1432,7 +1156,7 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 11pt; color: #777;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #666;">AI</a>
                     
                       
                       
@@ -1467,7 +1191,7 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 12pt; color: #666;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #666;">GIS</a>
                     
                       
                       
@@ -1600,7 +1324,7 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 10pt; color: #888;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 11pt; color: #777;">TensorFlow</a>
                     
                       
                       
@@ -1643,6 +1367,20 @@ android:drawableLeft=”@{@drawable/ic_password}”</p>
                       
                       
                       <a href="/tag/#SVN" style="font-size: 9pt; color: #999;">SVN</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#原型设计" style="font-size: 9pt; color: #999;">原型设计</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#产品" style="font-size: 9pt; color: #999;">产品</a>
                     
                 </div>
             </div>

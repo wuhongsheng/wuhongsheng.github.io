@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -259,10 +261,9 @@
 
 <h3 id="常用命令和方法">常用命令和方法</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 构建项目
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 构建项目
 gradle build
-</code></pre>
-</div>
+</code></pre></div></div>
 <h4 id="程序部署">程序部署</h4>
 
 <ul>
@@ -275,9 +276,8 @@ gradle build
   <li>Jar部署</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar build/libs/gs-rest-service-0.1.0.jar
+</code></pre></div></div>
 <ul>
   <li><a href="https://www.cnblogs.com/kedarui/p/6439768.html">后台部署</a>
 通过jar部署后，关闭cmd窗口进程就停止了，因此需要让程序在后台运行</li>
@@ -288,13 +288,12 @@ gradle build
   <li>编写bat命令</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>@echo off
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@echo off
 
 java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2%.log
 
 @pause
-</code></pre>
-</div>
+</code></pre></div></div>
 <ol>
   <li>安装AlwaysUp软件，如下图所示</li>
 </ol>
@@ -331,65 +330,59 @@ java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2
   <li>关闭应用的脚本：stop.sh</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
-<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps -ef | grep yourapp.jar | grep -v grep | awk <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
-<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span>  
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps <span class="nt">-ef</span> | <span class="nb">grep </span>yourapp.jar | <span class="nb">grep</span> <span class="nt">-v</span> <span class="nb">grep</span> | awk <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span>  
 <span class="k">then  
     </span><span class="nb">echo </span>Application is already stopped  
 <span class="k">else  
     </span><span class="nb">echo kill</span> <span class="nv">$PID</span>  
     <span class="nb">kill</span> <span class="nv">$PID</span>  
 <span class="k">fi</span>  
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>启动应用的脚本：start.sh</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c">#!/bin/bash  </span>
-nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;  
-</code></pre>
-</div>
+nohup java <span class="nt">-jar</span> yourapp.jar <span class="nt">--server</span>.port<span class="o">=</span>8888 &amp;  
+</code></pre></div></div>
 
 <ul>
   <li>整合了关闭和启动的脚本：run.sh，由于会先执行关闭应用，然后再启动应用，这样不会引起端口冲突等问题，适合在持续集成系统中进行反复调用。</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
 <span class="nb">echo </span>stop application  
 <span class="nb">source </span>stop.sh  
 <span class="nb">echo </span>start application  
 <span class="nb">source </span>start.sh  
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>####### 系统服务</p>
 
 <h3 id="常见问题及解决方法">常见问题及解决方法</h3>
 
 <p><strong>问题描述</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>druid 连接池 {dataSource-1} inited 是卡住
+</code></pre></div></div>
 
 <p><strong>解决办法</strong></p>
 
 <p>1.重启IDEA或者重启电脑（可能是Druid bug 导致）</p>
 
 <p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Unregistering JMX-exposed beans on shutdown
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><strong>解决办法</strong></p>
 
 <ul>
   <li>配置文件增加
-    <div class="highlighter-rouge"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -412,6 +405,35 @@ nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;
                     
                 
             
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -458,39 +480,6 @@ nohup java -jar yourapp.jar --server.port<span class="o">=</span>8888 &amp;
             
         
             
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
             
                 
                     

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>AndroidStudio手动下载配置Gradle</title>
-    <meta name="description" content="相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法      使用VPN下载    我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。        手动下载配置    参考文章   ...">
+    <meta name="description" content="相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法  Gradle下载地址      使用VPN下载    我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。        手动下载配...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -97,6 +97,8 @@
                             <i class="fa fa-th-list"></i>Categories
                         </a>
                     </li>
+                    
+                
                     
                 
                     
@@ -217,6 +219,10 @@
         
 <p>相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法</p>
 
+<ul>
+  <li><a href="http://services.gradle.org/distributions/">Gradle下载地址</a></li>
+</ul>
+
 <ol>
   <li>
     <p>使用VPN下载</p>
@@ -237,7 +243,7 @@
   </li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>buildscript {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
     repositories {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
@@ -248,8 +254,7 @@ allprojects {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>然后重新构建项目就可以了</p>
 
@@ -258,6 +263,45 @@ allprojects {
         <hr>
 
         
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
         
             
             
@@ -350,45 +394,6 @@ allprojects {
                 
                     
                 
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
             
                 
                     

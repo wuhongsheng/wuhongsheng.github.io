@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -333,9 +335,8 @@
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)
+</code></pre></div></div>
 
 <p><strong>解决方法：</strong></p>
 
@@ -347,11 +348,10 @@
   <p>所以卸载 hitimes 并通过 <code class="highlighter-rouge">--platform ruby</code> 重装即可。代码如下：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>gem uni hitimes
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem uni hitimes
 **Remove ALL versions**
 gem ins hitimes -v 1.2.1 --platform ruby
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>然后将自动重新编译 hitimes 并适用于 Ruby 2.2</p>
@@ -359,7 +359,7 @@ gem ins hitimes -v 1.2.1 --platform ruby
 
 <p>下面是我自己的卸载和安装过程：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes
 
 You have requested to uninstall the gem:
         hitimes-1.2.2-x86-mingw32
@@ -378,8 +378,7 @@ Parsing documentation for hitimes-1.2.1
 Installing ri documentation for hitimes-1.2.1
 Done installing documentation for hitimes after 1 seconds
 1 gem installed
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>关于，<a href="https://rubygems.org/gems/hitimes/versions/1.2.2">hitimes</a> 是一个快速的高效的定时器解决方案库，详情可以去官网查看。</p>
 
@@ -405,6 +404,45 @@ Done installing documentation for hitimes after 1 seconds
                     
                 
             
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
         
             
             
@@ -467,51 +505,6 @@ Done installing documentation for hitimes after 1 seconds
             
         
             
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
             
                 
                     

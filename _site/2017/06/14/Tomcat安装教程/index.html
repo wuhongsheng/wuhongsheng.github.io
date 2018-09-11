@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Tomcat安装从入门到放弃</title>
-    <meta name="description" content="  准备及安装(以Mac为例)  遇到的问题Tomcat安装及使用准备及安装(以Mac为例)      官网下载        解压并移动到系统目录下  mv  apache-tomcat-9.0.0.M21 /usr/local  配置运行权限chmod a+x startup.shchmod +x catal...">
+    <title>Tomcat安装教程</title>
+    <meta name="description" content="  准备及安装  Mac环境  Windows环境  遇到的问题Tomcat安装及使用准备及安装  官网下载Mac环境  解压并移动到系统目录下mv  apache-tomcat-9.0.0.M21 /usr/local  配置运行权限chmod a+x startup.shchmod +x catalina.s...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+    <link rel="canonical" href="http://localhost:4000/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -102,6 +102,8 @@
                     
                 
                     
+                
+                    
                     <li>
                         
                         <a href="/tag/">
@@ -157,7 +159,7 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>Tomcat安装从入门到放弃</h1>
+        <h1>Tomcat安装教程</h1>
         <div class="label">
 
             <div class="label-card">
@@ -218,26 +220,30 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#准备及安装" id="markdown-toc-准备及安装">准备及安装</a></li>
+  <li><a href="#mac环境" id="markdown-toc-mac环境">Mac环境</a></li>
+  <li><a href="#windows环境" id="markdown-toc-windows环境">Windows环境</a></li>
   <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
 </ul>
 
 <p>Tomcat安装及使用</p>
 
-<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
+<h3 id="准备及安装">准备及安装</h3>
 
 <ul>
-  <li>
-    <p><a href="http://tomcat.apache.org/download-90.cgi">官网下载</a></p>
-  </li>
-  <li>
-    <p>解压并移动到系统目录下</p>
-  </li>
+  <li><a href="http://tomcat.apache.org/download-90.cgi">官网下载</a></li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mv  apache-tomcat-9.0.0.M21 /usr/local
-</code></pre>
-</div>
+<p><img src="http://jingyan.baidu.com/album/2c8c281daa77aa0008252aff.html?picindex=4" alt="" /></p>
+
+<h3 id="mac环境">Mac环境</h3>
+
+<ul>
+  <li>解压并移动到系统目录下</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv  apache-tomcat-9.0.0.M21 /usr/local
+</code></pre></div></div>
 
 <ul>
   <li>配置运行权限</li>
@@ -261,14 +267,21 @@ export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
   <li>启动Tomcat</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>startup.sh  启动Tomcat
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>startup.sh  启动Tomcat
 shutdown.sh 关闭Tomcat
-</code></pre>
-</div>
+</code></pre></div></div>
+
+<h3 id="windows环境">Windows环境</h3>
+
+<p>下载解压版到指定目录解压或者下载安装版安装到指定目录</p>
+
+<p>cd 到安装目录到bin下修改端口、启动即可</p>
 
 <h3 id="遇到的问题">遇到的问题</h3>
 
-<p><strong>startup之后一闪而过服务端没启动</strong></p>
+<p><strong>问题描述</strong></p>
+
+<p>startup之后一闪而过服务端没启动</p>
 
 <p><strong>解决办法</strong></p>
 
@@ -305,6 +318,55 @@ shutdown.sh 关闭Tomcat
                     
                 
             
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
         
             
             
@@ -383,63 +445,6 @@ shutdown.sh 关闭Tomcat
             
         
             
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
             
                 
                     
