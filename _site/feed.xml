@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Sep 2018 18:29:26 +0800</pubDate>
-    <lastBuildDate>Tue, 11 Sep 2018 18:29:26 +0800</lastBuildDate>
+    <pubDate>Tue, 11 Sep 2018 18:55:54 +0800</pubDate>
+    <lastBuildDate>Tue, 11 Sep 2018 18:55:54 +0800</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
@@ -32,8 +32,9 @@
 每个应用程序都需要内存作为执行其工作的资源。为了确保Android中的每个应用程序都有足够的内存，Android系统需要有效地管理内存分配。当内存不足时，Android运行时会触发垃圾收集（GC）。GC的目的是通过清理不再有用的对象来回收内存。简而言之，为用户提供服务的所有内容都应保存在内存中，其他所有内容都将从内存中消失以释放资源。
 但是，如果以不良方式编写代码，从可访问对象以某种方式引用未使用的对象，GC会将未使用的对象标记为有用对象，因此无法删除它们。这称为内存泄漏。
 
+&lt;div style=&quot;align: center&quot;&gt;
 &lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F1.png&quot; /&gt;
-&amp;lt;/div&amp;gt;
+&lt;/div&gt;
 
 Java中有四种GC根：
 &lt;ul&gt;
