@@ -26,12 +26,15 @@ author: WHS
 
   1. 启用终端
   2. 通过以下命令安装pip 和 Virtualenv：
+
   ```
    $ sudo easy_install pip
    $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade virtualenv 
 
   ```
+
   3. 通过使用以下某种格式发出命令来创建一个 Virtualenv 环境：
+  
   ```
    $ virtualenv --system-site-packages targetDirectory # for Python 2.7
    $ virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n

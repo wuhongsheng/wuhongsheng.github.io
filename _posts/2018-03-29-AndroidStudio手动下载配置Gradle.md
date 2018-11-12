@@ -52,4 +52,6 @@ allprojects {
 然后重新构建项目就可以了
 
 
+* [Android Gradle插件版本升级](https://developer.android.google.cn/studio/releases/gradle-plugin#revisions)
+
 

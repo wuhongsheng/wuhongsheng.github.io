@@ -259,6 +259,10 @@ allprojects {
 
 <p>然后重新构建项目就可以了</p>
 
+<ul>
+  <li><a href="https://developer.android.google.cn/studio/releases/gradle-plugin#revisions">Android Gradle插件版本升级</a></li>
+</ul>
+
 
                 </div>
                 <div class="read-all">
@@ -508,6 +512,10 @@ allprojects {
 <p>可以通过以下命令测试启动耗时</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
+命令含义: 
+ThisTime:最后一个启动的Activity的启动耗时; 
+TotalTime:自己的所有Activity的启动耗时; 
+WaitTime: ActivityManagerService启动App的Activity时的总时间(包括当前Activity的onPause()和自己Activity的启动)
 </code></pre></div></div>
 
 <h2 id="常见问题及优化方式">常见问题及优化方式</h2>

@@ -1099,6 +1099,36 @@ npm install
 
 <p>删除项目根目录.gradle文件夹</p>
 
+<p><strong>错误描述</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timeout waiting to lock Java compile cache (/Volumes/Transcend/AS_workspace/gitlab/translate_xiaoyi_v2__android__builtin_apps/.gradle/4.1/javaCompile). It is currently in use by another Gradle instance.
+Owner PID: unknown
+Our PID: 709
+Owner Operation: unknown
+Our operation: 
+Lock file: /Volumes/Transcend/AS_workspace/gitlab/translate_xiaoyi_v2__android__builtin_apps/.gradle/4.1/javaCompile/javaCompile.lock
+</code></pre></div></div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<ul>
+  <li>
+    <p>关闭AS、JAVA进程，重启AS</p>
+  </li>
+  <li>
+    <p>关闭AS -&gt; 删除 /用户/whs/.gradle/caches 文体夹 -&gt; 重启AS</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>执行命令 find ~/.gradle -type f -name “*.lock”</td>
+          <td>while read f; do rm $f; done</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
 
                 </div>
                 <div class="read-all">
