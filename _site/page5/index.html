@@ -166,6 +166,70 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/">APK反编译</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-05
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#反编译" title="Category: 反编译" rel="category">反编译</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#反编译" title="Tag: 反编译" rel="tag">反编译</a>&nbsp;
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p>Android Apk反编译学习路线</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/05/APK%E5%8F%8D%E7%BC%96%E8%AF%91/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/05/31/GIS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">GIS 开发从入门到放弃</a>
                 </h2>
                 <div class="label">
@@ -380,13 +444,73 @@
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
-  <li><a href="#相关网站及资料" id="markdown-toc-相关网站及资料">相关网站及资料</a></li>
+  <li><a href="#优点" id="markdown-toc-优点">优点</a></li>
+  <li><a href="#基本语法" id="markdown-toc-基本语法">基本语法</a></li>
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
   <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
 </ul>
 
-<p>Kotlin学习路线</p>
+<p>Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaScript源代码。它主要是由俄罗斯圣彼得堡的JetBrains开发团队所发展出来的编程语言，其名称来自于圣彼得堡附近的科特林岛。[3]2012年1月，著名期刊《Dr. Dobb’s Journal》中Kotlin被认定为该月的最佳语言。[4]虽然与Java语法并不兼容，但Kotlin被设计成可以和Java代码相互运作，并可以重复使用如Java集合框架等的现有Java类库。Hathibelagal写道，“如果你正在为Android开发寻找一种替代编程语言，那么应该试下Kotlin。它很容易在Android项目中替代Java或者同Java一起使用。”</p>
 
-<h3 id="相关网站及资料">相关网站及资料</h3>
+<p>Kotlin很明显受到Java、C#、JavaScript、Scala、Groovy等语言的影响。例如Kotlin可以直接通过println(“Hello, {name}”)或println(“Hello, $name”)来使用字符串模板，和古老的shell script类似。又如Kotlin中的分号是可选的，这类似JavaScript，而且Groovy、Scala也有同样的能力。Kotlin常量定义关键字是val（不同于变量定义关键字var），表示固定值，这功能来自Scala，Swift也有类似功能。</p>
+
+<p>需要注意，Kotlin没有关键字new。</p>
+
+<h3 id="优点">优点</h3>
+
+<ul>
+  <li>简洁</li>
+</ul>
+
+<pre class="prettyprint lang-java">
+
+data class Customer(val name: String, val email: String, val company: String)
+
+val positiveNumbers = list.filter { it &gt; 0 }
+
+object ThisIsASingleton {
+    val companyName: String = "JetBrains"
+}
+
+</pre>
+
+<ul>
+  <li>安全</li>
+</ul>
+
+<pre class="prettyprint lang-java">
+	var output: String
+    output = null   // Compilation error
+
+    val name: String? = null    // Nullable type
+    println(name.length())      // Compilation error
+
+    fun calculateTotal(obj: Any) {
+    if (obj is Invoice)
+        obj.calculateTotal()
+    }
+</pre>
+
+<ul>
+  <li>
+    <p>互操作</p>
+  </li>
+  <li>
+    <p>工具友好</p>
+  </li>
+</ul>
+
+<h3 id="基本语法">基本语法</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 常量和变量
+val a: Int = 1 // 定義a為`Int`類型的變量，其值為1
+val b = 2 // 自動檢測b為`Int`類型
+
+var x = 5 // App 定義一個`Int`，值為5
+x = 1 // 修改值為1
+</code></pre></div></div>
+
+<h3 id="参考资料">参考资料</h3>
 
 <ul>
   <li>
@@ -497,6 +621,7 @@ dependencies {
   <li>开发坏境搭建（JDK、AS）</li>
   <li><a href="http://wuhongsheng.top/2017/04/11/Android%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Android开发代码规范</a></li>
   <li>Android四大组件，Activity启动模式、生命周期管理，Fragement生命周期。</li>
+  <li><a href="http://www.cnblogs.com/linjzong/p/4191891.html">事件分发</a></li>
 </ul>
 
 <h3 id="android初级">Android初级</h3>
@@ -517,6 +642,7 @@ dependencies {
   <li>屏幕适配（dp和px换算）</li>
   <li>单元测试</li>
   <li>进程间通信（4种方式）</li>
+  <li>性能优化</li>
 </ul>
 
 <h3 id="android高级">Android高级</h3>
@@ -688,117 +814,6 @@ dependencies {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">MacBook使用技巧</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#MacBook" title="Category: MacBook" rel="category">MacBook</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#MacBook" title="Tag: MacBook" rel="tag">MacBook</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常用技巧" id="markdown-toc-常用技巧">常用技巧</a></li>
-  <li><a href="#常用软件" id="markdown-toc-常用软件">常用软件</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-</ul>
-
-<p>MacBook使用技巧</p>
-
-<h3 id="常用技巧">常用技巧</h3>
-
-<ul>
-  <li>启用键盘打字机音效</li>
-</ul>
-
-<p>系统偏好设置 -&gt; 辅助功能 -&gt; 键盘 -&gt; 启用慢速键 -&gt; 选项（勾选使用按键音并将延时时间调到最短）</p>
-
-<ul>
-  <li>分屏</li>
-</ul>
-
-<p>首先打开两个所需文件，把鼠标放在页面最大化处（绿色按钮），点按（非轻点）触摸板超过1s，就可以实现左右分屏了</p>
-
-<ul>
-  <li>获取文件绝对路径</li>
-</ul>
-
-<p>将文件直接拖入终端即可获取文件路径</p>
-
-<h3 id="常用软件">常用软件</h3>
-
-<p><a href="https://www.jetbrains.com/datagrip/">DataGrip</a>数据库连接工具</p>
-
-<ul>
-  <li><a href="https://www.jetbrains.com/help/datagrip/connecting-to-a-database.html#oracle">DataGrip官方文档</a></li>
-</ul>
-
-<h3 id="常用命令">常用命令</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看端口
-lsof -i :8081 
-# kill进程
-kill [pid] 
-# 打开环境变量配置文件
-open -e .bash_profile
-# 生效环境变量
-source .bash_profile
-# 返回上级目录
-cd ../ 
-# ping
-ping www.baidu.com
-</code></pre></div></div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/10/MacBook%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -826,6 +841,8 @@ ping www.baidu.com
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
+                    
                         <li><a href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a></li>
                     
                         <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
@@ -843,8 +860,6 @@ ping www.baidu.com
                         <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
                     
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
-                    
-                        <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
                 </ul>
             </div>
@@ -871,7 +886,7 @@ ping www.baidu.com
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">11</span>
+                            <span class="badge">12</span>
                         </a>
                     </li>
                     
@@ -1156,7 +1171,7 @@ ping www.baidu.com
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #666;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #777;">AI</a>
                     
                       
                       
@@ -1191,7 +1206,7 @@ ping www.baidu.com
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #666;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #777;">GIS</a>
                     
                       
                       
@@ -1324,7 +1339,7 @@ ping www.baidu.com
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 11pt; color: #777;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 10.5pt; color: #777;">TensorFlow</a>
                     
                       
                       
@@ -1381,6 +1396,20 @@ ping www.baidu.com
                       
                       
                       <a href="/tag/#产品" style="font-size: 9pt; color: #999;">产品</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Jetpack" style="font-size: 9pt; color: #999;">Jetpack</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#DataBinding" style="font-size: 9pt; color: #999;">DataBinding</a>
                     
                 </div>
             </div>

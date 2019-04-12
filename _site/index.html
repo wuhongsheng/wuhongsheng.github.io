@@ -166,6 +166,86 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2019-01-21
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>&nbsp;
+    
+        <a href="/tag/#Jetpack" title="Tag: Jetpack" rel="tag">Jetpack</a>&nbsp;
+    
+        <a href="/tag/#DataBinding" title="Tag: DataBinding" rel="tag">DataBinding</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+</ul>
+
+<p>数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。</p>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p><strong>错误描述</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wantong.product/com.example.xuncha.ui.task.PatrolTaskDetialActivity}: java.lang.RuntimeException: view must have a tag
+</code></pre></div></div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<p>使用DataBinding的项目中存在同名布局文件，找到对应的生成文件查看具体错误原因</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a>
                 </h2>
                 <div class="label">
@@ -833,7 +913,9 @@ tulips (score = 0.00032)
 
 <p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。</p>
 
-<h3 id="svn简介">SVN简介</h3>
+<h3 id="svn简介"><a href="http://subversion.apache.org">SVN</a>简介</h3>
+
+<p><a href="http://subversion.apache.org">Subversion官网</a></p>
 
 <h3 id="常用命令">常用命令</h3>
 
@@ -859,79 +941,6 @@ Certificate information:
                 </div>
                 <div class="read-all">
                     <a  href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-03-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#AS" title="Tag: AS" rel="tag">AS</a>&nbsp;
-    
-        <a href="/tag/#Gradle" title="Tag: Gradle" rel="tag">Gradle</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#apk拆分" id="markdown-toc-apk拆分">APK拆分</a></li>
-</ul>
-
-<p>APK拆分常用方法</p>
-
-<h4 id="apk拆分">APK拆分</h4>
-
-<p>通过 APK 拆分，您可以高效地基于屏幕密度或 ABI 创建多个 APK。 例如，您可以利用 APK 拆分创建单独的 hdpi 和 mdpi 版本应用，同时仍将它们视为一个变体，并允许其共享测试应用、javac、dx 和 ProGuard 设置。</p>
-
-<p>如需了解有关使用 APK 拆分的详细信息，请参阅 <a href="http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits">APK 拆分</a>.</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -963,6 +972,8 @@ Certificate information:
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
+                    
                         <li><a href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a></li>
                     
                         <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
@@ -980,8 +991,6 @@ Certificate information:
                         <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
                     
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
-                    
-                        <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
                 </ul>
             </div>
@@ -1008,7 +1017,7 @@ Certificate information:
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">11</span>
+                            <span class="badge">12</span>
                         </a>
                     </li>
                     
@@ -1293,7 +1302,7 @@ Certificate information:
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #666;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #777;">AI</a>
                     
                       
                       
@@ -1328,7 +1337,7 @@ Certificate information:
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #666;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #777;">GIS</a>
                     
                       
                       
@@ -1461,7 +1470,7 @@ Certificate information:
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 11pt; color: #777;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 10.5pt; color: #777;">TensorFlow</a>
                     
                       
                       
@@ -1518,6 +1527,20 @@ Certificate information:
                       
                       
                       <a href="/tag/#产品" style="font-size: 9pt; color: #999;">产品</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Jetpack" style="font-size: 9pt; color: #999;">Jetpack</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#DataBinding" style="font-size: 9pt; color: #999;">DataBinding</a>
                     
                 </div>
             </div>

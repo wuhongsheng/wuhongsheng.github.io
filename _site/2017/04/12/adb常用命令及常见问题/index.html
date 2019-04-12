@@ -239,12 +239,22 @@ export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* adb nodaemon server   查看adb 端口是否有占用    
-* lsof -i:5037 查看adb端口占用进程
-* rm -rf ~/.android 重置本地签名文件
-* killall adb 结束所有adb相关进程
-* adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity //测量应用的启动时间
-* adb pull sdcard1/PcmRecord D:/whs //将sd卡中的文件拉到指定目录
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看adb 端口是否有占用   
+adb nodaemon server   
+# 查看adb端口占用进程 
+lsof -i:5037 
+# 重置本地签名文件
+rm -rf ~/.android 
+# 结束所有adb相关进程
+killall adb 
+# 测量应用的启动时间
+adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity 
+# /将sd卡中的文件拉到指定目录
+adb pull sdcard1/PcmRecord D:/whs
+# 查看已安装应用列表
+adb shell pm list package
+# 清除应用数据
+adb shell pm clear com.iflytek.android.device
 </code></pre></div></div>
 
 <hr />
@@ -325,6 +335,30 @@ error: cannot connect to daemon
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="http://localhost:4000/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                         
                         <li class="relatedPost">
                             <a href="http://localhost:4000/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化
@@ -422,13 +456,6 @@ error: cannot connect to daemon
                         </li>
                         
                         
-                    
-                
-            
-        
-            
-            
-                
                     
                 
             

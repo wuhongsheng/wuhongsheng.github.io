@@ -161,7 +161,7 @@ Print: Entry, ":CFBundleIdentifier", Does Not Exist
 
 **解决方法**
 
-使用Xcode打卡项目运行解决问题
+使用Xcode打开项目运行解决问题
 
 **问题描述**
 

@@ -166,6 +166,116 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Java正则表达式</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-04-19
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Java" title="Category: Java" rel="category">Java</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Java" title="Tag: Java" rel="tag">Java</a>&nbsp;
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
+  <li><a href="#常用正则表达式" id="markdown-toc-常用正则表达式">常用正则表达式</a></li>
+  <li><a href="#实例" id="markdown-toc-实例">实例</a>    <ul>
+      <li><a href="#提取字符串中的数字并高亮显示" id="markdown-toc-提取字符串中的数字并高亮显示">提取字符串中的数字并高亮显示</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>正则表达式定义了字符串的模式。正则表达式可以用来搜索、编辑或处理文本。正则表达式并不仅限于某一种语言，但是在每种语言中有细微的差别。</p>
+
+<h3 id="基础知识">基础知识</h3>
+
+<p><a href="http://www.runoob.com/java/java-regular-expressions.html">菜鸟教程</a></p>
+
+<p><a href="https://github.com/zeeshanu/learn-regex/blob/master/README-cn.md">正则教程</a></p>
+
+<h3 id="常用正则表达式">常用正则表达式</h3>
+
+<ul>
+  <li>匹配数字  <code class="highlighter-rouge">\d+(\.\d+)?</code></li>
+  <li>匹配中文字符  <code class="highlighter-rouge">[\u4e00-\u9fa5]</code></li>
+  <li>匹配邮箱地址  <code class="highlighter-rouge">[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?</code></li>
+  <li>匹配网址  <code class="highlighter-rouge">[a-zA-z]+://[^\s]*</code></li>
+  <li>匹配国内电话号码  <code class="highlighter-rouge">\d{3}-\d{8}|\d{4}-\{7,8}</code></li>
+  <li>匹配QQ号  <code class="highlighter-rouge">[1-9][0-9]{4,}</code></li>
+  <li>匹配身份证号  <code class="highlighter-rouge">^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$</code></li>
+  <li>匹配手机号码  <code class="highlighter-rouge">[1][3587]\d{9}</code></li>
+</ul>
+
+<h3 id="实例">实例</h3>
+
+<h4 id="提取字符串中的数字并高亮显示">提取字符串中的数字并高亮显示</h4>
+<pre class="prettyprint lang-java">
+ String ss = "（一）现状：昆明市所辖14个县市区范围内，共有国有林场14个，其中市级2个，县区12个。从经营类型上划分，全市国有林场均属生态公益型，经营总面积87.32万亩，森林面积63.78万亩，森林总蓄积量为199.55万立方米，森林覆盖率73.05%；（二）目标：通过全面深化国有林场改革，切实做到“三增长、两建立、一确保”。即：资源增长、职工增收、林场增效；全面建立健全职工社会保障体系，尽快建立符合现代林业发展要求的国有林场管理体制和经营机制；确保林区社会和谐稳定";   
+        // 创建 Pattern 对象
+        Pattern pattern = Pattern.compile("\d+(\.\d+)?");
+        Matcher matcher = pattern.matcher(ss.trim());
+        String lasts="";
+        while (matcher.find()){
+            if(lasts.equals(matcher.group())){
+                ss=ss.replace(matcher.group(),"&lt;font color=#FF4081&gt;<b>"+ matcher.group()+ "</b>&lt;/font&gt;");
+
+            }else {
+                ss=ss.replaceFirst(matcher.group(),"&lt;font color=#FF4081&gt;<b>"+ matcher.group()+ "</b>&lt;/font&gt;");
+            }
+            lasts=matcher.group();
+        }
+</pre>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/04/19/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/04/19/%E5%A6%82%E4%BD%95%E5%9C%A8Android%E9%9D%A2%E8%AF%95%E4%B8%AD%E8%84%B1%E9%A2%96%E8%80%8C%E5%87%BA/">如何在Android面试中脱颖而出</a>
                 </h2>
                 <div class="label">
@@ -571,12 +681,22 @@ export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* adb nodaemon server   查看adb 端口是否有占用    
-* lsof -i:5037 查看adb端口占用进程
-* rm -rf ~/.android 重置本地签名文件
-* killall adb 结束所有adb相关进程
-* adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity //测量应用的启动时间
-* adb pull sdcard1/PcmRecord D:/whs //将sd卡中的文件拉到指定目录
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看adb 端口是否有占用   
+adb nodaemon server   
+# 查看adb端口占用进程 
+lsof -i:5037 
+# 重置本地签名文件
+rm -rf ~/.android 
+# 结束所有adb相关进程
+killall adb 
+# 测量应用的启动时间
+adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity 
+# /将sd卡中的文件拉到指定目录
+adb pull sdcard1/PcmRecord D:/whs
+# 查看已安装应用列表
+adb shell pm list package
+# 清除应用数据
+adb shell pm clear com.iflytek.android.device
 </code></pre></div></div>
 
 <hr />
@@ -705,9 +825,178 @@ error: cannot connect to daemon
                     </div>
                 </div>
                 <div class="excerpt">
-                    
+                    <ul id="markdown-toc">
+  <li><a href="#搭建过程" id="markdown-toc-搭建过程">搭建过程</a>    <ul>
+      <li><a href="#使用-github-pages-建站" id="markdown-toc-使用-github-pages-建站">使用 GitHub Pages 建站</a></li>
+      <li><a href="#安装ruby" id="markdown-toc-安装ruby">安装Ruby</a></li>
+      <li><a href="#安装rubygems" id="markdown-toc-安装rubygems">安装RubyGems</a></li>
+      <li><a href="#用rubygems安装jekyll" id="markdown-toc-用rubygems安装jekyll">用RubyGems安装Jekyll</a></li>
+      <li><a href="#创建博客" id="markdown-toc-创建博客">创建博客</a></li>
+    </ul>
+  </li>
+  <li><a href="#后续" id="markdown-toc-后续">后续</a></li>
+  <li><a href="#jekyll常用命令" id="markdown-toc-jekyll常用命令">jekyll常用命令</a></li>
+  <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
+      <li><a href="#hitimeshitimes-loaderror" id="markdown-toc-hitimeshitimes-loaderror"><code class="highlighter-rouge">hitimes/hitimes (LoadError)</code></a></li>
+    </ul>
+  </li>
+</ul>
+
 <p>一直以来都想搭建一个自己的博客，之前用过博客园的系统，感觉内容排版布局比较麻烦。后来在Github上看到有人使用jeklly,于是选择了在Github上用jekyll搭建博客。</p>
 
+<h2 id="搭建过程">搭建过程</h2>
+
+<p>在jekyll的官网上 <a href="http://jekyllrb.com/">http://jekyllrb.com/</a> 其实已经说得比较明白了，我在这里还是简单的说一下吧。我用的是Mac系统。  <br />
+主要环节有：GitHub Pages建站，安装Ruby,安装RubyGems,不过最新的Mac系统已帮我们完成这两步，安装jekyll，安装代码高亮插件，安装node.js</p>
+
+<h3 id="使用-github-pages-建站">使用 GitHub Pages 建站</h3>
+
+<p>第一步，登陆GitHub，新建一个repository,命名为你的用户名+github.io。如我的用户名为wuhongsheng，所以 repository命名为wuhongsheng.github.io，如下图,由于我已经创建过该仓库，所以会有警告。</p>
+
+<p><img src="https://github.com/wuhongsheng/wuhongsheng.github.io/blob/master/_site/images/2017-04-04-1%20.png?raw=true" alt="" /></p>
+
+<h3 id="安装ruby">安装Ruby</h3>
+
+<p>ruby官网下载安装：<a href="https://www.ruby-lang.org/en/downloads/">https://www.ruby-lang.org/en/downloads/</a></p>
+
+<p>安装完成后配置环境变量</p>
+
+<p>在命令提示符中，得到ruby版本号，如下图，即安装成功</p>
+
+<p><img src="http://ww4.sinaimg.cn/large/7011d6cfjw1f2ue0e393vj20cu00t748.jpg" alt="" /></p>
+
+<h3 id="安装rubygems">安装RubyGems</h3>
+
+<p>官网下载 <a href="http://rubygems.org/pages/download">http://rubygems.org/pages/download</a> rubygems-2.4.5.zip</p>
+
+<p>cd到RubyGems目录</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/7011d6cfjw1f2ue1l2yscj20gk02amxj.jpg" alt="" /></p>
+
+<p>执行安装</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/7011d6cfjw1f2ue1w8eqnj20bx00hglg.jpg" alt="" /></p>
+
+<h3 id="用rubygems安装jekyll">用RubyGems安装Jekyll</h3>
+
+<p>执行下面的语句安装</p>
+
+<p><img src="http://ww4.sinaimg.cn/large/7011d6cfjw1f2ue2g2p3uj207x00ft8j.jpg" alt="" /></p>
+
+<p>安装结束画面</p>
+
+<p><img src="http://ww4.sinaimg.cn/large/7011d6cfjw1f2ue32drwhj20hv09xq5m.jpg" alt="" /></p>
+
+<p>至此jekyll就已经安装完毕了，后续就是个性化的自己设定了。</p>
+
+<h3 id="创建博客">创建博客</h3>
+
+<p>在d盘新建一个工作区jekyllWorkspace</p>
+
+<p>cd到jekyllWorkspace</p>
+
+<p>执行jekyll new name创建新的工作区</p>
+
+<p><img src="http://ww3.sinaimg.cn/large/7011d6cfjw1f2ue3lt31nj20cj02nt8u.jpg" alt="" /></p>
+
+<p>文件结构如下：</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/7011d6cfjw1f2ue3ujsybj20ek06wabh.jpg" alt="" /></p>
+
+<p>cd到博客文件夹，开启服务器</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/7011d6cfjw1f2ue47y9lgj20ao00f0sl.jpg" alt="" /></p>
+
+<p>watch为了检测文件夹内的变化，即修改后不需要重新启动jekyll</p>
+
+<p>我的环境下启动报错(你的可能没有)，再安装yajl-ruby和rouge</p>
+
+<p><img src="http://ww4.sinaimg.cn/large/7011d6cfjw1f2ue4nelnxj20dd077q49.jpg" alt="" /></p>
+
+<p>再次启动服务器成功</p>
+
+<p><img src="http://ww4.sinaimg.cn/large/7011d6cfjw1f2ue4v42koj20g505bdgy.jpg" alt="" /></p>
+
+<p>访问 http://localhost:4000/</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/7011d6cfjw1f2ue56ckwoj20je0eumz3.jpg" alt="" /></p>
+
+<p>详细文章页面</p>
+
+<p><img src="http://ww2.sinaimg.cn/large/7011d6cfjw1f2ue5f3j9cj20je0gyq7a.jpg" alt="" /></p>
+
+<h2 id="后续">后续</h2>
+
+<ul>
+  <li>整个安装过程参考了jekyll官网，注意jekyll还有一个简体中文官网，不过比较坑（我就被坑了），有些内容没有翻译过来，有可能会走弯路，建议如果想看中文的相关资料，也要中英对照着阅读。<a href="http://jekyllcn.com">jekyll中文网 http://jekyllcn.com</a>, <a href="http://jekyllrb.com">jekyll英文网 http://jekyllrb.com</a></li>
+  <li>jekyll中的css是用sass写的，当然直接在<code class="highlighter-rouge">_sass/_layout.scss</code>中添加css也是可以的。</li>
+  <li>本文是用Markdown格式来写的，相关语法可参考： <a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版) http://wowubuntu.com/markdown/</a></li>
+  <li>按照本文的说明搭建完博客后，用<code class="highlighter-rouge">github Pages</code>托管就可以看到了。注意，在github上面好像不支持rouge，所以要push到github上时，我将配置文件_config.yml中的代码高亮改变为<code class="highlighter-rouge">highlighter: pygments</code>就可以了</li>
+  <li>博客默认是没有评论系统的，本文的评论系统使用了多说，详细安装办法可访问<a href="http://duoshuo.com/">多说官网 http://duoshuo.com/</a>，当然也可以使用<a href="http://changyan.sohu.com/">搜狐畅言 http://changyan.sohu.com/</a>作为评论系统。</li>
+  <li>也可以绑定自己的域名，如果没有域名，可以在<a href="http://www.godaddy.com/">godaddy http://www.godaddy.com/</a>上将域名放入购物车等待降价，买之。</li>
+  <li>祝各位新年快乐！</li>
+</ul>
+
+<h2 id="jekyll常用命令">jekyll常用命令</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Blog项目编译
+bundle exec jekyll s
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="可能出现的问题">可能出现的问题</h2>
+
+<h3 id="hitimeshitimes-loaderror"><code class="highlighter-rouge">hitimes/hitimes (LoadError)</code></h3>
+
+<p><strong>错误代码：</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)
+</code></pre></div></div>
+
+<p><strong>解决方法：</strong></p>
+
+<p>在stackoverflow上又一个很好的解决方法。<a href="http://stackoverflow.com/questions/28985481/hitimes-require-error-when-running-jekyll-serve-on-windows-8-1">hitimes require error when running jekyll serve on windows 8.1</a> 虽然上面的题主问的是 win 8.1 系统下的情况，但是同样适用于 win7。下面我简单翻译一下错误原因和解决方法。</p>
+
+<blockquote>
+  <p>可能是 Ruby 2.2 和 hitimes-1.2.2-x86-mingw32 中有一些 ABI 变化，少了一些相关的类库。</p>
+
+  <p>所以卸载 hitimes 并通过 <code class="highlighter-rouge">--platform ruby</code> 重装即可。代码如下：</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem uni hitimes
+**Remove ALL versions**
+gem ins hitimes -v 1.2.1 --platform ruby
+</code></pre></div></div>
+
+<blockquote>
+  <p>然后将自动重新编译 hitimes 并适用于 Ruby 2.2</p>
+</blockquote>
+
+<p>下面是我自己的卸载和安装过程：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes
+
+You have requested to uninstall the gem:
+        hitimes-1.2.2-x86-mingw32
+
+timers-4.0.1 depends on hitimes (&gt;= 0)
+If you remove this gem, these dependencies will not be met.
+Continue with Uninstall? [yN]  y
+Successfully uninstalled hitimes-1.2.2-x86-mingw32
+
+E:\GitWorkSpace\gaohaoyang.github.io&gt;gem ins hitimes -v 1.2.1 --platform ruby
+Fetching: hitimes-1.2.1.gem (100%)
+Temporarily enhancing PATH to include DevKit...
+Building native extensions.  This could take a while...
+Successfully installed hitimes-1.2.1
+Parsing documentation for hitimes-1.2.1
+Installing ri documentation for hitimes-1.2.1
+Done installing documentation for hitimes after 1 seconds
+1 gem installed
+</code></pre></div></div>
+
+<p>关于，<a href="https://rubygems.org/gems/hitimes/versions/1.2.2">hitimes</a> 是一个快速的高效的定时器解决方案库，详情可以去官网查看。</p>
 
                 </div>
                 <div class="read-all">
@@ -743,6 +1032,8 @@ error: cannot connect to daemon
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
+                    
                         <li><a href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a></li>
                     
                         <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
@@ -760,8 +1051,6 @@ error: cannot connect to daemon
                         <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
                     
                         <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
-                    
-                        <li><a href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a></li>
                     
                 </ul>
             </div>
@@ -788,7 +1077,7 @@ error: cannot connect to daemon
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">11</span>
+                            <span class="badge">12</span>
                         </a>
                     </li>
                     
@@ -1073,7 +1362,7 @@ error: cannot connect to daemon
                       
                       
                       
-                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #666;">AI</a>
+                      <a href="/tag/#AI" style="font-size: 11.5pt; color: #777;">AI</a>
                     
                       
                       
@@ -1108,7 +1397,7 @@ error: cannot connect to daemon
                       
                       
                       
-                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #666;">GIS</a>
+                      <a href="/tag/#GIS" style="font-size: 11.5pt; color: #777;">GIS</a>
                     
                       
                       
@@ -1241,7 +1530,7 @@ error: cannot connect to daemon
                       
                       
                       
-                      <a href="/tag/#TensorFlow" style="font-size: 11pt; color: #777;">TensorFlow</a>
+                      <a href="/tag/#TensorFlow" style="font-size: 10.5pt; color: #777;">TensorFlow</a>
                     
                       
                       
@@ -1298,6 +1587,20 @@ error: cannot connect to daemon
                       
                       
                       <a href="/tag/#产品" style="font-size: 9pt; color: #999;">产品</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Jetpack" style="font-size: 9pt; color: #999;">Jetpack</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#DataBinding" style="font-size: 9pt; color: #999;">DataBinding</a>
                     
                 </div>
             </div>

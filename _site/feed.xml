@@ -5,9 +5,44 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Oct 2018 08:56:57 +0800</pubDate>
-    <lastBuildDate>Fri, 12 Oct 2018 08:56:57 +0800</lastBuildDate>
-    <generator>Jekyll v3.7.4</generator>
+    <pubDate>Fri, 12 Apr 2019 12:58:11 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Apr 2019 12:58:11 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>Android DataBinding使用</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。
+
+&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
+
+&lt;strong&gt;错误描述&lt;/strong&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wantong.product/com.example.xuncha.ui.task.PatrolTaskDetialActivity}: java.lang.RuntimeException: view must have a tag
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;strong&gt;原因及解决方法&lt;/strong&gt;
+
+使用DataBinding的项目中存在同名布局文件，找到对应的生成文件查看具体错误原因
+
+</description>
+        <pubDate>Mon, 21 Jan 2019 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/</guid>
+        
+        <category>Android</category>
+        
+        <category>Jetpack</category>
+        
+        <category>DataBinding</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
     
       <item>
         <title>Android 性能优化</title>
@@ -449,7 +484,9 @@ ArcGISRuntime For Android 开发
 
 SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。
 
-&lt;h3 id=&quot;svn简介&quot;&gt;SVN简介&lt;/h3&gt;
+&lt;h3 id=&quot;svn简介&quot;&gt;&lt;a href=&quot;http://subversion.apache.org&quot;&gt;SVN&lt;/a&gt;简介&lt;/h3&gt;
+
+&lt;a href=&quot;http://subversion.apache.org&quot;&gt;Subversion官网&lt;/a&gt;
 
 &lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
 
@@ -554,6 +591,14 @@ allprojects {
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 然后重新构建项目就可以了
+
+&lt;ul&gt;
+  &lt;li&gt;Gradle常用命令&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 查看项目依赖
+gradle :app:dependencies
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.android.google.cn/studio/releases/gradle-plugin#revisions&quot;&gt;Android Gradle插件版本升级&lt;/a&gt;&lt;/li&gt;
@@ -872,66 +917,6 @@ public class LoginActivity extends BaseActivity {
         
         
         <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>华为手机刷机</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#解决思路&quot; id=&quot;markdown-toc-解决思路&quot;&gt;解决思路&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-最近老妈的手机出现系统损坏的情况，开机时重复开机动画，进入不了系统界面。初步判断时老妈误操作删除系统文件，或者手机中毒。
-本来不太想动手的，我就说这手机也用几年，该换了。老妈回了一句，还说你是做软件的，这个问题都解决不了，明天拿给修手机的看看。这句刺激我了，于是动手解决问题，花了两个小时左右。最后在这里记录一下解决问题的经过。
-
-&lt;h3 id=&quot;解决思路&quot;&gt;解决思路&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;双清&lt;/li&gt;
-&lt;/ul&gt;
-
-百度一下，进入手机Recovery模式(同时按住电源键和音量’-‘3秒即可进入)，进行双清(清理系统缓存信息、清理用户数据)操作。
-尝试后问题依然无法解决
-
-&lt;ul&gt;
-  &lt;li&gt;求助官方售后&lt;/li&gt;
-&lt;/ul&gt;
-
-打电话到华为售后，售后说可以通过华为的手机助手客户端修复，我尝试了也没有解决问题。客户端提示没有合适的系统包。可能是手机系统版本比较老了。
-
-然后再次电话到售后，问能不能刷机，获知，华为手机要刷机需要先解锁，我们都知道华为的系统是基于Android系统改造的，厂商在底层系统加了锁，意味着没办法随意刷机。必须先解锁，解锁需要提供手机型号、IMEI、序列号、产品识别码。其中序列号和产品识别码在手机包装盒上有，或者在手机系统信息里查询。但我现在到哪去找N年前的手机包装盒啊，手机也打不开，所以这条路也走不通。
-
-&lt;ul&gt;
-  &lt;li&gt;刷机&lt;/li&gt;
-&lt;/ul&gt;
-
-手机方面的专业术语，是指通过一定的方法更改或替换手机中原本存在的一些语言、图片、铃声、软件或者操作系统。通俗来讲，刷机就是给手机重装系统。
-
-后来在网上查询了解，华为手机可以在不开机的情况通过SD卡强制升级系统。好，说了这么多，终于到正题了，重装系统，步骤如下：
-
-&lt;ol&gt;
-  &lt;li&gt;准备一张 microSD 卡。&lt;/li&gt;
-  &lt;li&gt;登录华为终端官网 consumer.huawei.com/cn，搜索“G750-T01”， 然后下载软件升级包。&lt;/li&gt;
-  &lt;li&gt;在 microSD 卡根目录下创建一个【dload】文件夹。&lt;/li&gt;
-  &lt;li&gt;将软件升级包中的“UPDATE.APP”拷贝到 microSD 卡【dload】文 件夹中。&lt;/li&gt;
-  &lt;li&gt;将 microSD 卡插入手机&lt;/li&gt;
-  &lt;li&gt;断开手机跟电脑或其它设备(如充电器)的连接，并关机。&lt;/li&gt;
-  &lt;li&gt;同时按住音量上下键，然后按电源键。&lt;/li&gt;
-  &lt;li&gt;开机画面出来之后，放开电源键，继续按住音量上下键，直到进入升级界面后再松开音量上下键。
-整个升级过程大约需要 3 分钟。在升级过程中，请不要取出电池，建议您最好不要进行任何操作，静静等待。&lt;/li&gt;
-&lt;/ol&gt;
-
-等待几分钟后系统安装完成，手机重启，成功进入开机界面。大功告成！
-
-</description>
-        <pubDate>Sat, 06 Jan 2018 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/</guid>
-        
-        <category>技能</category>
-        
-        
-        <category>刷机</category>
         
       </item>
     

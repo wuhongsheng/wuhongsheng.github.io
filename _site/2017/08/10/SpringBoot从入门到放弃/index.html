@@ -331,7 +331,7 @@ java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2
 </ul>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
-<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps <span class="nt">-ef</span> | <span class="nb">grep </span>yourapp.jar | <span class="nb">grep</span> <span class="nt">-v</span> <span class="nb">grep</span> | awk <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
+<span class="nv">PID</span><span class="o">=</span><span class="k">$(</span>ps <span class="nt">-ef</span> | <span class="nb">grep </span>yourapp.jar | <span class="nb">grep</span> <span class="nt">-v</span> <span class="nb">grep</span> | <span class="nb">awk</span> <span class="s1">'{ print $2 }'</span><span class="k">)</span>  
 <span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$PID</span><span class="s2">"</span> <span class="o">]</span>  
 <span class="k">then  
     </span><span class="nb">echo </span>Application is already stopped  
@@ -347,7 +347,7 @@ java -jar tserver-scly_0.0.1.jar&gt;log\batchLog%date:~0,4%%date:~5,2%%date:~8,2
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c">#!/bin/bash  </span>
-nohup java <span class="nt">-jar</span> yourapp.jar <span class="nt">--server</span>.port<span class="o">=</span>8888 &amp;  
+<span class="nb">nohup </span>java <span class="nt">-jar</span> yourapp.jar <span class="nt">--server</span>.port<span class="o">=</span>8888 &amp;  
 </code></pre></div></div>
 
 <ul>
@@ -398,6 +398,21 @@ nohup java <span class="nt">-jar</span> yourapp.jar <span class="nt">--server</s
                     
                 
             
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -473,13 +488,6 @@ nohup java <span class="nt">-jar</span> yourapp.jar <span class="nt">--server</s
                 
                     
                 
-            
-                
-                    
-                
-            
-        
-            
             
                 
                     

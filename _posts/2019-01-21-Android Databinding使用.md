@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Android DataBinding使用"
+date:   2019-01-21 08:14:54
+categories: Android
+tags:  Android Jetpack DataBinding
+author: WHS
+---
+
+* content
+{:toc}
+
+数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。
+
+
+
+
+
+
+### 常见问题
+
+**错误描述**
+
+```
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wantong.product/com.example.xuncha.ui.task.PatrolTaskDetialActivity}: java.lang.RuntimeException: view must have a tag
+```
+
+**原因及解决方法**
+
+使用DataBinding的项目中存在同名布局文件，找到对应的生成文件查看具体错误原因
+
+

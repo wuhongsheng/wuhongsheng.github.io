@@ -51,6 +51,13 @@ allprojects {
 
 然后重新构建项目就可以了
 
+* Gradle常用命令
+
+```
+# 查看项目依赖
+gradle :app:dependencies
+```
+
 
 * [Android Gradle插件版本升级](https://developer.android.google.cn/studio/releases/gradle-plugin#revisions)
 
