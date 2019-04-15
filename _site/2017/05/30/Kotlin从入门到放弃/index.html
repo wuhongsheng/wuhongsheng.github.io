@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Kotlin 从入门到放弃</title>
-    <meta name="description" content="  优点  基本语法  参考资料  遇到的问题Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaScript源代码。它主要是由俄罗斯圣彼得堡的JetBrains开发团队所发展出来的编程语言，其名称来自于圣彼得堡附近的科特林岛。[3]2012年1月，著名期刊《Dr. Dobb’s...">
+    <meta name="description" content="  优点  基本语法(与Java比较)          常量和变量      空判断      for循环      更灵活的case语句      带返回值的方法        缺点  未来的发展  参考资料  遇到的问题Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaS...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -215,7 +215,16 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
   <li><a href="#优点" id="markdown-toc-优点">优点</a></li>
-  <li><a href="#基本语法" id="markdown-toc-基本语法">基本语法</a></li>
+  <li><a href="#基本语法与java比较" id="markdown-toc-基本语法与java比较">基本语法(与Java比较)</a>    <ul>
+      <li><a href="#常量和变量" id="markdown-toc-常量和变量">常量和变量</a></li>
+      <li><a href="#空判断" id="markdown-toc-空判断">空判断</a></li>
+      <li><a href="#for循环" id="markdown-toc-for循环">for循环</a></li>
+      <li><a href="#更灵活的case语句" id="markdown-toc-更灵活的case语句">更灵活的case语句</a></li>
+      <li><a href="#带返回值的方法" id="markdown-toc-带返回值的方法">带返回值的方法</a></li>
+    </ul>
+  </li>
+  <li><a href="#缺点" id="markdown-toc-缺点">缺点</a></li>
+  <li><a href="#未来的发展" id="markdown-toc-未来的发展">未来的发展</a></li>
   <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
   <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
 </ul>
@@ -226,40 +235,32 @@
 
 <p>需要注意，Kotlin没有关键字new。</p>
 
+<p>目前使用kotlin的公司和组织</p>
+
+<p>华米科技 Airbnb</p>
+
 <h3 id="优点">优点</h3>
 
 <ul>
-  <li>简洁</li>
+  <li>
+    <p>简洁</p>
+  </li>
+  <li>
+    <p>安全</p>
+  </li>
 </ul>
 
-<pre class="prettyprint lang-java">
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="nl">output:</span> <span class="n">String</span>
+<span class="n">output</span> <span class="o">=</span> <span class="kc">null</span>   <span class="c1">// Compilation error</span>
 
-data class Customer(val name: String, val email: String, val company: String)
+<span class="n">val</span> <span class="nl">name:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="kc">null</span>  <span class="c1">// Nullable type</span>
+<span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">length</span><span class="o">())</span>  <span class="c1">// Compilation error</span>
 
-val positiveNumbers = list.filter { it &gt; 0 }
-
-object ThisIsASingleton {
-    val companyName: String = "JetBrains"
-}
-
-</pre>
-
-<ul>
-  <li>安全</li>
-</ul>
-
-<pre class="prettyprint lang-java">
-	var output: String
-    output = null   // Compilation error
-
-    val name: String? = null    // Nullable type
-    println(name.length())      // Compilation error
-
-    fun calculateTotal(obj: Any) {
-    if (obj is Invoice)
-        obj.calculateTotal()
-    }
-</pre>
+<span class="n">fun</span> <span class="nf">calculateTotal</span><span class="o">(</span><span class="nl">obj:</span> <span class="n">Any</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="n">is</span> <span class="n">Invoice</span><span class="o">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="na">calculateTotal</span><span class="o">()</span>
+    <span class="o">}</span>
+</code></pre></div></div>
 
 <ul>
   <li>
@@ -270,21 +271,170 @@ object ThisIsASingleton {
   </li>
 </ul>
 
-<h3 id="基本语法">基本语法</h3>
+<h3 id="基本语法与java比较">基本语法(与Java比较)</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 常量和变量
-val a: Int = 1 // 定義a為`Int`類型的變量，其值為1
-val b = 2 // 自動檢測b為`Int`類型
+<h5 id="常量和变量">常量和变量</h5>
 
-var x = 5 // App 定義一個`Int`，值為5
-x = 1 // 修改值為1
+<ul>
+  <li>Java
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
+<span class="kd">final</span> <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Kotlin
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="nl">a:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 定義a為`Int`類型的變量，其值為1</span>
+<span class="n">val</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">// 自動檢測b為`Int`類型</span>
+<span class="kt">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">// App 定義一個`Int`，值為5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 修改值為1</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h5 id="空判断">空判断</h5>
+
+<ul>
+  <li>Java
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">text</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Kotlin
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="n">length</span> <span class="o">=</span> <span class="n">text</span><span class="o">?.</span><span class="na">length</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h5 id="for循环">for循环</h5>
+
+<ul>
+  <li>Java
+```java
+for (int i = 1; i &lt;= 10 ; i++) { }</li>
+</ul>
+
+<p>for (int i = 1; i &lt; 10 ; i++) { }</p>
+
+<p>for (int i = 10; i &gt;= 0 ; i–) { }</p>
+
+<p>for (int i = 1; i &lt;= 10 ; i+=2) { }</p>
+
+<p>for (int i = 10; i &gt;= 0 ; i-=2) { }</p>
+
+<p>for (String item : collection) { }</p>
+
+<p>for (Map.Entry&lt;String, String&gt; entry: map.entrySet()) { }</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+* Kotlin
+```java
+for (i in 1..10) { }
+
+for (i in 1 until 10) { }
+
+for (i in 10 downTo 0) { }
+
+for (i in 1..10 step 2) { }
+
+for (i in 10 downTo 0 step 2) { }
+
+for (item in collection) { }
+
+for ((key, value) in map) { }
 </code></pre></div></div>
+
+<h5 id="更灵活的case语句">更灵活的case语句</h5>
+
+<ul>
+  <li>Java
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="c1">// some score;</span>
+<span class="n">String</span> <span class="n">grade</span><span class="o">;</span>
+<span class="k">switch</span> <span class="o">(</span><span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="mi">10</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
+      <span class="n">grade</span> <span class="o">=</span> <span class="s">"Excellent"</span><span class="o">;</span>
+      <span class="k">break</span><span class="o">;</span>
+  <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+      <span class="n">grade</span> <span class="o">=</span> <span class="s">"Good"</span><span class="o">;</span>
+      <span class="k">break</span><span class="o">;</span>
+  <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+      <span class="n">grade</span> <span class="o">=</span> <span class="s">"OK"</span><span class="o">;</span>
+      <span class="k">break</span><span class="o">;</span>
+  <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+      <span class="n">grade</span> <span class="o">=</span> <span class="s">"Fail"</span><span class="o">;</span>
+      <span class="k">break</span><span class="o">;</span>
+  <span class="k">default</span><span class="o">:</span>
+      <span class="n">grade</span> <span class="o">=</span> <span class="s">"Fail"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Kotlin
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">score</span> <span class="o">=</span> <span class="c1">// some score</span>
+<span class="kt">var</span> <span class="n">grade</span> <span class="o">=</span> <span class="n">when</span> <span class="o">(</span><span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+  <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span> <span class="o">-&gt;</span> <span class="s">"Excellent"</span>
+  <span class="n">in</span> <span class="mi">6</span><span class="o">..</span><span class="mi">8</span> <span class="o">-&gt;</span> <span class="s">"Good"</span>
+  <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">-&gt;</span> <span class="s">"OK"</span>
+  <span class="n">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">3</span> <span class="o">-&gt;</span> <span class="s">"Fail"</span>
+  <span class="k">else</span> <span class="o">-&gt;</span> <span class="s">"Fail"</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h5 id="带返回值的方法">带返回值的方法</h5>
+
+<ul>
+  <li>Java
+```java
+int getScore() {
+ // logic here
+ return score;
+}</li>
+</ul>
+
+<p>int getScore(int value) {
+    // logic here
+    return 2 * value;
+}</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+* Kotlin
+```java
+fun getScore(): Int {
+   // logic here
+   return score
+}
+
+// as a single-expression function
+fun getScore(): Int = score
+
+
+fun getScore(value: Int): Int = 2 * value
+
+</code></pre></div></div>
+
+<h3 id="缺点">缺点</h3>
+
+<p>…….</p>
+
+<h3 id="未来的发展">未来的发展</h3>
+
+<ul>
+  <li>Kotlin / Native目前正在开发</li>
+  <li>跨平台发展，支持Mac、ios、web开发</li>
+</ul>
 
 <h3 id="参考资料">参考资料</h3>
 
 <ul>
   <li>
     <p><a href="http://kotlinlang.org/docs/tutorials/kotlin-android.html">Kotlin官网</a></p>
+  </li>
+  <li>
+    <p><a href="https://kotlinlang.org/docs/reference/comparison-to-java.html">与Java编程语言的比较</a></p>
   </li>
   <li>
     <p><a href="https://github.com/wangjiegulu/kotlin-for-android-developers-zh/blob/master/SUMMARY.md?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io">《Kotlin for android developers》中文翻译版</a></p>
