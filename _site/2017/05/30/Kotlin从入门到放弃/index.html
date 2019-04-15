@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Kotlin 从入门到放弃</title>
-    <meta name="description" content="  优点  基本语法(与Java比较)          常量和变量      空判断      for循环      更灵活的case语句      带返回值的方法        缺点  未来的发展  参考资料  遇到的问题Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaS...">
+    <meta name="description" content="  优点  缺点  基本语法(与Java比较)          常量和变量      空判断      for循环      更灵活的case语句      带返回值的方法        未来的发展  参考资料  遇到的问题Kotlin是一种在Java虚拟机上运行的静态类型编程语言，它也可以被编译成为JavaS...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -215,6 +215,7 @@
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
   <li><a href="#优点" id="markdown-toc-优点">优点</a></li>
+  <li><a href="#缺点" id="markdown-toc-缺点">缺点</a></li>
   <li><a href="#基本语法与java比较" id="markdown-toc-基本语法与java比较">基本语法(与Java比较)</a>    <ul>
       <li><a href="#常量和变量" id="markdown-toc-常量和变量">常量和变量</a></li>
       <li><a href="#空判断" id="markdown-toc-空判断">空判断</a></li>
@@ -223,7 +224,6 @@
       <li><a href="#带返回值的方法" id="markdown-toc-带返回值的方法">带返回值的方法</a></li>
     </ul>
   </li>
-  <li><a href="#缺点" id="markdown-toc-缺点">缺点</a></li>
   <li><a href="#未来的发展" id="markdown-toc-未来的发展">未来的发展</a></li>
   <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
   <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
@@ -271,75 +271,90 @@
   </li>
 </ul>
 
+<h3 id="缺点">缺点</h3>
+
+<p>…….</p>
+
 <h3 id="基本语法与java比较">基本语法(与Java比较)</h3>
 
 <h5 id="常量和变量">常量和变量</h5>
 
 <ul>
-  <li>Java
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
+  <li>Java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
 <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Kotlin
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="nl">a:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 定義a為`Int`類型的變量，其值為1</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Kotlin</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="nl">a:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 定義a為`Int`類型的變量，其值為1</span>
 <span class="n">val</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">// 自動檢測b為`Int`類型</span>
 <span class="kt">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">// App 定義一個`Int`，值為5</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 修改值為1</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+</code></pre></div></div>
 
 <h5 id="空判断">空判断</h5>
 
 <ul>
-  <li>Java
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">text</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-  <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Kotlin
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="n">length</span> <span class="o">=</span> <span class="n">text</span><span class="o">?.</span><span class="na">length</span>
-</code></pre></div>    </div>
-  </li>
+  <li>Java</li>
 </ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">text</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Kotlin</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="n">length</span> <span class="o">=</span> <span class="n">text</span><span class="o">?.</span><span class="na">length</span>
+</code></pre></div></div>
 
 <h5 id="for循环">for循环</h5>
 
 <ul>
-  <li>Java
-```java
-for (int i = 1; i &lt;= 10 ; i++) { }</li>
+  <li>Java</li>
 </ul>
 
-<p>for (int i = 1; i &lt; 10 ; i++) { }</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="o">}</span>
 
-<p>for (int i = 10; i &gt;= 0 ; i–) { }</p>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="o">}</span>
 
-<p>for (int i = 1; i &lt;= 10 ; i+=2) { }</p>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span> <span class="o">}</span>
 
-<p>for (int i = 10; i &gt;= 0 ; i-=2) { }</p>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="o">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">2</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 
-<p>for (String item : collection) { }</p>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">-=</span><span class="mi">2</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 
-<p>for (Map.Entry&lt;String, String&gt; entry: map.entrySet()) { }</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-* Kotlin
-```java
-for (i in 1..10) { }
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">item</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 
-for (i in 1 until 10) { }
+<span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nl">entry:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span> <span class="o">}</span>
 
-for (i in 10 downTo 0) { }
+</code></pre></div></div>
 
-for (i in 1..10 step 2) { }
+<ul>
+  <li>Kotlin</li>
+</ul>
 
-for (i in 10 downTo 0 step 2) { }
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 
-for (item in collection) { }
+<span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="mi">1</span> <span class="n">until</span> <span class="mi">10</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 
-for ((key, value) in map) { }
+<span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="mi">10</span> <span class="n">downTo</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="n">step</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="n">in</span> <span class="mi">10</span> <span class="n">downTo</span> <span class="mi">0</span> <span class="n">step</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">item</span> <span class="n">in</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+
+<span class="k">for</span> <span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="n">in</span> <span class="n">map</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+
 </code></pre></div></div>
 
 <h5 id="更灵活的case语句">更灵活的case语句</h5>
@@ -388,43 +403,44 @@ for ((key, value) in map) { }
 <h5 id="带返回值的方法">带返回值的方法</h5>
 
 <ul>
-  <li>Java
-```java
-int getScore() {
- // logic here
- return score;
-}</li>
+  <li>Java</li>
 </ul>
 
-<p>int getScore(int value) {
-    // logic here
-    return 2 * value;
-}</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-* Kotlin
-```java
-fun getScore(): Int {
-   // logic here
-   return score
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">getScore</span><span class="o">()</span> <span class="o">{</span>
+   <span class="c1">// logic here</span>
+   <span class="k">return</span> <span class="n">score</span><span class="o">;</span>
+<span class="o">}</span>
 
-// as a single-expression function
-fun getScore(): Int = score
-
-
-fun getScore(value: Int): Int = 2 * value
-
+<span class="kt">int</span> <span class="nf">getScore</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// logic here</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="缺点">缺点</h3>
+<ul>
+  <li>Kotlin</li>
+</ul>
 
-<p>…….</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">getScore</span><span class="o">():</span> <span class="n">Int</span> <span class="o">{</span>
+   <span class="c1">// logic here</span>
+   <span class="k">return</span> <span class="n">score</span>
+<span class="o">}</span>
+
+<span class="c1">// as a single-expression function</span>
+<span class="n">fun</span> <span class="nf">getScore</span><span class="o">():</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">score</span>
+
+
+<span class="n">fun</span> <span class="nf">getScore</span><span class="o">(</span><span class="nl">value:</span> <span class="n">Int</span><span class="o">):</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">value</span>
+
+</code></pre></div></div>
 
 <h3 id="未来的发展">未来的发展</h3>
 
 <ul>
   <li>Kotlin / Native目前正在开发</li>
   <li>跨平台发展，支持Mac、ios、web开发</li>
+  <li>游戏开发</li>
+  <li>科学计算</li>
 </ul>
 
 <h3 id="参考资料">参考资料</h3>
