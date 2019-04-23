@@ -2,7 +2,7 @@
 layout: post
 title:  "TensorFlow学习笔记"
 date:   2017-12-15 08:14:54
-categories: AI
+categories: AI TensorFlow
 tags: AI TensorFlow
 author: WHS
 ---
