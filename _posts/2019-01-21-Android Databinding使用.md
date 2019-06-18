@@ -10,7 +10,7 @@ author: WHS
 * content
 {:toc}
 
-数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。
+[数据绑定库](https://developer.android.google.cn/topic/libraries/data-binding/)是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。
 
 
 
