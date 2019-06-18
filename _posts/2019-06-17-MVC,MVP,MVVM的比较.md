@@ -39,6 +39,7 @@ MVVM是Model-View-ViewModel的简写. 它是有三个部分组成：Model、View
 ### 代码示例
 
 * MVVM
+
 ```java
 /**
  * @author whs
