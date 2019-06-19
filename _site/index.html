@@ -151,6 +151,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -163,6 +165,432 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2019-06-17
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#mvc" id="markdown-toc-mvc">MVC</a></li>
+  <li><a href="#mvp" id="markdown-toc-mvp">MVP</a></li>
+  <li><a href="#mvvm" id="markdown-toc-mvvm">MVVM</a></li>
+  <li><a href="#mvvm其实与mvp架构看起来很相似" id="markdown-toc-mvvm其实与mvp架构看起来很相似">MVVM其实与MVP架构看起来很相似</a></li>
+  <li><a href="#代码示例" id="markdown-toc-代码示例">代码示例</a></li>
+</ul>
+
+<p>Android本身被写成MVC，其中Activity或多或少地负责所有事情。对于可能足够的简单应用，但随着复杂性的增加，问题的数量和水平也会提高。
+现在有许多不同的架构方法，如MVP，FLUX，MVI，MVVM等，它们在解决上述问题方面证明是富有成效的。只要代码可维护，我们就可以使用任何方法，我们能够快速适应变化，一切运行良好，简而言之就是开发人员的快乐生活。</p>
+
+<h6 id="mvc">MVC</h6>
+<p>传统的Android App其实都是基于MVC的，Activity，Fragment相当于C,布局相当于V,数据逻辑相当于M
+随着业务的增长Controller里的代码会越来越臃肿，因为它不只要负责业务逻辑，还要控制View的展示。也就是说Activity、Fragment杂糅了Controller和View，耦合变大。并不能算作真正意义上的MVC。</p>
+
+<p><img src="http://www.jcodecraeer.com/uploads/20160414/1460565635729862.png" alt="" /></p>
+
+<pre><code class="language-mermaid">graph LR
+B(CONTROLLER) --&gt; C(MODEL)
+C(MODEL) --&gt; A(VIEW)
+A(VIEW) --&gt; C(MODEL)
+A(VIEW) --&gt; B(CONTROLLER)
+</code></pre>
+
+<h6 id="mvp">MVP</h6>
+<p>MVP架构其实可以说与MVC的架构还是有很大的差别的，数据逻辑相当于M，Activity（负责View的绘制以及与用户交互）相当于V ，View于Model间的交互则为P其实最明显的区别就是，MVC中是允许Model和View进行交互的，而MVP中很明显，Model与View之间的交互由Presenter完成。还有一点就是Presenter与View之间的交互是通过接口的</p>
+
+<p><img src="http://www.jcodecraeer.com/uploads/20160414/1460565637114968.png" alt="" /></p>
+
+<pre><code class="language-mermaid">graph LR
+A(VIEW)--&gt; B(PRESENTER)
+B(PRESENTER) --&gt; A(VIEW)
+B(PRESENTER) --&gt; C(MODEL)
+C(MODEL) --&gt; B(PRESENTER)
+</code></pre>
+
+<ul>
+  <li>缺点
+    <ol>
+      <li>紧耦合
+对于每个活动/片段（视图），我们需要一个Presenter。这是一个硬约束规则。Presenter保存对Activity和Activity的引用保留对presenter的引用。1：1的关系，这就是最大问题所在。
+随着视图复杂性的增加，这种关系的维护和处理也会增加。
+这最终会导致我们之前遇到的同样问题，因为设计的快速变化，我们实际上需要修改整个关系。
+从我们的最终目标“以分布式方式构建事物”中挑选一个声明，为了实现它并避免这种紧密关系，ViewModels被引入。
+ViewModels是与逻辑/模型层交互的简单类，只是暴露状态/数据，实际上不知道该数据将由谁或如何使用。只有View（Activity）保存对ViewModel的引用，反之亦然，这解决了我们的紧耦合问题。单个视图可以保存对多个ViewModel的引用。
+即使对于复杂的视图，我们实际上可以在同一层次结构中具有不同的ViewModel</li>
+      <li>可测性
+由于Presenters很难绑定视图，因此编写单元测试变得有点困难，因为View具有依赖性。
+ViewModels甚至更加单元测试友好，因为它们只是暴露状态，因此可以独立测试而无需测试数据的消耗方式，简而言之，View不依赖于View。
+这是两个主要的选择，使选择明确。可能有更多或可能没有。以下评论正在等待!! 😄</li>
+    </ol>
+  </li>
+</ul>
+
+<h6 id="mvvm">MVVM</h6>
+<p>MVVM是Model-View-ViewModel的简写. 它是有三个部分组成：Model、View、ViewModel。Model：数据模型层。包含业务逻辑和校验逻辑,View：屏幕上显示的UI界面（layout、views）,ViewModel：View和Model之间的链接桥梁，处理视图逻辑。
+当View有用户输入后，ViewModel通知Model更新数据，同理Model数据更新后，ViewModel通知View更新。</p>
+
+<pre><code class="language-mermaid">graph LR
+A(VIEW) --binding--- B(VIEWMODEL)
+B(VIEWMODEL) --&gt; C(MODEL)
+C(MODEL) --&gt; B(VIEWMODEL)
+</code></pre>
+
+<h3 id="mvvm其实与mvp架构看起来很相似">MVVM其实与MVP架构看起来很相似</h3>
+<p><img src="https://upload-images.jianshu.io/upload_images/1605450-40b99f4f565fe170.png?imageMogr2/auto-orient/" alt="" /></p>
+
+<h3 id="代码示例">代码示例</h3>
+
+<ul>
+  <li>MVVM</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * @author whs
+ * @date 2019/3/29
+ * 清障救援
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RescueActivity</span> <span class="kd">extends</span> <span class="n">WtActivity</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">ActivityRescueBinding</span> <span class="n">mBinding</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">RescueViewModel</span> <span class="n">mViewModel</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">mBinding</span> <span class="o">=</span> <span class="n">DataBindingUtil</span><span class="o">.</span><span class="na">setContentView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_rescue</span><span class="o">);</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">toolbar</span><span class="o">.</span><span class="na">setNavigationOnClickListener</span><span class="o">(</span><span class="n">view</span> <span class="o">-&gt;</span> <span class="n">onBackPressed</span><span class="o">());</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">tvTitle</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">rescue</span><span class="o">));</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setImageResource</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">mipmap</span><span class="o">.</span><span class="na">orders</span><span class="o">);</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">mViewModel</span><span class="o">.</span><span class="na">getTaskNum</span><span class="o">().</span><span class="na">getValue</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">RescueActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">ClearingActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">mViewModel</span><span class="o">.</span><span class="na">message</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"暂无新任务"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">mViewModel</span> <span class="o">=</span> <span class="n">ViewModelProviders</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">RescueViewModel</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+        <span class="n">init</span><span class="o">(</span><span class="n">mViewModel</span><span class="o">);</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">setViewModel</span><span class="o">(</span><span class="n">mViewModel</span><span class="o">);</span>
+        <span class="n">mViewModel</span><span class="o">.</span><span class="na">getTaskNum</span><span class="o">().</span><span class="na">observe</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">taskNum</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">mBinding</span><span class="o">.</span><span class="na">setViewModel</span><span class="o">(</span><span class="n">mViewModel</span><span class="o">);</span>
+        <span class="o">});</span>
+        <span class="n">mViewModel</span><span class="o">.</span><span class="na">loadClearTaskNum</span><span class="o">();</span>
+
+        <span class="c1">// Check that the activity is using the layout version with</span>
+        <span class="c1">// the fragment_container FrameLayout</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">mBinding</span><span class="o">.</span><span class="na">flContent</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// However, if we're being restored from a previous state,</span>
+            <span class="c1">// then we don't need to do anything and should return or else</span>
+            <span class="c1">// we could end up with overlapping fragments.</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">savedInstanceState</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">fl_content</span><span class="o">,</span> <span class="n">TaskFragment</span><span class="o">.</span><span class="na">getFragment</span><span class="o">()).</span><span class="na">commit</span><span class="o">();</span>
+
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+
+
+<span class="cm">/**
+ * Created by whs on 2019/3/27
+ * 清障救援
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RescueViewModel</span> <span class="kd">extends</span> <span class="n">BaseViewModel</span> <span class="o">{</span>
+
+    <span class="cm">/**请障救援任务数量*/</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">MutableLiveData</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">mTaskNum</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MutableLiveData</span><span class="o">&lt;&gt;();</span>
+
+    <span class="kd">public</span> <span class="n">MutableLiveData</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">getTaskNum</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">mTaskNum</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 获取清障救援任务数
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadClearTaskNum</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">webApi</span><span class="o">.</span><span class="na">getClearRescueTaskNum</span><span class="o">().</span><span class="na">enqueue</span><span class="o">(</span><span class="k">new</span> <span class="n">BaseCallBack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"救援任务"</span><span class="o">,</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">Integer</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mTaskNum</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;layout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;data&gt;</span>
+        <span class="nt">&lt;import</span> <span class="na">type=</span><span class="s">"android.view.View"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;import</span> <span class="na">type=</span><span class="s">"androidx.core.content.ContextCompat"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;variable</span>
+            <span class="na">name=</span><span class="s">"viewModel"</span>
+            <span class="na">type=</span><span class="s">"com.wtkj.baseproduct.ui.rescue.RescueViewModel"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/data&gt;</span>
+
+    <span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;androidx.appcompat.widget.Toolbar</span>
+            <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span>
+            <span class="na">android:id=</span><span class="s">"@+id/toolbar"</span>
+            <span class="na">android:gravity=</span><span class="s">"center"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">app:navigationIcon=</span><span class="s">"@drawable/ic_back"</span>
+            <span class="na">android:layout_height=</span><span class="s">"?attr/actionBarSize"</span>
+            <span class="na">android:background=</span><span class="s">"@color/header_black"</span>
+            <span class="na">app:popupTheme=</span><span class="s">"@style/AppTheme.PopupOverlay"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;TextView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/tv_title"</span>
+                <span class="na">android:textColor=</span><span class="s">"@color/white"</span>
+                <span class="na">android:layout_gravity=</span><span class="s">"center"</span>
+                <span class="na">android:textSize=</span><span class="s">"20sp"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;TextView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/tv_right"</span>
+                <span class="na">android:textColor=</span><span class="s">"@color/colorAccent"</span>
+                <span class="na">android:layout_gravity=</span><span class="s">"right"</span>
+                <span class="na">android:layout_marginEnd=</span><span class="s">"10dp"</span>
+                <span class="na">android:textSize=</span><span class="s">"12sp"</span>
+                <span class="na">android:text=</span><span class="s">"@string/title"</span>
+                <span class="na">android:visibility=</span><span class="s">"gone"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;ImageView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/iv_right"</span>
+                <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+                <span class="na">android:layout_height=</span><span class="s">"?attr/actionBarSize"</span>
+                <span class="na">android:layout_gravity=</span><span class="s">"right"</span>
+                <span class="na">android:gravity=</span><span class="s">"center"</span>
+                <span class="na">android:padding=</span><span class="s">"12dp"</span>
+                <span class="na">android:visibility=</span><span class="s">"visible"</span>
+                <span class="na">android:layout_marginEnd=</span><span class="s">"8dp"</span>
+                <span class="na">android:src=</span><span class="s">"@mipmap/orders"</span>
+                <span class="nt">&gt;</span>
+            <span class="nt">&lt;/ImageView&gt;</span>
+        <span class="nt">&lt;/androidx.appcompat.widget.Toolbar&gt;</span>
+        <span class="nt">&lt;TextView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/tv_notify"</span>
+            <span class="na">android:layout_width=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"20dp"</span>
+            <span class="na">android:layout_gravity=</span><span class="s">"right"</span>
+            <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+            <span class="na">android:background=</span><span class="s">"@drawable/background_notify_circle_red"</span>
+            <span class="na">android:gravity=</span><span class="s">"center"</span>
+            <span class="na">android:textColor=</span><span class="s">"@color/white"</span>
+            <span class="na">android:textSize=</span><span class="s">"12sp"</span>
+            <span class="na">android:visibility=</span><span class="s">"@{viewModel.taskNum &gt; 0 ? View.VISIBLE : View.GONE}"</span>
+            <span class="na">android:text=</span><span class="s">"@{String.valueOf(viewModel.taskNum)}"</span>
+            <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">"parent"</span>
+            <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;FrameLayout</span>
+            <span class="na">android:id=</span><span class="s">"@+id/fl_content"</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"0dp"</span>
+            <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+            <span class="na">app:layout_constraintTop_toBottomOf=</span><span class="s">"@+id/toolbar"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+<span class="nt">&lt;/layout&gt;</span>
+</code></pre></div></div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Linux使用从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2019-04-23
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Linux" title="Category: Linux" rel="category">Linux</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Linux" title="Tag: Linux" rel="tag">Linux</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+  <li><a href="#环境部署" id="markdown-toc-环境部署">环境部署</a>    <ul>
+      <li><a href="#配置java环境" id="markdown-toc-配置java环境">配置Java环境</a></li>
+      <li><a href="#linux下安装gradle" id="markdown-toc-linux下安装gradle">Linux下安装Gradle</a></li>
+      <li><a href="#安装android-sdk" id="markdown-toc-安装android-sdk">安装Android SDK</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="常用命令">常用命令</h2>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 远程连接服务器</span>
+ssh <span class="nt">-X</span> username@192.168.1.233
+password
+<span class="c"># 文件下载</span>
+wget 下载地址
+wget <span class="nt">-P</span> 指定目录 下载地址
+
+<span class="c"># 解压文件</span>
+<span class="c"># 解压zip</span>
+unzip <span class="nt">-d</span> /opt/gradle gradle-4.6-bin.zip 
+<span class="c"># 解压tgz</span>
+<span class="nb">tar   </span>zxvf   /opt/dev/android-sdk_r24.4.1-linux.tgz  <span class="nt">-C</span> /usr//local/AndroidSDK
+<span class="c"># tar.gz文件</span>
+<span class="nb">tar</span> <span class="nt">-xvf</span> 文件路径
+</code></pre></div></div>
+
+<h2 id="环境部署">环境部署</h2>
+
+<h4 id="配置java环境">配置Java环境</h4>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+ <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>:
+</code></pre></div></div>
+<h4 id="linux下安装gradle">Linux下安装Gradle</h4>
+<ol>
+  <li>下载
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://services.gradle.org/distributions/gradle-5.1.1-all.zip
+</code></pre></div>    </div>
+  </li>
+  <li>解压
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip <span class="nt">-d</span> /opt/gradle gradle-4.6-bin.zip 
+</code></pre></div>    </div>
+  </li>
+  <li>环境变量配置
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 打开配置文件</span>
+vim /etc/profile
+<span class="c"># 配置环境变量</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/gradle/gradle-5.1.1/bin
+<span class="c"># 保存退出后刷新配置文件</span>
+<span class="nb">source</span> /etc/profile
+<span class="c"># 检验安装结果</span>
+gradle <span class="nt">--version</span>
+</code></pre></div>    </div>
+    <h4 id="安装android-sdk">安装Android SDK</h4>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">ANDROID_HOME</span><span class="o">=</span>/usr/local/AndroidSDK/android-sdk-linux
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ANDROID_HOME</span>/tools
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ANDROID_HOME</span>/platform-tools
+<span class="c"># 检验安装结果</span>
+android <span class="nt">-h</span>
+<span class="c"># 查看可用组建</span>
+android list sdk <span class="nt">--all</span>
+<span class="c"># 下载需要的组件, 注意--all 这个参数一定要加上, 否则后面filter里的序号不起作用, 例如我用的是</span>
+android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <span class="nt">--filter</span> 1,2,4,5,47
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -223,7 +651,7 @@
   <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
 </ul>
 
-<p>数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。</p>
+<p><a href="https://developer.android.google.cn/topic/libraries/data-binding/">数据绑定库</a>是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。</p>
 
 <h3 id="常见问题">常见问题</h3>
 
@@ -769,182 +1197,6 @@ tulips (score = 0.00032)
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-05-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-</ul>
-
-<p>ArcGISRuntime For Android 开发</p>
-
-<h5 id="常见问题">常见问题</h5>
-
-<ol>
-  <li>编辑空间数据</li>
-</ol>
-
-<ul>
-  <li>问题描述</li>
-</ul>
-
-<p>添加空间数据时出现一下问题</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
-</code></pre></div></div>
-
-<ul>
-  <li>问题原因及解决方法</li>
-</ul>
-
-<p>可能是新增空间数据字段类型和地图服务图层字段类型不匹配</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-04-20
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#代码版本控制" title="Category: 代码版本控制" rel="category">代码版本控制</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#SVN" title="Tag: SVN" rel="tag">SVN</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#svn简介" id="markdown-toc-svn简介">SVN简介</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-</ul>
-
-<p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。</p>
-
-<h3 id="svn简介"><a href="http://subversion.apache.org">SVN</a>简介</h3>
-
-<p><a href="http://subversion.apache.org">Subversion官网</a></p>
-
-<h3 id="常用命令">常用命令</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
-svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
-
-</code></pre></div></div>
-
-<p>第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error validating server certificate for 'https://172.17.1.8:443':  
- - The certificate is not issued by a trusted authority. Use the  
-   fingerprint to validate the certificate manually!  
- - The certificate hostname does not match.  
-Certificate information:  
- - Hostname: BJ-AD-FS.hyc-tec.net  
- - Valid: from Fri, 03 May 2013 01:18:50 GMT until Mon, 01 May 2023 01:18:50 GMT  
- - Issuer: BJ-AD-FS.hyc-tec.net  
- - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
-(R)eject, accept (t)emporarily or accept (p)ermanently?   
-</code></pre></div></div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -955,10 +1207,10 @@ Certificate information:
             <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
             <span class="previous disable"><i class="fa fa-angle-left"></i></span>
           
-          <span class="page_number ">1/7</span>
+          <span class="page_number ">1/8</span>
           
             <a href="/page2" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page8" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -971,6 +1223,10 @@ Certificate information:
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a></li>
+                    
+                        <li><a href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Linux使用从入门到放弃</a></li>
                     
                         <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
                     
@@ -987,10 +1243,6 @@ Certificate information:
                         <li><a href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a></li>
                     
                         <li><a href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a></li>
-                    
-                        <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
-                    
-                        <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                 </ul>
             </div>
@@ -1017,7 +1269,7 @@ Certificate information:
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">12</span>
+                            <span class="badge">13</span>
                         </a>
                     </li>
                     
@@ -1170,7 +1422,7 @@ Certificate information:
                             <span class="name">
                                 Linux
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1180,6 +1432,15 @@ Certificate information:
                                 DB
                             </span>
                             <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#TensorFlow" class="categories-list-item" cate="TensorFlow">
+                            <span class="name">
+                                TensorFlow
+                            </span>
+                            <span class="badge">1</span>
                         </a>
                     </li>
                     
@@ -1442,7 +1703,7 @@ Certificate information:
                       
                       
                       
-                      <a href="/tag/#Linux" style="font-size: 9pt; color: #999;">Linux</a>
+                      <a href="/tag/#Linux" style="font-size: 10pt; color: #888;">Linux</a>
                     
                       
                       

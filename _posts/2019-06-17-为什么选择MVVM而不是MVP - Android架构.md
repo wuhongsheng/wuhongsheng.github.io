@@ -21,18 +21,20 @@ Android本身被写成MVC，其中Activity或多或少地负责所有事情。�
 传统的Android App其实都是基于MVC的，Activity，Fragment相当于C,布局相当于V,数据逻辑相当于M
 随着业务的增长Controller里的代码会越来越臃肿，因为它不只要负责业务逻辑，还要控制View的展示。也就是说Activity、Fragment杂糅了Controller和View，耦合变大。并不能算作真正意义上的MVC。
 
+![](http://www.jcodecraeer.com/uploads/20160414/1460565635729862.png)
 
-```mermaid
+``` mermaid
 graph LR
 B(CONTROLLER) --> C(MODEL)
 C(MODEL) --> A(VIEW)
 A(VIEW) --> C(MODEL)
-A(VIEW)--> B(CONTROLLER)
+A(VIEW) --> B(CONTROLLER)
 ```
 
 ###### MVP
 MVP架构其实可以说与MVC的架构还是有很大的差别的，数据逻辑相当于M，Activity（负责View的绘制以及与用户交互）相当于V ，View于Model间的交互则为P其实最明显的区别就是，MVC中是允许Model和View进行交互的，而MVP中很明显，Model与View之间的交互由Presenter完成。还有一点就是Presenter与View之间的交互是通过接口的
 
+![](http://www.jcodecraeer.com/uploads/20160414/1460565637114968.png)
 
 ```mermaid
 graph LR
@@ -50,7 +52,6 @@ C(MODEL) --> B(PRESENTER)
 从我们的最终目标“以分布式方式构建事物”中挑选一个声明，为了实现它并避免这种紧密关系，ViewModels被引入。
 ViewModels是与逻辑/模型层交互的简单类，只是暴露状态/数据，实际上不知道该数据将由谁或如何使用。只有View（Activity）保存对ViewModel的引用，反之亦然，这解决了我们的紧耦合问题。单个视图可以保存对多个ViewModel的引用。
 即使对于复杂的视图，我们实际上可以在同一层次结构中具有不同的ViewModel
-
 2. 可测性
 由于Presenters很难绑定视图，因此编写单元测试变得有点困难，因为View具有依赖性。
 ViewModels甚至更加单元测试友好，因为它们只是暴露状态，因此可以独立测试而无需测试数据的消耗方式，简而言之，View不依赖于View。

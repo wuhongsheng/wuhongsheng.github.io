@@ -151,6 +151,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -163,6 +165,347 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python数据分析与展示从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Python" title="Category: Python" rel="category">Python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Python" title="Tag: Python" rel="tag">Python</a>&nbsp;
+    
+        <a href="/tag/#数据分析" title="Tag: 数据分析" rel="tag">数据分析</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#anaconda-ide基本使用" id="markdown-toc-anaconda-ide基本使用">Anaconda IDE基本使用</a></li>
+  <li><a href="#常用库介绍" id="markdown-toc-常用库介绍">常用库介绍</a></li>
+  <li><a href="#实战" id="markdown-toc-实战">实战</a></li>
+</ul>
+
+<p>Python数据分析与展示</p>
+
+<p><a href="https://pan.baidu.com/s/1hsrDKXI">参考资料</a></p>
+
+<p><a href="http://wuhongsheng.top/2017/06/15/Python%E7%88%AC%E8%99%AB%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Python爬虫从入门到放弃</a></p>
+
+<h3 id="anaconda-ide基本使用"><a href="https://www.continuum.io">Anaconda</a> IDE基本使用</h3>
+
+<ul>
+  <li>
+    <p><a href="https://www.continuum.io/downloads">下载</a>（分为命令行和图形化安装，两种安装方式没有区别）</p>
+  </li>
+  <li>
+    <p>安装（以命令行安装为例）：进入文件目录执行<code class="highlighter-rouge">bash Anaconda3-4.4.0-MacOSX-x86_64.sh</code> -&gt;然后就让你确认条款和安装目录(一直按回车键)</p>
+  </li>
+  <li>
+    <p>主要工具</p>
+
+    <p>** conda 包管理和环境管理工具</p>
+
+    <p>升级：<code class="highlighter-rouge">conda update conda</code></p>
+
+    <p>** Spyder 编程工具</p>
+
+    <p>** IPython 交互式编程环境</p>
+  </li>
+  <li>
+    <p>常用命令</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 更新
+conda update anaconda
+
+# 更新Qt
+conda update qt pyqt
+
+
+
+</code></pre></div></div>
+
+<h3 id="常用库介绍">常用库介绍</h3>
+
+<ul>
+  <li>
+    <p><a href="http://www.python-requests.org">NumPy</a>是一个开源的Python科学计算基础库</p>
+
+    <ul>
+      <li>
+        <p>主要特性：</p>
+
+        <ul>
+          <li>一个强大的N维数组对象 ndarray</li>
+          <li>广播功能函数</li>
+          <li>整合C/C++/Fortran代码的工具</li>
+          <li>线性代数、傅里叶变换、随机数生成等功能</li>
+        </ul>
+      </li>
+      <li>
+        <p>调用方式  <code class="highlighter-rouge">import numpy as np</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="">PIL</a></p>
+
+    <ul>
+      <li>
+        <p>安装</p>
+      </li>
+      <li>
+        <p>调用方式 <code class="highlighter-rouge">from PIL import Image</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="http://matplotlib.org/">matplotlib</a></p>
+
+    <ul>
+      <li>调用方式 <code class="highlighter-rouge">import matplotlib.pyplot  as plt</code></li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="http://pandas.pydata.org/">pandas</a></p>
+
+    <ul>
+      <li>调用方式 <code class="highlighter-rouge">import pandas  as pd</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="实战">实战</h3>
+
+<p>#####图像手绘处理</p>
+
+<ul>
+  <li>源码</li>
+</ul>
+
+<pre class="prettyprint lang-py">
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+# -*- coding: utf-8 -*-
+from PIL import Image
+import numpy as np
+a = np.asanyarray(Image.open('../Downloads/test1.jpg').convert('L')).astype('float')
+
+depth =10.                       # (0-100)                         
+grad = np.gradient(a)            # 去图像灰度的梯度值
+grad_x,grad_y=grad               # 分别取横纵图像梯度值
+grad_x=grad_x*depth/100.
+grad_y=grad_y*depth/100.
+A = np.sqrt(grad_x**2 + grad_y**2 +1.)
+uni_x =grad_x/A
+uni_y = grad_y/A
+uni_z = 1./A
+
+vec_el = np.pi/2.2                  # 光源的俯视角度，弧度值
+vec_az = np.pi/4.                   # 光源的方位角度，弧度值
+dx =np.cos(vec_el)*np.cos(vec_az)   # 光源对X轴对影像
+dy = np.cos(vec_el)*np.sin(vec_az)  # 光源对Y轴对影像
+dz = np.sin(vec_el)                 # 光源对Z轴对影像
+
+b =255*(dx*uni_x + dy*uni_y +dz*uni_z)  # 光源归一化
+b =b.clip(0,255)
+
+im =Image.fromarray(b.astype('uint8'))  # 重构图像
+im.save('../Downloads/test1.jpg')
+</pre>
+
+<ul>
+  <li>结果</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/15/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%B1%95%E7%A4%BA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Tomcat安装教程</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-06-14
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Tomcat" title="Category: Tomcat" rel="category">Tomcat</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Tomcat" title="Tag: Tomcat" rel="tag">Tomcat</a>&nbsp;
+    
+        <a href="/tag/#Mac" title="Tag: Mac" rel="tag">Mac</a>&nbsp;
+    
+        <a href="/tag/#服务器" title="Tag: 服务器" rel="tag">服务器</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#准备及安装" id="markdown-toc-准备及安装">准备及安装</a></li>
+  <li><a href="#mac环境" id="markdown-toc-mac环境">Mac环境</a></li>
+  <li><a href="#windows环境" id="markdown-toc-windows环境">Windows环境</a></li>
+  <li><a href="#遇到的问题" id="markdown-toc-遇到的问题">遇到的问题</a></li>
+</ul>
+
+<p>Tomcat安装及使用</p>
+
+<h3 id="准备及安装">准备及安装</h3>
+
+<ul>
+  <li><a href="http://tomcat.apache.org/download-90.cgi">官网下载</a></li>
+</ul>
+
+<p><img src="http://jingyan.baidu.com/album/2c8c281daa77aa0008252aff.html?picindex=4" alt="" /></p>
+
+<h3 id="mac环境">Mac环境</h3>
+
+<ul>
+  <li>解压并移动到系统目录下</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv  apache-tomcat-9.0.0.M21 /usr/local
+</code></pre></div></div>
+
+<ul>
+  <li>配置运行权限</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+chmod a+x startup.sh
+chmod +x catalina.sh
+</code></p>
+
+<ul>
+  <li>配置环境变量</li>
+</ul>
+
+<p><code class="highlighter-rouge">
+open -e .bash_profile
+export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
+</code></p>
+
+<ul>
+  <li>启动Tomcat</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>startup.sh  启动Tomcat
+shutdown.sh 关闭Tomcat
+</code></pre></div></div>
+
+<h3 id="windows环境">Windows环境</h3>
+
+<p>下载解压版到指定目录解压或者下载安装版安装到指定目录</p>
+
+<p>cd 到安装目录到bin下修改端口、启动即可</p>
+
+<h3 id="遇到的问题">遇到的问题</h3>
+
+<p><strong>问题描述</strong></p>
+
+<p>startup之后一闪而过服务端没启动</p>
+
+<p><strong>解决办法</strong></p>
+
+<p>修复配置文件打印log,配置一定的内存</p>
+
+<ul>
+  <li>进入Tomcat根目录-&gt;bin-&gt;catalina修改</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/06/14/Tomcat%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -836,157 +1179,6 @@ dependencies {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/10/IOS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">IOS开发从入门到放弃</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#IOS" title="Category: IOS" rel="category">IOS</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#IOS" title="Tag: IOS" rel="tag">IOS</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#开发环境" id="markdown-toc-开发环境">开发环境</a></li>
-</ul>
-
-<p>IOS开发从入门到放弃</p>
-
-<h3 id="开发环境">开发环境</h3>
-
-<ul>
-  <li>Xcode安装</li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/10/IOS%E5%BC%80%E5%8F%91%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/">智能硬件学习</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-05-10
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#智能硬件" title="Category: 智能硬件" rel="category">智能硬件</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#智能硬件" title="Tag: 智能硬件" rel="tag">智能硬件</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#相关网站" id="markdown-toc-相关网站">相关网站</a></li>
-</ul>
-
-<p>智能硬件学习</p>
-
-<h3 id="相关网站">相关网站</h3>
-
-<ul>
-  <li>
-    <p><a href="https://www.hackster.io/">Hackster</a>
-致力于学习硬件的社区</p>
-  </li>
-  <li>
-    <p><a href="https://viktorkirilov.me/post/home-automation-raspberry-pi/">智能家居</a></p>
-  </li>
-  <li>
-    <p><a href="http://blog.csdn.net/tangxiaoyin/article/details/73743166">使用JavaScript和MQTT开发物联网应用</a></p>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/05/10/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -997,10 +1189,10 @@ dependencies {
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/page4" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">5/7</span>
+          <span class="page_number ">5/8</span>
           
             <a href="/page6" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page8" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -1013,6 +1205,10 @@ dependencies {
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a></li>
+                    
+                        <li><a href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Linux使用从入门到放弃</a></li>
                     
                         <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
                     
@@ -1029,10 +1225,6 @@ dependencies {
                         <li><a href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a></li>
                     
                         <li><a href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a></li>
-                    
-                        <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
-                    
-                        <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                 </ul>
             </div>
@@ -1059,7 +1251,7 @@ dependencies {
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">12</span>
+                            <span class="badge">13</span>
                         </a>
                     </li>
                     
@@ -1212,7 +1404,7 @@ dependencies {
                             <span class="name">
                                 Linux
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1222,6 +1414,15 @@ dependencies {
                                 DB
                             </span>
                             <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#TensorFlow" class="categories-list-item" cate="TensorFlow">
+                            <span class="name">
+                                TensorFlow
+                            </span>
+                            <span class="badge">1</span>
                         </a>
                     </li>
                     
@@ -1484,7 +1685,7 @@ dependencies {
                       
                       
                       
-                      <a href="/tag/#Linux" style="font-size: 9pt; color: #999;">Linux</a>
+                      <a href="/tag/#Linux" style="font-size: 10pt; color: #888;">Linux</a>
                     
                       
                       

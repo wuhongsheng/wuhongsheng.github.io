@@ -151,6 +151,8 @@
                 
                     
                 
+                    
+                
             </ul>
         </nav>
     </div>
@@ -163,6 +165,182 @@
         <small>种树，最好的时间是十年前，其次是现在。</small>
         <hr>
         <ul>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-05-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+</ul>
+
+<p>ArcGISRuntime For Android 开发</p>
+
+<h5 id="常见问题">常见问题</h5>
+
+<ol>
+  <li>编辑空间数据</li>
+</ol>
+
+<ul>
+  <li>问题描述</li>
+</ul>
+
+<p>添加空间数据时出现一下问题</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
+</code></pre></div></div>
+
+<ul>
+  <li>问题原因及解决方法</li>
+</ul>
+
+<p>可能是新增空间数据字段类型和地图服务图层字段类型不匹配</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-04-20
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#代码版本控制" title="Category: 代码版本控制" rel="category">代码版本控制</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#SVN" title="Tag: SVN" rel="tag">SVN</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#svn简介" id="markdown-toc-svn简介">SVN简介</a></li>
+  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+</ul>
+
+<p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。</p>
+
+<h3 id="svn简介"><a href="http://subversion.apache.org">SVN</a>简介</h3>
+
+<p><a href="http://subversion.apache.org">Subversion官网</a></p>
+
+<h3 id="常用命令">常用命令</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
+svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
+
+</code></pre></div></div>
+
+<p>第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error validating server certificate for 'https://172.17.1.8:443':  
+ - The certificate is not issued by a trusted authority. Use the  
+   fingerprint to validate the certificate manually!  
+ - The certificate hostname does not match.  
+Certificate information:  
+ - Hostname: BJ-AD-FS.hyc-tec.net  
+ - Valid: from Fri, 03 May 2013 01:18:50 GMT until Mon, 01 May 2023 01:18:50 GMT  
+ - Issuer: BJ-AD-FS.hyc-tec.net  
+ - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
+(R)eject, accept (t)emporarily or accept (p)ermanently?   
+</code></pre></div></div>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
             
               <li>
                 <h2>
@@ -744,263 +922,6 @@ public class LoginActivity extends BaseActivity {
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/">华为手机刷机</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-01-06
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#刷机" title="Category: 刷机" rel="category">刷机</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#技能" title="Tag: 技能" rel="tag">技能</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#解决思路" id="markdown-toc-解决思路">解决思路</a></li>
-</ul>
-
-<p>最近老妈的手机出现系统损坏的情况，开机时重复开机动画，进入不了系统界面。初步判断时老妈误操作删除系统文件，或者手机中毒。
-本来不太想动手的，我就说这手机也用几年，该换了。老妈回了一句，还说你是做软件的，这个问题都解决不了，明天拿给修手机的看看。这句刺激我了，于是动手解决问题，花了两个小时左右。最后在这里记录一下解决问题的经过。</p>
-
-<h3 id="解决思路">解决思路</h3>
-
-<ul>
-  <li>双清</li>
-</ul>
-
-<p>百度一下，进入手机Recovery模式(同时按住电源键和音量’-‘3秒即可进入)，进行双清(清理系统缓存信息、清理用户数据)操作。
-尝试后问题依然无法解决</p>
-
-<ul>
-  <li>求助官方售后</li>
-</ul>
-
-<p>打电话到华为售后，售后说可以通过华为的手机助手客户端修复，我尝试了也没有解决问题。客户端提示没有合适的系统包。可能是手机系统版本比较老了。</p>
-
-<p>然后再次电话到售后，问能不能刷机，获知，华为手机要刷机需要先解锁，我们都知道华为的系统是基于Android系统改造的，厂商在底层系统加了锁，意味着没办法随意刷机。必须先解锁，解锁需要提供手机型号、IMEI、序列号、产品识别码。其中序列号和产品识别码在手机包装盒上有，或者在手机系统信息里查询。但我现在到哪去找N年前的手机包装盒啊，手机也打不开，所以这条路也走不通。</p>
-
-<ul>
-  <li>刷机</li>
-</ul>
-
-<p>手机方面的专业术语，是指通过一定的方法更改或替换手机中原本存在的一些语言、图片、铃声、软件或者操作系统。通俗来讲，刷机就是给手机重装系统。</p>
-
-<p>后来在网上查询了解，华为手机可以在不开机的情况通过SD卡强制升级系统。好，说了这么多，终于到正题了，重装系统，步骤如下：</p>
-
-<ol>
-  <li>准备一张 microSD 卡。</li>
-  <li>登录华为终端官网 consumer.huawei.com/cn，搜索“G750-T01”， 然后下载软件升级包。</li>
-  <li>在 microSD 卡根目录下创建一个【dload】文件夹。</li>
-  <li>将软件升级包中的“UPDATE.APP”拷贝到 microSD 卡【dload】文 件夹中。</li>
-  <li>将 microSD 卡插入手机</li>
-  <li>断开手机跟电脑或其它设备(如充电器)的连接，并关机。</li>
-  <li>同时按住音量上下键，然后按电源键。</li>
-  <li>开机画面出来之后，放开电源键，继续按住音量上下键，直到进入升级界面后再松开音量上下键。
-整个升级过程大约需要 3 分钟。在升级过程中，请不要取出电池，建议您最好不要进行任何操作，静静等待。</li>
-</ol>
-
-<p>等待几分钟后系统安装完成，手机重启，成功进入开机界面。大功告成！</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/01/06/%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%88%B7%E6%9C%BA/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-12-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#AI" title="Category: AI" rel="category">AI</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a>&nbsp;
-    
-        <a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#安装以macos为例" id="markdown-toc-安装以macos为例">安装（以MacOS为例）</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
-</ul>
-
-<p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
-
-<h3 id="安装以macos为例"><a href="https://tensorflow.google.cn/install/install_mac#ValidateYourInstallation">安装（以MacOS为例）</a></h3>
-
-<p>您必须选择安装TensorFlow的机制。支持的选择如下：</p>
-<ul>
-  <li>
-    <p>virtualenv （官方推荐）</p>
-
-    <ol>
-      <li>启用终端</li>
-      <li>通过以下命令安装pip 和 Virtualenv：</li>
-    </ol>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo easy_install pip
- $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade virtualenv 
-
-</code></pre></div>    </div>
-
-    <ol>
-      <li>通过使用以下某种格式发出命令来创建一个 Virtualenv 环境：</li>
-    </ol>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ virtualenv --system-site-packages targetDirectory # for Python 2.7
- $ virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
-</code></pre></div>    </div>
-  </li>
-  <li>“native” pip</li>
-  <li>Docker</li>
-  <li>installing from sources, which is documented in a separate guide.</li>
-</ul>
-
-<h3 id="常用命令">常用命令</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
-$ cd 
-$ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
-$ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
-(tensorflow)$                           # 启用成功
-
-# 通过发出以下命令来激活该 conda 环境
-source activate tensorflow
-
-# 关闭
-(tensorflow)$ deactivate 
-# 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控训练进度)
-tensorboard --logdir tf_files/training_summaries &amp;
-
-# 升级TensorFlow
-$ pip3 install --upgrade tensorflow 
-
-# 卸载TensorFlow
-$ pip uninstall tensorflow
-$ pip3 uninstall tensorflow 
-</code></pre></div></div>
-
-<h3 id="常见问题">常见问题</h3>
-
-<p><strong>问题描述</strong></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
-</code></pre></div></div>
-
-<p><strong>原因及解决办法</strong></p>
-
-<p>Python版本不匹配</p>
-
-<p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import tensorflow as tf
-Traceback (most recent call last):
-  File "/Users/whs/anaconda3/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 18, in swig_import_helper
-    fp, pathname, description = imp.find_module('_pywrap_tensorflow_internal', [dirname(__file__)])
-  File "/Users/whs/anaconda3/lib/python3.6/imp.py", line 297, in find_module
-    raise ImportError(_ERR_MSG.format(name), name=name)
-ImportError: No module named '_pywrap_tensorflow_internal'
-</code></pre></div></div>
-<p><strong>原因及解决方法</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
-删除tensorflow 
-rm -r ~/tensorflow
-重新安装
- (targetDirectory)$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade tensorflow      # for Python 2.7
-
-</code></pre></div></div>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1011,10 +932,10 @@ rm -r ~/tensorflow
             <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
             <a href="/" class="previous"><i class="fa fa-angle-left"></i></a>
           
-          <span class="page_number ">2/7</span>
+          <span class="page_number ">2/8</span>
           
             <a href="/page3" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="/page7" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/page8" class="next"><i class="fa fa-angle-double-right"></i></a>
           
         </div>
     </div>
@@ -1027,6 +948,10 @@ rm -r ~/tensorflow
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
+                    
+                        <li><a href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a></li>
+                    
+                        <li><a href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Linux使用从入门到放弃</a></li>
                     
                         <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
                     
@@ -1043,10 +968,6 @@ rm -r ~/tensorflow
                         <li><a href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a></li>
                     
                         <li><a href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a></li>
-                    
-                        <li><a href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a></li>
-                    
-                        <li><a href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></li>
                     
                 </ul>
             </div>
@@ -1073,7 +994,7 @@ rm -r ~/tensorflow
                             <span class="name">
                                 Android
                             </span>
-                            <span class="badge">12</span>
+                            <span class="badge">13</span>
                         </a>
                     </li>
                     
@@ -1226,7 +1147,7 @@ rm -r ~/tensorflow
                             <span class="name">
                                 Linux
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1236,6 +1157,15 @@ rm -r ~/tensorflow
                                 DB
                             </span>
                             <span class="badge">2</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#TensorFlow" class="categories-list-item" cate="TensorFlow">
+                            <span class="name">
+                                TensorFlow
+                            </span>
+                            <span class="badge">1</span>
                         </a>
                     </li>
                     
@@ -1498,7 +1428,7 @@ rm -r ~/tensorflow
                       
                       
                       
-                      <a href="/tag/#Linux" style="font-size: 9pt; color: #999;">Linux</a>
+                      <a href="/tag/#Linux" style="font-size: 10pt; color: #888;">Linux</a>
                     
                       
                       

@@ -5,9 +5,345 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Apr 2019 17:56:11 +0800</pubDate>
-    <lastBuildDate>Mon, 15 Apr 2019 17:56:11 +0800</lastBuildDate>
+    <pubDate>Wed, 19 Jun 2019 14:51:39 +0800</pubDate>
+    <lastBuildDate>Wed, 19 Jun 2019 14:51:39 +0800</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>为什么选择MVVM而不是MVP - Android架构</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#mvc&quot; id=&quot;markdown-toc-mvc&quot;&gt;MVC&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mvp&quot; id=&quot;markdown-toc-mvp&quot;&gt;MVP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mvvm&quot; id=&quot;markdown-toc-mvvm&quot;&gt;MVVM&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mvvm其实与mvp架构看起来很相似&quot; id=&quot;markdown-toc-mvvm其实与mvp架构看起来很相似&quot;&gt;MVVM其实与MVP架构看起来很相似&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#代码示例&quot; id=&quot;markdown-toc-代码示例&quot;&gt;代码示例&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Android本身被写成MVC，其中Activity或多或少地负责所有事情。对于可能足够的简单应用，但随着复杂性的增加，问题的数量和水平也会提高。
+现在有许多不同的架构方法，如MVP，FLUX，MVI，MVVM等，它们在解决上述问题方面证明是富有成效的。只要代码可维护，我们就可以使用任何方法，我们能够快速适应变化，一切运行良好，简而言之就是开发人员的快乐生活。
+
+&lt;h6 id=&quot;mvc&quot;&gt;MVC&lt;/h6&gt;
+传统的Android App其实都是基于MVC的，Activity，Fragment相当于C,布局相当于V,数据逻辑相当于M
+随着业务的增长Controller里的代码会越来越臃肿，因为它不只要负责业务逻辑，还要控制View的展示。也就是说Activity、Fragment杂糅了Controller和View，耦合变大。并不能算作真正意义上的MVC。
+
+&lt;img src=&quot;http://www.jcodecraeer.com/uploads/20160414/1460565635729862.png&quot; alt=&quot;&quot; /&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+B(CONTROLLER) --&amp;gt; C(MODEL)
+C(MODEL) --&amp;gt; A(VIEW)
+A(VIEW) --&amp;gt; C(MODEL)
+A(VIEW) --&amp;gt; B(CONTROLLER)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id=&quot;mvp&quot;&gt;MVP&lt;/h6&gt;
+MVP架构其实可以说与MVC的架构还是有很大的差别的，数据逻辑相当于M，Activity（负责View的绘制以及与用户交互）相当于V ，View于Model间的交互则为P其实最明显的区别就是，MVC中是允许Model和View进行交互的，而MVP中很明显，Model与View之间的交互由Presenter完成。还有一点就是Presenter与View之间的交互是通过接口的
+
+&lt;img src=&quot;http://www.jcodecraeer.com/uploads/20160414/1460565637114968.png&quot; alt=&quot;&quot; /&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+A(VIEW)--&amp;gt; B(PRESENTER)
+B(PRESENTER) --&amp;gt; A(VIEW)
+B(PRESENTER) --&amp;gt; C(MODEL)
+C(MODEL) --&amp;gt; B(PRESENTER)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;缺点
+    &lt;ol&gt;
+      &lt;li&gt;紧耦合
+对于每个活动/片段（视图），我们需要一个Presenter。这是一个硬约束规则。Presenter保存对Activity和Activity的引用保留对presenter的引用。1：1的关系，这就是最大问题所在。
+随着视图复杂性的增加，这种关系的维护和处理也会增加。
+这最终会导致我们之前遇到的同样问题，因为设计的快速变化，我们实际上需要修改整个关系。
+从我们的最终目标“以分布式方式构建事物”中挑选一个声明，为了实现它并避免这种紧密关系，ViewModels被引入。
+ViewModels是与逻辑/模型层交互的简单类，只是暴露状态/数据，实际上不知道该数据将由谁或如何使用。只有View（Activity）保存对ViewModel的引用，反之亦然，这解决了我们的紧耦合问题。单个视图可以保存对多个ViewModel的引用。
+即使对于复杂的视图，我们实际上可以在同一层次结构中具有不同的ViewModel&lt;/li&gt;
+      &lt;li&gt;可测性
+由于Presenters很难绑定视图，因此编写单元测试变得有点困难，因为View具有依赖性。
+ViewModels甚至更加单元测试友好，因为它们只是暴露状态，因此可以独立测试而无需测试数据的消耗方式，简而言之，View不依赖于View。
+这是两个主要的选择，使选择明确。可能有更多或可能没有。以下评论正在等待!! 😄&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&quot;mvvm&quot;&gt;MVVM&lt;/h6&gt;
+MVVM是Model-View-ViewModel的简写. 它是有三个部分组成：Model、View、ViewModel。Model：数据模型层。包含业务逻辑和校验逻辑,View：屏幕上显示的UI界面（layout、views）,ViewModel：View和Model之间的链接桥梁，处理视图逻辑。
+当View有用户输入后，ViewModel通知Model更新数据，同理Model数据更新后，ViewModel通知View更新。
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+A(VIEW) --binding--- B(VIEWMODEL)
+B(VIEWMODEL) --&amp;gt; C(MODEL)
+C(MODEL) --&amp;gt; B(VIEWMODEL)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;mvvm其实与mvp架构看起来很相似&quot;&gt;MVVM其实与MVP架构看起来很相似&lt;/h3&gt;
+&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1605450-40b99f4f565fe170.png?imageMogr2/auto-orient/&quot; alt=&quot;&quot; /&gt;
+
+&lt;h3 id=&quot;代码示例&quot;&gt;代码示例&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MVVM&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * @author whs
+ * @date 2019/3/29
+ * 清障救援
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RescueActivity&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WtActivity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ActivityRescueBinding&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RescueViewModel&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@Nullable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataBindingUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setContentView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;activity_rescue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toolbar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setNavigationOnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onBackPressed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tvTitle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rescue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ivRight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setVisibility&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;VISIBLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ivRight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setImageResource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;mipmap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ivRight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;Intent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;intent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Intent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RescueActivity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ClearingActivity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;startActivity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;暂无新任务&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModelProviders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RescueViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;taskNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;loadClearTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Check that the activity is using the layout version with&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// the fragment_container FrameLayout&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mBinding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;flContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// However, if we're being restored from a previous state,&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// then we don't need to do anything and should return or else&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// we could end up with overlapping fragments.&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;getSupportFragmentManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;beginTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fl_content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TaskFragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+
+&lt;span class=&quot;cm&quot;&gt;/**
+ * Created by whs on 2019/3/27
+ * 清障救援
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RescueViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BaseViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**请障救援任务数量*/&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MutableLiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mTaskNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MutableLiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MutableLiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * 获取清障救援任务数
+     */&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;loadClearTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;webApi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClearRescueTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;enqueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BaseCallBack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;救援任务&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;mTaskNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;layout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:app=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res-auto&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:tools=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;data&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;import&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android.view.View&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;import&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;androidx.core.content.ContextCompat&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;variable&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewModel&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.wtkj.baseproduct.ui.rescue.RescueViewModel&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/data&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;androidx.constraintlayout.widget.ConstraintLayout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;androidx.appcompat.widget.Toolbar&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;app:layout_constraintTop_toTopOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/toolbar&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;app:navigationIcon=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/ic_back&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;?attr/actionBarSize&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@color/header_black&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;app:popupTheme=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@style/AppTheme.PopupOverlay&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/tv_title&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:textColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@color/white&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20sp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/tv_right&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:textColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@color/colorAccent&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_marginEnd=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10dp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;12sp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@string/title&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:visibility=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;gone&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/iv_right&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;?attr/actionBarSize&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;12dp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:visibility=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;visible&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:layout_marginEnd=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8dp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@mipmap/orders&quot;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ImageView&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/androidx.appcompat.widget.Toolbar&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/tv_notify&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20dp&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20dp&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;right&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_margin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10dp&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/background_notify_circle_red&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:textColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@color/white&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:textSize=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;12sp&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:visibility=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@{viewModel.taskNum &amp;gt; 0 ? View.VISIBLE : View.GONE}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@{String.valueOf(viewModel.taskNum)}&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;app:layout_constraintEnd_toEndOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;app:layout_constraintTop_toTopOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;parent&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;FrameLayout&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/fl_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0dp&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;app:layout_constraintBottom_toBottomOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;app:layout_constraintTop_toBottomOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/toolbar&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/androidx.constraintlayout.widget.ConstraintLayout&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/layout&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 17 Jun 2019 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/</guid>
+        
+        <category>Android</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux使用从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#环境部署&quot; id=&quot;markdown-toc-环境部署&quot;&gt;环境部署&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#配置java环境&quot; id=&quot;markdown-toc-配置java环境&quot;&gt;配置Java环境&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#linux下安装gradle&quot; id=&quot;markdown-toc-linux下安装gradle&quot;&gt;Linux下安装Gradle&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#安装android-sdk&quot; id=&quot;markdown-toc-安装android-sdk&quot;&gt;安装Android SDK&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;常用命令&quot;&gt;常用命令&lt;/h2&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 远程连接服务器&lt;/span&gt;
+ssh &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; username@192.168.1.233
+password
+&lt;span class=&quot;c&quot;&gt;# 文件下载&lt;/span&gt;
+wget 下载地址
+wget &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; 指定目录 下载地址
+
+&lt;span class=&quot;c&quot;&gt;# 解压文件&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 解压zip&lt;/span&gt;
+unzip &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /opt/gradle gradle-4.6-bin.zip 
+&lt;span class=&quot;c&quot;&gt;# 解压tgz&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;tar   &lt;/span&gt;zxvf   /opt/dev/android-sdk_r24.4.1-linux.tgz  &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; /usr//local/AndroidSDK
+&lt;span class=&quot;c&quot;&gt;# tar.gz文件&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xvf&lt;/span&gt; 文件路径
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;环境部署&quot;&gt;环境部署&lt;/h2&gt;
+
+&lt;h4 id=&quot;配置java环境&quot;&gt;配置Java环境&lt;/h4&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+ &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;linux下安装gradle&quot;&gt;Linux下安装Gradle&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;下载
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://services.gradle.org/distributions/gradle-5.1.1-all.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;解压
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;unzip &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /opt/gradle gradle-4.6-bin.zip 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;环境变量配置
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 打开配置文件&lt;/span&gt;
+vim /etc/profile
+&lt;span class=&quot;c&quot;&gt;# 配置环境变量&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:/usr/local/gradle/gradle-5.1.1/bin
+&lt;span class=&quot;c&quot;&gt;# 保存退出后刷新配置文件&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /etc/profile
+&lt;span class=&quot;c&quot;&gt;# 检验安装结果&lt;/span&gt;
+gradle &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;h4 id=&quot;安装android-sdk&quot;&gt;安装Android SDK&lt;/h4&gt;
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/AndroidSDK/android-sdk-linux
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;/tools
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;/platform-tools
+&lt;span class=&quot;c&quot;&gt;# 检验安装结果&lt;/span&gt;
+android &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 查看可用组建&lt;/span&gt;
+android list sdk &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 下载需要的组件, 注意--all 这个参数一定要加上, 否则后面filter里的序号不起作用, 例如我用的是&lt;/span&gt;
+android update sdk &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--filter&lt;/span&gt; 1,2,4,5,47
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Tue, 23 Apr 2019 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>Linux</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>Android DataBinding使用</title>
@@ -15,7 +351,7 @@
   &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。
+&lt;a href=&quot;https://developer.android.google.cn/topic/libraries/data-binding/&quot;&gt;数据绑定库&lt;/a&gt;是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。
 
 &lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
 
@@ -612,308 +948,6 @@ gradle :app:dependencies
         <category>AS</category>
         
         <category>Gradle</category>
-        
-        
-        <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>ArcServer发布可同步地图服务</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#操作流程以103arcserver为例&quot; id=&quot;markdown-toc-操作流程以103arcserver为例&quot;&gt;操作流程（以10.3ArcServer为例）&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考链接&quot; id=&quot;markdown-toc-参考链接&quot;&gt;参考链接&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-从ArcGIS 10.2.1开始推出离在线一体化技术之后，数据的离在线一体化编辑一直是大家所关注的一个热点。数据存储在企业级地理数据库中，通过ArcGIS桌面软件加载后配图处理，并发布到ArcGIS for Server中，供移动端设备离线编辑使用，并可以同步回传版本化存档。这其中涉及多项配置操作，本篇文章主要针对FeatureService服务的发布流程做一个简单的介绍。以备查阅。
- &lt;img src=&quot;https://images2015.cnblogs.com/blog/412448/201609/412448-20160909164428254-500287581.png&quot; alt=&quot;&quot; /&gt;
-
-&lt;h3 id=&quot;操作流程以103arcserver为例&quot;&gt;操作流程（以10.3ArcServer为例）&lt;/h3&gt;
-
-1.准备数据源（ArcSDE）-&amp;gt;2.添加GlobalId-&amp;gt;3.启用存档-&amp;gt;4.制作地图文档(MXD)-&amp;gt;5.新增数据库连接-&amp;gt;6.添加Server连接-&amp;gt;7.注册数据库到服务器-&amp;gt;8.发布服务
-
-&lt;ol&gt;
-  &lt;li&gt;在CataLog中连接数据库、新建数据集、新建图层&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E8%BF%9E%E6%8E%A5SDE.png&quot; alt=&quot;连接SDE&quot; /&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E8%A6%81%E7%B4%A0%E9%9B%86.png&quot; alt=&quot;新建数据集&quot; /&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E8%A6%81%E7%B4%A0%E7%B1%BB.png&quot; alt=&quot;新建要素类&quot; /&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%AE%B5.png&quot; alt=&quot;添加字段&quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;添加GlobalId&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0Globalid.png&quot; alt=&quot;添加GlobalId&quot; /&gt;
-
-在增加GlobalId时可能会出现与数据锁冲突，如下图所示：执行SQL解除锁
-   &lt;code class=&quot;highlighter-rouge&quot;&gt;select * from sde.table_locks for update
-  &lt;/code&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;启用存档，这不用没问题&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E5%90%AF%E7%94%A8%E5%AD%98%E6%A1%A3.png&quot; alt=&quot;启用存档&quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    保存mxd文件
-  &lt;/li&gt;
-  &lt;li&gt;
-    新建数据库连接
-  &lt;/li&gt;
-  &lt;li&gt;
-    添加Server连接
-  &lt;/li&gt;
-  &lt;li&gt;
-    注册数据库到服务器
-  &lt;/li&gt;
-  &lt;li&gt;
-    发布地图服务
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E5%8F%91%E5%B8%83%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1.png&quot; alt=&quot;发布地图服务&quot; /&gt;
-
-&lt;img src=&quot;http://ooxw95lkz.bkt.clouddn.com/%E5%BC%80%E5%90%AF%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD.jpg&quot; alt=&quot;开启同步功能&quot; /&gt;
-
-&lt;h3 id=&quot;参考链接&quot;&gt;参考链接&lt;/h3&gt;
-
-&lt;a href=&quot;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm&quot;&gt;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm&lt;/a&gt;
-
-&lt;a href=&quot;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm&quot;&gt;https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm&lt;/a&gt;
-
-&lt;a href=&quot;http://www.cnblogs.com/gis-luq/p/5857188.html&quot;&gt;http://www.cnblogs.com/gis-luq/p/5857188.html&lt;/a&gt;
-
-</description>
-        <pubDate>Wed, 07 Mar 2018 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/</guid>
-        
-        <category>GIS</category>
-        
-        <category>ArcServer</category>
-        
-        
-        <category>GIS</category>
-        
-      </item>
-    
-      <item>
-        <title>Android启动加速优化</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#背景资料&quot; id=&quot;markdown-toc-背景资料&quot;&gt;背景资料&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见问题及优化方式&quot; id=&quot;markdown-toc-常见问题及优化方式&quot;&gt;常见问题及优化方式&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#启动主题切换&quot; id=&quot;markdown-toc-启动主题切换&quot;&gt;启动主题切换&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#avoid-heavy-app-initialization&quot; id=&quot;markdown-toc-avoid-heavy-app-initialization&quot;&gt;Avoid Heavy App Initialization&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#heavy-activity-initialization&quot; id=&quot;markdown-toc-heavy-activity-initialization&quot;&gt;Heavy activity initialization&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#diagnosing-the-problem&quot; id=&quot;markdown-toc-diagnosing-the-problem&quot;&gt;Diagnosing The Problem&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考文章&quot; id=&quot;markdown-toc-参考文章&quot;&gt;参考文章&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！
-
-&lt;h2 id=&quot;背景资料&quot;&gt;背景资料&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  应用的启动分为冷启动、热启动、温启动，而启动最慢、挑战最大的就是冷启动：系统和App本身都有更多的工作要从头开始！
-应用在冷启动之前，要执行三个任务：
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;加载启动App；&lt;/li&gt;
-  &lt;li&gt;App启动之后立即展示出一个空白的Window；&lt;/li&gt;
-  &lt;li&gt;创建App的进程；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  而这三个任务执行完毕之后会马上执行以下任务：
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;建App对象；&lt;/li&gt;
-  &lt;li&gt;启动Main Thread；&lt;/li&gt;
-  &lt;li&gt;创建启动的Activity对象；&lt;/li&gt;
-  &lt;li&gt;加载View；&lt;/li&gt;
-  &lt;li&gt;布置屏幕；&lt;/li&gt;
-  &lt;li&gt;进行第一次绘制；&lt;/li&gt;
-&lt;/ol&gt;
-
-而一旦App进程完成了第一次绘制，系统进程就会用Main Activity替换已经展示的Background Window，此时用户就可以使用App了。
-
-&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/4056837-36c808285a70cf1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700&quot; alt=&quot;&quot; /&gt;
-
-同样，Google也给出了启动加速的方向：
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;利用提前展示出来的Window，快速展示出来一个界面，给用户快速反馈的体验；&lt;/li&gt;
-    &lt;li&gt;避免在启动时做密集沉重的初始化（Heavy app initialization）；&lt;/li&gt;
-    &lt;li&gt;定位问题：避免I/O操作、反序列化、网络操作、布局嵌套等。&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-可以通过以下命令测试启动耗时
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
-命令含义: 
-ThisTime:最后一个启动的Activity的启动耗时; 
-TotalTime:自己的所有Activity的启动耗时; 
-WaitTime: ActivityManagerService启动App的Activity时的总时间(包括当前Activity的onPause()和自己Activity的启动)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;常见问题及优化方式&quot;&gt;常见问题及优化方式&lt;/h2&gt;
-
-&lt;h3 id=&quot;启动主题切换&quot;&gt;启动主题切换&lt;/h3&gt;
-
-按照官方文档的说明：使用Activity的windowBackground主题属性来为启动的Activity提供一个简单的drawable。
-Layout XML file:
-
-&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
-	  &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
-         &amp;lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:opacity=&quot;opaque&quot;&amp;gt;
-           &lt;!-- The background color, preferably the same as your normal theme --&gt;
-           &amp;lt;item android:drawable=&quot;@android:color/white&quot;/&amp;gt;
-           &lt;!-- Your product logo - 144dp color version of your app icon --&gt;
-           &amp;lt;item&amp;gt;
-             &amp;lt;bitmap
-               android:src=&quot;@mipmap/logo&quot;
-               android:gravity=&quot;center&quot;/&amp;gt;
-             &amp;lt;/item&amp;gt;
-        &amp;lt;/layer-list&amp;gt;
-&lt;/pre&gt;
-
-Style:
-
-&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
-
- &amp;lt;style name=&quot;AppTheme.launcher&quot; parent=&quot;AppTheme.NoTitle&quot;&amp;gt;
-         &amp;lt;item name=&quot;android:windowBackground&quot;&amp;gt;@drawable/launcher &amp;lt;/item&amp;gt;
-  &amp;lt;/style&amp;gt;
- 
-&lt;/pre&gt;
-
-Manifest file:
-
-&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
-
-&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
-
-&amp;lt;activity android:name=&quot;.login.LoginActivity&quot;
-            android:screenOrientation=&quot;portrait&quot;
-            android:theme=&quot;@style/AppTheme.launcher&quot;
-            &amp;gt;
-            &amp;lt;intent-filter&amp;gt;
-                &amp;lt;action android:name=&quot;android.intent.action.MAIN&quot; /&amp;gt;
-                &amp;lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&amp;gt;
-            &amp;lt;/intent-filter&amp;gt;
- &amp;lt;/activity&amp;gt;
- 
-&lt;/pre&gt;
-
-Activity:
-
-&lt;pre class=&quot;prettyprint lang-java&quot;&gt;
-
-public class LoginActivity extends BaseActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme_NoTitle);
-        super.onCreate(savedInstanceState);
-       
-    }
-}
- 
-&lt;/pre&gt;
-
-实际测试发现，启动确实避免启动白屏的问题，但是无论时冷启动还是热启动都会有背景图，实测QQ、微信不是这样，判断
-它们是通过增加Splash Activity实现的。
-
-此外这样也可以解决白屏问题
-
-&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;
-&amp;lt;style name=&quot;AppTheme.launcher&quot; parent=&quot;android:Theme.Translucent.NoTitleBar.Fullscreen&quot;/&amp;gt;
-&lt;/pre&gt;
-
-&lt;h3 id=&quot;avoid-heavy-app-initialization&quot;&gt;Avoid Heavy App Initialization&lt;/h3&gt;
-
-当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。
-
-应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。
-
-&lt;strong&gt;诊断问题&lt;/strong&gt;
-
-您可以使用方法跟踪或内联跟踪来尝试诊断问题。
-
-&lt;strong&gt;方法追踪&lt;/strong&gt;
-运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
-
-&lt;strong&gt;内联追踪&lt;/strong&gt;
-使用内联追踪来调查可能的罪魁祸首，包括：
-你的应用程序的初始onCreate() 功能。
-任何全球单身人士对象您的应用程序初始化。
-任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
-
-&lt;strong&gt;解决问题的办法&lt;/strong&gt;
-无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像&lt;a href=&quot;https://google.github.io/dagger/&quot;&gt;Dagger&lt;/a&gt; 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。
-
-&lt;h3 id=&quot;heavy-activity-initialization&quot;&gt;Heavy activity initialization&lt;/h3&gt;
-
-活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：
-
-膨胀大型或复杂的布局。
-阻塞磁盘或网络I / O的屏幕绘图。
-加载和解码位图。
-栅格化VectorDrawable对象。
-初始化活动的其他子系统。
-诊断问题
-在这种情况下，方法跟踪和内联跟踪也是有用的。
-
-&lt;strong&gt;方法追踪&lt;/strong&gt;
-当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。
-
-如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。
-
-&lt;strong&gt;内联追踪&lt;/strong&gt;
-使用内联追踪来调查可能的罪魁祸首，包括：
-
-你的应用程序的初始onCreate() 功能。
-它初始化的任何全局单例对象。
-任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
-&lt;strong&gt;解决问题的办法&lt;/strong&gt;
-有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：
-
-视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
-通过减少冗余或嵌套布局来平整您的视图层次结构。
-不要在启动时不需要显示部分UI。相反，使用ViewStub对象作为应用程序可以在更适当的时间膨胀的子层次结构的占位符。
-在主线程上完成所有的资源初始化操作也会减慢启动速度。你可以解决这个问题如下：
-移动所有的资源初始化，以便应用程序可以在不同的线程上执行它。
-允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。
-
-&lt;h3 id=&quot;diagnosing-the-problem&quot;&gt;Diagnosing The Problem&lt;/h3&gt;
-
-&lt;h2 id=&quot;参考文章&quot;&gt;参考文章&lt;/h2&gt;
-
-&lt;a href=&quot;https://developer.android.com/topic/performance/launch-time.html&quot;&gt;Launch-Time Performance&lt;/a&gt;
-
-&lt;a href=&quot;https://www.jianshu.com/p/f5514b1a826c&quot;&gt;Android性能优化（一）之启动加速35%&lt;/a&gt;
-
-</description>
-        <pubDate>Wed, 24 Jan 2018 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/</guid>
-        
-        <category>性能优化</category>
-        
-        <category>Android</category>
         
         
         <category>Android</category>
