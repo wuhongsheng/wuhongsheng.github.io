@@ -112,9 +112,7 @@ public class RescueActivity extends WtActivity {
 
         init(mViewModel);
         mBinding.setViewModel(mViewModel);
-        mViewModel.getTaskNum().observe(this, taskNum -> {
-            mBinding.setViewModel(mViewModel);
-        });
+        mBinding.setLifecycleOwner(this);
         mViewModel.loadClearTaskNum();
 
         // Check that the activity is using the layout version with
