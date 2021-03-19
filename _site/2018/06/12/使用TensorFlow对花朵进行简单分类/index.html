@@ -244,7 +244,7 @@
 
 <p>此代码中使用的所有代码都包含在此git存储库中。克隆存储库并cd放入其中。这是我们将要工作的地方。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/googlecodelabs/tensorflow-for-poets-2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/googlecodelabs/tensorflow-for-poets-2
 
 cd tensorflow-for-poets-2
 </code></pre></div></div>
@@ -255,12 +255,12 @@ cd tensorflow-for-poets-2
 
 <p>在开始任何培训之前，您需要一组图像来教授模型有关您想要识别的新课程。我们创建了创作共用许可花卉照片的档案，以供初次使用。通过调用以下两个命令下载照片（218 MB）：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://download.tensorflow.org/example_images/flower_photos.tgz \
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://download.tensorflow.org/example_images/flower_photos.tgz \
     | tar xz -C tf_files
 </code></pre></div></div>
 
 <p>你现在应该有一个花卉照片的副本。通过发出以下命令来确认工作目录的内容：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls tf_files / flower_photos
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls tf_files / flower_photos
 
 daisy/
 dandelion/
@@ -285,7 +285,7 @@ LICENSE.txt
 
 <p>使用推荐的设置，通常只需几分钟即可在笔记本电脑上进行再培训。您将在Linux shell变量中传递设置。在shell中设置这些变量：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAGE_SIZE=224
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAGE_SIZE=224
 ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
 
 # 查看变量
@@ -298,14 +298,14 @@ source activate tensorflow
 <p><strong>启动TensorBoard</strong></p>
 
 <p>在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控培训进度。</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorboard --logdir tf_files/training_summaries &amp;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorboard --logdir tf_files/training_summaries &amp;
 
 </code></pre></div></div>
 <p><strong>查看再训练脚本</strong></p>
 
 <p>重新训练脚本来自TensorFlow Hub回购，但不作为pip包的一部分进行安装。所以为了简单起见，我将它包含在codelab存储库中。您可以使用该python命令运行脚本。花一点时间浏览一下“帮助”。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain -h
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain -h
 
 </code></pre></div></div>
 
@@ -315,7 +315,7 @@ source activate tensorflow
 
 <p>用一个大命令开始你的再训练（注意–summaries_dir选项，发送训练进度报告到tensorboard监测的目录）：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain \
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain \
   --bottleneck_dir = tf_files / bottlenecks \
   --how_many_training_steps = 500 \
   --model_dir = tf_files / models / \
@@ -344,19 +344,19 @@ tf_files/retrained_labels.txt，这是一个包含标签的文本文件。</p>
 <p><strong>分类图像</strong></p>
 
 <p>codelab repo还包含tensorflow的label_image.py示例的副本，您可以使用它来测试您的网络。花一点时间阅读此脚本的帮助：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image -h
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image -h
 
 </code></pre></div></div>
 <p>现在，让我们在雏菊的这个图像上运行脚本：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image \
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image \
     --graph=tf_files/retrained_graph.pb  \
     --image=tf_files/flower_photos/daisy/21652746_cc379e0eea_m.jpg
 </code></pre></div></div>
 <p>每次执行都会打印出花标的列表，在大多数情况下，正确的花在顶部（尽管每个重新训练的模型可能略有不同）。</p>
 
 <p>你可能会得到这样的雏菊照片的结果：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>daisy (score = 0.99071)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>daisy (score = 0.99071)
 sunflowers (score = 0.00595)
 dandelion (score = 0.00252)
 roses (score = 0.00049)
@@ -367,7 +367,7 @@ tulips (score = 0.00032)
   <li>可选训练参数</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--learning_rate 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--learning_rate 
 #参数控制训练期间最后一层更新的大小(比如0.005，训练需要更长的时间，但总体精度可能会增加。值越高learning_rate，比如1.0，可以训练速度更快，但通常会降低精度，甚至使培训不稳定。)
 
 --summaries_dir 
@@ -405,7 +405,7 @@ tulips (score = 0.00032)
 <h3 id="常见问题及解决方法">常见问题及解决方法</h3>
 
 <p><strong>问题</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>InvalidArgumentError (see above for traceback): Expected image (JPEG, PNG, or GIF), got unknown format starting with '\000\005\026\007\000\002\000\000Mac OS X'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>InvalidArgumentError (see above for traceback): Expected image (JPEG, PNG, or GIF), got unknown format starting with '\000\005\026\007\000\002\000\000Mac OS X'
 </code></pre></div></div>
 
 <p><strong>解决方法</strong></p>
@@ -583,12 +583,21 @@ tulips (score = 0.00032)
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="使用TensorFlow对花朵进行简单分类"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

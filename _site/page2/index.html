@@ -235,7 +235,7 @@
 
 <p>添加空间数据时出现一下问题</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
 </code></pre></div></div>
 
 <ul>
@@ -306,6 +306,7 @@
                     <ul id="markdown-toc">
   <li><a href="#svn简介" id="markdown-toc-svn简介">SVN简介</a></li>
   <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
 </ul>
 
 <p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。</p>
@@ -316,13 +317,13 @@
 
 <h3 id="常用命令">常用命令</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
 svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
 
 </code></pre></div></div>
 
 <p>第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error validating server certificate for 'https://172.17.1.8:443':  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error validating server certificate for 'https://172.17.1.8:443':  
  - The certificate is not issued by a trusted authority. Use the  
    fingerprint to validate the certificate manually!  
  - The certificate hostname does not match.  
@@ -333,6 +334,22 @@ Certificate information:
  - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
 (R)eject, accept (t)emporarily or accept (p)ermanently?   
 </code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#查看日志</span>
+svn log <span class="nt">-r</span> <span class="o">{</span>2010-04-03<span class="o">}</span>:<span class="o">{</span>2010-04-04<span class="o">}</span>
+svn log <span class="o">[</span>PATH]
+<span class="c">#文件目录删除和新建</span>
+svn <span class="nb">mkdir</span> <span class="o">[</span>PATH] <span class="nt">-m</span> <span class="s1">'info'</span>
+svn delete <span class="o">[</span>PATH] <span class="nt">-m</span> <span class="s1">'info'</span>
+<span class="c">#查看本地文件状态</span>
+svn status
+<span class="c">#上传本地项目到服务器</span>
+svn import <span class="nt">-m</span> “新增公路管理” HighwayMangement http://scm.wantong-tech.net:1080/wttech.mobile/trunk/app/JxzwUniapp/HighwayMangement
+</code></pre></div></div>
+
+<h3 id="参考链接">参考链接</h3>
+
+<p><a href="https://blog.csdn.net/startcrazyactivity/article/details/87344256">AndroidStudio SVN 文件忽略</a></p>
 
 
                 </div>
@@ -495,7 +512,7 @@ Certificate information:
   </li>
 </ol>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
     repositories {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
@@ -514,7 +531,7 @@ allprojects {
   <li>Gradle常用命令</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看项目依赖
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看项目依赖
 gradle :app:dependencies
 </code></pre></div></div>
 
@@ -614,7 +631,7 @@ gradle :app:dependencies
 <p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0Globalid.png" alt="添加GlobalId" /></p>
 
 <p>在增加GlobalId时可能会出现与数据锁冲突，如下图所示：执行SQL解除锁
-   <code class="highlighter-rouge">select * from sde.table_locks for update
+   <code class="language-plaintext highlighter-rouge">select * from sde.table_locks for update
   </code></p>
 
 <ol>
@@ -770,7 +787,7 @@ gradle :app:dependencies
 
 <p>可以通过以下命令测试启动耗时</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
 命令含义: 
 ThisTime:最后一个启动的Activity的启动耗时; 
 TotalTime:自己的所有Activity的启动耗时; 
@@ -1017,11 +1034,11 @@ public class LoginActivity extends BaseActivity {
                     </li>
                     
                     <li>
-                        <a href="/category/#Git" class="categories-list-item" cate="Git">
+                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
                             <span class="name">
-                                Git
+                                代码版本控制
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1111,7 +1128,7 @@ public class LoginActivity extends BaseActivity {
                             <span class="name">
                                 jenkins
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1173,15 +1190,6 @@ public class LoginActivity extends BaseActivity {
                         <a href="/category/#刷机" class="categories-list-item" cate="刷机">
                             <span class="name">
                                 刷机
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
-                            <span class="name">
-                                代码版本控制
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1379,14 +1387,14 @@ public class LoginActivity extends BaseActivity {
                       
                       
                       
-                      <a href="/tag/#jenkins" style="font-size: 9pt; color: #999;">jenkins</a>
+                      <a href="/tag/#jenkins" style="font-size: 10pt; color: #888;">jenkins</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                      <a href="/tag/#CI" style="font-size: 10pt; color: #888;">CI</a>
                     
                       
                       

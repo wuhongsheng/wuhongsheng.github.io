@@ -338,7 +338,7 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
       </li>
     </ul>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
   export PATH=$PATH:$GRADLE_HOME/bin
 </code></pre></div>    </div>
     <p>　</p>
@@ -357,7 +357,7 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
       <li>配置环境变量：</li>
     </ul>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
   export PATH=$JAVA_HOME/bin:$PATH:
 </code></pre></div>    </div>
   </li>
@@ -395,7 +395,7 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
+    <p><code class="language-plaintext highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
   </li>
   <li>
     <p>打开config.xml文件并修改配置信息(windows系统可能会保存在这个路径下C:\Windows\System32\config\systemprofile)</p>
@@ -425,14 +425,14 @@ Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkin
   <li>Linux</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir "$ANDROID_HOME/licenses"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir "$ANDROID_HOME/licenses"
 echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" &gt; "$ANDROID_HOME/licenses/android-sdk-license"
 </code></pre></div></div>
 <ul>
   <li>Windows</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir "%ANDROID_HOME%\licenses"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir "%ANDROID_HOME%\licenses"
 echo |set /p="8933bad161af4178b1185d1a37fbf41ea5269c55" &gt;"%ANDROID_HOME%\licenses\android-sdk-license"
 </code></pre></div></div>
 
@@ -440,7 +440,7 @@ echo |set /p="8933bad161af4178b1185d1a37fbf41ea5269c55" &gt;"%ANDROID_HOME%\lice
   <li>配置运行权限</li>
 </ul>
 
-<p><code class="highlighter-rouge">
+<p><code class="language-plaintext highlighter-rouge">
 chmod a+x startup.sh
 chmod +x catalina.sh
 </code></p>
@@ -449,7 +449,7 @@ chmod +x catalina.sh
   <li>配置环境变量</li>
 </ul>
 
-<p><code class="highlighter-rouge">
+<p><code class="language-plaintext highlighter-rouge">
 open -e .bash_profile
 export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
 </code></p>
@@ -458,7 +458,7 @@ export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
   <li>启动Tomcat</li>
 </ul>
 
-<p><code class="highlighter-rouge">
+<p><code class="language-plaintext highlighter-rouge">
 startup.sh
 </code></p>
 
@@ -605,7 +605,7 @@ startup.sh
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/06/16/%E5%9F%BA%E4%BA%8EJenkins%E5%AE%9E%E7%8E%B0Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95-%E6%89%93%E5%8C%85/">Jenkins从入门到放弃</a></p>
         
     </div>
 </div>
@@ -621,12 +621,21 @@ startup.sh
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="Jenkins从入门到放弃"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

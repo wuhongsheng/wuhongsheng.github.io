@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TensorFlow学习笔记</title>
-    <meta name="description" content="  基本概念  分类  使用入门  常见的七个步骤  常用命令  常见应用场景  常见问题及解决办法  常用模型  参考链接TensorFlow™是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算...">
+    <title>Jenkins从入门到放弃</title>
+    <meta name="description" content="  参考资料  准备及安装(以Mac为例)  升级  新建和配置项目          常见问题及解决方法      Jenkins安装及使用Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：  持续的软件版本发布/测试项目。  监控外部调用执行的工作。  对于Android来...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
     <link rel="stylesheet" href="/css/main.css ">
-    <link rel="canonical" href="http://localhost:4000/2017/12/15/TensorFlow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link rel="canonical" href="http://localhost:4000/2017/06/16/%E5%9F%BA%E4%BA%8EJenkins%E5%AE%9E%E7%8E%B0Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95-%E6%89%93%E5%8C%85/">
     <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
 
     <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
@@ -161,11 +161,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>TensorFlow学习笔记</h1>
+        <h1>Jenkins从入门到放弃</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2017-12-15
+                <i class="fa fa-calendar"></i>2017-06-16
             </div>
 
             <div class="label-card">
@@ -186,9 +186,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#AI" title="Category: AI" rel="category">AI</a>&nbsp;
-    
-        <a href="/category/#TensorFlow" title="Category: TensorFlow" rel="category">TensorFlow</a>
+        <a href="/category/#jenkins" title="Category: jenkins" rel="category">jenkins</a>
     
   
 
@@ -205,11 +203,11 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a-->
-        <a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a>&nbsp;
+        <!--a href="/tag/#jenkins" title="Tag: jenkins" rel="tag">jenkins</a-->
+        <a href="/tag/#jenkins" title="Tag: jenkins" rel="tag">jenkins</a>&nbsp;
     
-        <!--a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a-->
-        <a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a>
+        <!--a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a-->
+        <a href="/tag/#CI" title="Tag: CI" rel="tag">CI</a>
     
   
 
@@ -221,133 +219,248 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#基本概念" id="markdown-toc-基本概念">基本概念</a></li>
-  <li><a href="#分类" id="markdown-toc-分类">分类</a></li>
-  <li><a href="#使用入门" id="markdown-toc-使用入门">使用入门</a></li>
-  <li><a href="#常见的七个步骤" id="markdown-toc-常见的七个步骤">常见的七个步骤</a></li>
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-  <li><a href="#常见应用场景" id="markdown-toc-常见应用场景">常见应用场景</a></li>
-  <li><a href="#常见问题及解决办法" id="markdown-toc-常见问题及解决办法">常见问题及解决办法</a></li>
-  <li><a href="#常用模型" id="markdown-toc-常用模型">常用模型</a></li>
-  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+  <li><a href="#准备及安装以mac为例" id="markdown-toc-准备及安装以mac为例">准备及安装(以Mac为例)</a></li>
+  <li><a href="#升级" id="markdown-toc-升级">升级</a></li>
+  <li><a href="#新建和配置项目" id="markdown-toc-新建和配置项目">新建和配置项目</a>    <ul>
+      <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+    </ul>
+  </li>
 </ul>
 
-<p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
+<p><a href="https://jenkins.io/">Jenkins</a>安装及使用</p>
 
-<h3 id="基本概念">基本概念</h3>
+<p>Jenkins是基于Java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：</p>
+<ul>
+  <li>持续的软件版本发布/测试项目。</li>
+  <li>监控外部调用执行的工作。</li>
+  <li>对于Android来说，可以自动打包、Android lint 检查、自动测试等。</li>
+</ul>
 
-<p>以常见的分类问题来介绍机器学习的基本概念</p>
+<hr />
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://www.cnblogs.com/wnfindbug/p/5784476.html">jenkins git gradle android自动化构建配置</a></p>
+
+<h3 id="准备及安装以mac为例">准备及安装(以Mac为例)</h3>
 
 <ul>
   <li>
-    <p>模型是特征列与标签的对应关系</p>
+    <p>JDK、SDK、GRADLE配置(包括环境变量)</p>
   </li>
   <li>
-    <p>样本是由特征列和标签组成的数据</p>
+    <p><a href="http://wuhongsheng.top/2017/06/14/Tomcat安装从入门到放弃/">安装Tomcat</a></p>
+  </li>
+  <li>
+    <p>下载<a href="https://jenkins.io/doc/">Jenkins.war</a>并复制到Tomcat webapps目录下</p>
+  </li>
+  <li>
+    <p>配置Jenkins环境变量(启动web容器之前)
+1.Windows
+Windows环境中，Jenkins主目录默认在C:\Documents and Settings\AAA.jenkins 。
+可以通过设置环境变量来修改，例如： JENKINS_HOME=C:\jenkins，然后重新启动jenkins。</p>
+  </li>
+  <li>
+    <p>Jenkins unlock</p>
   </li>
 </ul>
 
-<h3 id="分类">分类</h3>
+<p>打开主目录找到改文件(windows用notpad++打开password文件)</p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins_unlock.jpg" alt="" /></p>
 
 <ul>
   <li>
-    <p><a href="https://developers.google.cn/machine-learning/glossary/#supervised_machine_learning">监督式机器学习监</a></p>
+    <p>配置Plugin</p>
   </li>
   <li>
-    <p><a href="https://developers.google.cn/machine-learning/glossary/#unsupervised_machine_learning">非监督式学习</a></p>
+    <p>配置用户及权限（如果忘记这步会导致下次登陆验证失败，解决方法见下文）一定要先配置，后面配会比较麻烦</p>
+  </li>
+  <li>
+    <p>系统配置
+1.配置环境变量</p>
+
+    <ul>
+      <li>
+        <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a></p>
+      </li>
+      <li>
+        <p>AndrodSDK</p>
+
+        <p>1.<a href="">下载</a></p>
+      </li>
+      <li>
+        <p>Gradle
+1.<a href="http://services.gradle.org/distributions">下载</a>
+2.设置环境变量
+3.
+2.配置全局Tools</p>
+      </li>
+    </ul>
+
+    <p>3.配置邮件服务</p>
+
+    <ul>
+      <li>在系统设置中找到Jenkins Locaction项填入Jenkins URL和系统管理员邮件地址，系统管理员邮件地址一定要配置，否则发不了邮件通知。因为邮件通知都是由系统管理员的邮箱发出来的。</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193043944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>找到邮件通知项，填入SMTP服务器信息及用户名、密码等认证信息。</li>
+    </ul>
+
+    <p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E9%85%8D%E7%BD%AE.png" alt="" /></p>
+
+    <ul>
+      <li>配好以后勾选“通过发送测试邮件测试配置”</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193124369?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <ul>
+      <li>填入接收测试邮件的地址，点击“Test configuration”。如果配置正确就会在下面显示Email was successfully sent</li>
+    </ul>
+
+    <p><img src="http://img.blog.csdn.net/20161103193149854?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+    <p>2.配置Gradle环境</p>
+    <ul>
+      <li>
+        <p><a href="http://services.gradle.org/distributions">下载地址</a></p>
+      </li>
+      <li>
+        <p>上传到linux并解压： unzip gradle-2.14.1-all.zip</p>
+      </li>
+      <li>
+        <p>配置环境变量：</p>
+      </li>
+    </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export GRADLE_HOME=/home/cfjekins/gradle-4.0 （gradle解压后的目录）
+  export PATH=$PATH:$GRADLE_HOME/bin
+</code></pre></div>    </div>
+    <p>　</p>
+    <ul>
+      <li>
+        <p>source命令使配置生效：source .bash_profile(source 文件名)</p>
+      </li>
+      <li>
+        <p>检验配置是否生效：echo $GRADLE_HOME</p>
+      </li>
+    </ul>
+
+    <p>3.配置Java环境</p>
+
+    <ul>
+      <li>配置环境变量：</li>
+    </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+  export PATH=$JAVA_HOME/bin:$PATH:
+</code></pre></div>    </div>
   </li>
 </ul>
 
-<h3 id="使用入门">使用入门</h3>
+<p>　</p>
+
+<h3 id="升级">升级</h3>
+
+<hr />
+
+<h3 id="新建和配置项目">新建和配置项目</h3>
+
+<p><a href="http://wangkuiwu.github.io/2015/08/07/jenkins-02/">教程</a></p>
 
 <ul>
-  <li><a href="https://tensorflow.google.cn/get_started/">官方教程</a></li>
+  <li>导出编译文件</li>
 </ul>
 
-<h3 id="常见的七个步骤">常见的七个步骤</h3>
-
-<ol>
-  <li>
-    <p>搜集数据</p>
-  </li>
-  <li>
-    <p>数据准备</p>
-  </li>
-  <li>
-    <p>选择模型</p>
-  </li>
-  <li>
-    <p>训练模型</p>
-  </li>
-  <li>
-    <p>评估模型</p>
-  </li>
-</ol>
-
-<p>推荐训练和评估所用的数据比例是4:1或7:3。选取何种比例取决于原始数据集的规模。如果你的数据非常多，那么用于验证的数据可能就不需要那么多了。</p>
-
-<ol>
-  <li>
-    <p>参数微调</p>
-  </li>
-  <li>
-    <p>预测</p>
-  </li>
-</ol>
-
-<h3 id="常用命令">常用命令</h3>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># TF1迁移到TF2</span>
-tf_upgrade_v2  <span class="nt">--intree</span> ml/  <span class="nt">--outtree</span> ml_v2/ <span class="nt">--reportfile</span> report.txt
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 查看TensorFlow是CPU还是GPU
-</span><span class="kn">from</span> <span class="nn">tensorflow.python.client</span> <span class="kn">import</span> <span class="n">device_lib</span>
-<span class="k">print</span><span class="p">(</span><span class="n">device_lib</span><span class="p">.</span><span class="n">list_local_devices</span><span class="p">())</span>
-</code></pre></div></div>
-
-<h3 id="常见应用场景">常见应用场景</h3>
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-out.png" alt="" /></p>
 
 <ul>
-  <li><a href="http://www.infoq.com/cn/articles/speaker-dentification-based-on-tensorflowlite?utm_source=articles_about_mobile&amp;utm_medium=link&amp;utm_campaign=mobile">基于TensorflowLite在移动端实现人声识别</a></li>
+  <li>构建</li>
 </ul>
 
-<h3 id="常见问题及解决办法">常见问题及解决办法</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Unknown activation function: relu6
-</code></pre></div></div>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
-<span class="k">def</span> <span class="nf">relu6</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-   <span class="k">return</span> <span class="n">K</span><span class="p">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">CustomObjectScope</span><span class="p">({</span><span class="s">'relu6'</span><span class="p">:</span> <span class="n">relu6</span><span class="p">}):</span>
-      <span class="n">model</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
-</code></pre></div></div>
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/jenkins-build.png" alt="" /></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError: 'val_loss'
-</code></pre></div></div>
+<h4 id="常见问题及解决方法">常见问题及解决方法</h4>
 
-<h3 id="常用模型">常用模型</h3>
+<p><strong>登陆失败</strong></p>
+
+<p>提示登陆信息无效</p>
+
+<p><strong>解决方法</strong></p>
 
 <ul>
-  <li>文本检测
-<a href="https://github.com/clovaai/CRAFT-pytorch">CRAFT</a>
-<a href="https://github.com/MhLiao/DB">DB</a>
-<a href="https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.0/doc/doc_ch/algorithm_overview.md">文本检测和文本识别常用算法</a></li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">cd /Users/[username]/.jenkins/</code></p>
+  </li>
+  <li>
+    <p>打开config.xml文件并修改配置信息(windows系统可能会保存在这个路径下C:\Windows\System32\config\systemprofile)</p>
+  </li>
 </ul>
 
-<h3 id="参考链接">参考链接</h3>
+<pre class="prettyprint lang-xml">
 
-<p><a href="https://codelabs.tensorflowers.cn/">TensorFlow Codelabs</a></p>
+ &lt;!--修改成false--&gt;
+ &lt;useSecurity&gt;true&lt;/useSecurity&gt;
+ &lt;!--删除 &lt;/authorizationStrategy&gt;和&lt;/securityRealm&gt;,重启jenkins，重新打开jenkins即可--&gt;
+ &lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;
+ &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;
+ &lt;/authorizationStrategy&gt;
+ &lt;securityRealm class="hudson.security.HudsonPrivateSecurityRealm"&gt;
+   &lt;disableSignup&gt;true&lt;/disableSignup&gt;
+   &lt;enableCaptcha&gt;false&lt;/enableCaptcha&gt;
+ &lt;/securityRealm&gt;
+ 
+</pre>
 
-<p><a href="https://github.com/margaretmz/awesome-tensorflow-lite">TensorFlow Lite</a>
-<a href="https://mp.weixin.qq.com/mp/homepage?__biz=MzU1OTMyNDcxMQ==&amp;hid=12&amp;sn=33ee29ede45120685f25d87723fe4917">MOOC学习礼包</a></p>
+<p><strong>SDK许可问题</strong></p>
 
-<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU1OTMyNDcxMQ==&amp;action=getalbum&amp;album_id=1338136551800520709&amp;scene=173&amp;from_msgid=2247491299&amp;from_itemidx=1&amp;count=3&amp;uin=&amp;key=&amp;devicetype=iMac+MacBookPro16%2C2+OSX+OSX+10.15.4+build(19E2269)&amp;version=12031f10&amp;lang=zh_CN&amp;nettype=WIFI&amp;ascene=0&amp;fontScale=100&amp;winzoom=1.000000">案例展示</a></p>
+<p><strong>解决办法</strong></p>
 
-<p><a href="https://mp.weixin.qq.com/s/-g_AnxcRCKYE1UOzKi5qeQ">Community Spotlight 获奖项目</a></p>
+<ul>
+  <li>Linux</li>
+</ul>
 
-<p><a href="https://tensorflow.google.cn/guide/upgrade">自动将代码升级到 TensorFlow 2</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir "$ANDROID_HOME/licenses"
+echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" &gt; "$ANDROID_HOME/licenses/android-sdk-license"
+</code></pre></div></div>
+<ul>
+  <li>Windows</li>
+</ul>
 
-<p><a href="https://github.com/tensorflow/tensorflow/releases">Tensorflow版本说明</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir "%ANDROID_HOME%\licenses"
+echo |set /p="8933bad161af4178b1185d1a37fbf41ea5269c55" &gt;"%ANDROID_HOME%\licenses\android-sdk-license"
+</code></pre></div></div>
+
+<ul>
+  <li>配置运行权限</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+chmod a+x startup.sh
+chmod +x catalina.sh
+</code></p>
+
+<ul>
+  <li>配置环境变量</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+open -e .bash_profile
+export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
+</code></p>
+
+<ul>
+  <li>启动Tomcat</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+startup.sh
+</code></p>
 
 
         </article>
@@ -407,18 +520,6 @@ tf_upgrade_v2  <span class="nt">--intree</span> ml/  <span class="nt">--outtree<
             
                 
                     
-                        
-                        <h2 id="similar_posts">Similar Posts</h2>
-                        <ul>
-                        
-                        <li class="relatedPost">
-                            <a href="http://localhost:4000/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类
-                            
-                            </a>
-                        </li>
-                        
-                        
-                    
                 
                     
                 
@@ -493,20 +594,18 @@ tf_upgrade_v2  <span class="nt">--intree</span> ml/  <span class="nt">--outtree<
                 
             
         
-        
-            </ul>
         
 
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2017/09/14/Oracle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Oracle使用从入门到放弃</a></p>
+        <p><strong>上一篇</strong> <a href="/2017/06/16/Jenkins%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Jenkins从入门到放弃</a></p>
         
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">TensorFlow环境配置</a></p>
+        <p><strong>下一篇</strong> <a href="/2017/06/20/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">百度地图从入门到放弃</a></p>
         
     </div>
 </div>
@@ -529,7 +628,7 @@ tf_upgrade_v2  <span class="nt">--intree</span> ml/  <span class="nt">--outtree<
 <script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
 
 
-<div id="SOHUCS" sid="TensorFlow学习笔记"></div>
+<div id="SOHUCS" sid="Jenkins从入门到放弃"></div>
 <script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
 <script type="text/javascript">
 window.changyan.api.config({

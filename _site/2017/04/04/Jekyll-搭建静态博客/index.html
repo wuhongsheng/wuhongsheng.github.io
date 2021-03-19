@@ -230,7 +230,7 @@
   <li><a href="#后续" id="markdown-toc-后续">后续</a></li>
   <li><a href="#jekyll常用命令" id="markdown-toc-jekyll常用命令">jekyll常用命令</a></li>
   <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
-      <li><a href="#hitimeshitimes-loaderror" id="markdown-toc-hitimeshitimes-loaderror"><code class="highlighter-rouge">hitimes/hitimes (LoadError)</code></a></li>
+      <li><a href="#hitimeshitimes-loaderror" id="markdown-toc-hitimeshitimes-loaderror"><code class="language-plaintext highlighter-rouge">hitimes/hitimes (LoadError)</code></a></li>
     </ul>
   </li>
 </ul>
@@ -322,9 +322,9 @@
 
 <ul>
   <li>整个安装过程参考了jekyll官网，注意jekyll还有一个简体中文官网，不过比较坑（我就被坑了），有些内容没有翻译过来，有可能会走弯路，建议如果想看中文的相关资料，也要中英对照着阅读。<a href="http://jekyllcn.com">jekyll中文网 http://jekyllcn.com</a>, <a href="http://jekyllrb.com">jekyll英文网 http://jekyllrb.com</a></li>
-  <li>jekyll中的css是用sass写的，当然直接在<code class="highlighter-rouge">_sass/_layout.scss</code>中添加css也是可以的。</li>
+  <li>jekyll中的css是用sass写的，当然直接在<code class="language-plaintext highlighter-rouge">_sass/_layout.scss</code>中添加css也是可以的。</li>
   <li>本文是用Markdown格式来写的，相关语法可参考： <a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版) http://wowubuntu.com/markdown/</a></li>
-  <li>按照本文的说明搭建完博客后，用<code class="highlighter-rouge">github Pages</code>托管就可以看到了。注意，在github上面好像不支持rouge，所以要push到github上时，我将配置文件_config.yml中的代码高亮改变为<code class="highlighter-rouge">highlighter: pygments</code>就可以了</li>
+  <li>按照本文的说明搭建完博客后，用<code class="language-plaintext highlighter-rouge">github Pages</code>托管就可以看到了。注意，在github上面好像不支持rouge，所以要push到github上时，我将配置文件_config.yml中的代码高亮改变为<code class="language-plaintext highlighter-rouge">highlighter: pygments</code>就可以了</li>
   <li>博客默认是没有评论系统的，本文的评论系统使用了多说，详细安装办法可访问<a href="http://duoshuo.com/">多说官网 http://duoshuo.com/</a>，当然也可以使用<a href="http://changyan.sohu.com/">搜狐畅言 http://changyan.sohu.com/</a>作为评论系统。</li>
   <li>也可以绑定自己的域名，如果没有域名，可以在<a href="http://www.godaddy.com/">godaddy http://www.godaddy.com/</a>上将域名放入购物车等待降价，买之。</li>
   <li>祝各位新年快乐！</li>
@@ -332,7 +332,7 @@
 
 <h2 id="jekyll常用命令">jekyll常用命令</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Blog项目编译
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Blog项目编译
 bundle exec jekyll s
 </code></pre></div></div>
 
@@ -340,11 +340,11 @@ bundle exec jekyll s
 
 <h2 id="可能出现的问题">可能出现的问题</h2>
 
-<h3 id="hitimeshitimes-loaderror"><code class="highlighter-rouge">hitimes/hitimes (LoadError)</code></h3>
+<h3 id="hitimeshitimes-loaderror"><code class="language-plaintext highlighter-rouge">hitimes/hitimes (LoadError)</code></h3>
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)
 </code></pre></div></div>
 
 <p><strong>解决方法：</strong></p>
@@ -354,10 +354,10 @@ bundle exec jekyll s
 <blockquote>
   <p>可能是 Ruby 2.2 和 hitimes-1.2.2-x86-mingw32 中有一些 ABI 变化，少了一些相关的类库。</p>
 
-  <p>所以卸载 hitimes 并通过 <code class="highlighter-rouge">--platform ruby</code> 重装即可。代码如下：</p>
+  <p>所以卸载 hitimes 并通过 <code class="language-plaintext highlighter-rouge">--platform ruby</code> 重装即可。代码如下：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem uni hitimes
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem uni hitimes
 **Remove ALL versions**
 gem ins hitimes -v 1.2.1 --platform ruby
 </code></pre></div></div>
@@ -368,7 +368,7 @@ gem ins hitimes -v 1.2.1 --platform ruby
 
 <p>下面是我自己的卸载和安装过程：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes
 
 You have requested to uninstall the gem:
         hitimes-1.2.2-x86-mingw32
@@ -547,12 +547,21 @@ Done installing documentation for hitimes after 1 seconds
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="Jekyll 搭建静态博客"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

@@ -241,7 +241,7 @@ React Native允许您仅使用JavaScript构建移动应用程序。它使用与R
 
 <h2 id="环境配置">环境配置</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.安装node.js
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.安装node.js
 
 2.安装react-native命令行工具
 npm install -g react-native-cli
@@ -254,7 +254,7 @@ react-native init [ProjectName]
 
 <h4 id="升级新版本"><a href="http://reactnative.cn/docs/0.46/upgrading.html">升级新版本</a></h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 1. 安装Git并设置环境变量
 
 2. 安装react-native-git-upgrade工具模块
@@ -270,14 +270,14 @@ react-native init [ProjectName]
 
 <h4 id="降级版本">降级版本</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-native@版本号。
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-native@版本号。
 通过上诉操作之后，别忘了更新一下模板。
 react-native upgrade
 </code></pre></div></div>
 
 <h4 id="运行调试方法">运行调试方法</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To run your app on iOS:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To run your app on iOS:
    cd /Users/whs/AwesomeProject
    react-native run-ios
    - or -
@@ -292,7 +292,7 @@ Google浏览器调试地址
 http://localhost:8081/debugger-ui   
 </code></pre></div></div>
 <h4 id="npm常用命令"><a href="https://www.npmjs.com/">npm</a>常用命令</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#更新
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#更新
 npm install npm@latest -g
 </code></pre></div></div>
 <hr />
@@ -348,7 +348,7 @@ npm install npm@latest -g
 
 <p><strong>解决办法</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.确定自己的环境配置是否有问题
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.确定自己的环境配置是否有问题
 2.打开终端，输入命令行
 brew install wget
 
@@ -357,11 +357,11 @@ brew install wget
 </code></pre></div></div>
 
 <p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>React Native unable to load script from assets index.android.bundle on windows
 </code></pre></div></div>
 <p><strong>解决办法</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.在工程目录里建assets目录
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.在工程目录里建assets目录
 
 2.运行命令
  react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
@@ -372,7 +372,7 @@ react-native run-android
 
 <p><strong>问题描述</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Installing build/Build/Products/Debug-iphonesimulator/SCLYGZ.app
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Installing build/Build/Products/Debug-iphonesimulator/SCLYGZ.app
 An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=2):
 Failed to install the requested application
 An application bundle was not found at the provided path.
@@ -386,7 +386,7 @@ Print: Entry, ":CFBundleIdentifier", Does Not Exist
 
 <p><strong>问题描述</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Users/whs/Library/Developer/Xcode/DerivedData/SCLYGZ-cwawqpsnahyurjgkghwavkkokijl/Build/Intermediates.noindex/SCLYGZ.build/Debug-iphonesimulator/SCLYGZ.build/Script-00DD1BFF1BD5951E006B06BC.sh: line 3: ../node_modules/react-native/scripts/react-native-xcode.sh: No such file or directory
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Users/whs/Library/Developer/Xcode/DerivedData/SCLYGZ-cwawqpsnahyurjgkghwavkkokijl/Build/Intermediates.noindex/SCLYGZ.build/Debug-iphonesimulator/SCLYGZ.build/Script-00DD1BFF1BD5951E006B06BC.sh: line 3: ../node_modules/react-native/scripts/react-native-xcode.sh: No such file or directory
 </code></pre></div></div>
 
 <p><strong>解决方法</strong></p>
@@ -398,12 +398,12 @@ to ../node_modules/react-native/scripts/react-native-xcode.sh</p>
 Then change the above paths.</p>
 
 <p>或者</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm -rf node_modules 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm -rf node_modules 
 rm -rf ~/.rncache
 npm install
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: bundling failed: "Unable to resolve module `parse/react-native` from `/Users/whs/ReactNative/GZLYCY/js/setup.js`: Module does not exist in the module map\n\nThis might be related to https://github.com/facebook/react-native/issues/4968\nTo resolve try the following:\n  1. Clear watchman watches: `watchman watch-del-all`.\n  2. Delete the `node_modules` folder: `rm -rf node_modules &amp;&amp; npm install`.\n  3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`."
 </code></pre></div></div>
 
 
@@ -565,12 +565,21 @@ npm install
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="React Native从入门到放弃"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

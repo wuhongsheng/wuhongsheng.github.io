@@ -238,7 +238,7 @@
       <li>通过以下命令安装pip 和 Virtualenv：</li>
     </ol>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo easy_install pip
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo easy_install pip
  $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade virtualenv 
 
 </code></pre></div>    </div>
@@ -247,7 +247,7 @@
       <li>通过使用以下某种格式发出命令来创建一个 Virtualenv 环境：</li>
     </ol>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ virtualenv --system-site-packages targetDirectory # for Python 2.7
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ virtualenv --system-site-packages targetDirectory # for Python 2.7
  $ virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
 </code></pre></div>    </div>
   </li>
@@ -258,7 +258,7 @@
 
 <h3 id="常用命令">常用命令</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
 $ cd 
 $ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
 $ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
@@ -272,9 +272,11 @@ source activate tensorflow
 # 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控训练进度)
 tensorboard --logdir tf_files/training_summaries &amp;
 
-# 升级TensorFlow
-$ pip3 install --upgrade tensorflow 
+# 查看版本
+python3 -c 'import tensorflow as tf; print(tf.__version__)'
 
+# 升级TensorFlow
+$ pip3 install --upgrade tensorflow -i https://mirrors.aliyun.com/pypi/simple
 # 卸载TensorFlow
 $ pip uninstall tensorflow
 $ pip3 uninstall tensorflow 
@@ -284,7 +286,7 @@ $ pip3 uninstall tensorflow
 
 <p><strong>问题描述</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
 </code></pre></div></div>
 
 <p><strong>原因及解决办法</strong></p>
@@ -292,7 +294,7 @@ $ pip3 uninstall tensorflow
 <p>Python版本不匹配</p>
 
 <p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import tensorflow as tf
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import tensorflow as tf
 Traceback (most recent call last):
   File "/Users/whs/anaconda3/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 18, in swig_import_helper
     fp, pathname, description = imp.find_module('_pywrap_tensorflow_internal', [dirname(__file__)])
@@ -301,7 +303,7 @@ Traceback (most recent call last):
 ImportError: No module named '_pywrap_tensorflow_internal'
 </code></pre></div></div>
 <p><strong>原因及解决方法</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
 删除tensorflow 
 rm -r ~/tensorflow
 重新安装
@@ -482,12 +484,21 @@ rm -r ~/tensorflow
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="TensorFlow环境配置"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

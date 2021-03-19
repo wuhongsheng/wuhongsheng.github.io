@@ -244,14 +244,14 @@
   <li>解压并移动到系统目录下</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv  apache-tomcat-9.0.0.M21 /usr/local
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv  apache-tomcat-9.0.0.M21 /usr/local
 </code></pre></div></div>
 
 <ul>
   <li>配置运行权限</li>
 </ul>
 
-<p><code class="highlighter-rouge">
+<p><code class="language-plaintext highlighter-rouge">
 chmod a+x startup.sh
 chmod +x catalina.sh
 </code></p>
@@ -260,7 +260,7 @@ chmod +x catalina.sh
   <li>配置环境变量</li>
 </ul>
 
-<p><code class="highlighter-rouge">
+<p><code class="language-plaintext highlighter-rouge">
 open -e .bash_profile
 export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
 </code></p>
@@ -269,7 +269,7 @@ export PATH=${PATH}:/usr/local/apache-tomcat-9.0.0.M21/bin
   <li>启动Tomcat</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>startup.sh  启动Tomcat
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>startup.sh  启动Tomcat
 shutdown.sh 关闭Tomcat
 </code></pre></div></div>
 
@@ -484,12 +484,21 @@ shutdown.sh 关闭Tomcat
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="Tomcat安装教程"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

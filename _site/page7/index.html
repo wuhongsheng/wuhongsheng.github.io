@@ -168,6 +168,144 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">Android开发常用技巧</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-05-08
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#uiueux" id="markdown-toc-uiueux">UI/UE/UX</a>    <ul>
+      <li><a href="#rippledrawable---波纹效果" id="markdown-toc-rippledrawable---波纹效果">RippleDrawable - 波纹效果</a></li>
+      <li><a href="#vectordrawable使用" id="markdown-toc-vectordrawable使用">VectorDrawable使用</a>        <ul>
+          <li><a href="#vectordrawable优点" id="markdown-toc-vectordrawable优点">VectorDrawable优点</a></li>
+          <li><a href="#vectordrawable使用-1" id="markdown-toc-vectordrawable使用-1">VectorDrawable使用</a></li>
+        </ul>
+      </li>
+      <li><a href="#databinding" id="markdown-toc-databinding">Databinding</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Android 开发技巧</p>
+
+<h3 id="uiueux">UI/UE/UX</h3>
+
+<h4 id="rippledrawable---波纹效果">RippleDrawable - 波纹效果</h4>
+
+<ul>
+  <li>使用Android 提供的属性</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">android:foreground="?android:attr/selectableItemBackground"</code></p>
+
+<p>扩散到View边界</p>
+
+<p><code class="language-plaintext highlighter-rouge">android:foreground="?android:attr/selectableItemBackgroundBorderless</code></p>
+
+<p>设置后，会从孩子往父亲找一个依附的色。如果View往上找的时候，亲生父亲没背景色，会继续向上查找直到最顶端。找到了最顶端的爷爷，这个时候才绘制。然而，如果父亲的兄弟又绘制了颜色，且盖住了最顶端的绘制，会导致看不到效果。如果有一定的透明度，结果就显而易见了。
+特别注意：
+当把硬件加速给关闭时，这个效果是没有的。
+这是API 21的新属性，老版本无法使用.</p>
+
+<ul>
+  <li>自定义</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- A green ripple drawn atop a black rectangle. --&gt;
+&lt;ripple android:color="#ff00ff00"&gt;
+    &lt;item android:drawable="@android:color/black" /&gt;
+&lt;/ripple&gt;
+ 
+&lt;!-- A blue ripple drawn atop a drawable resource. --&gt;
+&lt;ripple android:color="#ff0000ff"&gt;
+    &lt;item android:drawable="@drawable/my_drawable" /&gt;
+&lt;/ripple&gt;
+</code></pre></div></div>
+
+<p>android:color中是点击响应色，也是波纹扩散色。
+item中是正常状态下的显示。</p>
+
+<p>一般使用时会和原有的selector配合，原有的selector负责5.0以下显示效果，
+新的selector内部含有ripple标签放在drawable-v21中，保证点击效果。</p>
+
+<hr />
+
+<h4 id="vectordrawable使用">VectorDrawable使用</h4>
+
+<h6 id="vectordrawable优点">VectorDrawable优点</h6>
+
+<ul>
+  <li>
+    <p>VectorDrawable图像可以自动进行适配，不需要通过分辨率来设置不同的图片Vector图像可以大幅度减少图像的体积。</p>
+  </li>
+  <li>
+    <p>svg图像导出工具方便，从而转换成Vector图像功能强大，前端已经广泛使用。</p>
+  </li>
+</ul>
+
+<h6 id="vectordrawable使用-1">VectorDrawable使用</h6>
+
+<p><a href="http://www.jianshu.com/p/18c9bd860394">VectorDrawable—5.0</a></p>
+
+<p>Databinding 中使用svg可能会出现找不到的问题
+android:drawableLeft=”@{@drawable/ic_password}”</p>
+
+<h4 id="databinding">Databinding</h4>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/05/08/Android%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/05/03/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8F%8A%E9%97%AE%E9%A2%98/">常用Git命令及问题</a>
                 </h2>
                 <div class="label">
@@ -191,7 +329,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Git" title="Category: Git" rel="category">Git</a>
+        <a href="/category/#代码版本控制" title="Category: 代码版本控制" rel="category">代码版本控制</a>
     
   
 
@@ -264,7 +402,7 @@
   <li>MAC环境下</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 列出当前已存在的SSH:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 列出当前已存在的SSH:
 ls -al ~/.ssh
 
 # 生成新的ssh
@@ -307,7 +445,7 @@ git config --global user.email 'personal@company.com'
   <li>WINDOWS环境下</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 下载项目
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 下载项目
 git clone https://github.com/facebook/react-native.
 # 创建分支
 git branch [branchname]
@@ -360,6 +498,23 @@ git diff
 # 暂存区(stage)和分支(master)的比较
 git diff --cached
 
+# 初始化
+git init
+# 在存储库中打包解包的对象
+git-repack  -a
+
+# 创建并切换分支
+git checkout -b dev
+
+# 下载项目到指定目录
+git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
+
+# clone 断点续传
+git fetch https://github.com/Bilibili/ijkplayer.git 
+
+# The following untracked working tree files would be overwritten by checkout
+# 删除 一些 没有 git add 的 文件；
+git clean -d -fx
 </code></pre></div></div>
 
 <h3 id="参考文章">参考文章</h3>
@@ -370,7 +525,7 @@ git diff --cached
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>getLastSuccessful failed. token: 25dc1437-bde5-414b-8f4c-63e9b7026ea4, userName: git@github.com, client: http://localhost:63342/RPC2
 java.lang.RuntimeException: Invocation failed Operation timed out
 	at org.jetbrains.git4idea.ssh.GitSSHXmlRpcClient.getLastSuccessful(GitSSHXmlRpcClient.java:230)
 	at org.jetbrains.git4idea.ssh.SSHMain.authenticate(SSHMain.java:212)
@@ -391,7 +546,7 @@ Caused by: java.net.ConnectException: Operation timed out
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Clone failed
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Clone failed
 RPC failed; curl 56 SSLRead() return error -9806
 The remote end hung up unexpectedly
 early EOF
@@ -400,7 +555,7 @@ index-pack failed
 
 <p><strong>解决方法：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global http.postBuffer 1048576000
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global http.postBuffer 1048576000
 网上查查资料，才发现是淘宝的镜像源关闭了。
 解决方法，很简单，把旧的镜像删除，换成Rubby China.
 gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
@@ -538,7 +693,7 @@ gem install rails
 
 <h4 id="表格">表格</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Tables        | Are           | Cool  |
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
@@ -675,14 +830,14 @@ gem install rails
 <h3 id="常用正则表达式">常用正则表达式</h3>
 
 <ul>
-  <li>匹配数字  <code class="highlighter-rouge">\d+(\.\d+)?</code></li>
-  <li>匹配中文字符  <code class="highlighter-rouge">[\u4e00-\u9fa5]</code></li>
-  <li>匹配邮箱地址  <code class="highlighter-rouge">[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?</code></li>
-  <li>匹配网址  <code class="highlighter-rouge">[a-zA-z]+://[^\s]*</code></li>
-  <li>匹配国内电话号码  <code class="highlighter-rouge">\d{3}-\d{8}|\d{4}-\{7,8}</code></li>
-  <li>匹配QQ号  <code class="highlighter-rouge">[1-9][0-9]{4,}</code></li>
-  <li>匹配身份证号  <code class="highlighter-rouge">^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$</code></li>
-  <li>匹配手机号码  <code class="highlighter-rouge">[1][3587]\d{9}</code></li>
+  <li>匹配数字  <code class="language-plaintext highlighter-rouge">\d+(\.\d+)?</code></li>
+  <li>匹配中文字符  <code class="language-plaintext highlighter-rouge">[\u4e00-\u9fa5]</code></li>
+  <li>匹配邮箱地址  <code class="language-plaintext highlighter-rouge">[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?</code></li>
+  <li>匹配网址  <code class="language-plaintext highlighter-rouge">[a-zA-z]+://[^\s]*</code></li>
+  <li>匹配国内电话号码  <code class="language-plaintext highlighter-rouge">\d{3}-\d{8}|\d{4}-\{7,8}</code></li>
+  <li>匹配QQ号  <code class="language-plaintext highlighter-rouge">[1-9][0-9]{4,}</code></li>
+  <li>匹配身份证号  <code class="language-plaintext highlighter-rouge">^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$</code></li>
+  <li>匹配手机号码  <code class="language-plaintext highlighter-rouge">[1][3587]\d{9}</code></li>
 </ul>
 
 <h3 id="实例">实例</h3>
@@ -1042,174 +1197,6 @@ gem install rails
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2017-04-12
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#前提" id="markdown-toc-前提">前提</a>    <ul>
-      <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
-    </ul>
-  </li>
-  <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
-      <li><a href="#adb端口占用" id="markdown-toc-adb端口占用">adb端口占用</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>自从换了Mac后adb经常出现问题（经验不足），所以写此篇记录一下常用的adb命令以及一些常见问题解决方法。</p>
-
-<h2 id="前提">前提</h2>
-<p>要想在Mac或Windows上直接使用adb命令，需要配置环境变量，以Mac为例，配置方法如下：</p>
-<ul>
-  <li>打开终端输入 touch .bash_profile 更新配置文件，如果不存在自动创建</li>
-  <li>open -e .bash_profile 打开配置文件</li>
-  <li>输入如下内容并保存
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
-export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
-</code></pre></div>    </div>
-    <h3 id="常用命令">常用命令</h3>
-  </li>
-</ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看adb 端口是否有占用   
-adb nodaemon server   
-# 查看adb端口占用进程 
-lsof -i:5037 
-# 重置本地签名文件
-rm -rf ~/.android 
-# 结束所有adb相关进程
-killall adb 
-# 测量应用的启动时间
-adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity 
-# /将sd卡中的文件拉到指定目录
-adb pull sdcard1/PcmRecord D:/whs
-# 查看已安装应用列表
-adb shell pm list package
-# 清除应用数据
-adb shell pm clear com.iflytek.android.device
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="可能出现的问题">可能出现的问题</h2>
-
-<h3 id="adb端口占用">adb端口占用</h3>
-
-<p><strong>错误代码：</strong></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
-</code></pre></div></div>
-
-<p><strong>解决方法：</strong></p>
-
-<ul>
-  <li>killall adb 然后 重启Android Studio</li>
-  <li>如果上面方法无效，请检查是否重复设置Android环境变量</li>
-  <li>还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。</li>
-  <li>open sdk manager and installed all android sdk tools and done.</li>
-  <li>Mac防火墙设置原因</li>
-  <li>查看AS debugger 端口是否被占用 lsof -i:63341</li>
-</ul>
-
-<p><strong>错误信息：</strong></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ adb devices
-List of devices attached
-* daemon not running. starting it now at tcp:5037 *
-* daemon started successfully *
-** daemon still not running
-error: cannot connect to daemon at tcp:5037: Operation timed out
-</code></pre></div></div>
-<p><strong>解决方法：</strong></p>
-<ul>
-  <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。</li>
-</ul>
-
-<p><strong>错误信息：</strong></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8617 for debugger
-
-下午4:15	Can't bind to local 8606 for debugger
-</code></pre></div></div>
-
-<p><strong>解决方法：</strong></p>
-
-<ul>
-  <li>在Debugger Configuration 设置Debuger Type 为 Java</li>
-</ul>
-
-<p><strong>错误信息</strong></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb server version (31) doesn't match this client (40); killing...
-could not read ok from ADB Server
-* failed to start daemon
-error: cannot connect to daemon 
-</code></pre></div></div>
-
-<p><strong>解决方法</strong>
-原因：这个是socket 的端口被占用了，我这里是因为360安全助手占用了这个端口，所以其他的就不能够用了。就要删除手机助手的进程，如图里面的360Mobile</p>
-
-<p><img src="https://img-blog.csdn.net/20160718104410461?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -1305,11 +1292,11 @@ error: cannot connect to daemon
                     </li>
                     
                     <li>
-                        <a href="/category/#Git" class="categories-list-item" cate="Git">
+                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
                             <span class="name">
-                                Git
+                                代码版本控制
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1399,7 +1386,7 @@ error: cannot connect to daemon
                             <span class="name">
                                 jenkins
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1461,15 +1448,6 @@ error: cannot connect to daemon
                         <a href="/category/#刷机" class="categories-list-item" cate="刷机">
                             <span class="name">
                                 刷机
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
-                            <span class="name">
-                                代码版本控制
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1667,14 +1645,14 @@ error: cannot connect to daemon
                       
                       
                       
-                      <a href="/tag/#jenkins" style="font-size: 9pt; color: #999;">jenkins</a>
+                      <a href="/tag/#jenkins" style="font-size: 10pt; color: #888;">jenkins</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                      <a href="/tag/#CI" style="font-size: 10pt; color: #888;">CI</a>
                     
                       
                       

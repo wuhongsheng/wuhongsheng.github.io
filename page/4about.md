@@ -14,7 +14,7 @@ type: page
 <!--<iframe src="https://githubbadge.appspot.com/gaohaoyang?s=1" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder="0"></iframe>-->
 ![](http://ooxw95lkz.bkt.clouddn.com/me.jpeg)
 
-现就职于科大讯飞消费者BG，讯飞翻译机研发工程师。
+现就职于皖通科技，研发工程师。
 
 主要兴趣集中在Android开发，热衷于参与开源项目。对于Google的等互联网公司对开发者的友好态度非常赞同，希望为社会进步尽自己的绵薄之力。
 
@@ -24,7 +24,9 @@ type: page
 
 还有，学习是一个非常愉快的过程。共同加油！
 
-* 2015.6.20 入职北京航天泰坦科技股份有限公司 
+* 2018.11.26 入职皖通科技
+* 2018.6.26-2018-11 科大讯飞
+* 2015.6.20-2018.2 北京航天泰坦科技股份有限公司 
 * 2015.6 毕业于滁州学院 地理信息系统专业
 * 2014.12-2015.4 安徽省第四测绘院实习
 * 2012.6-2012.9 北京数字空间

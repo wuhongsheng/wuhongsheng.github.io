@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Linux使用从入门到放弃</title>
-    <meta name="description" content="  常用命令  环境部署          配置Java环境      Linux下安装Gradle      安装Android SDK      常用命令# 远程连接服务器ssh -X username@192.168.1.233password# 文件下载wget 下载地址wget -P 指定目录 下载地址...">
+    <meta name="description" content="  常用命令          mac 常用命令        环境部署          配置Java环境      Linux下安装Gradle      安装Android SDK      常用命令# 远程连接服务器ssh -X username@192.168.1.233password# 文件下载wg...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -216,7 +216,10 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a>    <ul>
+      <li><a href="#mac-常用命令" id="markdown-toc-mac-常用命令">mac 常用命令</a></li>
+    </ul>
+  </li>
   <li><a href="#环境部署" id="markdown-toc-环境部署">环境部署</a>    <ul>
       <li><a href="#配置java环境" id="markdown-toc-配置java环境">配置Java环境</a></li>
       <li><a href="#linux下安装gradle" id="markdown-toc-linux下安装gradle">Linux下安装Gradle</a></li>
@@ -240,6 +243,19 @@ unzip <span class="nt">-d</span> /opt/gradle gradle-4.6-bin.zip
 <span class="nb">tar   </span>zxvf   /opt/dev/android-sdk_r24.4.1-linux.tgz  <span class="nt">-C</span> /usr//local/AndroidSDK
 <span class="c"># tar.gz文件</span>
 <span class="nb">tar</span> <span class="nt">-xvf</span> 文件路径
+<span class="c"># 列出home下面所有一级目录的一级目录文件大小。</span>
+<span class="nb">du</span> <span class="nt">-h</span> <span class="nt">--max-depth</span><span class="o">=</span>1 /home/<span class="k">*</span> 
+<span class="c"># 显示指定磁盘文件的可用空间</span>
+<span class="nb">df</span> <span class="nt">-h</span> 
+<span class="c"># 内存使用情况</span>
+free <span class="nt">-m</span>
+</code></pre></div></div>
+
+<h3 id="mac-常用命令">mac 常用命令</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 重置HomeBrew环境</span>
+brew update-reset
+<span class="c"># 安装svn</span>
+brew <span class="nb">install </span>svn
 </code></pre></div></div>
 
 <h2 id="环境部署">环境部署</h2>
@@ -412,12 +428,21 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="Linux使用从入门到放弃"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

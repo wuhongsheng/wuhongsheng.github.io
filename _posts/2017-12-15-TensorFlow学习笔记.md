@@ -57,13 +57,65 @@ author: WHS
 
 7. 预测
 
+
+### 常用命令
+
+```shell
+# TF1迁移到TF2
+tf_upgrade_v2  --intree ml/  --outtree ml_v2/ --reportfile report.txt
+```
+
+```python
+# 查看TensorFlow是CPU还是GPU
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+```
+
 ### 常见应用场景
 
 * [基于TensorflowLite在移动端实现人声识别](http://www.infoq.com/cn/articles/speaker-dentification-based-on-tensorflowlite?utm_source=articles_about_mobile&utm_medium=link&utm_campaign=mobile)
 
 
-### 相关教程
+### 常见问题及解决办法
+```
+ Unknown activation function: relu6
+```
+```python
+from keras import backend as K
+def relu6(x):
+   return K.relu(x, max_value=6)
+with CustomObjectScope({'relu6': relu6}):
+      model=tf.keras.models.load_model(model_path)
+```
 
-* [TensorFlow Codelabs](https://codelabs.tensorflowers.cn/)
+```
+KeyError: 'val_loss'
+```
+
+### 常用模型
+
+* 文本检测
+[CRAFT](https://github.com/clovaai/CRAFT-pytorch)
+[DB](https://github.com/MhLiao/DB)
+[文本检测和文本识别常用算法](https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.0/doc/doc_ch/algorithm_overview.md)
+
+
+### 参考链接
+
+[TensorFlow Codelabs](https://codelabs.tensorflowers.cn/)
+
+[TensorFlow Lite](https://github.com/margaretmz/awesome-tensorflow-lite)
+[MOOC学习礼包](https://mp.weixin.qq.com/mp/homepage?__biz=MzU1OTMyNDcxMQ==&hid=12&sn=33ee29ede45120685f25d87723fe4917)
+
+[案例展示](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU1OTMyNDcxMQ==&action=getalbum&album_id=1338136551800520709&scene=173&from_msgid=2247491299&from_itemidx=1&count=3&uin=&key=&devicetype=iMac+MacBookPro16%2C2+OSX+OSX+10.15.4+build(19E2269)&version=12031f10&lang=zh_CN&nettype=WIFI&ascene=0&fontScale=100&winzoom=1.000000)
+
+[Community Spotlight 获奖项目](https://mp.weixin.qq.com/s/-g_AnxcRCKYE1UOzKi5qeQ)
+
+
+[自动将代码升级到 TensorFlow 2](https://tensorflow.google.cn/guide/upgrade)
+
+[Tensorflow版本说明](https://github.com/tensorflow/tensorflow/releases)
+
+
 
 

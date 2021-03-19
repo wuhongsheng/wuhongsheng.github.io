@@ -168,6 +168,185 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">adb常用命令及常见问题</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2017-04-12
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#前提" id="markdown-toc-前提">前提</a>    <ul>
+      <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+    </ul>
+  </li>
+  <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
+      <li><a href="#adb端口占用" id="markdown-toc-adb端口占用">adb端口占用</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>自从换了Mac后adb经常出现问题（经验不足），所以写此篇记录一下常用的adb命令以及一些常见问题解决方法。</p>
+
+<h2 id="前提">前提</h2>
+<p>要想在Mac或Windows上直接使用adb命令，需要配置环境变量，以Mac为例，配置方法如下：</p>
+<ul>
+  <li>打开终端输入 touch .bash_profile 更新配置文件，如果不存在自动创建</li>
+  <li>open -e .bash_profile 打开配置文件</li>
+  <li>输入如下内容并保存
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
+export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
+</code></pre></div>    </div>
+    <h3 id="常用命令">常用命令</h3>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看adb 端口是否有占用   
+adb nodaemon server   
+# 查看adb端口占用进程 
+lsof -i:5037 
+# 重置本地签名文件
+rm -rf ~/.android 
+# 结束所有adb相关进程
+killall adb 
+# 测量应用的启动时间
+adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity 
+# /将sd卡中的文件拉到指定目录
+adb pull sdcard1/PcmRecord D:/whs
+# 查看已安装应用列表
+adb shell pm list package
+# 清除应用数据
+adb shell pm clear com.iflytek.android.device
+
+# adb 发送intent
+adb shell am start -W -a android.intent.action.VIEW -d "shinevi://wx" com.wt.shanweicloud.ui.main
+
+adb shell am start  -d "shinevi://xj"
+# 查看 Android手机CPU类型 ARM、ARMV7、NEON
+adb shell cd/proc cat cpuinfo
+# 查看手机屏幕大小
+adb shell wm size
+adb 将当前页面的数据导出来
+adb shell "uiautomator dump --compressed &amp;&amp; cat /sdcard/window_dump.xml"
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="可能出现的问题">可能出现的问题</h2>
+
+<h3 id="adb端口占用">adb端口占用</h3>
+
+<p><strong>错误代码：</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
+</code></pre></div></div>
+
+<p><strong>解决方法：</strong></p>
+
+<ul>
+  <li>killall adb 然后 重启Android Studio</li>
+  <li>如果上面方法无效，请检查是否重复设置Android环境变量</li>
+  <li>还有可能是Chrome DevTools已连接设备 Chrome 打开 chrome://inspect/#devices checkout设备，然后kill-server and adb devices。</li>
+  <li>open sdk manager and installed all android sdk tools and done.</li>
+  <li>Mac防火墙设置原因</li>
+  <li>查看AS debugger 端口是否被占用 lsof -i:63341</li>
+</ul>
+
+<p><strong>错误信息：</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ adb devices
+List of devices attached
+* daemon not running. starting it now at tcp:5037 *
+* daemon started successfully *
+** daemon still not running
+error: cannot connect to daemon at tcp:5037: Operation timed out
+</code></pre></div></div>
+<p><strong>解决方法：</strong></p>
+<ul>
+  <li>Close Android Studio 然后使用终端kill 占用adb的进程，重启AS(如果还是不行请重新插拔设备)。</li>
+</ul>
+
+<p><strong>错误信息：</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8617 for debugger
+
+下午4:15	Can't bind to local 8606 for debugger
+</code></pre></div></div>
+
+<p><strong>解决方法：</strong></p>
+
+<ul>
+  <li>在Debugger Configuration 设置Debuger Type 为 Java</li>
+</ul>
+
+<p><strong>错误信息</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb server version (31) doesn't match this client (40); killing...
+could not read ok from ADB Server
+* failed to start daemon
+error: cannot connect to daemon 
+</code></pre></div></div>
+
+<p><strong>解决方法</strong>
+原因：这个是socket 的端口被占用了，我这里是因为360安全助手占用了这个端口，所以其他的就不能够用了。就要删除手机助手的进程，如图里面的360Mobile</p>
+
+<p><img src="https://img-blog.csdn.net/20160718104410461?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2017/04/12/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2017/04/04/Jekyll-%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/">Jekyll 搭建静态博客</a>
                 </h2>
                 <div class="label">
@@ -231,7 +410,7 @@
   <li><a href="#后续" id="markdown-toc-后续">后续</a></li>
   <li><a href="#jekyll常用命令" id="markdown-toc-jekyll常用命令">jekyll常用命令</a></li>
   <li><a href="#可能出现的问题" id="markdown-toc-可能出现的问题">可能出现的问题</a>    <ul>
-      <li><a href="#hitimeshitimes-loaderror" id="markdown-toc-hitimeshitimes-loaderror"><code class="highlighter-rouge">hitimes/hitimes (LoadError)</code></a></li>
+      <li><a href="#hitimeshitimes-loaderror" id="markdown-toc-hitimeshitimes-loaderror"><code class="language-plaintext highlighter-rouge">hitimes/hitimes (LoadError)</code></a></li>
     </ul>
   </li>
 </ul>
@@ -323,9 +502,9 @@
 
 <ul>
   <li>整个安装过程参考了jekyll官网，注意jekyll还有一个简体中文官网，不过比较坑（我就被坑了），有些内容没有翻译过来，有可能会走弯路，建议如果想看中文的相关资料，也要中英对照着阅读。<a href="http://jekyllcn.com">jekyll中文网 http://jekyllcn.com</a>, <a href="http://jekyllrb.com">jekyll英文网 http://jekyllrb.com</a></li>
-  <li>jekyll中的css是用sass写的，当然直接在<code class="highlighter-rouge">_sass/_layout.scss</code>中添加css也是可以的。</li>
+  <li>jekyll中的css是用sass写的，当然直接在<code class="language-plaintext highlighter-rouge">_sass/_layout.scss</code>中添加css也是可以的。</li>
   <li>本文是用Markdown格式来写的，相关语法可参考： <a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版) http://wowubuntu.com/markdown/</a></li>
-  <li>按照本文的说明搭建完博客后，用<code class="highlighter-rouge">github Pages</code>托管就可以看到了。注意，在github上面好像不支持rouge，所以要push到github上时，我将配置文件_config.yml中的代码高亮改变为<code class="highlighter-rouge">highlighter: pygments</code>就可以了</li>
+  <li>按照本文的说明搭建完博客后，用<code class="language-plaintext highlighter-rouge">github Pages</code>托管就可以看到了。注意，在github上面好像不支持rouge，所以要push到github上时，我将配置文件_config.yml中的代码高亮改变为<code class="language-plaintext highlighter-rouge">highlighter: pygments</code>就可以了</li>
   <li>博客默认是没有评论系统的，本文的评论系统使用了多说，详细安装办法可访问<a href="http://duoshuo.com/">多说官网 http://duoshuo.com/</a>，当然也可以使用<a href="http://changyan.sohu.com/">搜狐畅言 http://changyan.sohu.com/</a>作为评论系统。</li>
   <li>也可以绑定自己的域名，如果没有域名，可以在<a href="http://www.godaddy.com/">godaddy http://www.godaddy.com/</a>上将域名放入购物车等待降价，买之。</li>
   <li>祝各位新年快乐！</li>
@@ -333,7 +512,7 @@
 
 <h2 id="jekyll常用命令">jekyll常用命令</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Blog项目编译
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Blog项目编译
 bundle exec jekyll s
 </code></pre></div></div>
 
@@ -341,11 +520,11 @@ bundle exec jekyll s
 
 <h2 id="可能出现的问题">可能出现的问题</h2>
 
-<h3 id="hitimeshitimes-loaderror"><code class="highlighter-rouge">hitimes/hitimes (LoadError)</code></h3>
+<h3 id="hitimeshitimes-loaderror"><code class="language-plaintext highlighter-rouge">hitimes/hitimes (LoadError)</code></h3>
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)
 </code></pre></div></div>
 
 <p><strong>解决方法：</strong></p>
@@ -355,10 +534,10 @@ bundle exec jekyll s
 <blockquote>
   <p>可能是 Ruby 2.2 和 hitimes-1.2.2-x86-mingw32 中有一些 ABI 变化，少了一些相关的类库。</p>
 
-  <p>所以卸载 hitimes 并通过 <code class="highlighter-rouge">--platform ruby</code> 重装即可。代码如下：</p>
+  <p>所以卸载 hitimes 并通过 <code class="language-plaintext highlighter-rouge">--platform ruby</code> 重装即可。代码如下：</p>
 </blockquote>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem uni hitimes
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem uni hitimes
 **Remove ALL versions**
 gem ins hitimes -v 1.2.1 --platform ruby
 </code></pre></div></div>
@@ -369,7 +548,7 @@ gem ins hitimes -v 1.2.1 --platform ruby
 
 <p>下面是我自己的卸载和安装过程：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes
 
 You have requested to uninstall the gem:
         hitimes-1.2.2-x86-mingw32
@@ -494,11 +673,11 @@ Done installing documentation for hitimes after 1 seconds
                     </li>
                     
                     <li>
-                        <a href="/category/#Git" class="categories-list-item" cate="Git">
+                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
                             <span class="name">
-                                Git
+                                代码版本控制
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -588,7 +767,7 @@ Done installing documentation for hitimes after 1 seconds
                             <span class="name">
                                 jenkins
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -650,15 +829,6 @@ Done installing documentation for hitimes after 1 seconds
                         <a href="/category/#刷机" class="categories-list-item" cate="刷机">
                             <span class="name">
                                 刷机
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
-                            <span class="name">
-                                代码版本控制
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -856,14 +1026,14 @@ Done installing documentation for hitimes after 1 seconds
                       
                       
                       
-                      <a href="/tag/#jenkins" style="font-size: 9pt; color: #999;">jenkins</a>
+                      <a href="/tag/#jenkins" style="font-size: 10pt; color: #888;">jenkins</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                      <a href="/tag/#CI" style="font-size: 10pt; color: #888;">CI</a>
                     
                       
                       

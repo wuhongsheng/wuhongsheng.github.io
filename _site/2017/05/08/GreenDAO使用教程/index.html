@@ -310,7 +310,7 @@ public class TrackPoint  {
 
 <p>@Keep     注解的代码段在GreenDao下次运行时保持不变</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      1.注解实体类：默认禁止修改此类
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      1.注解实体类：默认禁止修改此类
       2.注解其他代码段，默认禁止修改注解的代码段
 </code></pre></div></div>
 
@@ -367,7 +367,7 @@ public class GreenDaoManager {
 
 <p>6.然后在Application中初始化：</p>
 
-<p><code class="highlighter-rouge">GreenDaoManager.getInstance();</code></p>
+<p><code class="language-plaintext highlighter-rouge">GreenDaoManager.getInstance();</code></p>
 
 <p>7.数据库增、删、查、改</p>
 
@@ -783,12 +783,21 @@ public class GreenDaoManager {
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="GreenDAO使用教程"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

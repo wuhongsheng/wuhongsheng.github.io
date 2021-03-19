@@ -252,14 +252,14 @@
   </li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="nl">output:</span> <span class="n">String</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="nl">output:</span> <span class="nc">String</span>
 <span class="n">output</span> <span class="o">=</span> <span class="kc">null</span>   <span class="c1">// Compilation error</span>
 
-<span class="n">val</span> <span class="nl">name:</span> <span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="kc">null</span>  <span class="c1">// Nullable type</span>
+<span class="n">val</span> <span class="nl">name:</span> <span class="nc">String</span><span class="o">?</span> <span class="o">=</span> <span class="kc">null</span>  <span class="c1">// Nullable type</span>
 <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">length</span><span class="o">())</span>  <span class="c1">// Compilation error</span>
 
-<span class="n">fun</span> <span class="nf">calculateTotal</span><span class="o">(</span><span class="nl">obj:</span> <span class="n">Any</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="n">is</span> <span class="n">Invoice</span><span class="o">)</span>
+<span class="n">fun</span> <span class="nf">calculateTotal</span><span class="o">(</span><span class="nl">obj:</span> <span class="nc">Any</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="n">is</span> <span class="nc">Invoice</span><span class="o">)</span>
         <span class="n">obj</span><span class="o">.</span><span class="na">calculateTotal</span><span class="o">()</span>
     <span class="o">}</span>
 </code></pre></div></div>
@@ -292,15 +292,15 @@
   <li>Java</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
-<span class="kd">final</span> <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
+<span class="kd">final</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Amit Shekhar"</span><span class="o">;</span>
 </code></pre></div></div>
 
 <ul>
   <li>Kotlin</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="nl">a:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 定義a為`Int`類型的變量，其值為1</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">val</span> <span class="nl">a:</span> <span class="nc">Int</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 定義a為`Int`類型的變量，其值為1</span>
 <span class="n">val</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">// 自動檢測b為`Int`類型</span>
 <span class="kt">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">// App 定義一個`Int`，值為5</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 修改值為1</span>
@@ -340,9 +340,9 @@
 
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">-=</span><span class="mi">2</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 
-<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">item</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">item</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
 
-<span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nl">entry:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span> <span class="o">}</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="nl">entry:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span> <span class="o">}</span>
 
 </code></pre></div></div>
 
@@ -371,7 +371,7 @@
 <ul>
   <li>Java
     <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="c1">// some score;</span>
-<span class="n">String</span> <span class="n">grade</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">grade</span><span class="o">;</span>
 <span class="k">switch</span> <span class="o">(</span><span class="n">score</span><span class="o">)</span> <span class="o">{</span>
   <span class="k">case</span> <span class="mi">10</span><span class="o">:</span>
   <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
@@ -430,16 +430,16 @@
   <li>Kotlin</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">getScore</span><span class="o">():</span> <span class="n">Int</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fun</span> <span class="nf">getScore</span><span class="o">():</span> <span class="nc">Int</span> <span class="o">{</span>
    <span class="c1">// logic here</span>
    <span class="k">return</span> <span class="n">score</span>
 <span class="o">}</span>
 
 <span class="c1">// as a single-expression function</span>
-<span class="n">fun</span> <span class="nf">getScore</span><span class="o">():</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">score</span>
+<span class="n">fun</span> <span class="nf">getScore</span><span class="o">():</span> <span class="nc">Int</span> <span class="o">=</span> <span class="n">score</span>
 
 
-<span class="n">fun</span> <span class="nf">getScore</span><span class="o">(</span><span class="nl">value:</span> <span class="n">Int</span><span class="o">):</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">value</span>
+<span class="n">fun</span> <span class="nf">getScore</span><span class="o">(</span><span class="nl">value:</span> <span class="nc">Int</span><span class="o">):</span> <span class="nc">Int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">value</span>
 
 </code></pre></div></div>
 
@@ -483,7 +483,7 @@
 
 <p><strong>解决办法</strong>
 需要在app moudle的build.gradle里面添加</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kapt {
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kapt {
     generateStubs = true
 }
 dependencies {
@@ -617,12 +617,21 @@ dependencies {
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="Kotlin 从入门到放弃"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

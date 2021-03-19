@@ -284,10 +284,10 @@
     <p><a href="http://www.python-requests.org">Requests</a></p>
 
     <p>安装：</p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip  install requests
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip  install requests
 pip3 install requests
 </code></pre></div>    </div>
-    <p>调用方式：<code class="highlighter-rouge">import requests</code></p>
+    <p>调用方式：<code class="language-plaintext highlighter-rouge">import requests</code></p>
 
     <p>用途：发起请求、获取请求内容</p>
   </li>
@@ -295,11 +295,11 @@ pip3 install requests
     <p><a href="https://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a></p>
 
     <p>安装：</p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip  install beautifulsoup4
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip  install beautifulsoup4
 pip3 install beautifulsoup4
 </code></pre></div>    </div>
 
-    <p>调用方式：<code class="highlighter-rouge">from bs4 import beautifulsoup</code></p>
+    <p>调用方式：<code class="language-plaintext highlighter-rouge">from bs4 import beautifulsoup</code></p>
 
     <p>用途：解析HTML标签</p>
   </li>
@@ -307,19 +307,19 @@ pip3 install beautifulsoup4
     <p>Re(正则表达式)库是Python的标准库</p>
 
     <p>用途：
-调用方式：<code class="highlighter-rouge">import re</code></p>
+调用方式：<code class="language-plaintext highlighter-rouge">import re</code></p>
   </li>
   <li>
     <p><a href="https://scrapy.org/">Scrapy爬虫框架</a></p>
 
-    <p>安装：<code class="highlighter-rouge">pip3 install scrapy</code></p>
+    <p>安装：<code class="language-plaintext highlighter-rouge">pip3 install scrapy</code></p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ```conda install -c conda-forge scrapy```
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ```conda install -c conda-forge scrapy```
 </code></pre></div>    </div>
 
-    <p>升级：<code class="highlighter-rouge">pip3 install --upgrade scrapy</code></p>
+    <p>升级：<code class="language-plaintext highlighter-rouge">pip3 install --upgrade scrapy</code></p>
 
-    <p>测试：<code class="highlighter-rouge">scrapy ‐h</code></p>
+    <p>测试：<code class="language-plaintext highlighter-rouge">scrapy ‐h</code></p>
 
     <p>使用：</p>
 
@@ -327,13 +327,13 @@ pip3 install beautifulsoup4
       <li>初始化一个工程</li>
     </ul>
 
-    <p><code class="highlighter-rouge">scrapy startproject [projectnaem]</code></p>
+    <p><code class="language-plaintext highlighter-rouge">scrapy startproject [projectnaem]</code></p>
 
     <ul>
       <li>建一个爬虫</li>
     </ul>
 
-    <p><code class="highlighter-rouge">scrapy genspider [spidername] [url]</code></p>
+    <p><code class="language-plaintext highlighter-rouge">scrapy genspider [spidername] [url]</code></p>
 
     <p>*配置产生的爬虫</p>
 
@@ -341,7 +341,7 @@ pip3 install beautifulsoup4
       <li>运行爬虫</li>
     </ul>
 
-    <p><code class="highlighter-rouge">scrapy crawl [spidername]</code></p>
+    <p><code class="language-plaintext highlighter-rouge">scrapy crawl [spidername]</code></p>
   </li>
 </ul>
 
@@ -625,12 +625,21 @@ class BaiduStockPipline(object):
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="Python爬虫从入门到放弃"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

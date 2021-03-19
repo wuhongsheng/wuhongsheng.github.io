@@ -63,9 +63,11 @@ source activate tensorflow
 # 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控训练进度)
 tensorboard --logdir tf_files/training_summaries &
 
-# 升级TensorFlow
-$ pip3 install --upgrade tensorflow 
+# 查看版本
+python3 -c 'import tensorflow as tf; print(tf.__version__)'
 
+# 升级TensorFlow
+$ pip3 install --upgrade tensorflow -i https://mirrors.aliyun.com/pypi/simple
 # 卸载TensorFlow
 $ pip uninstall tensorflow
 $ pip3 uninstall tensorflow 

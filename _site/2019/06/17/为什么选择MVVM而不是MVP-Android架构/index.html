@@ -293,37 +293,35 @@ C(MODEL) --&gt; B(VIEWMODEL)
  * @date 2019/3/29
  * 清障救援
  */</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RescueActivity</span> <span class="kd">extends</span> <span class="n">WtActivity</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RescueActivity</span> <span class="kd">extends</span> <span class="nc">WtActivity</span> <span class="o">{</span>
 
-    <span class="kd">private</span> <span class="n">ActivityRescueBinding</span> <span class="n">mBinding</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">RescueViewModel</span> <span class="n">mViewModel</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">ActivityRescueBinding</span> <span class="n">mBinding</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">RescueViewModel</span> <span class="n">mViewModel</span><span class="o">;</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="nc">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">mBinding</span> <span class="o">=</span> <span class="n">DataBindingUtil</span><span class="o">.</span><span class="na">setContentView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_rescue</span><span class="o">);</span>
+        <span class="n">mBinding</span> <span class="o">=</span> <span class="nc">DataBindingUtil</span><span class="o">.</span><span class="na">setContentView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="no">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_rescue</span><span class="o">);</span>
         <span class="n">mBinding</span><span class="o">.</span><span class="na">toolbar</span><span class="o">.</span><span class="na">setNavigationOnClickListener</span><span class="o">(</span><span class="n">view</span> <span class="o">-&gt;</span> <span class="n">onBackPressed</span><span class="o">());</span>
-        <span class="n">mBinding</span><span class="o">.</span><span class="na">tvTitle</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">rescue</span><span class="o">));</span>
-        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span>
-        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setImageResource</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">mipmap</span><span class="o">.</span><span class="na">orders</span><span class="o">);</span>
-        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">tvTitle</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">getString</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">rescue</span><span class="o">));</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="nc">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setImageResource</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">mipmap</span><span class="o">.</span><span class="na">orders</span><span class="o">);</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">ivRight</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
             <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">mViewModel</span><span class="o">.</span><span class="na">getTaskNum</span><span class="o">().</span><span class="na">getValue</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">RescueActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">ClearingActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                    <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Intent</span><span class="o">(</span><span class="nc">RescueActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="nc">ClearingActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
                     <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
                 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
                     <span class="n">mViewModel</span><span class="o">.</span><span class="na">message</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"暂无新任务"</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">}</span>
         <span class="o">});</span>
-        <span class="n">mViewModel</span> <span class="o">=</span> <span class="n">ViewModelProviders</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="n">RescueViewModel</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">mViewModel</span> <span class="o">=</span> <span class="nc">ViewModelProviders</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="nc">RescueViewModel</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
         <span class="n">init</span><span class="o">(</span><span class="n">mViewModel</span><span class="o">);</span>
         <span class="n">mBinding</span><span class="o">.</span><span class="na">setViewModel</span><span class="o">(</span><span class="n">mViewModel</span><span class="o">);</span>
-        <span class="n">mViewModel</span><span class="o">.</span><span class="na">getTaskNum</span><span class="o">().</span><span class="na">observe</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">taskNum</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="n">mBinding</span><span class="o">.</span><span class="na">setViewModel</span><span class="o">(</span><span class="n">mViewModel</span><span class="o">);</span>
-        <span class="o">});</span>
+        <span class="n">mBinding</span><span class="o">.</span><span class="na">setLifecycleOwner</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
         <span class="n">mViewModel</span><span class="o">.</span><span class="na">loadClearTaskNum</span><span class="o">();</span>
 
         <span class="c1">// Check that the activity is using the layout version with</span>
@@ -336,7 +334,7 @@ C(MODEL) --&gt; B(VIEWMODEL)
                 <span class="k">return</span><span class="o">;</span>
             <span class="o">}</span>
             <span class="n">getSupportFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">()</span>
-                    <span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">fl_content</span><span class="o">,</span> <span class="n">TaskFragment</span><span class="o">.</span><span class="na">getFragment</span><span class="o">()).</span><span class="na">commit</span><span class="o">();</span>
+                    <span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">fl_content</span><span class="o">,</span> <span class="nc">TaskFragment</span><span class="o">.</span><span class="na">getFragment</span><span class="o">()).</span><span class="na">commit</span><span class="o">();</span>
 
 
         <span class="o">}</span>
@@ -350,12 +348,12 @@ C(MODEL) --&gt; B(VIEWMODEL)
  * Created by whs on 2019/3/27
  * 清障救援
  */</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RescueViewModel</span> <span class="kd">extends</span> <span class="n">BaseViewModel</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RescueViewModel</span> <span class="kd">extends</span> <span class="nc">BaseViewModel</span> <span class="o">{</span>
 
     <span class="cm">/**请障救援任务数量*/</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">MutableLiveData</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">mTaskNum</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MutableLiveData</span><span class="o">&lt;&gt;();</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MutableLiveData</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">mTaskNum</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MutableLiveData</span><span class="o">&lt;&gt;();</span>
 
-    <span class="kd">public</span> <span class="n">MutableLiveData</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">getTaskNum</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">MutableLiveData</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">getTaskNum</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">mTaskNum</span><span class="o">;</span>
     <span class="o">}</span>
 
@@ -363,9 +361,9 @@ C(MODEL) --&gt; B(VIEWMODEL)
      * 获取清障救援任务数
      */</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadClearTaskNum</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">webApi</span><span class="o">.</span><span class="na">getClearRescueTaskNum</span><span class="o">().</span><span class="na">enqueue</span><span class="o">(</span><span class="k">new</span> <span class="n">BaseCallBack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">"救援任务"</span><span class="o">,</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">webApi</span><span class="o">.</span><span class="na">getClearRescueTaskNum</span><span class="o">().</span><span class="na">enqueue</span><span class="o">(</span><span class="k">new</span> <span class="nc">BaseCallBack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="s">"救援任务"</span><span class="o">,</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
             <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="n">Integer</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResponse</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">mTaskNum</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
             <span class="o">}</span>
         <span class="o">});</span>
@@ -609,12 +607,21 @@ C(MODEL) --&gt; B(VIEWMODEL)
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="为什么选择MVVM而不是MVP - Android架构"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

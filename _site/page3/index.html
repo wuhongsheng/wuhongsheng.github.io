@@ -344,7 +344,7 @@
       <li>通过以下命令安装pip 和 Virtualenv：</li>
     </ol>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo easy_install pip
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo easy_install pip
  $ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade virtualenv 
 
 </code></pre></div>    </div>
@@ -353,7 +353,7 @@
       <li>通过使用以下某种格式发出命令来创建一个 Virtualenv 环境：</li>
     </ol>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ virtualenv --system-site-packages targetDirectory # for Python 2.7
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ virtualenv --system-site-packages targetDirectory # for Python 2.7
  $ virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n
 </code></pre></div>    </div>
   </li>
@@ -364,7 +364,7 @@
 
 <h3 id="常用命令">常用命令</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用(新的 shell 中使用 TensorFlow 时，您都必须激活 Virtualenv 环境)
 $ cd 
 $ source ~/tensorflow/bin/activate      # bash, sh, ksh, or zsh
 $ source ~/tensorflow/bin/activate.csh  # csh or tcsh 
@@ -378,9 +378,11 @@ source activate tensorflow
 # 启动TensorBoard(在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控训练进度)
 tensorboard --logdir tf_files/training_summaries &amp;
 
-# 升级TensorFlow
-$ pip3 install --upgrade tensorflow 
+# 查看版本
+python3 -c 'import tensorflow as tf; print(tf.__version__)'
 
+# 升级TensorFlow
+$ pip3 install --upgrade tensorflow -i https://mirrors.aliyun.com/pypi/simple
 # 卸载TensorFlow
 $ pip uninstall tensorflow
 $ pip3 uninstall tensorflow 
@@ -390,7 +392,7 @@ $ pip3 uninstall tensorflow
 
 <p><strong>问题描述</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Volumes/Transcend/TensorFlow/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
 </code></pre></div></div>
 
 <p><strong>原因及解决办法</strong></p>
@@ -398,7 +400,7 @@ $ pip3 uninstall tensorflow
 <p>Python版本不匹配</p>
 
 <p><strong>问题描述</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import tensorflow as tf
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import tensorflow as tf
 Traceback (most recent call last):
   File "/Users/whs/anaconda3/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 18, in swig_import_helper
     fp, pathname, description = imp.find_module('_pywrap_tensorflow_internal', [dirname(__file__)])
@@ -407,7 +409,7 @@ Traceback (most recent call last):
 ImportError: No module named '_pywrap_tensorflow_internal'
 </code></pre></div></div>
 <p><strong>原因及解决方法</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorflow 安装失败可能是pip版本的问题或者是网络问题引起多用 pip 命令安装几次就好
 删除tensorflow 
 rm -r ~/tensorflow
 重新安装
@@ -483,8 +485,11 @@ rm -r ~/tensorflow
   <li><a href="#分类" id="markdown-toc-分类">分类</a></li>
   <li><a href="#使用入门" id="markdown-toc-使用入门">使用入门</a></li>
   <li><a href="#常见的七个步骤" id="markdown-toc-常见的七个步骤">常见的七个步骤</a></li>
+  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
   <li><a href="#常见应用场景" id="markdown-toc-常见应用场景">常见应用场景</a></li>
-  <li><a href="#相关教程" id="markdown-toc-相关教程">相关教程</a></li>
+  <li><a href="#常见问题及解决办法" id="markdown-toc-常见问题及解决办法">常见问题及解决办法</a></li>
+  <li><a href="#常用模型" id="markdown-toc-常用模型">常用模型</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
 </ul>
 
 <p><a href="https://tensorflow.google.cn/">TensorFlow™</a>是一个使用数据流图进行数值计算的开源软件库。图中的节点代表数学运算， 而图中的边则代表在这些节点之间传递的多维数组（张量）。这种灵活的架构可让您使用一个 API 将计算工作部署到桌面设备、服务器或者移动设备中的一个或多个 CPU 或 GPU。 TensorFlow 最初是由 Google 机器智能研究部门的 Google Brain 团队中的研究人员和工程师开发的，用于进行机器学习和深度神经网络研究， 但它是一个非常基础的系统，因此也可以应用于众多其他领域。</p>
@@ -550,17 +555,59 @@ rm -r ~/tensorflow
   </li>
 </ol>
 
+<h3 id="常用命令">常用命令</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># TF1迁移到TF2</span>
+tf_upgrade_v2  <span class="nt">--intree</span> ml/  <span class="nt">--outtree</span> ml_v2/ <span class="nt">--reportfile</span> report.txt
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 查看TensorFlow是CPU还是GPU
+</span><span class="kn">from</span> <span class="nn">tensorflow.python.client</span> <span class="kn">import</span> <span class="n">device_lib</span>
+<span class="k">print</span><span class="p">(</span><span class="n">device_lib</span><span class="p">.</span><span class="n">list_local_devices</span><span class="p">())</span>
+</code></pre></div></div>
+
 <h3 id="常见应用场景">常见应用场景</h3>
 
 <ul>
   <li><a href="http://www.infoq.com/cn/articles/speaker-dentification-based-on-tensorflowlite?utm_source=articles_about_mobile&amp;utm_medium=link&amp;utm_campaign=mobile">基于TensorflowLite在移动端实现人声识别</a></li>
 </ul>
 
-<h3 id="相关教程">相关教程</h3>
+<h3 id="常见问题及解决办法">常见问题及解决办法</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Unknown activation function: relu6
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="k">def</span> <span class="nf">relu6</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">K</span><span class="p">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">CustomObjectScope</span><span class="p">({</span><span class="s">'relu6'</span><span class="p">:</span> <span class="n">relu6</span><span class="p">}):</span>
+      <span class="n">model</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError: 'val_loss'
+</code></pre></div></div>
+
+<h3 id="常用模型">常用模型</h3>
 
 <ul>
-  <li><a href="https://codelabs.tensorflowers.cn/">TensorFlow Codelabs</a></li>
+  <li>文本检测
+<a href="https://github.com/clovaai/CRAFT-pytorch">CRAFT</a>
+<a href="https://github.com/MhLiao/DB">DB</a>
+<a href="https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.0/doc/doc_ch/algorithm_overview.md">文本检测和文本识别常用算法</a></li>
 </ul>
+
+<h3 id="参考链接">参考链接</h3>
+
+<p><a href="https://codelabs.tensorflowers.cn/">TensorFlow Codelabs</a></p>
+
+<p><a href="https://github.com/margaretmz/awesome-tensorflow-lite">TensorFlow Lite</a>
+<a href="https://mp.weixin.qq.com/mp/homepage?__biz=MzU1OTMyNDcxMQ==&amp;hid=12&amp;sn=33ee29ede45120685f25d87723fe4917">MOOC学习礼包</a></p>
+
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU1OTMyNDcxMQ==&amp;action=getalbum&amp;album_id=1338136551800520709&amp;scene=173&amp;from_msgid=2247491299&amp;from_itemidx=1&amp;count=3&amp;uin=&amp;key=&amp;devicetype=iMac+MacBookPro16%2C2+OSX+OSX+10.15.4+build(19E2269)&amp;version=12031f10&amp;lang=zh_CN&amp;nettype=WIFI&amp;ascene=0&amp;fontScale=100&amp;winzoom=1.000000">案例展示</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s/-g_AnxcRCKYE1UOzKi5qeQ">Community Spotlight 获奖项目</a></p>
+
+<p><a href="https://tensorflow.google.cn/guide/upgrade">自动将代码升级到 TensorFlow 2</a></p>
+
+<p><a href="https://github.com/tensorflow/tensorflow/releases">Tensorflow版本说明</a></p>
 
 
                 </div>
@@ -782,7 +829,7 @@ end;
 
 <p>CGCS2000 4490(国家2000坐标系SRID)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 插入点数据
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 插入点数据
 INSERT INTO photos(FK_FXH_UID,TIME,INFO,REMARK,ADDEESS,URI,Geometry) VALUES (1,'2017-08-30','INFO','REMARK','ADDRESS','URI',geomfromtext('POINT(117.34 32.832)',4490))
 
 # 导出Shapfile
@@ -871,7 +918,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
 <h4 id="安装apache">安装Apache</h4>
 <ul>
   <li>安装Apache
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install httpd httpd-devel 
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install httpd httpd-devel 
 # service httpd start 
 </code></pre></div>    </div>
   </li>
@@ -886,7 +933,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
 </ul>
 
 <h4 id="安装php及扩展">安装PHP及扩展</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install php php-devel
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install php php-devel
 
 # yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
 
@@ -896,7 +943,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
 
 <h4 id="安装git">安装Git</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yum install git
 查看版本
 # git version
 
@@ -1019,11 +1066,11 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                     </li>
                     
                     <li>
-                        <a href="/category/#Git" class="categories-list-item" cate="Git">
+                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
                             <span class="name">
-                                Git
+                                代码版本控制
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1113,7 +1160,7 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                             <span class="name">
                                 jenkins
                             </span>
-                            <span class="badge">1</span>
+                            <span class="badge">2</span>
                         </a>
                     </li>
                     
@@ -1175,15 +1222,6 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                         <a href="/category/#刷机" class="categories-list-item" cate="刷机">
                             <span class="name">
                                 刷机
-                            </span>
-                            <span class="badge">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/category/#代码版本控制" class="categories-list-item" cate="代码版本控制">
-                            <span class="name">
-                                代码版本控制
                             </span>
                             <span class="badge">1</span>
                         </a>
@@ -1381,14 +1419,14 @@ select ExportSHP('fxh','Geometry','Test','UTF-8','MULTIPOLYGON')
                       
                       
                       
-                      <a href="/tag/#jenkins" style="font-size: 9pt; color: #999;">jenkins</a>
+                      <a href="/tag/#jenkins" style="font-size: 10pt; color: #888;">jenkins</a>
                     
                       
                       
                       
                       
                       
-                      <a href="/tag/#CI" style="font-size: 9pt; color: #999;">CI</a>
+                      <a href="/tag/#CI" style="font-size: 10pt; color: #888;">CI</a>
                     
                       
                       

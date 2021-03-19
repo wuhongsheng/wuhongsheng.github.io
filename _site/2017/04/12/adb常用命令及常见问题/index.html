@@ -234,14 +234,14 @@
   <li>打开终端输入 touch .bash_profile 更新配置文件，如果不存在自动创建</li>
   <li>open -e .bash_profile 打开配置文件</li>
   <li>输入如下内容并保存
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/platform-tools
 export PATH=${PATH}:/Users/{yourname}/Library/Android/sdk/tools
 </code></pre></div>    </div>
     <h3 id="常用命令">常用命令</h3>
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看adb 端口是否有占用   
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看adb 端口是否有占用   
 adb nodaemon server   
 # 查看adb端口占用进程 
 lsof -i:5037 
@@ -257,6 +257,17 @@ adb pull sdcard1/PcmRecord D:/whs
 adb shell pm list package
 # 清除应用数据
 adb shell pm clear com.iflytek.android.device
+
+# adb 发送intent
+adb shell am start -W -a android.intent.action.VIEW -d "shinevi://wx" com.wt.shanweicloud.ui.main
+
+adb shell am start  -d "shinevi://xj"
+# 查看 Android手机CPU类型 ARM、ARMV7、NEON
+adb shell cd/proc cat cpuinfo
+# 查看手机屏幕大小
+adb shell wm size
+adb 将当前页面的数据导出来
+adb shell "uiautomator dump --compressed &amp;&amp; cat /sdcard/window_dump.xml"
 </code></pre></div></div>
 
 <hr />
@@ -267,7 +278,7 @@ adb shell pm clear com.iflytek.android.device
 
 <p><strong>错误代码：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not open Selected VM debug port (8700). Make sure you do not have another instance of DDMS or of the eclipse plugin running. If it's being used by something else, choose a new port number in the preferences.
 </code></pre></div></div>
 
 <p><strong>解决方法：</strong></p>
@@ -283,7 +294,7 @@ adb shell pm clear com.iflytek.android.device
 
 <p><strong>错误信息：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ adb devices
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ adb devices
 List of devices attached
 * daemon not running. starting it now at tcp:5037 *
 * daemon started successfully *
@@ -297,7 +308,7 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
 
 <p><strong>错误信息：</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>下午4:13	Can't bind to local 8617 for debugger
 
 下午4:15	Can't bind to local 8617 for debugger
 
@@ -314,7 +325,7 @@ error: cannot connect to daemon at tcp:5037: Operation timed out
 
 <p><strong>错误信息</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb server version (31) doesn't match this client (40); killing...
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb server version (31) doesn't match this client (40); killing...
 could not read ok from ADB Server
 * failed to start daemon
 error: cannot connect to daemon 
@@ -483,12 +494,21 @@ error: cannot connect to daemon
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="adb常用命令及常见问题"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->

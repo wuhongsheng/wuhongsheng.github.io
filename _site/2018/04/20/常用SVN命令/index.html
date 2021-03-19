@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>常用SVN命令及问题</title>
-    <meta name="description" content="  SVN简介  常用命令SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。SVN简介Subv...">
+    <meta name="description" content="  SVN简介  常用命令  参考链接SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。SVN...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -218,6 +218,7 @@
         <ul id="markdown-toc">
   <li><a href="#svn简介" id="markdown-toc-svn简介">SVN简介</a></li>
   <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
 </ul>
 
 <p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。</p>
@@ -228,13 +229,13 @@
 
 <h3 id="常用命令">常用命令</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
 svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
 
 </code></pre></div></div>
 
 <p>第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error validating server certificate for 'https://172.17.1.8:443':  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error validating server certificate for 'https://172.17.1.8:443':  
  - The certificate is not issued by a trusted authority. Use the  
    fingerprint to validate the certificate manually!  
  - The certificate hostname does not match.  
@@ -245,6 +246,22 @@ Certificate information:
  - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
 (R)eject, accept (t)emporarily or accept (p)ermanently?   
 </code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#查看日志</span>
+svn log <span class="nt">-r</span> <span class="o">{</span>2010-04-03<span class="o">}</span>:<span class="o">{</span>2010-04-04<span class="o">}</span>
+svn log <span class="o">[</span>PATH]
+<span class="c">#文件目录删除和新建</span>
+svn <span class="nb">mkdir</span> <span class="o">[</span>PATH] <span class="nt">-m</span> <span class="s1">'info'</span>
+svn delete <span class="o">[</span>PATH] <span class="nt">-m</span> <span class="s1">'info'</span>
+<span class="c">#查看本地文件状态</span>
+svn status
+<span class="c">#上传本地项目到服务器</span>
+svn import <span class="nt">-m</span> “新增公路管理” HighwayMangement http://scm.wantong-tech.net:1080/wttech.mobile/trunk/app/JxzwUniapp/HighwayMangement
+</code></pre></div></div>
+
+<h3 id="参考链接">参考链接</h3>
+
+<p><a href="https://blog.csdn.net/startcrazyactivity/article/details/87344256">AndroidStudio SVN 文件忽略</a></p>
 
 
         </article>
@@ -377,12 +394,21 @@ Certificate information:
 <!-- 畅言打赏功能 -->
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-<div id="cyReward" style="margin: 0 auto;text-align: center;" role="cylabs" data-use="reward"></div>
+<div id="cyReward" role="cylabs" data-use="reward"></div>
 <!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
 <!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
 <!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
-<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysWveoyH"></script>
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="常用SVN命令及问题"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
 
 
 <!--有言评论 邮箱 A-->
