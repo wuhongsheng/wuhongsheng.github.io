@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 20 Mar 2021 18:05:09 +0800</pubDate>
-    <lastBuildDate>Sat, 20 Mar 2021 18:05:09 +0800</lastBuildDate>
+    <pubDate>Sat, 20 Mar 2021 18:12:03 +0800</pubDate>
+    <lastBuildDate>Sat, 20 Mar 2021 18:12:03 +0800</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
@@ -457,7 +457,7 @@ public static Singleton getInstance(){
   &lt;li&gt;&lt;a href=&quot;#相关资源&quot; id=&quot;markdown-toc-相关资源&quot;&gt;相关资源&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;a href=&quot;https://github.com/flutter/flutter&quot;&gt;Flutter&lt;/a&gt;Flutter是Google推出的跨平台的SDK，可通过单一代码库为移动，网络和台式机打造精美，快速的用户体验。Flutter可与现有代码配合使用，为世界各地的开发人员和组织所使用，并且是免费的开放源代码。
+&lt;a href=&quot;https://github.com/flutter/flutter&quot;&gt;Flutter&lt;/a&gt;是Google推出的跨平台的SDK，可通过单一代码库为移动，网络和台式机打造精美，快速的用户体验。Flutter可与现有代码配合使用，为世界各地的开发人员和组织所使用，并且是免费的开放源代码。
 
 &lt;h2 id=&quot;开发环境搭建&quot;&gt;开发环境搭建&lt;/h2&gt;
 
