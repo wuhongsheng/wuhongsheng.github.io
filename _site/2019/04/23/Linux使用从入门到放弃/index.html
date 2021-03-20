@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Linux使用从入门到放弃</title>
-    <meta name="description" content="  常用命令          mac 常用命令        环境部署          配置Java环境      Linux下安装Gradle      安装Android SDK      常用命令# 远程连接服务器ssh -X username@192.168.1.233password# 文件下载wg...">
+    <meta name="description" content="  常用命令          mac 常用命令        环境部署          配置Java环境      Linux下安装Gradle      安装Android SDK      常见问题      常用命令# 远程连接服务器ssh -X username@192.168.1.233passwo...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -224,6 +224,7 @@
       <li><a href="#配置java环境" id="markdown-toc-配置java环境">配置Java环境</a></li>
       <li><a href="#linux下安装gradle" id="markdown-toc-linux下安装gradle">Linux下安装Gradle</a></li>
       <li><a href="#安装android-sdk" id="markdown-toc-安装android-sdk">安装Android SDK</a></li>
+      <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
     </ul>
   </li>
 </ul>
@@ -249,6 +250,15 @@ unzip <span class="nt">-d</span> /opt/gradle gradle-4.6-bin.zip
 <span class="nb">df</span> <span class="nt">-h</span> 
 <span class="c"># 内存使用情况</span>
 free <span class="nt">-m</span>
+<span class="c"># 获取文件完整路径</span>
+find /Users/whs <span class="nt">-name</span> keras.json
+<span class="c"># 查看安装程序的路径</span>
+which libtool
+<span class="c"># 查看Qd开头的服务</span>
+ps <span class="nt">-aux</span> |grep Qd
+<span class="c"># 进入当前用户目录</span>
+<span class="nb">cd</span> <span class="c">#</span>
+<span class="nb">cd</span> ~/[path]
 </code></pre></div></div>
 
 <h3 id="mac-常用命令">mac 常用命令</h3>
@@ -284,8 +294,11 @@ vim /etc/profile
 <span class="c"># 检验安装结果</span>
 gradle <span class="nt">--version</span>
 </code></pre></div>    </div>
-    <h4 id="安装android-sdk">安装Android SDK</h4>
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">ANDROID_HOME</span><span class="o">=</span>/usr/local/AndroidSDK/android-sdk-linux
+  </li>
+</ol>
+
+<h4 id="安装android-sdk">安装Android SDK</h4>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">ANDROID_HOME</span><span class="o">=</span>/usr/local/AndroidSDK/android-sdk-linux
 <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ANDROID_HOME</span>/tools
 <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ANDROID_HOME</span>/platform-tools
 <span class="c"># 检验安装结果</span>
@@ -294,9 +307,32 @@ android <span class="nt">-h</span>
 android list sdk <span class="nt">--all</span>
 <span class="c"># 下载需要的组件, 注意--all 这个参数一定要加上, 否则后面filter里的序号不起作用, 例如我用的是</span>
 android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <span class="nt">--filter</span> 1,2,4,5,47
-</code></pre></div>    </div>
-  </li>
-</ol>
+</code></pre></div></div>
+
+<h4 id="常见问题">常见问题</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/sh^M: bad interpreter: No such file or directory
+
+env: bash\r: No such file or directory
+</code></pre></div></div>
+<p>执行命令时有时会出现bad interpreter: No such file or directory错误，
+一般是因为Linux无法识别出Windows的DOS格式，此时只需将文件格式转换成unix的即可，方法如下：</p>
+
+<p>1、编辑出错文件
+vi filename</p>
+
+<p>2、查看该格式（报错文件格式是DOS）
+:set ff</p>
+
+<p>3、修改格式
+:set ff=unix</p>
+
+<p>4、保存退出
+:wq!
+或者用dos2unix 转换</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dos2unix ./init-android-libyuv.sh ./init-android-soundtouch.sh
+ #对当前目录批量处理
+ find . -type f -exec dos2unix {} \;
+</code></pre></div></div>
 
         </article>
         <hr>
@@ -309,34 +345,12 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
                     
                 
             
-        
-            
-            
-                
-                    
-                
-            
-                
-                    
-                
-            
                 
                     
                 
             
         
             
-            
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
             
                 
                     
@@ -378,6 +392,17 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
                     
                 
             
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
         
             
             
@@ -395,6 +420,13 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
                 
                     
                 
+            
+                
+                    
+                
+            
+        
+            
             
                 
                     
@@ -406,7 +438,7 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
         <div class="post-recent">
     <div class="pre">
         
-        <p><strong>上一篇</strong> <a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></p>
+        <p><strong>上一篇</strong> <a href="/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Gradle从入门到放弃</a></p>
         
     </div>
     <div class="nex">

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Flutter从入门到放弃</title>
+    <meta name="description" content="  开发环境搭建  常用知识点  常用包和插件  AS插件  常见问题  相关资源FlutterFlutter是Google推出的跨平台的SDK，可通过单一代码库为移动，网络和台式机打造精美，快速的用户体验。Flutter可与现有代码配合使用，为世界各地的开发人员和组织所使用，并且是免费的开放源代码。开发环境搭建...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2019/07/25/Flutter%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+    <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
+
+    <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
+    <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+    
+    <!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
+
+
+    <script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?73b6a88ab52561dd17cdc4f6284caaf0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96638437-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+
+
+<!--google广告-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6707426947779377",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+
+
+  <body onload="PR.prettyPrint()">
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">WHS</a>
+        <small>GIS Engineer</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Android Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>Flutter从入门到放弃</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2019-07-25
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>WHS
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Flutter" title="Category: Flutter" rel="category">Flutter</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#Flutter" title="Tag: Flutter" rel="tag">Flutter</a-->
+        <a href="/tag/#Flutter" title="Tag: Flutter" rel="tag">Flutter</a>&nbsp;
+    
+        <!--a href="/tag/#%E8%B7%A8%E5%B9%B3%E5%8F%B0" title="Tag: 跨平台" rel="tag">跨平台</a-->
+        <a href="/tag/#跨平台" title="Tag: 跨平台" rel="tag">跨平台</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#开发环境搭建" id="markdown-toc-开发环境搭建">开发环境搭建</a></li>
+  <li><a href="#常用知识点" id="markdown-toc-常用知识点">常用知识点</a></li>
+  <li><a href="#常用包和插件" id="markdown-toc-常用包和插件">常用包和插件</a></li>
+  <li><a href="#as插件" id="markdown-toc-as插件">AS插件</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+  <li><a href="#相关资源" id="markdown-toc-相关资源">相关资源</a></li>
+</ul>
+
+<p><a href="https://github.com/flutter/flutter">Flutter</a>Flutter是Google推出的跨平台的SDK，可通过单一代码库为移动，网络和台式机打造精美，快速的用户体验。Flutter可与现有代码配合使用，为世界各地的开发人员和组织所使用，并且是免费的开放源代码。</p>
+
+<h2 id="开发环境搭建">开发环境搭建</h2>
+
+<ol>
+  <li><a href="https://flutter.dev/docs/get-started/install">安装</a></li>
+  <li>常用命令
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置镜像</span>
+<span class="nb">export </span><span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
+<span class="nb">export </span><span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
+<span class="c"># 检查</span>
+flutter doctor
+<span class="c"># 查看flutter 处于什么分支上</span>
+flutter channel 
+<span class="c"># 切换分支</span>
+flutter channel master
+<span class="c"># 启用web配置</span>
+flutter config <span class="nt">--enable-web</span>
+<span class="c"># 更新</span>
+flutter upgrade
+<span class="c"># 安装包</span>
+flutter pub get
+<span class="c"># 创建一个module</span>
+<span class="nb">cd </span>some/path/
+flutter create <span class="nt">-t</span> module <span class="nt">--org</span> com.example my_flutter
+<span class="c"># 检查Android许可</span>
+flutter doctor <span class="nt">--android-licenses</span>
+<span class="c"># clean</span>
+flutter clean
+<span class="c"># run</span>
+flutter run <span class="nt">-v</span>
+<span class="c"># 检查发布文件</span>
+flutter packages pub publish <span class="nt">--dry-run</span>
+<span class="c"># 发布包</span>
+flutter packages pub publish
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="常用知识点">常用知识点</h2>
+<p><a href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+<a href="https://www.jianshu.com/p/c0e30769ea7e">Flutter的Future异步详解</a>
+<a href="https://flutterchina.club/developing-packages/">插件开发</a>
+<a href="https://www.jianshu.com/p/96e1ae828b13"> 图解 Flutter 基本动画 (一)</a></p>
+<h2 id="常用包和插件">常用包和插件</h2>
+<p><a href="https://github.com/flutter/plugins">官方维护的组件库</a></p>
+<ul>
+  <li>网络请求
+<a href="https://pub.flutter-io.cn/packages/http">http</a>
+<a href="https://github.com/flutterchina/dio">dio</a></li>
+  <li>推送
+<a href="https://pub.flutter-io.cn/packages/jpush_flutter">jpush_flutter</a></li>
+  <li>数据持久化
+<a href="https://pub.dev/packages/shared_preferences">shared_preferences</a></li>
+  <li>路由
+<a href="https://github.com/theyakka/fluro">fluro</a></li>
+  <li>UI
+<a href="https://github.com/PonnamKarthik/FlutterToast">FlutterToast</a>
+<a href="https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md">flutter_screenutil</a>
+<a href="https://pub.flutter-io.cn/packages/city_pickers">city_pickers</a></li>
+  <li>其他
+<a href="https://pub.flutter-io.cn/packages/uuid">uuid</a>
+<a href="https://pub.dev/packages/json_serializable">json_serializable</a></li>
+</ul>
+
+<h2 id="as插件">AS插件</h2>
+<ul>
+  <li>FlutterJsonBeanFactory
+json转对象
+    <h2 id="常见问题">常见问题</h2>
+  </li>
+  <li>更新失败</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...nloading Dart SDK from Flutter engine b863200c37df4ed378042de11c4e9ff34e4e58c9
+curl: (3) URL using bad/illegal format or missing URL
+
+Failed to retrieve the Dart SDK from: https://storage.googleapis.com/flutter_infra/flutter/b863200c37df4ed378042de11c4e9ff/dart-sdk-darwin-x64.zip
+If you're located in China, please see this page:
+  https://flutter.dev/community/china
+</code></pre></div></div>
+<p>需要将Dart SDK 解压到Flutter安装目录下</p>
+
+<ul>
+  <li>gradle构建失败
+```
+Process ‘command ‘/Users/whs/Flutter_workspace/flutter/bin/flutter’’ finished with non-zero exit value 1</li>
+</ul>
+
+<p>```
+flutter run -v 查看原因
+androidx 和 support库冲突</p>
+
+<h2 id="相关资源">相关资源</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=UUfXWzp0-DU">Flutter Rendering</a></li>
+  <li><a href="https://github.com/flutter/engine">Flutter Engine</a></li>
+  <li>Documentation: https://docs.flutter.io/</li>
+  <li>Github: https://github.com/flutter/flutter</li>
+  <li>StackOverflow: https://stackoverflow.com/questions/tagged/flutter</li>
+  <li>Gitter: https://gitter.im/flutter/flutter
+Effective Dart Guide: https://www.dartlang.org/guides/language/effective-dart</li>
+  <li>Dart Tips: https://www.dartlang.org/resources/dart-tips</li>
+  <li>Flutter FAQ: https://flutter.io/faq/</li>
+  <li>Flutter Rendering:</li>
+  <li><a href="https://flutter.io/hot-reload/">Hot Reload</a></li>
+  <li>Flutter Inspector: https://dart-lang.github.io/observatory/</li>
+  <li>Dart Style Guide: https://www.dartlang.org/guides/language/effective-dart/style</li>
+  <li>Dart Observatory: https://dart-lang.github.io/observatory/</li>
+  <li>Flutter Widgets: https://flutter.io/widgets/</li>
+  <li>Flutter Gallery App Code: https://github.com/flutter/flutter/tree/master/examples/flutter_gallery</li>
+  <li>Flutter Gallery Android App: https://play.google.com/store/apps/details?id=io.flutter.demo.gallery</li>
+  <li>Flutter Layout: https://flutter.io/tutorials/layout/</li>
+  <li>Material: https://material.io</li>
+  <li>Icons: https://thenounproject.com</li>
+  <li>Images: https://unsplash.com</li>
+  <li>Fonts: https://fonts.google.com</li>
+  <li>Google APIs: https://pub.dartlang.org/packages/googleapis</li>
+  <li>Async and Futures: https://www.dartlang.org/tutorials/language/futures</li>
+  <li>Testing: https://flutter.io/testing/</li>
+</ul>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/">常用设计模式（以JAVA为例）</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">Comments</h2>
+        
+
+
+
+<!--畅言打赏-->
+
+<!-- 畅言打赏功能 -->
+<!-- 代码1：放在页面需要展示的位置  -->
+<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+<div id="cyReward" role="cylabs" data-use="reward"></div>
+<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="Flutter从入门到放弃"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
+
+
+<!--有言评论 邮箱 A-->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131444"></script>
+<!-- UY END -->
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">Similar Posts</a></li>
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+ <!--Google 代码高亮js-->
+
+<!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
+
+<!--<link rel="stylesheet" type="text/css" href="prettify.css">
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>-->
+
+<!--
+<link rel="stylesheet" type="text/css" href="/css/sunburst.css">
+-->
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             本站记录我编程之旅的沿途风景！ 
+        </p>
+        <p class="contact">
+            Contact me at: 
+            <a href="https://github.com/wuhongsheng" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>  
+            <a href="mailto:664116298@qq.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> 
+                   
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                 Theme designed by HyG.
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/smooth-scroll.min.js " charset="utf-8"></script>
+    <script type="text/javascript">
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    </script>
+    <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+   
+
+  </body>
+
+</html>

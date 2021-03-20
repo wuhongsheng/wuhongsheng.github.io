@@ -5,9 +5,593 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 19 Mar 2021 17:14:38 +0800</pubDate>
-    <lastBuildDate>Fri, 19 Mar 2021 17:14:38 +0800</lastBuildDate>
+    <pubDate>Sat, 20 Mar 2021 18:05:09 +0800</pubDate>
+    <lastBuildDate>Sat, 20 Mar 2021 18:05:09 +0800</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>bilibili / ijkplayer 编译及应用</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#项目目录&quot; id=&quot;markdown-toc-项目目录&quot;&gt;项目目录&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#编译环境&quot; id=&quot;markdown-toc-编译环境&quot;&gt;编译环境&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#编译步骤&quot; id=&quot;markdown-toc-编译步骤&quot;&gt;编译步骤&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#扩展支持&quot; id=&quot;markdown-toc-扩展支持&quot;&gt;扩展支持&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#日志过滤&quot; id=&quot;markdown-toc-日志过滤&quot;&gt;日志过滤&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#扩展截屏录像方法&quot; id=&quot;markdown-toc-扩展截屏录像方法&quot;&gt;扩展截屏、录像方法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#性能优化&quot; id=&quot;markdown-toc-性能优化&quot;&gt;性能优化&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#公网直播流测试地址&quot; id=&quot;markdown-toc-公网直播流测试地址&quot;&gt;公网直播流测试地址&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考链接&quot; id=&quot;markdown-toc-参考链接&quot;&gt;参考链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&quot;https://github.com/bilibili/ijkplayer&quot;&gt;ijkplayer&lt;/a&gt;是B站开源的基于ffplay实现的视频播放器
+
+&lt;h3 id=&quot;项目目录&quot;&gt;项目目录&lt;/h3&gt;
+android - android平台上的上层接口封装以及平台相关方法
+
+config - 编译ffmpeg使用的配置文件
+
+extra - 存放编译ijkplayer所需的依赖源文件, 如ffmpeg、openssl等
+
+ijkmedia - 核心代码
+
+ijkj4a - android平台下使用，用来实现c代码调用java层代码，这个文件夹是通过bilibili的另一个开源项目jni4android自动生成的。
+
+&lt;ul&gt;
+  &lt;li&gt;
+    ijkplayer - 播放器数据下载及解码相关
+  &lt;/li&gt;
+  &lt;li&gt;
+    ijksdl - 音视频数据渲染相关
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+ios - iOS平台上的上层接口封装以及平台相关方法
+
+tools - 初始化项目工程脚本
+
+&lt;h3 id=&quot;编译环境&quot;&gt;编译环境&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;android-ndk-r10e&lt;/li&gt;
+  &lt;li&gt;Mac OS X 10.15.4&lt;/li&gt;
+  &lt;li&gt;Android Studio 4.0
+    &lt;h3 id=&quot;编译步骤&quot;&gt;编译步骤&lt;/h3&gt;
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 下载源码&lt;/span&gt;
+git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android 
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ijkplayer-android
+&lt;span class=&quot;c&quot;&gt;# 切换到最新release分支&lt;/span&gt;
+git checkout &lt;span class=&quot;nt&quot;&gt;-B&lt;/span&gt; latest k0.8.8        
+&lt;span class=&quot;c&quot;&gt;# 下载ffmpeg等第三方依赖 ffmpeg libyuv soundtouch&lt;/span&gt;
+./init-android.sh                    
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;android/contrib
+&lt;span class=&quot;c&quot;&gt;# 清除ffmpeg编译&lt;/span&gt;
+./compile-ffmpeg.sh clean      
+&lt;span class=&quot;c&quot;&gt;# 编译ffmpeg；all是编译所有平台，一般Android选择编译armv7a，arm64即可(./compile-ffmpeg.sh armv7a|arm64)&lt;/span&gt;
+./compile-ffmpeg.sh all              
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+&lt;span class=&quot;c&quot;&gt;# 编译ijkplayer；all是编译所有平台，一般Android选择编译armv7a，arm64即可(./compile-ijk.sh armv7a|arm64)&lt;/span&gt;
+./compile-ijk.sh all               
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;扩展支持&quot;&gt;扩展支持&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;增加rtsp协议支持
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=sdp&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=rtp&quot;
+
+#默认的ijkplayer 的 ffmpeg 不支持pcm格式的音频，需要重新编译ffmpeg，添加对pcm的支持
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_alaw&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_ulaw&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;日志过滤&quot;&gt;日志过滤&lt;/h3&gt;
+1.上层播放组件封装
+WtVideoView
+2.IjkPlayer层
+IJKMEDIA
+
+&lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
+
+1.Could not find tag for codec pcm_alaw in stream #1, codec not currently supported
+
+&lt;a href=&quot;https://stackoverflow.com/questions/47495713/could-not-find-tag-for-codec-pcm-alaw-in-stream-1-codec-not-currently-supporte&quot;&gt;codec not currently supported&lt;/a&gt;
+
+ffmepg mp4容器不支持pcm_alaw 修改存储容器为mov
+
+2.SDL_Android_NativeWindow_display_l: ANativeWindow_lock: failed -22
+
+软解情况下，界面卡住
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setVideoURI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Uri&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mUri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mHeaders&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mSeekWhenPrepared&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//重新设置渲染层&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;setRender&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;openVideo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;requestLayout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;invalidate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+播放Flv无声音
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Stream #0: not enough frames to estimate rate; consider increasing probesize
+
+IJKMEDIA: Stream
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;a href=&quot;https://blog.csdn.net/qq_34420120/article/details/91415061&quot;&gt;IjkMediaPlayer 播放无声音Bug&lt;/a&gt;
+
+因为需要探测视频和音频的格式, 你没声音是在probesize的大小内没获取到音频包, 你可以做的是:
+
+1.增大probesize和analyzeduration
+2.修改ffmpeg源码, 在达到probesize大小但还没获取到视频或音频格式的时候自动增大probesize再继续探测
+            ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, “probesize”, 1024L * 80);
+
+不支持pcm_alaw
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Could not find codec parameters for stream 1 (Audio: pcm_alaw, 8000 Hz, 1 channels, 64 kb/s): unspecified sample format
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+在module-lite.s中增加支持
+
+手机锁屏后网络中断导致视频中断
+
+开启 前台服务 或者 申请后台服务白名单
+
+&lt;h3 id=&quot;扩展截屏录像方法&quot;&gt;扩展截屏、录像方法&lt;/h3&gt;
+1、通过在ffplay层扩至录像及录屏方法，但是不支持硬解下截屏
+2、可以在java层使用TextureRenderView获取Bitmap的形式进行截图
+
+&lt;h3 id=&quot;性能优化&quot;&gt;性能优化&lt;/h3&gt;
+总延时=采集+编码(缓冲)+发送+传输+接收+解码(缓冲)+播放，你先确认下采集编码端有多少延时
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c1&quot;&gt;//rtmp秒开配置&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;//设置播放前的最大探测时间 &lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;analyzemaxduration&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;//播放前的探测Size，默认是1M, 改小一点会出画面更快&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;probesize&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;512L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;//每处理一个packet之后刷新io上下文&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;flush_packets&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//是否开启预缓冲，一般直播项目会开启，达到秒开的效果，不过带来了播放丢帧卡顿的体验&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;packet-buffering&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//跳帧处理,放CPU处理较慢时，进行跳帧处理，保证播放流程，画面和声音同步&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;framedrop&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//rtmp秒开配置 end&lt;/span&gt;
+            
+            
+&lt;span class=&quot;c1&quot;&gt;//播放rtst流图像延时550ms左右, 这个延迟是否还能有所提升，目前使用的参数配置项如下：TCP 连接&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rtsp_transport&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;tcp&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; 
+&lt;span class=&quot;c1&quot;&gt;//码流分析时间设置，单位为微秒&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;analyzeduration&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500000L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fast&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_CODEC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;threads&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;auto&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;infbuf&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;flush_packets&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;packet-buffering&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_CODEC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;skip_loop_filter&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;48L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;framedrop&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; 
+&lt;span class=&quot;c1&quot;&gt;//减少缓冲&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fflags&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nobuffer&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;probesize&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10240L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;max-fps&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;reconnect&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+
+
+
+&lt;span class=&quot;c1&quot;&gt;//RTSP优化 &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//最大帧率&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;max-fps&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//不额外优化        &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fast&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//探测大小 默认10240          &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;probesize&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;flush_packets&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//pause output until enough packets have been read after stalling&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//是否开启缓冲 &lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;packet-buffering&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//drop frames when cpu is too slow：0-120   &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//丢帧,默认是1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;framedrop&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//automatically start playing on prepared&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;start-on-prepared&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_CODEC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;skip_loop_filter&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;48&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//默认值48&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//max buffer size should be pre-read：默认为15*1024*1024&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;max-buffer-size&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//最大缓存数&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;min-frames&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//默认最小帧数2&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;max_cached_duration&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//最大缓存时长&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//input buffer:don't limit the input buffer size (useful with realtime streams)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_PLAYER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;infbuf&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//是否限制输入缓存数&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ijkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOption&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IjkMediaPlayer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OPT_CATEGORY_FORMAT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fflags&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nobuffer&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;公网直播流测试地址&quot;&gt;公网直播流测试地址&lt;/h3&gt;
+
+RTMP协议直播源
+香港卫视：rtmp://live.hkstv.hk.lxdns.com/live/hks
+RTSP协议直播源
+&lt;ul&gt;
+  &lt;li&gt;大熊兔（VOD）：rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov&lt;/li&gt;
+  &lt;li&gt;国外电视台：rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp&lt;/li&gt;
+&lt;/ul&gt;
+
+HTTP协议直播源
+http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8
+
+&lt;h3 id=&quot;参考链接&quot;&gt;参考链接&lt;/h3&gt;
+
+&lt;a href=&quot;https://github.com/Bilibili/ijkplayer&quot;&gt;ijkplayer官方地址&lt;/a&gt;
+
+&lt;a href=&quot;https://www.jianshu.com/p/496257563f69&quot;&gt;ijkplayer中遇到的问题汇总&lt;/a&gt;
+
+&lt;a href=&quot;https://github.com/momoxiaoray/ijkplayer&quot;&gt;ijkplayer增加截屏和录像方法&lt;/a&gt;
+
+&lt;a href=&quot;https://juejin.cn/post/6844904135314128903&quot;&gt;音频帧、视频帧及其同步&lt;/a&gt;
+
+</description>
+        <pubDate>Fri, 21 Aug 2020 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2020/08/21/bilibili-ijkplayer-%E7%BC%96%E8%AF%91%E5%8F%8A%E5%BA%94%E7%94%A8/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/08/21/bilibili-ijkplayer-%E7%BC%96%E8%AF%91%E5%8F%8A%E5%BA%94%E7%94%A8/</guid>
+        
+        <category>音视频</category>
+        
+        <category>ijkplayer</category>
+        
+        
+        <category>音视频</category>
+        
+      </item>
+    
+      <item>
+        <title>常用设计模式（以JAVA为例）</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#基本原则&quot; id=&quot;markdown-toc-基本原则&quot;&gt;基本原则&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#构建型模式&quot; id=&quot;markdown-toc-构建型模式&quot;&gt;构建型模式&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#工厂模式&quot; id=&quot;markdown-toc-工厂模式&quot;&gt;工厂模式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#单例模式&quot; id=&quot;markdown-toc-单例模式&quot;&gt;单例模式&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#结构型模式&quot; id=&quot;markdown-toc-结构型模式&quot;&gt;结构型模式&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考资料&quot; id=&quot;markdown-toc-参考资料&quot;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+设计模式的世界丰富多彩，比如生产一个个「产品」的工厂模式，衔接两个不相关接口的适配器模式，用不同的方式做同一件事的策略模式，构建步骤稳定、根据构建过程的不同配置构建出不同对象的建造者模式等。
+
+设计模式一共有 23 种，可以分为构建型模式、结构型模式、行为型模式
+
+&lt;h2 id=&quot;基本原则&quot;&gt;基本原则&lt;/h2&gt;
+设计模式基于六大原则：
+&lt;ul&gt;
+  &lt;li&gt;
+    开闭原则：一个软件实体如类、模块和函数应该对修改封闭，对扩展开放。
+  &lt;/li&gt;
+  &lt;li&gt;
+    单一职责原则：一个类只做一件事，一个类应该只有一个引起它修改的原因。
+  &lt;/li&gt;
+  &lt;li&gt;
+    里氏替换原则：子类应该可以完全替换父类。也就是说在使用继承时，只扩展新功能，而不要破坏父类原有的功能。
+  &lt;/li&gt;
+  &lt;li&gt;
+    依赖倒置原则：细节应该依赖于抽象，抽象不应依赖于细节。把抽象层放在程序设计的高层，并保持稳定，程序的细节变化由低层的实现层来完成。
+  &lt;/li&gt;
+  &lt;li&gt;
+    迪米特法则：又名「最少知道原则」，一个类不应知道自己操作的类的细节，换言之，只和朋友谈话，不和朋友的朋友谈话。
+  &lt;/li&gt;
+  &lt;li&gt;
+    接口隔离原则：客户端不应依赖它不需要的接口。如果一个接口在实现时，部分方法由于冗余被客户端空实现，则应该将接口拆分，让实现类只需依赖自己需要的接口方法。
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;构建型模式&quot;&gt;构建型模式&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;工厂方法模式&lt;/li&gt;
+  &lt;li&gt;抽象工厂模式&lt;/li&gt;
+  &lt;li&gt;单例模式&lt;/li&gt;
+  &lt;li&gt;建造型模式&lt;/li&gt;
+  &lt;li&gt;原型模式
+    &lt;h4 id=&quot;工厂模式&quot;&gt;工厂模式&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;简单工厂模式
+优点：
+1.调用方无需知道 Apple 、Pear 类，降低耦合
+2.当Apple 、Pear 类构造变得复杂时，调用方无需关心
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FruitFactory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;苹果&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;梨子&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;暂时没有这种水果&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;工厂方法模式
+```java
+public class AppleFactory {
+  public Fruit create(){
+      return new Apple();
+  }
+}&lt;/li&gt;
+&lt;/ul&gt;
+
+public class PearFactory {
+    public Fruit create(){
+        return new Pear();
+    }
+}
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* 抽象工厂方法模式
+```java
+public interface IFactory {
+    Fruit create();
+}
+
+public class AppleFactory implements IFactory {
+    @Override
+    public Fruit create(){
+        return new Apple();
+    }
+}
+
+
+public class PearFactory implements IFactory {
+    @Override
+    public Fruit create(){
+        return new Pear();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;单例模式&quot;&gt;单例模式&lt;/h4&gt;
+单例模式非常常见，某个对象全局只需要一个实例时，就可以使用单例模式。它的优点也显而易见：
+&lt;ul&gt;
+  &lt;li&gt;它能够避免对象重复创建，节约空间并提升效率&lt;/li&gt;
+  &lt;li&gt;避免由于操作不同实例导致的逻辑错误&lt;/li&gt;
+&lt;/ul&gt;
+
+单例模式有两种实现方式：饿汉式和懒汉式。
+&lt;ul&gt;
+  &lt;li&gt;饿汉式
+```java&lt;/li&gt;
+&lt;/ul&gt;
+
+public class Singleton {
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private static Singleton instance = new Singleton();
+
+private Singleton() {
+}
+
+public static Singleton getInstance() {
+    return instance;
+} } ``` * 懒汉式 懒汉式解决了饿汉式的弊端，好处是按需加载，避免了内存浪费，减少了类初始化时间。 ```java
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+public class Singleton {
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private static Singleton instance = null;
+  
+private Singleton() {
+}
+
+public static Singleton getInstance(){
+    if (instance == null) {
+        instance = new Singleton();
+    }
+    return instance;
+} } ```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;双检锁方式
+双检锁方式实现的线程安全的单例模式
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;kd&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                  &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+              &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;静态内部类方式
+利用java虚拟机类加载机制实现线程安全懒汉式单例模式
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SingletonHolder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SingletonHolder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;结构型模式&quot;&gt;结构型模式&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;适配器模式&lt;/li&gt;
+  &lt;li&gt;桥接模式&lt;/li&gt;
+  &lt;li&gt;组合模式&lt;/li&gt;
+  &lt;li&gt;装饰模式&lt;/li&gt;
+  &lt;li&gt;外观模式&lt;/li&gt;
+  &lt;li&gt;享元模式&lt;/li&gt;
+  &lt;li&gt;代理模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+
+&lt;a href=&quot;https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI4Mzc5NDk4MA==&amp;amp;action=getalbum&amp;amp;album_id=1461125104968318982&amp;amp;scene=173&amp;amp;from_msgid=2247486859&amp;amp;from_itemidx=1&amp;amp;count=3#wechat_redirect&quot;&gt;LeetCode设计模式&lt;/a&gt;
+
+&lt;a href=&quot;https://mp.weixin.qq.com/s/QWM079Z_zoU_2WxsMxw48g&quot;&gt;如何用「设计模式」制作珍珠奶茶？&lt;/a&gt;
+
+&lt;a href=&quot;https://mp.weixin.qq.com/s/0PTiheUOw3FKJ6kKFZte-Q&quot;&gt;详解设计模式之结构型模式（上）&lt;/a&gt;
+</description>
+        <pubDate>Thu, 19 Sep 2019 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/</guid>
+        
+        <category>设计模式</category>
+        
+        
+        <category>设计模式</category>
+        
+      </item>
+    
+      <item>
+        <title>Flutter从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#开发环境搭建&quot; id=&quot;markdown-toc-开发环境搭建&quot;&gt;开发环境搭建&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用知识点&quot; id=&quot;markdown-toc-常用知识点&quot;&gt;常用知识点&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用包和插件&quot; id=&quot;markdown-toc-常用包和插件&quot;&gt;常用包和插件&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#as插件&quot; id=&quot;markdown-toc-as插件&quot;&gt;AS插件&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#相关资源&quot; id=&quot;markdown-toc-相关资源&quot;&gt;相关资源&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&quot;https://github.com/flutter/flutter&quot;&gt;Flutter&lt;/a&gt;Flutter是Google推出的跨平台的SDK，可通过单一代码库为移动，网络和台式机打造精美，快速的用户体验。Flutter可与现有代码配合使用，为世界各地的开发人员和组织所使用，并且是免费的开放源代码。
+
+&lt;h2 id=&quot;开发环境搭建&quot;&gt;开发环境搭建&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://flutter.dev/docs/get-started/install&quot;&gt;安装&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;常用命令
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 配置镜像&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PUB_HOSTED_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://pub.flutter-io.cn
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FLUTTER_STORAGE_BASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://storage.flutter-io.cn
+&lt;span class=&quot;c&quot;&gt;# 检查&lt;/span&gt;
+flutter doctor
+&lt;span class=&quot;c&quot;&gt;# 查看flutter 处于什么分支上&lt;/span&gt;
+flutter channel 
+&lt;span class=&quot;c&quot;&gt;# 切换分支&lt;/span&gt;
+flutter channel master
+&lt;span class=&quot;c&quot;&gt;# 启用web配置&lt;/span&gt;
+flutter config &lt;span class=&quot;nt&quot;&gt;--enable-web&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 更新&lt;/span&gt;
+flutter upgrade
+&lt;span class=&quot;c&quot;&gt;# 安装包&lt;/span&gt;
+flutter pub get
+&lt;span class=&quot;c&quot;&gt;# 创建一个module&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;some/path/
+flutter create &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; module &lt;span class=&quot;nt&quot;&gt;--org&lt;/span&gt; com.example my_flutter
+&lt;span class=&quot;c&quot;&gt;# 检查Android许可&lt;/span&gt;
+flutter doctor &lt;span class=&quot;nt&quot;&gt;--android-licenses&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# clean&lt;/span&gt;
+flutter clean
+&lt;span class=&quot;c&quot;&gt;# run&lt;/span&gt;
+flutter run &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 检查发布文件&lt;/span&gt;
+flutter packages pub publish &lt;span class=&quot;nt&quot;&gt;--dry-run&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 发布包&lt;/span&gt;
+flutter packages pub publish
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;常用知识点&quot;&gt;常用知识点&lt;/h2&gt;
+&lt;a href=&quot;https://flutter.dev/docs/development/tools/devtools/debugger&quot;&gt;Debugger&lt;/a&gt;
+&lt;a href=&quot;https://www.jianshu.com/p/c0e30769ea7e&quot;&gt;Flutter的Future异步详解&lt;/a&gt;
+&lt;a href=&quot;https://flutterchina.club/developing-packages/&quot;&gt;插件开发&lt;/a&gt;
+&lt;a href=&quot;https://www.jianshu.com/p/96e1ae828b13&quot;&gt; 图解 Flutter 基本动画 (一)&lt;/a&gt;
+&lt;h2 id=&quot;常用包和插件&quot;&gt;常用包和插件&lt;/h2&gt;
+&lt;a href=&quot;https://github.com/flutter/plugins&quot;&gt;官方维护的组件库&lt;/a&gt;
+&lt;ul&gt;
+  &lt;li&gt;网络请求
+&lt;a href=&quot;https://pub.flutter-io.cn/packages/http&quot;&gt;http&lt;/a&gt;
+&lt;a href=&quot;https://github.com/flutterchina/dio&quot;&gt;dio&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;推送
+&lt;a href=&quot;https://pub.flutter-io.cn/packages/jpush_flutter&quot;&gt;jpush_flutter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;数据持久化
+&lt;a href=&quot;https://pub.dev/packages/shared_preferences&quot;&gt;shared_preferences&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;路由
+&lt;a href=&quot;https://github.com/theyakka/fluro&quot;&gt;fluro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;UI
+&lt;a href=&quot;https://github.com/PonnamKarthik/FlutterToast&quot;&gt;FlutterToast&lt;/a&gt;
+&lt;a href=&quot;https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md&quot;&gt;flutter_screenutil&lt;/a&gt;
+&lt;a href=&quot;https://pub.flutter-io.cn/packages/city_pickers&quot;&gt;city_pickers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;其他
+&lt;a href=&quot;https://pub.flutter-io.cn/packages/uuid&quot;&gt;uuid&lt;/a&gt;
+&lt;a href=&quot;https://pub.dev/packages/json_serializable&quot;&gt;json_serializable&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;as插件&quot;&gt;AS插件&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;FlutterJsonBeanFactory
+json转对象
+    &lt;h2 id=&quot;常见问题&quot;&gt;常见问题&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;更新失败&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...nloading Dart SDK from Flutter engine b863200c37df4ed378042de11c4e9ff34e4e58c9
+curl: (3) URL using bad/illegal format or missing URL
+
+Failed to retrieve the Dart SDK from: https://storage.googleapis.com/flutter_infra/flutter/b863200c37df4ed378042de11c4e9ff/dart-sdk-darwin-x64.zip
+If you're located in China, please see this page:
+  https://flutter.dev/community/china
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+需要将Dart SDK 解压到Flutter安装目录下
+
+&lt;ul&gt;
+  &lt;li&gt;gradle构建失败
+```
+Process ‘command ‘/Users/whs/Flutter_workspace/flutter/bin/flutter’’ finished with non-zero exit value 1&lt;/li&gt;
+&lt;/ul&gt;
+
+```
+flutter run -v 查看原因
+androidx 和 support库冲突
+
+&lt;h2 id=&quot;相关资源&quot;&gt;相关资源&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=UUfXWzp0-DU&quot;&gt;Flutter Rendering&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/flutter/engine&quot;&gt;Flutter Engine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Documentation: https://docs.flutter.io/&lt;/li&gt;
+  &lt;li&gt;Github: https://github.com/flutter/flutter&lt;/li&gt;
+  &lt;li&gt;StackOverflow: https://stackoverflow.com/questions/tagged/flutter&lt;/li&gt;
+  &lt;li&gt;Gitter: https://gitter.im/flutter/flutter
+Effective Dart Guide: https://www.dartlang.org/guides/language/effective-dart&lt;/li&gt;
+  &lt;li&gt;Dart Tips: https://www.dartlang.org/resources/dart-tips&lt;/li&gt;
+  &lt;li&gt;Flutter FAQ: https://flutter.io/faq/&lt;/li&gt;
+  &lt;li&gt;Flutter Rendering:&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://flutter.io/hot-reload/&quot;&gt;Hot Reload&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Flutter Inspector: https://dart-lang.github.io/observatory/&lt;/li&gt;
+  &lt;li&gt;Dart Style Guide: https://www.dartlang.org/guides/language/effective-dart/style&lt;/li&gt;
+  &lt;li&gt;Dart Observatory: https://dart-lang.github.io/observatory/&lt;/li&gt;
+  &lt;li&gt;Flutter Widgets: https://flutter.io/widgets/&lt;/li&gt;
+  &lt;li&gt;Flutter Gallery App Code: https://github.com/flutter/flutter/tree/master/examples/flutter_gallery&lt;/li&gt;
+  &lt;li&gt;Flutter Gallery Android App: https://play.google.com/store/apps/details?id=io.flutter.demo.gallery&lt;/li&gt;
+  &lt;li&gt;Flutter Layout: https://flutter.io/tutorials/layout/&lt;/li&gt;
+  &lt;li&gt;Material: https://material.io&lt;/li&gt;
+  &lt;li&gt;Icons: https://thenounproject.com&lt;/li&gt;
+  &lt;li&gt;Images: https://unsplash.com&lt;/li&gt;
+  &lt;li&gt;Fonts: https://fonts.google.com&lt;/li&gt;
+  &lt;li&gt;Google APIs: https://pub.dartlang.org/packages/googleapis&lt;/li&gt;
+  &lt;li&gt;Async and Futures: https://www.dartlang.org/tutorials/language/futures&lt;/li&gt;
+  &lt;li&gt;Testing: https://flutter.io/testing/&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 25 Jul 2019 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/25/Flutter%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/25/Flutter%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>Flutter</category>
+        
+        <category>跨平台</category>
+        
+        
+        <category>Flutter</category>
+        
+      </item>
     
       <item>
         <title>为什么选择MVVM而不是MVP - Android架构</title>
@@ -274,6 +858,7 @@ C(MODEL) --&amp;gt; B(VIEWMODEL)
       &lt;li&gt;&lt;a href=&quot;#配置java环境&quot; id=&quot;markdown-toc-配置java环境&quot;&gt;配置Java环境&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#linux下安装gradle&quot; id=&quot;markdown-toc-linux下安装gradle&quot;&gt;Linux下安装Gradle&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#安装android-sdk&quot; id=&quot;markdown-toc-安装android-sdk&quot;&gt;安装Android SDK&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -299,6 +884,15 @@ unzip &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /opt/gradle gradle-4.6-bi
 &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; 
 &lt;span class=&quot;c&quot;&gt;# 内存使用情况&lt;/span&gt;
 free &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 获取文件完整路径&lt;/span&gt;
+find /Users/whs &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; keras.json
+&lt;span class=&quot;c&quot;&gt;# 查看安装程序的路径&lt;/span&gt;
+which libtool
+&lt;span class=&quot;c&quot;&gt;# 查看Qd开头的服务&lt;/span&gt;
+ps &lt;span class=&quot;nt&quot;&gt;-aux&lt;/span&gt; |grep Qd
+&lt;span class=&quot;c&quot;&gt;# 进入当前用户目录&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/[path]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;mac-常用命令&quot;&gt;mac 常用命令&lt;/h3&gt;
@@ -334,8 +928,11 @@ vim /etc/profile
 &lt;span class=&quot;c&quot;&gt;# 检验安装结果&lt;/span&gt;
 gradle &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;h4 id=&quot;安装android-sdk&quot;&gt;安装Android SDK&lt;/h4&gt;
-    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/AndroidSDK/android-sdk-linux
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;安装android-sdk&quot;&gt;安装Android SDK&lt;/h4&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/AndroidSDK/android-sdk-linux
 &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;/tools
 &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;/platform-tools
 &lt;span class=&quot;c&quot;&gt;# 检验安装结果&lt;/span&gt;
@@ -344,9 +941,32 @@ android &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;
 android list sdk &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 下载需要的组件, 注意--all 这个参数一定要加上, 否则后面filter里的序号不起作用, 例如我用的是&lt;/span&gt;
 android update sdk &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--filter&lt;/span&gt; 1,2,4,5,47
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;常见问题&quot;&gt;常见问题&lt;/h4&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/bin/sh^M: bad interpreter: No such file or directory
+
+env: bash\r: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+执行命令时有时会出现bad interpreter: No such file or directory错误，
+一般是因为Linux无法识别出Windows的DOS格式，此时只需将文件格式转换成unix的即可，方法如下：
+
+1、编辑出错文件
+vi filename
+
+2、查看该格式（报错文件格式是DOS）
+:set ff
+
+3、修改格式
+:set ff=unix
+
+4、保存退出
+:wq!
+或者用dos2unix 转换
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; dos2unix ./init-android-libyuv.sh ./init-android-soundtouch.sh
+ #对当前目录批量处理
+ find . -type f -exec dos2unix {} \;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Tue, 23 Apr 2019 16:14:54 +0800</pubDate>
         <link>http://localhost:4000/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
@@ -360,12 +980,117 @@ android update sdk &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span cla
       </item>
     
       <item>
+        <title>Gradle从入门到放弃</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常用脚本&quot; id=&quot;markdown-toc-常用脚本&quot;&gt;常用脚本&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#常见的问题&quot; id=&quot;markdown-toc-常见的问题&quot;&gt;常见的问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考链接&quot; id=&quot;markdown-toc-参考链接&quot;&gt;参考链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化构建开源工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。
+面向Java应用为主。当前其支持的语言限于Java、Groovy、Kotlin和Scala，计划未来将支持更多的语言。
+&lt;a href=&quot;https://services.gradle.org/distributions/&quot;&gt;官方下载地址&lt;/a&gt;
+
+&lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 执行 java 单元测试&lt;/span&gt;
+gradle app:test
+&lt;span class=&quot;c&quot;&gt;# 执行 android 单元测试&lt;/span&gt;
+gradle app:connectedAndroidTest
+&lt;span class=&quot;c&quot;&gt;# 查看编译时依赖树&lt;/span&gt;
+gradle app:dependencies &lt;span class=&quot;nt&quot;&gt;--configuration&lt;/span&gt; compile
+&lt;span class=&quot;c&quot;&gt;# 查manifest merge问题&lt;/span&gt;
+gradle processReleaseManifest &lt;span class=&quot;nt&quot;&gt;--stacktrace&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# g&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;常用脚本&quot;&gt;常用脚本&lt;/h3&gt;
+
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//生成时间&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;releaseTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BuildType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;release&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yyyyMMdd&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeZone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTimeZone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;GMT+08:00&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yyyyMMdd_HHmmss&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeZone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTimeZone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;GMT+08:00&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//设置apk生成路径&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;applicationVariants&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;buildType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;debug&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;packageApplicationProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;outputDirectory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;projectDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;absolutePath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/apk/&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;buildType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;outputs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;forEach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apkData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//这个修改输出APK的文件名&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;apkData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;outputFileName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;平台开发版_&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;versionName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;buildType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;variant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;versionCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yyyyMMdd&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeZone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTimeZone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;GMT+08:00&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+                    &lt;span class=&quot;s2&quot;&gt;&quot;.apk&quot;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;常见的问题&quot;&gt;常见的问题&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;It is currently in use by another Gradle instance&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;解决方式
+关闭AS，执行以下命令，等待命令执行成功，重新clean，build后成功解决该问题。
+```
+find ~/.gradle -type f -name “*.lock” | while read f; do rm $f; done&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+find ~/.gradle -type f -name “*.lock” -delete
+```
+
+&lt;h3 id=&quot;参考链接&quot;&gt;参考链接&lt;/h3&gt;
+&lt;a href=&quot;https://developer.android.google.cn/studio/build/optimize-your-build&quot;&gt;优化构建速度&lt;/a&gt;
+
+</description>
+        <pubDate>Thu, 18 Apr 2019 16:14:54 +0800</pubDate>
+        <link>http://localhost:4000/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+        
+        <category>Gradle</category>
+        
+        
+        <category>Gradle</category>
+        
+      </item>
+    
+      <item>
         <title>Android DataBinding使用</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#databinding常见用法&quot; id=&quot;markdown-toc-databinding常见用法&quot;&gt;Databinding常见用法&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;a href=&quot;https://developer.android.google.cn/topic/libraries/data-binding/&quot;&gt;数据绑定库&lt;/a&gt;是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。
+
+&lt;h3 id=&quot;databinding常见用法&quot;&gt;Databinding常见用法&lt;/h3&gt;
+
+1.字符串判空
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;import&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android.text.TextUtils&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;                
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
+ 	&lt;span class=&quot;na&quot;&gt;isGone=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@{TextUtils.isEmpty(viewModel.changeInfo)}&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/iv_clear&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5dp&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_marginEnd=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10dp&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app:layout_constraintEnd_toEndOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@id/et&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app:layout_constraintTop_toTopOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/et&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app:layout_constraintBottom_toBottomOf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@id/et&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@mipmap/login_close&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;常见问题&quot;&gt;常见问题&lt;/h3&gt;
 
@@ -781,207 +1506,6 @@ tulips (score = 0.00032)
         
         
         <category>产品</category>
-        
-      </item>
-    
-      <item>
-        <title>ArcGISRuntime For Android开发</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#常见问题&quot; id=&quot;markdown-toc-常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-ArcGISRuntime For Android 开发
-
-&lt;h5 id=&quot;常见问题&quot;&gt;常见问题&lt;/h5&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;编辑空间数据&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;问题描述&lt;/li&gt;
-&lt;/ul&gt;
-
-添加空间数据时出现一下问题
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java.util.concurrent.ExecutionException: com.esri.arcgisruntime.ArcGISRuntimeException: The data types are not compatible.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;问题原因及解决方法&lt;/li&gt;
-&lt;/ul&gt;
-
-可能是新增空间数据字段类型和地图服务图层字段类型不匹配
-
-</description>
-        <pubDate>Tue, 15 May 2018 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/</guid>
-        
-        <category>GIS</category>
-        
-        
-        <category>GIS</category>
-        
-      </item>
-    
-      <item>
-        <title>常用SVN命令及问题</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#svn简介&quot; id=&quot;markdown-toc-svn简介&quot;&gt;SVN简介&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#常用命令&quot; id=&quot;markdown-toc-常用命令&quot;&gt;常用命令&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考链接&quot; id=&quot;markdown-toc-参考链接&quot;&gt;参考链接&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。
-
-&lt;h3 id=&quot;svn简介&quot;&gt;&lt;a href=&quot;http://subversion.apache.org&quot;&gt;SVN&lt;/a&gt;简介&lt;/h3&gt;
-
-&lt;a href=&quot;http://subversion.apache.org&quot;&gt;Subversion官网&lt;/a&gt;
-
-&lt;h3 id=&quot;常用命令&quot;&gt;常用命令&lt;/h3&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 项目checkout 到本地 checkout 可以替换为co  https://svn.url/project为服务器地址 ./mpath为本地存储路径
-svn checkout https://svn.url/project --username xxxx --password xxx ./mpath   
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-第一次运行会出现下面的问题 就是询问接受方式，一般写p，以后就不会再出现了！
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error validating server certificate for 'https://172.17.1.8:443':  
- - The certificate is not issued by a trusted authority. Use the  
-   fingerprint to validate the certificate manually!  
- - The certificate hostname does not match.  
-Certificate information:  
- - Hostname: BJ-AD-FS.hyc-tec.net  
- - Valid: from Fri, 03 May 2013 01:18:50 GMT until Mon, 01 May 2023 01:18:50 GMT  
- - Issuer: BJ-AD-FS.hyc-tec.net  
- - Fingerprint: 16:c5:8a:cf:f5:25:9d:df:54:79:0f:0d:42:03:70:29:04:9b:c2:a8  
-(R)eject, accept (t)emporarily or accept (p)ermanently?   
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#查看日志&lt;/span&gt;
-svn log &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2010-04-03&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2010-04-04&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-svn log &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;PATH]
-&lt;span class=&quot;c&quot;&gt;#文件目录删除和新建&lt;/span&gt;
-svn &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;PATH] &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'info'&lt;/span&gt;
-svn delete &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;PATH] &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'info'&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#查看本地文件状态&lt;/span&gt;
-svn status
-&lt;span class=&quot;c&quot;&gt;#上传本地项目到服务器&lt;/span&gt;
-svn import &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; “新增公路管理” HighwayMangement http://scm.wantong-tech.net:1080/wttech.mobile/trunk/app/JxzwUniapp/HighwayMangement
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;参考链接&quot;&gt;参考链接&lt;/h3&gt;
-
-&lt;a href=&quot;https://blog.csdn.net/startcrazyactivity/article/details/87344256&quot;&gt;AndroidStudio SVN 文件忽略&lt;/a&gt;
-
-</description>
-        <pubDate>Fri, 20 Apr 2018 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/</guid>
-        
-        <category>SVN</category>
-        
-        
-        <category>代码版本控制</category>
-        
-      </item>
-    
-      <item>
-        <title>Android APK打包技巧</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#apk拆分&quot; id=&quot;markdown-toc-apk拆分&quot;&gt;APK拆分&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-APK拆分常用方法
-
-&lt;h4 id=&quot;apk拆分&quot;&gt;APK拆分&lt;/h4&gt;
-
-通过 APK 拆分，您可以高效地基于屏幕密度或 ABI 创建多个 APK。 例如，您可以利用 APK 拆分创建单独的 hdpi 和 mdpi 版本应用，同时仍将它们视为一个变体，并允许其共享测试应用、javac、dx 和 ProGuard 设置。
-
-如需了解有关使用 APK 拆分的详细信息，请参阅 &lt;a href=&quot;http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits&quot;&gt;APK 拆分&lt;/a&gt;.
-
-</description>
-        <pubDate>Wed, 07 Mar 2018 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2018/03/07/Android-APK%E6%89%93%E5%8C%85/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/07/Android-APK%E6%89%93%E5%8C%85/</guid>
-        
-        <category>AS</category>
-        
-        <category>Gradle</category>
-        
-        
-        <category>Android</category>
-        
-      </item>
-    
-      <item>
-        <title>AndroidStudio手动下载配置Gradle</title>
-        <description>
-相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://services.gradle.org/distributions/&quot;&gt;Gradle下载地址&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    使用VPN下载
-
-    我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。
-  &lt;/li&gt;
-  &lt;li&gt;
-    手动下载配置
-
-    &lt;a href=&quot;https://blog.csdn.net/fuchaosz/article/details/51567808&quot;&gt;参考文章&lt;/a&gt;
-
-    既然有大神写了，而且比较详细，我就不再班门弄斧了。
-  &lt;/li&gt;
-  &lt;li&gt;
-    使用国内镜像地址
-
-    使用阿里云的国内镜像仓库地址，就可以快速的下载需要的文件修改项目根目录下的文件 build.gradle ：
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;buildscript {
-    repositories {
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-    }
-}
-
-allprojects {
-    repositories {
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-然后重新构建项目就可以了
-
-&lt;ul&gt;
-  &lt;li&gt;Gradle常用命令&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 查看项目依赖
-gradle :app:dependencies
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.android.google.cn/studio/releases/gradle-plugin#revisions&quot;&gt;Android Gradle插件版本升级&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Wed, 07 Mar 2018 16:14:54 +0800</pubDate>
-        <link>http://localhost:4000/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/</guid>
-        
-        <category>AS</category>
-        
-        <category>Gradle</category>
-        
-        
-        <category>Android</category>
         
       </item>
     

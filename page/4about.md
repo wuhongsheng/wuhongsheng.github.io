@@ -11,8 +11,7 @@ type: page
 
 ## 关于我
 
-<!--<iframe src="https://githubbadge.appspot.com/gaohaoyang?s=1" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder="0"></iframe>-->
-![](http://ooxw95lkz.bkt.clouddn.com/me.jpeg)
+<img src="http://wuhongsheng.top/images/me.jpg" style="border: 0;width: 420px;overflow: hidden;" frameBorder="0"/>
 
 现就职于皖通科技，研发工程师。
 
@@ -36,6 +35,7 @@ type: page
 
 * GitHub：[wuhongsheng](https://github.com/wuhongsheng)
 * email：664116298@qq.com
+
 
 ## 关于本站
 

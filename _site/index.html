@@ -168,6 +168,725 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2020/08/21/bilibili-ijkplayer-%E7%BC%96%E8%AF%91%E5%8F%8A%E5%BA%94%E7%94%A8/">bilibili / ijkplayer 编译及应用</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2020-08-21
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#音视频" title="Category: 音视频" rel="category">音视频</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#音视频" title="Tag: 音视频" rel="tag">音视频</a>&nbsp;
+    
+        <a href="/tag/#ijkplayer" title="Tag: ijkplayer" rel="tag">ijkplayer</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#项目目录" id="markdown-toc-项目目录">项目目录</a></li>
+  <li><a href="#编译环境" id="markdown-toc-编译环境">编译环境</a></li>
+  <li><a href="#编译步骤" id="markdown-toc-编译步骤">编译步骤</a></li>
+  <li><a href="#扩展支持" id="markdown-toc-扩展支持">扩展支持</a></li>
+  <li><a href="#日志过滤" id="markdown-toc-日志过滤">日志过滤</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+  <li><a href="#扩展截屏录像方法" id="markdown-toc-扩展截屏录像方法">扩展截屏、录像方法</a></li>
+  <li><a href="#性能优化" id="markdown-toc-性能优化">性能优化</a></li>
+  <li><a href="#公网直播流测试地址" id="markdown-toc-公网直播流测试地址">公网直播流测试地址</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
+</ul>
+
+<p><a href="https://github.com/bilibili/ijkplayer">ijkplayer</a>是B站开源的基于ffplay实现的视频播放器</p>
+
+<h3 id="项目目录">项目目录</h3>
+<p>android - android平台上的上层接口封装以及平台相关方法</p>
+
+<p>config - 编译ffmpeg使用的配置文件</p>
+
+<p>extra - 存放编译ijkplayer所需的依赖源文件, 如ffmpeg、openssl等</p>
+
+<p>ijkmedia - 核心代码</p>
+
+<p>ijkj4a - android平台下使用，用来实现c代码调用java层代码，这个文件夹是通过bilibili的另一个开源项目jni4android自动生成的。</p>
+
+<ul>
+  <li>
+    <p>ijkplayer - 播放器数据下载及解码相关</p>
+  </li>
+  <li>
+    <p>ijksdl - 音视频数据渲染相关</p>
+  </li>
+</ul>
+
+<p>ios - iOS平台上的上层接口封装以及平台相关方法</p>
+
+<p>tools - 初始化项目工程脚本</p>
+
+<h3 id="编译环境">编译环境</h3>
+<ul>
+  <li>android-ndk-r10e</li>
+  <li>Mac OS X 10.15.4</li>
+  <li>Android Studio 4.0
+    <h3 id="编译步骤">编译步骤</h3>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 下载源码</span>
+git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android 
+<span class="nb">cd </span>ijkplayer-android
+<span class="c"># 切换到最新release分支</span>
+git checkout <span class="nt">-B</span> latest k0.8.8        
+<span class="c"># 下载ffmpeg等第三方依赖 ffmpeg libyuv soundtouch</span>
+./init-android.sh                    
+<span class="nb">cd </span>android/contrib
+<span class="c"># 清除ffmpeg编译</span>
+./compile-ffmpeg.sh clean      
+<span class="c"># 编译ffmpeg；all是编译所有平台，一般Android选择编译armv7a，arm64即可(./compile-ffmpeg.sh armv7a|arm64)</span>
+./compile-ffmpeg.sh all              
+<span class="nb">cd</span> ..
+<span class="c"># 编译ijkplayer；all是编译所有平台，一般Android选择编译armv7a，arm64即可(./compile-ijk.sh armv7a|arm64)</span>
+./compile-ijk.sh all               
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="扩展支持">扩展支持</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>增加rtsp协议支持
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=sdp"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtp"
+
+#默认的ijkplayer 的 ffmpeg 不支持pcm格式的音频，需要重新编译ffmpeg，添加对pcm的支持
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_alaw"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_ulaw"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw"
+</code></pre></div></div>
+
+<h3 id="日志过滤">日志过滤</h3>
+<p>1.上层播放组件封装
+WtVideoView
+2.IjkPlayer层
+IJKMEDIA</p>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p>1.Could not find tag for codec pcm_alaw in stream #1, codec not currently supported</p>
+
+<p><a href="https://stackoverflow.com/questions/47495713/could-not-find-tag-for-codec-pcm-alaw-in-stream-1-codec-not-currently-supporte">codec not currently supported</a></p>
+
+<p>ffmepg mp4容器不支持pcm_alaw 修改存储容器为mov</p>
+
+<p>2.SDL_Android_NativeWindow_display_l: ANativeWindow_lock: failed -22</p>
+
+<p>软解情况下，界面卡住</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">void</span> <span class="nf">setVideoURI</span><span class="o">(</span><span class="nc">Uri</span> <span class="n">uri</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">headers</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mUri</span> <span class="o">=</span> <span class="n">uri</span><span class="o">;</span>
+        <span class="n">mHeaders</span> <span class="o">=</span> <span class="n">headers</span><span class="o">;</span>
+        <span class="n">mSeekWhenPrepared</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="c1">//重新设置渲染层</span>
+        <span class="n">setRender</span><span class="o">();</span>
+        <span class="n">openVideo</span><span class="o">();</span>
+        <span class="n">requestLayout</span><span class="o">();</span>
+        <span class="n">invalidate</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>播放Flv无声音</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stream #0: not enough frames to estimate rate; consider increasing probesize
+
+IJKMEDIA: Stream
+</code></pre></div></div>
+<p><a href="https://blog.csdn.net/qq_34420120/article/details/91415061">IjkMediaPlayer 播放无声音Bug</a></p>
+
+<p>因为需要探测视频和音频的格式, 你没声音是在probesize的大小内没获取到音频包, 你可以做的是:</p>
+
+<p>1.增大probesize和analyzeduration
+2.修改ffmpeg源码, 在达到probesize大小但还没获取到视频或音频格式的时候自动增大probesize再继续探测
+            ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, “probesize”, 1024L * 80);</p>
+
+<p>不支持pcm_alaw</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not find codec parameters for stream 1 (Audio: pcm_alaw, 8000 Hz, 1 channels, 64 kb/s): unspecified sample format
+
+</code></pre></div></div>
+<p>在module-lite.s中增加支持</p>
+
+<p>手机锁屏后网络中断导致视频中断</p>
+
+<p>开启 前台服务 或者 申请后台服务白名单</p>
+
+<h3 id="扩展截屏录像方法">扩展截屏、录像方法</h3>
+<p>1、通过在ffplay层扩至录像及录屏方法，但是不支持硬解下截屏
+2、可以在java层使用TextureRenderView获取Bitmap的形式进行截图</p>
+
+<h3 id="性能优化">性能优化</h3>
+<p>总延时=采集+编码(缓冲)+发送+传输+接收+解码(缓冲)+播放，你先确认下采集编码端有多少延时</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">//rtmp秒开配置</span>
+ <span class="c1">//设置播放前的最大探测时间 </span>
+ <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"analyzemaxduration"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+ <span class="c1">//播放前的探测Size，默认是1M, 改小一点会出画面更快</span>
+ <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"probesize"</span><span class="o">,</span> <span class="mi">512L</span><span class="o">);</span>
+ <span class="c1">//每处理一个packet之后刷新io上下文</span>
+ <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"flush_packets"</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span>
+            <span class="c1">//是否开启预缓冲，一般直播项目会开启，达到秒开的效果，不过带来了播放丢帧卡顿的体验</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"packet-buffering"</span><span class="o">,</span> <span class="mi">0L</span><span class="o">);</span>
+            <span class="c1">//跳帧处理,放CPU处理较慢时，进行跳帧处理，保证播放流程，画面和声音同步</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"framedrop"</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span>
+            <span class="c1">//rtmp秒开配置 end</span>
+            
+            
+<span class="c1">//播放rtst流图像延时550ms左右, 这个延迟是否还能有所提升，目前使用的参数配置项如下：TCP 连接</span>
+<span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"rtsp_transport"</span><span class="o">,</span> <span class="s">"tcp"</span><span class="o">);</span> 
+<span class="c1">//码流分析时间设置，单位为微秒</span>
+<span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"analyzeduration"</span><span class="o">,</span><span class="mi">500000L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"fast"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_CODEC</span><span class="o">,</span> <span class="s">"threads"</span><span class="o">,</span> <span class="s">"auto"</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"infbuf"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"flush_packets"</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"packet-buffering"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_CODEC</span><span class="o">,</span><span class="s">"skip_loop_filter"</span><span class="o">,</span><span class="mi">48L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"framedrop"</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span> 
+<span class="c1">//减少缓冲</span>
+<span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"fflags"</span><span class="o">,</span> <span class="s">"nobuffer"</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"probesize"</span><span class="o">,</span> <span class="mi">10240L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"max-fps"</span><span class="o">,</span><span class="mi">25</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"reconnect"</span><span class="o">,</span><span class="mi">5</span><span class="o">);</span>
+
+
+
+
+<span class="c1">//RTSP优化 </span>
+<span class="c1">//最大帧率</span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"max-fps"</span><span class="o">,</span><span class="mi">30</span><span class="o">);</span>
+<span class="c1">//不额外优化        </span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"fast"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+<span class="c1">//探测大小 默认10240          </span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"probesize"</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"flush_packets"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="c1">//pause output until enough packets have been read after stalling</span>
+<span class="c1">//是否开启缓冲 </span>
+  <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"packet-buffering"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+<span class="c1">//drop frames when cpu is too slow：0-120   </span>
+<span class="c1">//丢帧,默认是1</span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"framedrop"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="c1">//automatically start playing on prepared</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"start-on-prepared"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_CODEC</span><span class="o">,</span> <span class="s">"skip_loop_filter"</span><span class="o">,</span> <span class="mi">48</span><span class="o">);</span><span class="c1">//默认值48</span>
+            <span class="c1">//max buffer size should be pre-read：默认为15*1024*1024</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"max-buffer-size"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span><span class="c1">//最大缓存数</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"min-frames"</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span><span class="c1">//默认最小帧数2</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"max_cached_duration"</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span><span class="c1">//最大缓存时长</span>
+            <span class="c1">//input buffer:don't limit the input buffer size (useful with realtime streams)</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"infbuf"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span><span class="c1">//是否限制输入缓存数</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"fflags"</span><span class="o">,</span> <span class="s">"nobuffer"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="公网直播流测试地址">公网直播流测试地址</h3>
+
+<p>RTMP协议直播源
+香港卫视：rtmp://live.hkstv.hk.lxdns.com/live/hks
+RTSP协议直播源</p>
+<ul>
+  <li>大熊兔（VOD）：rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov</li>
+  <li>国外电视台：rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp</li>
+</ul>
+
+<p>HTTP协议直播源
+http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8</p>
+
+<h3 id="参考链接">参考链接</h3>
+
+<p><a href="https://github.com/Bilibili/ijkplayer">ijkplayer官方地址</a></p>
+
+<p><a href="https://www.jianshu.com/p/496257563f69">ijkplayer中遇到的问题汇总</a></p>
+
+<p><a href="https://github.com/momoxiaoray/ijkplayer">ijkplayer增加截屏和录像方法</a></p>
+
+<p><a href="https://juejin.cn/post/6844904135314128903">音频帧、视频帧及其同步</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2020/08/21/bilibili-ijkplayer-%E7%BC%96%E8%AF%91%E5%8F%8A%E5%BA%94%E7%94%A8/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/">常用设计模式（以JAVA为例）</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2019-09-19
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#设计模式" title="Category: 设计模式" rel="category">设计模式</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#设计模式" title="Tag: 设计模式" rel="tag">设计模式</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#基本原则" id="markdown-toc-基本原则">基本原则</a></li>
+  <li><a href="#构建型模式" id="markdown-toc-构建型模式">构建型模式</a>    <ul>
+      <li><a href="#工厂模式" id="markdown-toc-工厂模式">工厂模式</a></li>
+      <li><a href="#单例模式" id="markdown-toc-单例模式">单例模式</a></li>
+    </ul>
+  </li>
+  <li><a href="#结构型模式" id="markdown-toc-结构型模式">结构型模式</a></li>
+  <li><a href="#参考资料" id="markdown-toc-参考资料">参考资料</a></li>
+</ul>
+
+<p>设计模式的世界丰富多彩，比如生产一个个「产品」的工厂模式，衔接两个不相关接口的适配器模式，用不同的方式做同一件事的策略模式，构建步骤稳定、根据构建过程的不同配置构建出不同对象的建造者模式等。</p>
+
+<p>设计模式一共有 23 种，可以分为构建型模式、结构型模式、行为型模式</p>
+
+<h2 id="基本原则">基本原则</h2>
+<p>设计模式基于六大原则：</p>
+<ul>
+  <li>
+    <p>开闭原则：一个软件实体如类、模块和函数应该对修改封闭，对扩展开放。</p>
+  </li>
+  <li>
+    <p>单一职责原则：一个类只做一件事，一个类应该只有一个引起它修改的原因。</p>
+  </li>
+  <li>
+    <p>里氏替换原则：子类应该可以完全替换父类。也就是说在使用继承时，只扩展新功能，而不要破坏父类原有的功能。</p>
+  </li>
+  <li>
+    <p>依赖倒置原则：细节应该依赖于抽象，抽象不应依赖于细节。把抽象层放在程序设计的高层，并保持稳定，程序的细节变化由低层的实现层来完成。</p>
+  </li>
+  <li>
+    <p>迪米特法则：又名「最少知道原则」，一个类不应知道自己操作的类的细节，换言之，只和朋友谈话，不和朋友的朋友谈话。</p>
+  </li>
+  <li>
+    <p>接口隔离原则：客户端不应依赖它不需要的接口。如果一个接口在实现时，部分方法由于冗余被客户端空实现，则应该将接口拆分，让实现类只需依赖自己需要的接口方法。</p>
+  </li>
+</ul>
+
+<h2 id="构建型模式">构建型模式</h2>
+<ul>
+  <li>工厂方法模式</li>
+  <li>抽象工厂模式</li>
+  <li>单例模式</li>
+  <li>建造型模式</li>
+  <li>原型模式
+    <h4 id="工厂模式">工厂模式</h4>
+  </li>
+  <li>简单工厂模式
+优点：
+1.调用方无需知道 Apple 、Pear 类，降低耦合
+2.当Apple 、Pear 类构造变得复杂时，调用方无需关心
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FruitFactory</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">Fruit</span> <span class="nf">create</span><span class="o">(</span><span class="nc">String</span> <span class="n">type</span><span class="o">){</span>
+      <span class="k">switch</span> <span class="o">(</span><span class="n">type</span><span class="o">){</span>
+          <span class="k">case</span> <span class="s">"苹果"</span><span class="o">:</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">Apple</span><span class="o">();</span>
+          <span class="k">case</span> <span class="s">"梨子"</span><span class="o">:</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">Pear</span><span class="o">();</span>
+          <span class="k">default</span><span class="o">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="s">"暂时没有这种水果"</span><span class="o">);</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>工厂方法模式
+```java
+public class AppleFactory {
+  public Fruit create(){
+      return new Apple();
+  }
+}</li>
+</ul>
+
+<p>public class PearFactory {
+    public Fruit create(){
+        return new Pear();
+    }
+}</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 抽象工厂方法模式
+```java
+public interface IFactory {
+    Fruit create();
+}
+
+public class AppleFactory implements IFactory {
+    @Override
+    public Fruit create(){
+        return new Apple();
+    }
+}
+
+
+public class PearFactory implements IFactory {
+    @Override
+    public Fruit create(){
+        return new Pear();
+    }
+}
+</code></pre></div></div>
+
+<h4 id="单例模式">单例模式</h4>
+<p>单例模式非常常见，某个对象全局只需要一个实例时，就可以使用单例模式。它的优点也显而易见：</p>
+<ul>
+  <li>它能够避免对象重复创建，节约空间并提升效率</li>
+  <li>避免由于操作不同实例导致的逻辑错误</li>
+</ul>
+
+<p>单例模式有两种实现方式：饿汉式和懒汉式。</p>
+<ul>
+  <li>饿汉式
+```java</li>
+</ul>
+
+<p>public class Singleton {</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private static Singleton instance = new Singleton();
+
+private Singleton() {
+}
+
+public static Singleton getInstance() {
+    return instance;
+} } ``` * 懒汉式 懒汉式解决了饿汉式的弊端，好处是按需加载，避免了内存浪费，减少了类初始化时间。 ```java
+</code></pre></div></div>
+
+<p>public class Singleton {</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private static Singleton instance = null;
+  
+private Singleton() {
+}
+
+public static Singleton getInstance(){
+    if (instance == null) {
+        instance = new Singleton();
+    }
+    return instance;
+} } ```
+</code></pre></div></div>
+
+<ul>
+  <li>双检锁方式
+双检锁方式实现的线程安全的单例模式
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
+    
+  <span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">instance</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+  <span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+          <span class="kd">synchronized</span> <span class="o">(</span><span class="nc">Singleton</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">{</span>
+              <span class="k">if</span> <span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                  <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
+              <span class="o">}</span>
+          <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>静态内部类方式
+利用java虚拟机类加载机制实现线程安全懒汉式单例模式
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
+    
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SingletonHolder</span> <span class="o">{</span>
+      <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="nc">SingletonHolder</span><span class="o">.</span><span class="na">instance</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="结构型模式">结构型模式</h2>
+
+<ul>
+  <li>适配器模式</li>
+  <li>桥接模式</li>
+  <li>组合模式</li>
+  <li>装饰模式</li>
+  <li>外观模式</li>
+  <li>享元模式</li>
+  <li>代理模式</li>
+</ul>
+
+<h2 id="参考资料">参考资料</h2>
+
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI4Mzc5NDk4MA==&amp;action=getalbum&amp;album_id=1461125104968318982&amp;scene=173&amp;from_msgid=2247486859&amp;from_itemidx=1&amp;count=3#wechat_redirect">LeetCode设计模式</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s/QWM079Z_zoU_2WxsMxw48g">如何用「设计模式」制作珍珠奶茶？</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s/0PTiheUOw3FKJ6kKFZte-Q">详解设计模式之结构型模式（上）</a></p>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2019/07/25/Flutter%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Flutter从入门到放弃</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2019-07-25
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Flutter" title="Category: Flutter" rel="category">Flutter</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Flutter" title="Tag: Flutter" rel="tag">Flutter</a>&nbsp;
+    
+        <a href="/tag/#跨平台" title="Tag: 跨平台" rel="tag">跨平台</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#开发环境搭建" id="markdown-toc-开发环境搭建">开发环境搭建</a></li>
+  <li><a href="#常用知识点" id="markdown-toc-常用知识点">常用知识点</a></li>
+  <li><a href="#常用包和插件" id="markdown-toc-常用包和插件">常用包和插件</a></li>
+  <li><a href="#as插件" id="markdown-toc-as插件">AS插件</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+  <li><a href="#相关资源" id="markdown-toc-相关资源">相关资源</a></li>
+</ul>
+
+<p><a href="https://github.com/flutter/flutter">Flutter</a>Flutter是Google推出的跨平台的SDK，可通过单一代码库为移动，网络和台式机打造精美，快速的用户体验。Flutter可与现有代码配合使用，为世界各地的开发人员和组织所使用，并且是免费的开放源代码。</p>
+
+<h2 id="开发环境搭建">开发环境搭建</h2>
+
+<ol>
+  <li><a href="https://flutter.dev/docs/get-started/install">安装</a></li>
+  <li>常用命令
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置镜像</span>
+<span class="nb">export </span><span class="nv">PUB_HOSTED_URL</span><span class="o">=</span>https://pub.flutter-io.cn
+<span class="nb">export </span><span class="nv">FLUTTER_STORAGE_BASE_URL</span><span class="o">=</span>https://storage.flutter-io.cn
+<span class="c"># 检查</span>
+flutter doctor
+<span class="c"># 查看flutter 处于什么分支上</span>
+flutter channel 
+<span class="c"># 切换分支</span>
+flutter channel master
+<span class="c"># 启用web配置</span>
+flutter config <span class="nt">--enable-web</span>
+<span class="c"># 更新</span>
+flutter upgrade
+<span class="c"># 安装包</span>
+flutter pub get
+<span class="c"># 创建一个module</span>
+<span class="nb">cd </span>some/path/
+flutter create <span class="nt">-t</span> module <span class="nt">--org</span> com.example my_flutter
+<span class="c"># 检查Android许可</span>
+flutter doctor <span class="nt">--android-licenses</span>
+<span class="c"># clean</span>
+flutter clean
+<span class="c"># run</span>
+flutter run <span class="nt">-v</span>
+<span class="c"># 检查发布文件</span>
+flutter packages pub publish <span class="nt">--dry-run</span>
+<span class="c"># 发布包</span>
+flutter packages pub publish
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="常用知识点">常用知识点</h2>
+<p><a href="https://flutter.dev/docs/development/tools/devtools/debugger">Debugger</a>
+<a href="https://www.jianshu.com/p/c0e30769ea7e">Flutter的Future异步详解</a>
+<a href="https://flutterchina.club/developing-packages/">插件开发</a>
+<a href="https://www.jianshu.com/p/96e1ae828b13"> 图解 Flutter 基本动画 (一)</a></p>
+<h2 id="常用包和插件">常用包和插件</h2>
+<p><a href="https://github.com/flutter/plugins">官方维护的组件库</a></p>
+<ul>
+  <li>网络请求
+<a href="https://pub.flutter-io.cn/packages/http">http</a>
+<a href="https://github.com/flutterchina/dio">dio</a></li>
+  <li>推送
+<a href="https://pub.flutter-io.cn/packages/jpush_flutter">jpush_flutter</a></li>
+  <li>数据持久化
+<a href="https://pub.dev/packages/shared_preferences">shared_preferences</a></li>
+  <li>路由
+<a href="https://github.com/theyakka/fluro">fluro</a></li>
+  <li>UI
+<a href="https://github.com/PonnamKarthik/FlutterToast">FlutterToast</a>
+<a href="https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md">flutter_screenutil</a>
+<a href="https://pub.flutter-io.cn/packages/city_pickers">city_pickers</a></li>
+  <li>其他
+<a href="https://pub.flutter-io.cn/packages/uuid">uuid</a>
+<a href="https://pub.dev/packages/json_serializable">json_serializable</a></li>
+</ul>
+
+<h2 id="as插件">AS插件</h2>
+<ul>
+  <li>FlutterJsonBeanFactory
+json转对象
+    <h2 id="常见问题">常见问题</h2>
+  </li>
+  <li>更新失败</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...nloading Dart SDK from Flutter engine b863200c37df4ed378042de11c4e9ff34e4e58c9
+curl: (3) URL using bad/illegal format or missing URL
+
+Failed to retrieve the Dart SDK from: https://storage.googleapis.com/flutter_infra/flutter/b863200c37df4ed378042de11c4e9ff/dart-sdk-darwin-x64.zip
+If you're located in China, please see this page:
+  https://flutter.dev/community/china
+</code></pre></div></div>
+<p>需要将Dart SDK 解压到Flutter安装目录下</p>
+
+<ul>
+  <li>gradle构建失败
+```
+Process ‘command ‘/Users/whs/Flutter_workspace/flutter/bin/flutter’’ finished with non-zero exit value 1</li>
+</ul>
+
+<p>```
+flutter run -v 查看原因
+androidx 和 support库冲突</p>
+
+<h2 id="相关资源">相关资源</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=UUfXWzp0-DU">Flutter Rendering</a></li>
+  <li><a href="https://github.com/flutter/engine">Flutter Engine</a></li>
+  <li>Documentation: https://docs.flutter.io/</li>
+  <li>Github: https://github.com/flutter/flutter</li>
+  <li>StackOverflow: https://stackoverflow.com/questions/tagged/flutter</li>
+  <li>Gitter: https://gitter.im/flutter/flutter
+Effective Dart Guide: https://www.dartlang.org/guides/language/effective-dart</li>
+  <li>Dart Tips: https://www.dartlang.org/resources/dart-tips</li>
+  <li>Flutter FAQ: https://flutter.io/faq/</li>
+  <li>Flutter Rendering:</li>
+  <li><a href="https://flutter.io/hot-reload/">Hot Reload</a></li>
+  <li>Flutter Inspector: https://dart-lang.github.io/observatory/</li>
+  <li>Dart Style Guide: https://www.dartlang.org/guides/language/effective-dart/style</li>
+  <li>Dart Observatory: https://dart-lang.github.io/observatory/</li>
+  <li>Flutter Widgets: https://flutter.io/widgets/</li>
+  <li>Flutter Gallery App Code: https://github.com/flutter/flutter/tree/master/examples/flutter_gallery</li>
+  <li>Flutter Gallery Android App: https://play.google.com/store/apps/details?id=io.flutter.demo.gallery</li>
+  <li>Flutter Layout: https://flutter.io/tutorials/layout/</li>
+  <li>Material: https://material.io</li>
+  <li>Icons: https://thenounproject.com</li>
+  <li>Images: https://unsplash.com</li>
+  <li>Fonts: https://fonts.google.com</li>
+  <li>Google APIs: https://pub.dartlang.org/packages/googleapis</li>
+  <li>Async and Futures: https://www.dartlang.org/tutorials/language/futures</li>
+  <li>Testing: https://flutter.io/testing/</li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2019/07/25/Flutter%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a>
                 </h2>
                 <div class="label">
@@ -525,6 +1244,7 @@ C(MODEL) --&gt; B(VIEWMODEL)
       <li><a href="#配置java环境" id="markdown-toc-配置java环境">配置Java环境</a></li>
       <li><a href="#linux下安装gradle" id="markdown-toc-linux下安装gradle">Linux下安装Gradle</a></li>
       <li><a href="#安装android-sdk" id="markdown-toc-安装android-sdk">安装Android SDK</a></li>
+      <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
     </ul>
   </li>
 </ul>
@@ -550,6 +1270,15 @@ unzip <span class="nt">-d</span> /opt/gradle gradle-4.6-bin.zip
 <span class="nb">df</span> <span class="nt">-h</span> 
 <span class="c"># 内存使用情况</span>
 free <span class="nt">-m</span>
+<span class="c"># 获取文件完整路径</span>
+find /Users/whs <span class="nt">-name</span> keras.json
+<span class="c"># 查看安装程序的路径</span>
+which libtool
+<span class="c"># 查看Qd开头的服务</span>
+ps <span class="nt">-aux</span> |grep Qd
+<span class="c"># 进入当前用户目录</span>
+<span class="nb">cd</span> <span class="c">#</span>
+<span class="nb">cd</span> ~/[path]
 </code></pre></div></div>
 
 <h3 id="mac-常用命令">mac 常用命令</h3>
@@ -585,8 +1314,11 @@ vim /etc/profile
 <span class="c"># 检验安装结果</span>
 gradle <span class="nt">--version</span>
 </code></pre></div>    </div>
-    <h4 id="安装android-sdk">安装Android SDK</h4>
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">ANDROID_HOME</span><span class="o">=</span>/usr/local/AndroidSDK/android-sdk-linux
+  </li>
+</ol>
+
+<h4 id="安装android-sdk">安装Android SDK</h4>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">ANDROID_HOME</span><span class="o">=</span>/usr/local/AndroidSDK/android-sdk-linux
 <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ANDROID_HOME</span>/tools
 <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ANDROID_HOME</span>/platform-tools
 <span class="c"># 检验安装结果</span>
@@ -595,9 +1327,32 @@ android <span class="nt">-h</span>
 android list sdk <span class="nt">--all</span>
 <span class="c"># 下载需要的组件, 注意--all 这个参数一定要加上, 否则后面filter里的序号不起作用, 例如我用的是</span>
 android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <span class="nt">--filter</span> 1,2,4,5,47
-</code></pre></div>    </div>
-  </li>
-</ol>
+</code></pre></div></div>
+
+<h4 id="常见问题">常见问题</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/sh^M: bad interpreter: No such file or directory
+
+env: bash\r: No such file or directory
+</code></pre></div></div>
+<p>执行命令时有时会出现bad interpreter: No such file or directory错误，
+一般是因为Linux无法识别出Windows的DOS格式，此时只需将文件格式转换成unix的即可，方法如下：</p>
+
+<p>1、编辑出错文件
+vi filename</p>
+
+<p>2、查看该格式（报错文件格式是DOS）
+:set ff</p>
+
+<p>3、修改格式
+:set ff=unix</p>
+
+<p>4、保存退出
+:wq!
+或者用dos2unix 转换</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dos2unix ./init-android-libyuv.sh ./init-android-soundtouch.sh
+ #对当前目录批量处理
+ find . -type f -exec dos2unix {} \;
+</code></pre></div></div>
 
                 </div>
                 <div class="read-all">
@@ -608,11 +1363,11 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
             
               <li>
                 <h2>
-                  <a class="post-link" href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a>
+                  <a class="post-link" href="/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Gradle从入门到放弃</a>
                 </h2>
                 <div class="label">
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>2019-01-21
+                        <i class="fa fa-calendar"></i>2019-04-18
                     </div>
                     <div class="label-card">
                         <i class="fa fa-user"></i>WHS
@@ -631,7 +1386,7 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+        <a href="/category/#Gradle" title="Category: Gradle" rel="category">Gradle</a>
     
   
 
@@ -648,11 +1403,7 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
   <i class="fa fa-tags"></i>
   
     
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>&nbsp;
-    
-        <a href="/tag/#Jetpack" title="Tag: Jetpack" rel="tag">Jetpack</a>&nbsp;
-    
-        <a href="/tag/#DataBinding" title="Tag: DataBinding" rel="tag">DataBinding</a>
+        <a href="/tag/#Gradle" title="Tag: Gradle" rel="tag">Gradle</a>
     
   
 
@@ -662,551 +1413,81 @@ android update sdk <span class="nt">-u</span> <span class="nt">--all</span> <spa
                 </div>
                 <div class="excerpt">
                     <ul id="markdown-toc">
-  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+  <li><a href="#常用命令" id="markdown-toc-常用命令">常用命令</a></li>
+  <li><a href="#常用脚本" id="markdown-toc-常用脚本">常用脚本</a></li>
+  <li><a href="#常见的问题" id="markdown-toc-常见的问题">常见的问题</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
 </ul>
 
-<p><a href="https://developer.android.google.cn/topic/libraries/data-binding/">数据绑定库</a>是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。</p>
+<p>Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化构建开源工具。它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。
+面向Java应用为主。当前其支持的语言限于Java、Groovy、Kotlin和Scala，计划未来将支持更多的语言。
+<a href="https://services.gradle.org/distributions/">官方下载地址</a></p>
 
-<h3 id="常见问题">常见问题</h3>
+<h3 id="常用命令">常用命令</h3>
 
-<p><strong>错误描述</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wantong.product/com.example.xuncha.ui.task.PatrolTaskDetialActivity}: java.lang.RuntimeException: view must have a tag
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 执行 java 单元测试</span>
+gradle app:test
+<span class="c"># 执行 android 单元测试</span>
+gradle app:connectedAndroidTest
+<span class="c"># 查看编译时依赖树</span>
+gradle app:dependencies <span class="nt">--configuration</span> compile
+<span class="c"># 查manifest merge问题</span>
+gradle processReleaseManifest <span class="nt">--stacktrace</span>
+<span class="c"># g</span>
 </code></pre></div></div>
 
-<p><strong>原因及解决方法</strong></p>
+<h3 id="常用脚本">常用脚本</h3>
 
-<p>使用DataBinding的项目中存在同名布局文件，找到对应的生成文件查看具体错误原因</p>
+<div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//生成时间</span>
+<span class="kt">def</span> <span class="nf">releaseTime</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">BuildType</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s2">"release"</span><span class="o">)){</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="s2">"yyyyMMdd"</span><span class="o">,</span> <span class="n">TimeZone</span><span class="o">.</span><span class="na">getTimeZone</span><span class="o">(</span><span class="s2">"GMT+08:00"</span><span class="o">))</span>
+    <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="s2">"yyyyMMdd_HHmmss"</span><span class="o">,</span> <span class="n">TimeZone</span><span class="o">.</span><span class="na">getTimeZone</span><span class="o">(</span><span class="s2">"GMT+08:00"</span><span class="o">))</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 
+<span class="c1">//设置apk生成路径</span>
+    <span class="n">applicationVariants</span><span class="o">.</span><span class="na">all</span> <span class="o">{</span> <span class="n">variant</span> <span class="o">-&gt;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">variant</span><span class="o">.</span><span class="na">buildType</span><span class="o">.</span><span class="na">name</span> <span class="o">!=</span> <span class="s2">"debug"</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">variant</span><span class="o">.</span><span class="na">packageApplicationProvider</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">outputDirectory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">projectDir</span><span class="o">.</span><span class="na">absolutePath</span><span class="o">+</span><span class="s2">"/apk/"</span><span class="o">+</span><span class="n">variant</span><span class="o">.</span><span class="na">buildType</span><span class="o">.</span><span class="na">name</span><span class="o">)</span>
+        <span class="o">}</span>
 
-                </div>
-                <div class="read-all">
-                    <a  href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-08-15
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
+        <span class="n">variant</span><span class="o">.</span><span class="na">outputs</span><span class="o">.</span><span class="na">forEach</span> <span class="o">{</span> <span class="n">apkData</span> <span class="o">-&gt;</span>
+            <span class="c1">//这个修改输出APK的文件名</span>
+            <span class="n">apkData</span><span class="o">.</span><span class="na">outputFileName</span> <span class="o">=</span> <span class="s2">"平台开发版_"</span> <span class="o">+</span>
+                    <span class="n">variant</span><span class="o">.</span><span class="na">versionName</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span>
+                    <span class="n">variant</span><span class="o">.</span><span class="na">buildType</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span>
+                    <span class="n">variant</span><span class="o">.</span><span class="na">versionCode</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span>
+                    <span class="k">new</span> <span class="nf">Date</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="s2">"yyyyMMdd"</span><span class="o">,</span> <span class="n">TimeZone</span><span class="o">.</span><span class="na">getTimeZone</span><span class="o">(</span><span class="s2">"GMT+08:00"</span><span class="o">))</span> <span class="o">+</span>
+                    <span class="s2">".apk"</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div></div>
 
-                    <div class="label-card">
-                    
+<h3 id="常见的问题">常见的问题</h3>
 
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#什么是内存泄漏" id="markdown-toc-什么是内存泄漏">什么是内存泄漏</a></li>
-  <li><a href="#为什么内存泄漏不好" id="markdown-toc-为什么内存泄漏不好">为什么内存泄漏不好</a></li>
-  <li><a href="#如何识别" id="markdown-toc-如何识别">如何识别</a></li>
-  <li><a href="#常见的内存泄漏的原因" id="markdown-toc-常见的内存泄漏的原因">常见的内存泄漏的原因</a></li>
-  <li><a href="#anr问题" id="markdown-toc-anr问题">ANR问题</a>    <ul>
-      <li><a href="#如何避免anr" id="markdown-toc-如何避免anr">如何避免ANR</a></li>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">It is currently in use by another Gradle instance</code>
+    <ul>
+      <li>解决方式
+关闭AS，执行以下命令，等待命令执行成功，重新clean，build后成功解决该问题。
+```
+find ~/.gradle -type f -name “*.lock” | while read f; do rm $f; done</li>
     </ul>
   </li>
-  <li><a href="#性能优化指标" id="markdown-toc-性能优化指标">性能优化指标</a></li>
-  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
-</ul>
+</ol>
 
-<p>每个应用程序都需要内存作为执行其工作的资源。为了确保Android中的每个应用程序都有足够的内存，Android系统需要有效地管理内存分配。当内存不足时，Android运行时会触发垃圾收集（GC）。GC的目的是通过清理不再有用的对象来回收内存。简而言之，为用户提供服务的所有内容都应保存在内存中，其他所有内容都将从内存中消失以释放资源。
-但是，如果以不良方式编写代码，从可访问对象以某种方式引用未使用的对象，GC会将未使用的对象标记为有用对象，因此无法删除它们。这称为内存泄漏。</p>
+<p>find ~/.gradle -type f -name “*.lock” -delete
+```</p>
 
-<h3 id="什么是内存泄漏">什么是内存泄漏</h3>
-
-<p>每个应用程序都需要内存作为执行其工作的资源。为了确保Android中的每个应用程序都有足够的内存，Android系统需要有效地管理内存分配。当内存不足时，Android运行时会触发垃圾收集（GC）。GC的目的是通过清理不再有用的对象来回收内存。简而言之，为用户提供服务的所有内容都应保存在内存中，其他所有内容都将从内存中消失以释放资源。
-但是，如果以不良方式编写代码，从可访问对象以某种方式引用未使用的对象，GC会将未使用的对象标记为有用对象，因此无法删除它们。这称为内存泄漏。</p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F1.png" alt="" /></p>
-
-<p>Java中有四种GC根：</p>
-<ul>
-  <li>
-    <p><strong>局部变量</strong>由一个线程堆栈保持活动状态。这不是真实对象虚拟参考，因此不可见。对于所有意图和目的，局部变量是GC根。</p>
-  </li>
-  <li>
-    <p><strong>活动Java线程</strong>始终被视为活动对象，因此是GC根。这对于线程局部变量尤为重要。</p>
-  </li>
-  <li>
-    <p><strong>静态变量</strong>由其类引用。这一事实使它们成为事实上的GC根源。类本身可以被垃圾收集，这将删除所有引用的静态变量。当我们一般使用应用程序服务器，OSGi容器或类加载器时，这一点特别重要。我们将在“问题模式”部分讨论相关问题。</p>
-  </li>
-  <li>
-    <p><strong>JNI引用</strong>是本机代码作为JNI调用的一部分创建的Java对象。这样创建的对象是专门处理的，因为JVM不知道它是否被本机代码引用。这些对象代表了一种非常特殊的GC根形式，我们将在下面的“问题模式”部分中详细介绍。</p>
-  </li>
-</ul>
-
-<h3 id="为什么内存泄漏不好">为什么内存泄漏不好</h3>
-
-<ul>
-  <li>界面卡顿</li>
-</ul>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Android%E7%BB%98%E5%88%B6%E7%AA%97%E5%8F%A3.png" alt="" /></p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E7%94%B1%E4%BA%8E%E9%A2%91%E7%B9%81GC%E5%AF%BC%E8%87%B4%E4%B8%A2%E5%A4%B1%E5%B8%A7.png" alt="" /></p>
-
-<ul>
-  <li>
-    <p>ANR</p>
-
-    <ol>
-      <li>在5秒内无响应输入事件（如按键或屏幕触摸事件）</li>
-      <li>BroadcastReceiver尚未在10秒内完成执行。</li>
-      <li>Service在特定的时间(20s)内无法处理完成。</li>
-    </ol>
-  </li>
-  <li>
-    <p>OOM-&gt;崩溃</p>
-  </li>
-  <li>
-    <p>在QA/测试中很难找到内存泄漏问题。它们难以复制。崩溃报告通常很难推理，因为它可以在Android系统拒绝内存分配的任何时间发生。</p>
-  </li>
-</ul>
-
-<h3 id="如何识别">如何识别</h3>
-
-<ul>
-  <li>LeakCanary工具</li>
-</ul>
-
-<p>它会为您的应用中的活动创建弱引用。（您也可以通过向任何其他对象添加监视来自定义它。）然后检查GC之后是否清除了引用。如果没有，它会将堆转储到.hprof文件中并进行分析以确认是否存在泄漏。如果有，则显示通知，并在单独的应用程序中显示泄漏发生的参考树。</p>
-
-<ul>
-  <li>
-    <p><a href="https://developer.android.google.cn/studio/profile/am-hprof">HPROF Viewer and Analyzer</a></p>
-  </li>
-  <li>
-    <p><a href="https://developer.android.google.cn/studio/profile/memory-profiler">Memory Profiler</a></p>
-  </li>
-</ul>
-
-<h3 id="常见的内存泄漏的原因">常见的内存泄漏的原因</h3>
-
-<ul>
-  <li>Leak activity to a static reference</li>
-  <li>Leak activity to a worker thread</li>
-  <li>Leak thread itself</li>
-</ul>
-
-<h3 id="anr问题">ANR问题</h3>
-
-<ul>
-  <li>导出 traces.txt 文件</li>
-</ul>
-
-<p>通过adb导出 data/anr/traces.txt</p>
-
-<h4 id="如何避免anr">如何避免ANR</h4>
-
-<p>不要在主线程(UI线程)里面做繁重的操作.</p>
-
-<h3 id="性能优化指标">性能优化指标</h3>
-
-<ul>
-  <li>启动时间</li>
-  <li>界面切换是否卡顿</li>
-  <li>过度绘制</li>
-</ul>
-
-<h3 id="参考">参考</h3>
-
-<p><a href="https://android.jlelse.eu/memory-leak-patterns-in-android-4741a7fcb570">Memory Leak Patterns in Android</a></p>
-
-<p><a href="https://www.dynatrace.com/resources/ebooks/javabook/how-garbage-collection-works/">Java Memory Management</a></p>
-
-<p><a href="http://wuhongsheng.top/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></p>
+<h3 id="参考链接">参考链接</h3>
+<p><a href="https://developer.android.google.cn/studio/build/optimize-your-build">优化构建速度</a></p>
 
 
                 </div>
                 <div class="read-all">
-                    <a  href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-06-12
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#AI" title="Category: AI" rel="category">AI</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a>&nbsp;
-    
-        <a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#主要步骤" id="markdown-toc-主要步骤">主要步骤</a></li>
-  <li><a href="#下一步" id="markdown-toc-下一步">下一步</a></li>
-  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
-  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
-</ul>
-
-<p>我们将使用转移学习，这意味着我们从一个已经接受另一个问题培训的模型开始。然后我们将重新训练类似的问题。从头开始深入学习可能需要几天时间，但可以在短时间内完成转移学习。</p>
-
-<p>我们将使用在ImageNet大型视觉识别挑战数据集上训练的模型。这些模型可以区分达尔马提亚或洗碗机等1,000个不同的类别。您将可以选择模型架构，因此您可以确定问题的速度，大小和准确性之间的正确折中。</p>
-
-<p>我们将使用这个相同的模型，但重新训练它可以根据我们自己的例子区分少数类。</p>
-
-<h3 id="主要步骤">主要步骤</h3>
-
-<ul>
-  <li>
-    <p><a href="http://wuhongsheng.top/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">安装TensorFlow</a></p>
-  </li>
-  <li>
-    <p>克隆git存储库</p>
-  </li>
-</ul>
-
-<p>此代码中使用的所有代码都包含在此git存储库中。克隆存储库并cd放入其中。这是我们将要工作的地方。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/googlecodelabs/tensorflow-for-poets-2
-
-cd tensorflow-for-poets-2
-</code></pre></div></div>
-
-<ul>
-  <li>下载训练图像</li>
-</ul>
-
-<p>在开始任何培训之前，您需要一组图像来教授模型有关您想要识别的新课程。我们创建了创作共用许可花卉照片的档案，以供初次使用。通过调用以下两个命令下载照片（218 MB）：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://download.tensorflow.org/example_images/flower_photos.tgz \
-    | tar xz -C tf_files
-</code></pre></div></div>
-
-<p>你现在应该有一个花卉照片的副本。通过发出以下命令来确认工作目录的内容：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls tf_files / flower_photos
-
-daisy/
-dandelion/
-roses/
-sunflowers/
-tulip/
-LICENSE.txt
-</code></pre></div></div>
-<ul>
-  <li>再训练网络</li>
-</ul>
-
-<p><strong>配置你的MobileNet</strong></p>
-
-<p>在这个练习中，我们将重新培训一个MobileNet。MobileNet是一个小型高效卷积神经网络。“卷积”意味着在图像中的每个位置执行相同的计算。</p>
-
-<p>MobileNet可以通过两种方式进行配置：</p>
-
-<p>输入图像分辨率：128,160,192或224px。毫不奇怪，摄入更高分辨率的图像需要更多的处理时间，但会导致更好的分类准确性。
-模型的相对大小作为最大的MobileNet的一小部分：1.0,0.75,0.50或0.25。
-这个codelab我们将使用224 0.5。</p>
-
-<p>使用推荐的设置，通常只需几分钟即可在笔记本电脑上进行再培训。您将在Linux shell变量中传递设置。在shell中设置这些变量：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAGE_SIZE=224
-ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
-
-# 查看变量
-echo $IMAGE_SIZE
-224
-
-# 通过发出以下命令来激活该 conda 环境
-source activate tensorflow
-</code></pre></div></div>
-<p><strong>启动TensorBoard</strong></p>
-
-<p>在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控培训进度。</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorboard --logdir tf_files/training_summaries &amp;
-
-</code></pre></div></div>
-<p><strong>查看再训练脚本</strong></p>
-
-<p>重新训练脚本来自TensorFlow Hub回购，但不作为pip包的一部分进行安装。所以为了简单起见，我将它包含在codelab存储库中。您可以使用该python命令运行脚本。花一点时间浏览一下“帮助”。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain -h
-
-</code></pre></div></div>
-
-<p><strong>运行训练脚本</strong></p>
-
-<p>如引言中所述，ImageNet模型是具有数百万个参数的网络，可以区分大量的类。我们只训练该网络的最后一层，因此训练将在合理的时间内结束。</p>
-
-<p>用一个大命令开始你的再训练（注意–summaries_dir选项，发送训练进度报告到tensorboard监测的目录）：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain \
-  --bottleneck_dir = tf_files / bottlenecks \
-  --how_many_training_steps = 500 \
-  --model_dir = tf_files / models / \
-  --summaries_dir = tf_files / training_summaries /“$ {ARCHITECTURE}”\
-  --output_graph = tf_files / retrained_graph.pb \
-  --output_labels = tf_files / retrained_labels.txt \
-  --architecture =“$ {ARCHITECTURE}”\
-  --image_dir = tf_files / flower_photos
-</code></pre></div></div>
-
-<p>请注意，此步骤需要一段时间。</p>
-
-<p>该脚本下载预先训练好的模型，添加一个新的最终图层，并在您下载的花卉照片上训练该图层。</p>
-
-<p>ImageNet不包括我们在这里培训的任何这些花卉物种。但是，使ImageNet可以区分1,000个类别的信息种类对区分其他对象也很有用。通过使用这个预先训练的网络，我们将这些信息用作最终分类层的输入，以区分我们的花类。</p>
-
-<ul>
-  <li>使用再训练模型</li>
-</ul>
-
-<p>再训练脚本将数据写入以下两个文件：</p>
-
-<p>tf_files/retrained_graph.pb，其中包含所选网络的一个版本，并在您的类别上重新培训最后一层。
-tf_files/retrained_labels.txt，这是一个包含标签的文本文件。</p>
-
-<p><strong>分类图像</strong></p>
-
-<p>codelab repo还包含tensorflow的label_image.py示例的副本，您可以使用它来测试您的网络。花一点时间阅读此脚本的帮助：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image -h
-
-</code></pre></div></div>
-<p>现在，让我们在雏菊的这个图像上运行脚本：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image \
-    --graph=tf_files/retrained_graph.pb  \
-    --image=tf_files/flower_photos/daisy/21652746_cc379e0eea_m.jpg
-</code></pre></div></div>
-<p>每次执行都会打印出花标的列表，在大多数情况下，正确的花在顶部（尽管每个重新训练的模型可能略有不同）。</p>
-
-<p>你可能会得到这样的雏菊照片的结果：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>daisy (score = 0.99071)
-sunflowers (score = 0.00595)
-dandelion (score = 0.00252)
-roses (score = 0.00049)
-tulips (score = 0.00032)
-</code></pre></div></div>
-
-<ul>
-  <li>可选训练参数</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--learning_rate 
-#参数控制训练期间最后一层更新的大小(比如0.005，训练需要更长的时间，但总体精度可能会增加。值越高learning_rate，比如1.0，可以训练速度更快，但通常会降低精度，甚至使培训不稳定。)
-
---summaries_dir 
-#是控制张量板中名称的选项。之前我们使用过：
-</code></pre></div></div>
-
-<ul>
-  <li>根据自己数据进行训练</li>
-</ul>
-
-<p>看到脚本处理花图像后，您可以开始观察网络教学以识别不同的类别。</p>
-
-<p>从理论上讲，你需要做的就是运行该工具，指定一组特定的子文件夹。每个子文件夹都按照您的某个类别命名，并仅包含该类别的图像。</p>
-
-<p>如果您完成此步骤并传递子目录的根文件夹作为参数的–image_dir参数，那么脚本应该训练您提供的图像，就像它为花一样。</p>
-
-<p>分类脚本使用文件夹名称作为标签名称，每个文件夹内的图像应该是与该标签对应的图片，如花卉档案中所示：</p>
-
-<p><img src="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/img/9444bbae4d5d9ab1.png" alt="" /></p>
-
-<h3 id="下一步">下一步</h3>
-
-<p>恭喜，您迈出了深入学习的更大的世界！</p>
-
-<p>您可以在<a href="https://tensorflow.google.cn/">TensorFlow网站</a>或TensorFlow GitHub <a href="https://github.com/tensorflow/">项目</a>中查看有关使用TensorFlow的更多信息。TensorFlow还有许多其他资源，包括<a href="https://groups.google.com/a/tensorflow.org/forum/#!forum/discuss">讨论组</a>和<a href="https://www.tfimgs.cn/resources/pdfs/45166.pdf">白皮书</a>。</p>
-
-<p>如果您有兴趣在移动设备上运行TensorFlow，请尝试本教程的第二部分：有三个版本：</p>
-
-<p><a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-tflite/index.html#">TFLite Android</a>
-<a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-ios/index.html#0">TFLite iOS</a>
-<a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2/index.html#0">TFMobile Android</a></p>
-
-<p>或者去<a href="http://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=circle&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.74359&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">TensorFlow游乐场</a>玩一下吧！</p>
-
-<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
-
-<p><strong>问题</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>InvalidArgumentError (see above for traceback): Expected image (JPEG, PNG, or GIF), got unknown format starting with '\000\005\026\007\000\002\000\000Mac OS X'
-</code></pre></div></div>
-
-<p><strong>解决方法</strong></p>
-
-<h3 id="参考">参考</h3>
-
-<ul>
-  <li>
-    <p><a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/index.html#0">TensorFlow Codelabs</a></p>
-  </li>
-  <li>
-    <p><a href="https://tensorflow.google.cn/tutorials/image_retraining">retraining tutorial</a></p>
-  </li>
-  <li>
-    <p><a href="https://petewarden.com/2016/02/28/tensorflow-for-poets/">Pete Warden’s TensorFlow for Poets blog</a></p>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-06-01
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#产品" title="Category: 产品" rel="category">产品</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#原型设计" title="Tag: 原型设计" rel="tag">原型设计</a>&nbsp;
-    
-        <a href="/tag/#产品" title="Tag: 产品" rel="tag">产品</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#google教程" id="markdown-toc-google教程">Google教程</a></li>
-</ul>
-
-<h5 id="google教程">Google教程</h5>
-
-<ul>
-  <li>
-    <p><a href="https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&amp;mid=2652046181&amp;idx=1&amp;sn=50ac9cf4c8b645a64f73335d13094f77&amp;chksm=808ca320b7fb2a36d2013d8722cdad38dba9abea8486ca6c4d841777c7e3b7a729f9e2df45c6&amp;scene=21#wechat_redirect">上篇</a></p>
-  </li>
-  <li>
-    <p><a href="https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&amp;mid=2652046404&amp;idx=1&amp;sn=40757c4cb8abe5ecad83d789923ba87a&amp;chksm=808ca401b7fb2d17a8ddc3c51c83a1b5cbe2c0f57eaef24e6e8db75cae54b13b3d9d51b26fbe&amp;scene=21#wechat_redirect">中篇</a></p>
-  </li>
-  <li>
-    <p><a href="https://mp.weixin.qq.com/s/Zht9agRrayFRgU39XJ6H3g">下篇</a></p>
-  </li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                    <a  href="/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
                 <hr>
               </li>
@@ -1238,9 +1519,17 @@ tulips (score = 0.00032)
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2020/08/21/bilibili-ijkplayer-%E7%BC%96%E8%AF%91%E5%8F%8A%E5%BA%94%E7%94%A8/">bilibili / ijkplayer 编译及应用</a></li>
+                    
+                        <li><a href="/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/">常用设计模式（以JAVA为例）</a></li>
+                    
+                        <li><a href="/2019/07/25/Flutter%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Flutter从入门到放弃</a></li>
+                    
                         <li><a href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a></li>
                     
                         <li><a href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Linux使用从入门到放弃</a></li>
+                    
+                        <li><a href="/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Gradle从入门到放弃</a></li>
                     
                         <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
                     
@@ -1249,14 +1538,6 @@ tulips (score = 0.00032)
                         <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
                     
                         <li><a href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a></li>
-                    
-                        <li><a href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a></li>
-                    
-                        <li><a href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a></li>
-                    
-                        <li><a href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a></li>
-                    
-                        <li><a href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a></li>
                     
                 </ul>
             </div>
@@ -1476,6 +1757,42 @@ tulips (score = 0.00032)
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="/category/#Gradle" class="categories-list-item" cate="Gradle">
+                            <span class="name">
+                                Gradle
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Flutter" class="categories-list-item" cate="Flutter">
+                            <span class="name">
+                                Flutter
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#设计模式" class="categories-list-item" cate="设计模式">
+                            <span class="name">
+                                设计模式
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#音视频" class="categories-list-item" cate="音视频">
+                            <span class="name">
+                                音视频
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -1687,7 +2004,7 @@ tulips (score = 0.00032)
                       
                       
                       
-                      <a href="/tag/#跨平台" style="font-size: 9pt; color: #999;">跨平台</a>
+                      <a href="/tag/#跨平台" style="font-size: 10pt; color: #888;">跨平台</a>
                     
                       
                       
@@ -1771,7 +2088,7 @@ tulips (score = 0.00032)
                       
                       
                       
-                      <a href="/tag/#Gradle" style="font-size: 10pt; color: #888;">Gradle</a>
+                      <a href="/tag/#Gradle" style="font-size: 10.5pt; color: #777;">Gradle</a>
                     
                       
                       
@@ -1807,6 +2124,34 @@ tulips (score = 0.00032)
                       
                       
                       <a href="/tag/#DataBinding" style="font-size: 9pt; color: #999;">DataBinding</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Flutter" style="font-size: 9pt; color: #999;">Flutter</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#设计模式" style="font-size: 9pt; color: #999;">设计模式</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#音视频" style="font-size: 9pt; color: #999;">音视频</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#ijkplayer" style="font-size: 9pt; color: #999;">ijkplayer</a>
                     
                 </div>
             </div>

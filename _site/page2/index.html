@@ -168,6 +168,630 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2019-01-21
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>&nbsp;
+    
+        <a href="/tag/#Jetpack" title="Tag: Jetpack" rel="tag">Jetpack</a>&nbsp;
+    
+        <a href="/tag/#DataBinding" title="Tag: DataBinding" rel="tag">DataBinding</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#databinding常见用法" id="markdown-toc-databinding常见用法">Databinding常见用法</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+</ul>
+
+<p><a href="https://developer.android.google.cn/topic/libraries/data-binding/">数据绑定库</a>是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。</p>
+
+<h3 id="databinding常见用法">Databinding常见用法</h3>
+
+<p>1.字符串判空</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;import</span> <span class="na">type=</span><span class="s">"android.text.TextUtils"</span> <span class="nt">/&gt;</span>                
+    <span class="nt">&lt;ImageView</span>
+ 	<span class="na">isGone=</span><span class="s">"@{TextUtils.isEmpty(viewModel.changeInfo)}"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/iv_clear"</span>
+    <span class="na">android:padding=</span><span class="s">"5dp"</span>
+    <span class="na">android:layout_marginEnd=</span><span class="s">"10dp"</span>
+    <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">"@id/et"</span>
+    <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"@+id/et"</span>
+    <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"@id/et"</span>
+    <span class="na">android:src=</span><span class="s">"@mipmap/login_close"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">/&gt;</span>
+
+</code></pre></div></div>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p><strong>错误描述</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wantong.product/com.example.xuncha.ui.task.PatrolTaskDetialActivity}: java.lang.RuntimeException: view must have a tag
+</code></pre></div></div>
+
+<p><strong>原因及解决方法</strong></p>
+
+<p>使用DataBinding的项目中存在同名布局文件，找到对应的生成文件查看具体错误原因</p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">Android 性能优化</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-08-15
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#什么是内存泄漏" id="markdown-toc-什么是内存泄漏">什么是内存泄漏</a></li>
+  <li><a href="#为什么内存泄漏不好" id="markdown-toc-为什么内存泄漏不好">为什么内存泄漏不好</a></li>
+  <li><a href="#如何识别" id="markdown-toc-如何识别">如何识别</a></li>
+  <li><a href="#常见的内存泄漏的原因" id="markdown-toc-常见的内存泄漏的原因">常见的内存泄漏的原因</a></li>
+  <li><a href="#anr问题" id="markdown-toc-anr问题">ANR问题</a>    <ul>
+      <li><a href="#如何避免anr" id="markdown-toc-如何避免anr">如何避免ANR</a></li>
+    </ul>
+  </li>
+  <li><a href="#性能优化指标" id="markdown-toc-性能优化指标">性能优化指标</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<p>每个应用程序都需要内存作为执行其工作的资源。为了确保Android中的每个应用程序都有足够的内存，Android系统需要有效地管理内存分配。当内存不足时，Android运行时会触发垃圾收集（GC）。GC的目的是通过清理不再有用的对象来回收内存。简而言之，为用户提供服务的所有内容都应保存在内存中，其他所有内容都将从内存中消失以释放资源。
+但是，如果以不良方式编写代码，从可访问对象以某种方式引用未使用的对象，GC会将未使用的对象标记为有用对象，因此无法删除它们。这称为内存泄漏。</p>
+
+<h3 id="什么是内存泄漏">什么是内存泄漏</h3>
+
+<p>每个应用程序都需要内存作为执行其工作的资源。为了确保Android中的每个应用程序都有足够的内存，Android系统需要有效地管理内存分配。当内存不足时，Android运行时会触发垃圾收集（GC）。GC的目的是通过清理不再有用的对象来回收内存。简而言之，为用户提供服务的所有内容都应保存在内存中，其他所有内容都将从内存中消失以释放资源。
+但是，如果以不良方式编写代码，从可访问对象以某种方式引用未使用的对象，GC会将未使用的对象标记为有用对象，因此无法删除它们。这称为内存泄漏。</p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F1.png" alt="" /></p>
+
+<p>Java中有四种GC根：</p>
+<ul>
+  <li>
+    <p><strong>局部变量</strong>由一个线程堆栈保持活动状态。这不是真实对象虚拟参考，因此不可见。对于所有意图和目的，局部变量是GC根。</p>
+  </li>
+  <li>
+    <p><strong>活动Java线程</strong>始终被视为活动对象，因此是GC根。这对于线程局部变量尤为重要。</p>
+  </li>
+  <li>
+    <p><strong>静态变量</strong>由其类引用。这一事实使它们成为事实上的GC根源。类本身可以被垃圾收集，这将删除所有引用的静态变量。当我们一般使用应用程序服务器，OSGi容器或类加载器时，这一点特别重要。我们将在“问题模式”部分讨论相关问题。</p>
+  </li>
+  <li>
+    <p><strong>JNI引用</strong>是本机代码作为JNI调用的一部分创建的Java对象。这样创建的对象是专门处理的，因为JVM不知道它是否被本机代码引用。这些对象代表了一种非常特殊的GC根形式，我们将在下面的“问题模式”部分中详细介绍。</p>
+  </li>
+</ul>
+
+<h3 id="为什么内存泄漏不好">为什么内存泄漏不好</h3>
+
+<ul>
+  <li>界面卡顿</li>
+</ul>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Android%E7%BB%98%E5%88%B6%E7%AA%97%E5%8F%A3.png" alt="" /></p>
+
+<p><img src="http://ooxw95lkz.bkt.clouddn.com/android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E7%94%B1%E4%BA%8E%E9%A2%91%E7%B9%81GC%E5%AF%BC%E8%87%B4%E4%B8%A2%E5%A4%B1%E5%B8%A7.png" alt="" /></p>
+
+<ul>
+  <li>
+    <p>ANR</p>
+
+    <ol>
+      <li>在5秒内无响应输入事件（如按键或屏幕触摸事件）</li>
+      <li>BroadcastReceiver尚未在10秒内完成执行。</li>
+      <li>Service在特定的时间(20s)内无法处理完成。</li>
+    </ol>
+  </li>
+  <li>
+    <p>OOM-&gt;崩溃</p>
+  </li>
+  <li>
+    <p>在QA/测试中很难找到内存泄漏问题。它们难以复制。崩溃报告通常很难推理，因为它可以在Android系统拒绝内存分配的任何时间发生。</p>
+  </li>
+</ul>
+
+<h3 id="如何识别">如何识别</h3>
+
+<ul>
+  <li>LeakCanary工具</li>
+</ul>
+
+<p>它会为您的应用中的活动创建弱引用。（您也可以通过向任何其他对象添加监视来自定义它。）然后检查GC之后是否清除了引用。如果没有，它会将堆转储到.hprof文件中并进行分析以确认是否存在泄漏。如果有，则显示通知，并在单独的应用程序中显示泄漏发生的参考树。</p>
+
+<ul>
+  <li>
+    <p><a href="https://developer.android.google.cn/studio/profile/am-hprof">HPROF Viewer and Analyzer</a></p>
+  </li>
+  <li>
+    <p><a href="https://developer.android.google.cn/studio/profile/memory-profiler">Memory Profiler</a></p>
+  </li>
+</ul>
+
+<h3 id="常见的内存泄漏的原因">常见的内存泄漏的原因</h3>
+
+<ul>
+  <li>Leak activity to a static reference</li>
+  <li>Leak activity to a worker thread</li>
+  <li>Leak thread itself</li>
+</ul>
+
+<h3 id="anr问题">ANR问题</h3>
+
+<ul>
+  <li>导出 traces.txt 文件</li>
+</ul>
+
+<p>通过adb导出 data/anr/traces.txt</p>
+
+<h4 id="如何避免anr">如何避免ANR</h4>
+
+<p>不要在主线程(UI线程)里面做繁重的操作.</p>
+
+<h3 id="性能优化指标">性能优化指标</h3>
+
+<ul>
+  <li>启动时间</li>
+  <li>界面切换是否卡顿</li>
+  <li>过度绘制</li>
+</ul>
+
+<h3 id="参考">参考</h3>
+
+<p><a href="https://android.jlelse.eu/memory-leak-patterns-in-android-4741a7fcb570">Memory Leak Patterns in Android</a></p>
+
+<p><a href="https://www.dynatrace.com/resources/ebooks/javabook/how-garbage-collection-works/">Java Memory Management</a></p>
+
+<p><a href="http://wuhongsheng.top/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/08/15/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-06-12
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#AI" title="Category: AI" rel="category">AI</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#AI" title="Tag: AI" rel="tag">AI</a>&nbsp;
+    
+        <a href="/tag/#TensorFlow" title="Tag: TensorFlow" rel="tag">TensorFlow</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#主要步骤" id="markdown-toc-主要步骤">主要步骤</a></li>
+  <li><a href="#下一步" id="markdown-toc-下一步">下一步</a></li>
+  <li><a href="#常见问题及解决方法" id="markdown-toc-常见问题及解决方法">常见问题及解决方法</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<p>我们将使用转移学习，这意味着我们从一个已经接受另一个问题培训的模型开始。然后我们将重新训练类似的问题。从头开始深入学习可能需要几天时间，但可以在短时间内完成转移学习。</p>
+
+<p>我们将使用在ImageNet大型视觉识别挑战数据集上训练的模型。这些模型可以区分达尔马提亚或洗碗机等1,000个不同的类别。您将可以选择模型架构，因此您可以确定问题的速度，大小和准确性之间的正确折中。</p>
+
+<p>我们将使用这个相同的模型，但重新训练它可以根据我们自己的例子区分少数类。</p>
+
+<h3 id="主要步骤">主要步骤</h3>
+
+<ul>
+  <li>
+    <p><a href="http://wuhongsheng.top/2017/12/15/TensorFlow%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">安装TensorFlow</a></p>
+  </li>
+  <li>
+    <p>克隆git存储库</p>
+  </li>
+</ul>
+
+<p>此代码中使用的所有代码都包含在此git存储库中。克隆存储库并cd放入其中。这是我们将要工作的地方。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/googlecodelabs/tensorflow-for-poets-2
+
+cd tensorflow-for-poets-2
+</code></pre></div></div>
+
+<ul>
+  <li>下载训练图像</li>
+</ul>
+
+<p>在开始任何培训之前，您需要一组图像来教授模型有关您想要识别的新课程。我们创建了创作共用许可花卉照片的档案，以供初次使用。通过调用以下两个命令下载照片（218 MB）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://download.tensorflow.org/example_images/flower_photos.tgz \
+    | tar xz -C tf_files
+</code></pre></div></div>
+
+<p>你现在应该有一个花卉照片的副本。通过发出以下命令来确认工作目录的内容：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls tf_files / flower_photos
+
+daisy/
+dandelion/
+roses/
+sunflowers/
+tulip/
+LICENSE.txt
+</code></pre></div></div>
+<ul>
+  <li>再训练网络</li>
+</ul>
+
+<p><strong>配置你的MobileNet</strong></p>
+
+<p>在这个练习中，我们将重新培训一个MobileNet。MobileNet是一个小型高效卷积神经网络。“卷积”意味着在图像中的每个位置执行相同的计算。</p>
+
+<p>MobileNet可以通过两种方式进行配置：</p>
+
+<p>输入图像分辨率：128,160,192或224px。毫不奇怪，摄入更高分辨率的图像需要更多的处理时间，但会导致更好的分类准确性。
+模型的相对大小作为最大的MobileNet的一小部分：1.0,0.75,0.50或0.25。
+这个codelab我们将使用224 0.5。</p>
+
+<p>使用推荐的设置，通常只需几分钟即可在笔记本电脑上进行再培训。您将在Linux shell变量中传递设置。在shell中设置这些变量：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAGE_SIZE=224
+ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+
+# 查看变量
+echo $IMAGE_SIZE
+224
+
+# 通过发出以下命令来激活该 conda 环境
+source activate tensorflow
+</code></pre></div></div>
+<p><strong>启动TensorBoard</strong></p>
+
+<p>在开始训练之前，tensorboard在后台启动。TensorBoard是一种包含在tensorflow中的监测和检测工具。您将使用它来监控培训进度。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensorboard --logdir tf_files/training_summaries &amp;
+
+</code></pre></div></div>
+<p><strong>查看再训练脚本</strong></p>
+
+<p>重新训练脚本来自TensorFlow Hub回购，但不作为pip包的一部分进行安装。所以为了简单起见，我将它包含在codelab存储库中。您可以使用该python命令运行脚本。花一点时间浏览一下“帮助”。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain -h
+
+</code></pre></div></div>
+
+<p><strong>运行训练脚本</strong></p>
+
+<p>如引言中所述，ImageNet模型是具有数百万个参数的网络，可以区分大量的类。我们只训练该网络的最后一层，因此训练将在合理的时间内结束。</p>
+
+<p>用一个大命令开始你的再训练（注意–summaries_dir选项，发送训练进度报告到tensorboard监测的目录）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.retrain \
+  --bottleneck_dir = tf_files / bottlenecks \
+  --how_many_training_steps = 500 \
+  --model_dir = tf_files / models / \
+  --summaries_dir = tf_files / training_summaries /“$ {ARCHITECTURE}”\
+  --output_graph = tf_files / retrained_graph.pb \
+  --output_labels = tf_files / retrained_labels.txt \
+  --architecture =“$ {ARCHITECTURE}”\
+  --image_dir = tf_files / flower_photos
+</code></pre></div></div>
+
+<p>请注意，此步骤需要一段时间。</p>
+
+<p>该脚本下载预先训练好的模型，添加一个新的最终图层，并在您下载的花卉照片上训练该图层。</p>
+
+<p>ImageNet不包括我们在这里培训的任何这些花卉物种。但是，使ImageNet可以区分1,000个类别的信息种类对区分其他对象也很有用。通过使用这个预先训练的网络，我们将这些信息用作最终分类层的输入，以区分我们的花类。</p>
+
+<ul>
+  <li>使用再训练模型</li>
+</ul>
+
+<p>再训练脚本将数据写入以下两个文件：</p>
+
+<p>tf_files/retrained_graph.pb，其中包含所选网络的一个版本，并在您的类别上重新培训最后一层。
+tf_files/retrained_labels.txt，这是一个包含标签的文本文件。</p>
+
+<p><strong>分类图像</strong></p>
+
+<p>codelab repo还包含tensorflow的label_image.py示例的副本，您可以使用它来测试您的网络。花一点时间阅读此脚本的帮助：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image -h
+
+</code></pre></div></div>
+<p>现在，让我们在雏菊的这个图像上运行脚本：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m scripts.label_image \
+    --graph=tf_files/retrained_graph.pb  \
+    --image=tf_files/flower_photos/daisy/21652746_cc379e0eea_m.jpg
+</code></pre></div></div>
+<p>每次执行都会打印出花标的列表，在大多数情况下，正确的花在顶部（尽管每个重新训练的模型可能略有不同）。</p>
+
+<p>你可能会得到这样的雏菊照片的结果：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>daisy (score = 0.99071)
+sunflowers (score = 0.00595)
+dandelion (score = 0.00252)
+roses (score = 0.00049)
+tulips (score = 0.00032)
+</code></pre></div></div>
+
+<ul>
+  <li>可选训练参数</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--learning_rate 
+#参数控制训练期间最后一层更新的大小(比如0.005，训练需要更长的时间，但总体精度可能会增加。值越高learning_rate，比如1.0，可以训练速度更快，但通常会降低精度，甚至使培训不稳定。)
+
+--summaries_dir 
+#是控制张量板中名称的选项。之前我们使用过：
+</code></pre></div></div>
+
+<ul>
+  <li>根据自己数据进行训练</li>
+</ul>
+
+<p>看到脚本处理花图像后，您可以开始观察网络教学以识别不同的类别。</p>
+
+<p>从理论上讲，你需要做的就是运行该工具，指定一组特定的子文件夹。每个子文件夹都按照您的某个类别命名，并仅包含该类别的图像。</p>
+
+<p>如果您完成此步骤并传递子目录的根文件夹作为参数的–image_dir参数，那么脚本应该训练您提供的图像，就像它为花一样。</p>
+
+<p>分类脚本使用文件夹名称作为标签名称，每个文件夹内的图像应该是与该标签对应的图片，如花卉档案中所示：</p>
+
+<p><img src="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/img/9444bbae4d5d9ab1.png" alt="" /></p>
+
+<h3 id="下一步">下一步</h3>
+
+<p>恭喜，您迈出了深入学习的更大的世界！</p>
+
+<p>您可以在<a href="https://tensorflow.google.cn/">TensorFlow网站</a>或TensorFlow GitHub <a href="https://github.com/tensorflow/">项目</a>中查看有关使用TensorFlow的更多信息。TensorFlow还有许多其他资源，包括<a href="https://groups.google.com/a/tensorflow.org/forum/#!forum/discuss">讨论组</a>和<a href="https://www.tfimgs.cn/resources/pdfs/45166.pdf">白皮书</a>。</p>
+
+<p>如果您有兴趣在移动设备上运行TensorFlow，请尝试本教程的第二部分：有三个版本：</p>
+
+<p><a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-tflite/index.html#">TFLite Android</a>
+<a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2-ios/index.html#0">TFLite iOS</a>
+<a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets-2/index.html#0">TFMobile Android</a></p>
+
+<p>或者去<a href="http://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=circle&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.74359&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">TensorFlow游乐场</a>玩一下吧！</p>
+
+<h3 id="常见问题及解决方法">常见问题及解决方法</h3>
+
+<p><strong>问题</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>InvalidArgumentError (see above for traceback): Expected image (JPEG, PNG, or GIF), got unknown format starting with '\000\005\026\007\000\002\000\000Mac OS X'
+</code></pre></div></div>
+
+<p><strong>解决方法</strong></p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+  <li>
+    <p><a href="https://codelabs.tensorflowers.cn/codelabs/tensorflow-for-poets/index.html#0">TensorFlow Codelabs</a></p>
+  </li>
+  <li>
+    <p><a href="https://tensorflow.google.cn/tutorials/image_retraining">retraining tutorial</a></p>
+  </li>
+  <li>
+    <p><a href="https://petewarden.com/2016/02/28/tensorflow-for-poets/">Pete Warden’s TensorFlow for Poets blog</a></p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2018-06-01
+                    </div>
+                    <div class="label-card">
+                        <i class="fa fa-user"></i>WHS
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#产品" title="Category: 产品" rel="category">产品</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#原型设计" title="Tag: 原型设计" rel="tag">原型设计</a>&nbsp;
+    
+        <a href="/tag/#产品" title="Tag: 产品" rel="tag">产品</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#google教程" id="markdown-toc-google教程">Google教程</a></li>
+</ul>
+
+<h5 id="google教程">Google教程</h5>
+
+<ul>
+  <li>
+    <p><a href="https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&amp;mid=2652046181&amp;idx=1&amp;sn=50ac9cf4c8b645a64f73335d13094f77&amp;chksm=808ca320b7fb2a36d2013d8722cdad38dba9abea8486ca6c4d841777c7e3b7a729f9e2df45c6&amp;scene=21#wechat_redirect">上篇</a></p>
+  </li>
+  <li>
+    <p><a href="https://mp.weixin.qq.com/s?__biz=MzAwODY4OTk2Mg==&amp;mid=2652046404&amp;idx=1&amp;sn=40757c4cb8abe5ecad83d789923ba87a&amp;chksm=808ca401b7fb2d17a8ddc3c51c83a1b5cbe2c0f57eaef24e6e8db75cae54b13b3d9d51b26fbe&amp;scene=21#wechat_redirect">中篇</a></p>
+  </li>
+  <li>
+    <p><a href="https://mp.weixin.qq.com/s/Zht9agRrayFRgU39XJ6H3g">下篇</a></p>
+  </li>
+</ul>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a>
                 </h2>
                 <div class="label">
@@ -359,586 +983,6 @@ svn import <span class="nt">-m</span> “新增公路管理” HighwayMangement 
                 <hr>
               </li>
             
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-03-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#AS" title="Tag: AS" rel="tag">AS</a>&nbsp;
-    
-        <a href="/tag/#Gradle" title="Tag: Gradle" rel="tag">Gradle</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#apk拆分" id="markdown-toc-apk拆分">APK拆分</a></li>
-</ul>
-
-<p>APK拆分常用方法</p>
-
-<h4 id="apk拆分">APK拆分</h4>
-
-<p>通过 APK 拆分，您可以高效地基于屏幕密度或 ABI 创建多个 APK。 例如，您可以利用 APK 拆分创建单独的 hdpi 和 mdpi 版本应用，同时仍将它们视为一个变体，并允许其共享测试应用、javac、dx 和 ProGuard 设置。</p>
-
-<p>如需了解有关使用 APK 拆分的详细信息，请参阅 <a href="http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits">APK 拆分</a>.</p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-03-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#AS" title="Tag: AS" rel="tag">AS</a>&nbsp;
-    
-        <a href="/tag/#Gradle" title="Tag: Gradle" rel="tag">Gradle</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    
-<p>相信使用AS的童鞋都会遇到这个问题，每次更新项目Gradle版本的时候，AS下载非常缓慢，有时候点停止下载还会造成AS卡死。对于这个问题大致有以下三种解决方法</p>
-
-<ul>
-  <li><a href="http://services.gradle.org/distributions/">Gradle下载地址</a></li>
-</ul>
-
-<ol>
-  <li>
-    <p>使用VPN下载</p>
-
-    <p>我就是通过这种方式下载的，需要注意的是，要先开VPN然后再打开AS下载。</p>
-  </li>
-  <li>
-    <p>手动下载配置</p>
-
-    <p><a href="https://blog.csdn.net/fuchaosz/article/details/51567808">参考文章</a></p>
-
-    <p>既然有大神写了，而且比较详细，我就不再班门弄斧了。</p>
-  </li>
-  <li>
-    <p>使用国内镜像地址</p>
-
-    <p>使用阿里云的国内镜像仓库地址，就可以快速的下载需要的文件修改项目根目录下的文件 build.gradle ：</p>
-  </li>
-</ol>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
-    repositories {
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-    }
-}
-
-allprojects {
-    repositories {
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-    }
-}
-</code></pre></div></div>
-
-<p>然后重新构建项目就可以了</p>
-
-<ul>
-  <li>Gradle常用命令</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查看项目依赖
-gradle :app:dependencies
-</code></pre></div></div>
-
-<ul>
-  <li><a href="https://developer.android.google.cn/studio/releases/gradle-plugin#revisions">Android Gradle插件版本升级</a></li>
-</ul>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/">ArcServer发布可同步地图服务</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-03-07
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#GIS" title="Category: GIS" rel="category">GIS</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#GIS" title="Tag: GIS" rel="tag">GIS</a>&nbsp;
-    
-        <a href="/tag/#ArcServer" title="Tag: ArcServer" rel="tag">ArcServer</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#操作流程以103arcserver为例" id="markdown-toc-操作流程以103arcserver为例">操作流程（以10.3ArcServer为例）</a></li>
-  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
-</ul>
-
-<p>从ArcGIS 10.2.1开始推出离在线一体化技术之后，数据的离在线一体化编辑一直是大家所关注的一个热点。数据存储在企业级地理数据库中，通过ArcGIS桌面软件加载后配图处理，并发布到ArcGIS for Server中，供移动端设备离线编辑使用，并可以同步回传版本化存档。这其中涉及多项配置操作，本篇文章主要针对FeatureService服务的发布流程做一个简单的介绍。以备查阅。
- <img src="https://images2015.cnblogs.com/blog/412448/201609/412448-20160909164428254-500287581.png" alt="" /></p>
-
-<h3 id="操作流程以103arcserver为例">操作流程（以10.3ArcServer为例）</h3>
-
-<p>1.准备数据源（ArcSDE）-&gt;2.添加GlobalId-&gt;3.启用存档-&gt;4.制作地图文档(MXD)-&gt;5.新增数据库连接-&gt;6.添加Server连接-&gt;7.注册数据库到服务器-&gt;8.发布服务</p>
-
-<ol>
-  <li>在CataLog中连接数据库、新建数据集、新建图层</li>
-</ol>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E8%BF%9E%E6%8E%A5SDE.png" alt="连接SDE" /></p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E8%A6%81%E7%B4%A0%E9%9B%86.png" alt="新建数据集" /></p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%96%B0%E5%BB%BA%E8%A6%81%E7%B4%A0%E7%B1%BB.png" alt="新建要素类" /></p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0%E5%AD%97%E6%AE%B5.png" alt="添加字段" /></p>
-
-<ol>
-  <li>添加GlobalId</li>
-</ol>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E6%B7%BB%E5%8A%A0Globalid.png" alt="添加GlobalId" /></p>
-
-<p>在增加GlobalId时可能会出现与数据锁冲突，如下图所示：执行SQL解除锁
-   <code class="language-plaintext highlighter-rouge">select * from sde.table_locks for update
-  </code></p>
-
-<ol>
-  <li>启用存档，这不用没问题</li>
-</ol>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E5%90%AF%E7%94%A8%E5%AD%98%E6%A1%A3.png" alt="启用存档" /></p>
-
-<ol>
-  <li>
-    <p>保存mxd文件</p>
-  </li>
-  <li>
-    <p>新建数据库连接</p>
-  </li>
-  <li>
-    <p>添加Server连接</p>
-  </li>
-  <li>
-    <p>注册数据库到服务器</p>
-  </li>
-  <li>
-    <p>发布地图服务</p>
-  </li>
-</ol>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E5%8F%91%E5%B8%83%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1.png" alt="发布地图服务" /></p>
-
-<p><img src="http://ooxw95lkz.bkt.clouddn.com/%E5%BC%80%E5%90%AF%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD.jpg" alt="开启同步功能" /></p>
-
-<h3 id="参考链接">参考链接</h3>
-
-<p><a href="https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm">https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-set-up-feature-service-data-for-offline-use.htm</a></p>
-
-<p><a href="https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm">https://server.arcgis.com/zh-cn/server/latest/get-started/windows/tutorial-create-offline-maps-with-versioned-data.htm</a></p>
-
-<p><a href="http://www.cnblogs.com/gis-luq/p/5857188.html">http://www.cnblogs.com/gis-luq/p/5857188.html</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/03/07/ArcServer%E5%8F%91%E5%B8%83%E5%8F%AF%E5%90%8C%E6%AD%A5%E7%9A%84%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
-              <li>
-                <h2>
-                  <a class="post-link" href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/">Android启动加速优化</a>
-                </h2>
-                <div class="label">
-                    <div class="label-card">
-                        <i class="fa fa-calendar"></i>2018-01-24
-                    </div>
-                    <div class="label-card">
-                        <i class="fa fa-user"></i>WHS
-                        
-                    </div>
-                    <div class="label-card">
-                        
-                    </div>
-
-                    <div class="label-card">
-                    
-
-
-<!-- <span class="point">•</span> -->
-<span class="categories">
-  <i class="fa fa-th-list"></i>
-  
-    
-        <a href="/category/#Android" title="Category: Android" rel="category">Android</a>
-    
-  
-
-  <!-- <span class="point">•</span> -->
-</span>
-
-
-                    </div>
-
-                    <div class="label-card">
-                    
-<!-- <span class="point">•</span> -->
-<span class="pageTag">
-  <i class="fa fa-tags"></i>
-  
-    
-        <a href="/tag/#性能优化" title="Tag: 性能优化" rel="tag">性能优化</a>&nbsp;
-    
-        <a href="/tag/#Android" title="Tag: Android" rel="tag">Android</a>
-    
-  
-
-</span>
-
-                    </div>
-                </div>
-                <div class="excerpt">
-                    <ul id="markdown-toc">
-  <li><a href="#背景资料" id="markdown-toc-背景资料">背景资料</a></li>
-  <li><a href="#常见问题及优化方式" id="markdown-toc-常见问题及优化方式">常见问题及优化方式</a>    <ul>
-      <li><a href="#启动主题切换" id="markdown-toc-启动主题切换">启动主题切换</a></li>
-      <li><a href="#avoid-heavy-app-initialization" id="markdown-toc-avoid-heavy-app-initialization">Avoid Heavy App Initialization</a></li>
-      <li><a href="#heavy-activity-initialization" id="markdown-toc-heavy-activity-initialization">Heavy activity initialization</a></li>
-      <li><a href="#diagnosing-the-problem" id="markdown-toc-diagnosing-the-problem">Diagnosing The Problem</a></li>
-    </ul>
-  </li>
-  <li><a href="#参考文章" id="markdown-toc-参考文章">参考文章</a></li>
-</ul>
-
-<p>随着项目版本的迭代，App的性能问题会逐渐暴露出来，而好的用户体验与性能表现紧密相关，从本篇文章开始，我将开启一个Android应用性能优化的专题，从理论到实战，从入门到深挖，手把手将性能优化实践到项目中，欢迎持续关注！</p>
-
-<h2 id="背景资料">背景资料</h2>
-
-<blockquote>
-  <p>应用的启动分为冷启动、热启动、温启动，而启动最慢、挑战最大的就是冷启动：系统和App本身都有更多的工作要从头开始！
-应用在冷启动之前，要执行三个任务：</p>
-</blockquote>
-
-<ol>
-  <li>加载启动App；</li>
-  <li>App启动之后立即展示出一个空白的Window；</li>
-  <li>创建App的进程；</li>
-</ol>
-
-<blockquote>
-  <p>而这三个任务执行完毕之后会马上执行以下任务：</p>
-</blockquote>
-
-<ol>
-  <li>建App对象；</li>
-  <li>启动Main Thread；</li>
-  <li>创建启动的Activity对象；</li>
-  <li>加载View；</li>
-  <li>布置屏幕；</li>
-  <li>进行第一次绘制；</li>
-</ol>
-
-<p>而一旦App进程完成了第一次绘制，系统进程就会用Main Activity替换已经展示的Background Window，此时用户就可以使用App了。</p>
-
-<p><img src="https://upload-images.jianshu.io/upload_images/4056837-36c808285a70cf1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="" /></p>
-
-<p>同样，Google也给出了启动加速的方向：</p>
-
-<blockquote>
-  <ol>
-    <li>利用提前展示出来的Window，快速展示出来一个界面，给用户快速反馈的体验；</li>
-    <li>避免在启动时做密集沉重的初始化（Heavy app initialization）；</li>
-    <li>定位问题：避免I/O操作、反序列化、网络操作、布局嵌套等。</li>
-  </ol>
-</blockquote>
-
-<p>可以通过以下命令测试启动耗时</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell am start -W com.titan.asfh/com.titan.asfh.login.LoginActivity
-命令含义: 
-ThisTime:最后一个启动的Activity的启动耗时; 
-TotalTime:自己的所有Activity的启动耗时; 
-WaitTime: ActivityManagerService启动App的Activity时的总时间(包括当前Activity的onPause()和自己Activity的启动)
-</code></pre></div></div>
-
-<h2 id="常见问题及优化方式">常见问题及优化方式</h2>
-
-<h3 id="启动主题切换">启动主题切换</h3>
-
-<p>按照官方文档的说明：使用Activity的windowBackground主题属性来为启动的Activity提供一个简单的drawable。
-Layout XML file:</p>
-
-<pre class="prettyprint lang-xml">
-	  &lt;?xml version="1.0" encoding="utf-8"?&gt;
-         &lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque"&gt;
-           <!-- The background color, preferably the same as your normal theme -->
-           &lt;item android:drawable="@android:color/white"/&gt;
-           <!-- Your product logo - 144dp color version of your app icon -->
-           &lt;item&gt;
-             &lt;bitmap
-               android:src="@mipmap/logo"
-               android:gravity="center"/&gt;
-             &lt;/item&gt;
-        &lt;/layer-list&gt;
-</pre>
-
-<p>Style:</p>
-
-<pre class="prettyprint lang-xml">
-
- &lt;style name="AppTheme.launcher" parent="AppTheme.NoTitle"&gt;
-         &lt;item name="android:windowBackground"&gt;@drawable/launcher &lt;/item&gt;
-  &lt;/style&gt;
- 
-</pre>
-
-<p>Manifest file:</p>
-
-<pre class="prettyprint lang-xml">
-
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-
-&lt;activity android:name=".login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.launcher"
-            &gt;
-            &lt;intent-filter&gt;
-                &lt;action android:name="android.intent.action.MAIN" /&gt;
-                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
-            &lt;/intent-filter&gt;
- &lt;/activity&gt;
- 
-</pre>
-
-<p>Activity:</p>
-
-<pre class="prettyprint lang-java">
-
-public class LoginActivity extends BaseActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme_NoTitle);
-        super.onCreate(savedInstanceState);
-       
-    }
-}
- 
-</pre>
-
-<p>实际测试发现，启动确实避免启动白屏的问题，但是无论时冷启动还是热启动都会有背景图，实测QQ、微信不是这样，判断
-它们是通过增加Splash Activity实现的。</p>
-
-<p>此外这样也可以解决白屏问题</p>
-
-<pre class="prettyprint lang-xml">
-&lt;style name="AppTheme.launcher" parent="android:Theme.Translucent.NoTitleBar.Fullscreen"/&gt;
-</pre>
-
-<h3 id="avoid-heavy-app-initialization">Avoid Heavy App Initialization</h3>
-
-<p>当代码覆盖Application 对象时，启动性能会受到影响，并在初始化该对象时执行繁重的工作或复杂的逻辑。如果您的应用程序子类执行不需要完成的初始化，您的应用程序可能会浪费时间在启动过程中。一些初始化可能是完全不必要的：例如，当应用程序实际启动以响应意图时，初始化主要活动的状态信息。意图是，应用程序只使用以前初始化的状态数据的一个子集。</p>
-
-<p>应用程序初始化过程中的其他挑战包括垃圾收集事件的影响或数量众多，或磁盘I / O与初始化同时发生，进一步阻止初始化过程。垃圾收集尤其是Dalvik运行时的一个考虑因素; Art运行时同时执行垃圾收集，最大限度地减少操作的影响。</p>
-
-<p><strong>诊断问题</strong></p>
-
-<p>您可以使用方法跟踪或内联跟踪来尝试诊断问题。</p>
-
-<p><strong>方法追踪</strong>
-运行方法跟踪器工具显示该 callApplicationOnCreate() 方法最终调用您的com.example.customApplication.onCreate 方法。如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
-
-<p><strong>内联追踪</strong>
-使用内联追踪来调查可能的罪魁祸首，包括：
-你的应用程序的初始onCreate() 功能。
-任何全球单身人士对象您的应用程序初始化。
-任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。</p>
-
-<p><strong>解决问题的办法</strong>
-无论问题出在不必要的初始化还是磁盘I / O，解决方案都会调用延迟初始化对象：只初始化那些立即需要的对象。例如，不是创建全局静态对象，而是移动到单例模式，应用程序只在第一次访问对象时创建对象。另外，考虑使用像<a href="https://google.github.io/dagger/">Dagger</a> 这样的依赖注入框架来创建对象，并且依赖关系是当它们被首次注入时。</p>
-
-<h3 id="heavy-activity-initialization">Heavy activity initialization</h3>
-
-<p>活动创建通常需要大量的高开销工作。通常，有机会优化这项工作来实现性能改进。这些常见问题包括：</p>
-
-<p>膨胀大型或复杂的布局。
-阻塞磁盘或网络I / O的屏幕绘图。
-加载和解码位图。
-栅格化VectorDrawable对象。
-初始化活动的其他子系统。
-诊断问题
-在这种情况下，方法跟踪和内联跟踪也是有用的。</p>
-
-<p><strong>方法追踪</strong>
-当运行Method Tracer工具时，特定的区域将关注于您的应用程序的Application子类构造函数和 com.example.customApplication.onCreate()方法。</p>
-
-<p>如果该工具显示这些方法需要很长时间才能完成执行，那么您应该进一步研究以查看正在进行的工作。</p>
-
-<p><strong>内联追踪</strong>
-使用内联追踪来调查可能的罪魁祸首，包括：</p>
-
-<p>你的应用程序的初始onCreate() 功能。
-它初始化的任何全局单例对象。
-任何磁盘I / O，反序列化，或瓶颈期间可能发生的紧密循环。
-<strong>解决问题的办法</strong>
-有很多潜在的瓶颈，但是两个常见的问题和解决办法如下：</p>
-
-<p>视图层次越大，应用所需的时间就越多。你可以采取两个步骤来解决这个问题：
-通过减少冗余或嵌套布局来平整您的视图层次结构。
-不要在启动时不需要显示部分UI。相反，使用ViewStub对象作为应用程序可以在更适当的时间膨胀的子层次结构的占位符。
-在主线程上完成所有的资源初始化操作也会减慢启动速度。你可以解决这个问题如下：
-移动所有的资源初始化，以便应用程序可以在不同的线程上执行它。
-允许应用程序加载并显示您的视图，然后更新依赖于位图和其他资源的视觉属性。</p>
-
-<h3 id="diagnosing-the-problem">Diagnosing The Problem</h3>
-
-<h2 id="参考文章">参考文章</h2>
-
-<p><a href="https://developer.android.com/topic/performance/launch-time.html">Launch-Time Performance</a></p>
-
-<p><a href="https://www.jianshu.com/p/f5514b1a826c">Android性能优化（一）之启动加速35%</a></p>
-
-
-                </div>
-                <div class="read-all">
-                    <a  href="/2018/01/24/Android%E5%90%AF%E5%8A%A8%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/"><i class="fa fa-newspaper-o"></i>Read All</a>
-                </div>
-                <hr>
-              </li>
-            
         </ul>
 
 
@@ -966,9 +1010,17 @@ public class LoginActivity extends BaseActivity {
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2020/08/21/bilibili-ijkplayer-%E7%BC%96%E8%AF%91%E5%8F%8A%E5%BA%94%E7%94%A8/">bilibili / ijkplayer 编译及应用</a></li>
+                    
+                        <li><a href="/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/">常用设计模式（以JAVA为例）</a></li>
+                    
+                        <li><a href="/2019/07/25/Flutter%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Flutter从入门到放弃</a></li>
+                    
                         <li><a href="/2019/06/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9MVVM%E8%80%8C%E4%B8%8D%E6%98%AFMVP-Android%E6%9E%B6%E6%9E%84/">为什么选择MVVM而不是MVP - Android架构</a></li>
                     
                         <li><a href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Linux使用从入门到放弃</a></li>
+                    
+                        <li><a href="/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Gradle从入门到放弃</a></li>
                     
                         <li><a href="/2019/01/21/Android-Databinding%E4%BD%BF%E7%94%A8/">Android DataBinding使用</a></li>
                     
@@ -977,14 +1029,6 @@ public class LoginActivity extends BaseActivity {
                         <li><a href="/2018/06/12/%E4%BD%BF%E7%94%A8TensorFlow%E5%AF%B9%E8%8A%B1%E6%9C%B5%E8%BF%9B%E8%A1%8C%E7%AE%80%E5%8D%95%E5%88%86%E7%B1%BB/">使用TensorFlow对花朵进行简单分类</a></li>
                     
                         <li><a href="/2018/06/01/%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/">产品原型设计</a></li>
-                    
-                        <li><a href="/2018/05/15/ArcGISRuntime-For-Android%E5%BC%80%E5%8F%91/">ArcGISRuntime For Android开发</a></li>
-                    
-                        <li><a href="/2018/04/20/%E5%B8%B8%E7%94%A8SVN%E5%91%BD%E4%BB%A4/">常用SVN命令及问题</a></li>
-                    
-                        <li><a href="/2018/03/07/Android-APK%E6%89%93%E5%8C%85/">Android APK打包技巧</a></li>
-                    
-                        <li><a href="/2018/03/07/AndroidStudio%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AEGradle/">AndroidStudio手动下载配置Gradle</a></li>
                     
                 </ul>
             </div>
@@ -1204,6 +1248,42 @@ public class LoginActivity extends BaseActivity {
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="/category/#Gradle" class="categories-list-item" cate="Gradle">
+                            <span class="name">
+                                Gradle
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#Flutter" class="categories-list-item" cate="Flutter">
+                            <span class="name">
+                                Flutter
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#设计模式" class="categories-list-item" cate="设计模式">
+                            <span class="name">
+                                设计模式
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/category/#音视频" class="categories-list-item" cate="音视频">
+                            <span class="name">
+                                音视频
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -1415,7 +1495,7 @@ public class LoginActivity extends BaseActivity {
                       
                       
                       
-                      <a href="/tag/#跨平台" style="font-size: 9pt; color: #999;">跨平台</a>
+                      <a href="/tag/#跨平台" style="font-size: 10pt; color: #888;">跨平台</a>
                     
                       
                       
@@ -1499,7 +1579,7 @@ public class LoginActivity extends BaseActivity {
                       
                       
                       
-                      <a href="/tag/#Gradle" style="font-size: 10pt; color: #888;">Gradle</a>
+                      <a href="/tag/#Gradle" style="font-size: 10.5pt; color: #777;">Gradle</a>
                     
                       
                       
@@ -1535,6 +1615,34 @@ public class LoginActivity extends BaseActivity {
                       
                       
                       <a href="/tag/#DataBinding" style="font-size: 9pt; color: #999;">DataBinding</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#Flutter" style="font-size: 9pt; color: #999;">Flutter</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#设计模式" style="font-size: 9pt; color: #999;">设计模式</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#音视频" style="font-size: 9pt; color: #999;">音视频</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#ijkplayer" style="font-size: 9pt; color: #999;">ijkplayer</a>
                     
                 </div>
             </div>

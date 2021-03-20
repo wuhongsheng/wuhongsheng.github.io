@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Android DataBinding使用</title>
-    <meta name="description" content="  常见问题数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。常见问题错误描述java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wantong.product/com....">
+    <meta name="description" content="  Databinding常见用法  常见问题数据绑定库是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。Databinding常见用法1.字符串判空&lt;import type="android.text.TextUtils" /&gt;              ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -222,10 +222,29 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
+  <li><a href="#databinding常见用法" id="markdown-toc-databinding常见用法">Databinding常见用法</a></li>
   <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
 </ul>
 
 <p><a href="https://developer.android.google.cn/topic/libraries/data-binding/">数据绑定库</a>是一个支持库，允许您使用声明性格式而不是以编程方式将布局中的UI组件绑定到应用程序中的数据源。</p>
+
+<h3 id="databinding常见用法">Databinding常见用法</h3>
+
+<p>1.字符串判空</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;import</span> <span class="na">type=</span><span class="s">"android.text.TextUtils"</span> <span class="nt">/&gt;</span>                
+    <span class="nt">&lt;ImageView</span>
+ 	<span class="na">isGone=</span><span class="s">"@{TextUtils.isEmpty(viewModel.changeInfo)}"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/iv_clear"</span>
+    <span class="na">android:padding=</span><span class="s">"5dp"</span>
+    <span class="na">android:layout_marginEnd=</span><span class="s">"10dp"</span>
+    <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">"@id/et"</span>
+    <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"@+id/et"</span>
+    <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"@id/et"</span>
+    <span class="na">android:src=</span><span class="s">"@mipmap/login_close"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span><span class="nt">/&gt;</span>
+
+</code></pre></div></div>
 
 <h3 id="常见问题">常见问题</h3>
 
@@ -248,6 +267,55 @@
             
                 
                     
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
                         
                         <h2 id="similar_posts">Similar Posts</h2>
                         <ul>
@@ -259,6 +327,17 @@
                         </li>
                         
                         
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
                     
                 
                     
@@ -347,74 +426,6 @@
                 
             
         
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
-            
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                    
-                
-                    
-                
-                    
-                
-            
-        
         
             </ul>
         
@@ -428,7 +439,7 @@
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2019/04/23/Linux%E4%BD%BF%E7%94%A8%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Linux使用从入门到放弃</a></p>
+        <p><strong>下一篇</strong> <a href="/2019/04/18/Gradle%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">Gradle从入门到放弃</a></p>
         
     </div>
 </div>

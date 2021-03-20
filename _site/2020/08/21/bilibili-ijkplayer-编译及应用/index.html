@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>bilibili / ijkplayer 编译及应用</title>
+    <meta name="description" content="  项目目录  编译环境  编译步骤  扩展支持  日志过滤  常见问题  扩展截屏、录像方法  性能优化  公网直播流测试地址  参考链接ijkplayer是B站开源的基于ffplay实现的视频播放器项目目录android - android平台上的上层接口封装以及平台相关方法config - 编译ffmpeg...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2020/08/21/bilibili-ijkplayer-%E7%BC%96%E8%AF%91%E5%8F%8A%E5%BA%94%E7%94%A8/">
+    <link rel="alternate" type="application/rss+xml" title="WHS" href="http://localhost:4000/feed.xml ">
+
+    <link rel="stylesheet" type="text/css" href="/css/sunburst.css ">
+    <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+    
+    <!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
+
+
+    <script>
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?73b6a88ab52561dd17cdc4f6284caaf0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+
+    <script>
+    // google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96638437-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+
+
+<!--google广告-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6707426947779377",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+
+
+  <body onload="PR.prettyPrint()">
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">WHS</a>
+        <small>GIS Engineer</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Android Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>bilibili / ijkplayer 编译及应用</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2020-08-21
+            </div>
+
+            <div class="label-card">
+                <i class="fa fa-user"></i>WHS
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#音视频" title="Category: 音视频" rel="category">音视频</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#%E9%9F%B3%E8%A7%86%E9%A2%91" title="Tag: 音视频" rel="tag">音视频</a-->
+        <a href="/tag/#音视频" title="Tag: 音视频" rel="tag">音视频</a>&nbsp;
+    
+        <!--a href="/tag/#ijkplayer" title="Tag: ijkplayer" rel="tag">ijkplayer</a-->
+        <a href="/tag/#ijkplayer" title="Tag: ijkplayer" rel="tag">ijkplayer</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#项目目录" id="markdown-toc-项目目录">项目目录</a></li>
+  <li><a href="#编译环境" id="markdown-toc-编译环境">编译环境</a></li>
+  <li><a href="#编译步骤" id="markdown-toc-编译步骤">编译步骤</a></li>
+  <li><a href="#扩展支持" id="markdown-toc-扩展支持">扩展支持</a></li>
+  <li><a href="#日志过滤" id="markdown-toc-日志过滤">日志过滤</a></li>
+  <li><a href="#常见问题" id="markdown-toc-常见问题">常见问题</a></li>
+  <li><a href="#扩展截屏录像方法" id="markdown-toc-扩展截屏录像方法">扩展截屏、录像方法</a></li>
+  <li><a href="#性能优化" id="markdown-toc-性能优化">性能优化</a></li>
+  <li><a href="#公网直播流测试地址" id="markdown-toc-公网直播流测试地址">公网直播流测试地址</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
+</ul>
+
+<p><a href="https://github.com/bilibili/ijkplayer">ijkplayer</a>是B站开源的基于ffplay实现的视频播放器</p>
+
+<h3 id="项目目录">项目目录</h3>
+<p>android - android平台上的上层接口封装以及平台相关方法</p>
+
+<p>config - 编译ffmpeg使用的配置文件</p>
+
+<p>extra - 存放编译ijkplayer所需的依赖源文件, 如ffmpeg、openssl等</p>
+
+<p>ijkmedia - 核心代码</p>
+
+<p>ijkj4a - android平台下使用，用来实现c代码调用java层代码，这个文件夹是通过bilibili的另一个开源项目jni4android自动生成的。</p>
+
+<ul>
+  <li>
+    <p>ijkplayer - 播放器数据下载及解码相关</p>
+  </li>
+  <li>
+    <p>ijksdl - 音视频数据渲染相关</p>
+  </li>
+</ul>
+
+<p>ios - iOS平台上的上层接口封装以及平台相关方法</p>
+
+<p>tools - 初始化项目工程脚本</p>
+
+<h3 id="编译环境">编译环境</h3>
+<ul>
+  <li>android-ndk-r10e</li>
+  <li>Mac OS X 10.15.4</li>
+  <li>Android Studio 4.0
+    <h3 id="编译步骤">编译步骤</h3>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 下载源码</span>
+git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android 
+<span class="nb">cd </span>ijkplayer-android
+<span class="c"># 切换到最新release分支</span>
+git checkout <span class="nt">-B</span> latest k0.8.8        
+<span class="c"># 下载ffmpeg等第三方依赖 ffmpeg libyuv soundtouch</span>
+./init-android.sh                    
+<span class="nb">cd </span>android/contrib
+<span class="c"># 清除ffmpeg编译</span>
+./compile-ffmpeg.sh clean      
+<span class="c"># 编译ffmpeg；all是编译所有平台，一般Android选择编译armv7a，arm64即可(./compile-ffmpeg.sh armv7a|arm64)</span>
+./compile-ffmpeg.sh all              
+<span class="nb">cd</span> ..
+<span class="c"># 编译ijkplayer；all是编译所有平台，一般Android选择编译armv7a，arm64即可(./compile-ijk.sh armv7a|arm64)</span>
+./compile-ijk.sh all               
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="扩展支持">扩展支持</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>增加rtsp协议支持
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=sdp"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtp"
+
+#默认的ijkplayer 的 ffmpeg 不支持pcm格式的音频，需要重新编译ffmpeg，添加对pcm的支持
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_alaw"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_ulaw"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw"
+</code></pre></div></div>
+
+<h3 id="日志过滤">日志过滤</h3>
+<p>1.上层播放组件封装
+WtVideoView
+2.IjkPlayer层
+IJKMEDIA</p>
+
+<h3 id="常见问题">常见问题</h3>
+
+<p>1.Could not find tag for codec pcm_alaw in stream #1, codec not currently supported</p>
+
+<p><a href="https://stackoverflow.com/questions/47495713/could-not-find-tag-for-codec-pcm-alaw-in-stream-1-codec-not-currently-supporte">codec not currently supported</a></p>
+
+<p>ffmepg mp4容器不支持pcm_alaw 修改存储容器为mov</p>
+
+<p>2.SDL_Android_NativeWindow_display_l: ANativeWindow_lock: failed -22</p>
+
+<p>软解情况下，界面卡住</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">void</span> <span class="nf">setVideoURI</span><span class="o">(</span><span class="nc">Uri</span> <span class="n">uri</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">headers</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mUri</span> <span class="o">=</span> <span class="n">uri</span><span class="o">;</span>
+        <span class="n">mHeaders</span> <span class="o">=</span> <span class="n">headers</span><span class="o">;</span>
+        <span class="n">mSeekWhenPrepared</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="c1">//重新设置渲染层</span>
+        <span class="n">setRender</span><span class="o">();</span>
+        <span class="n">openVideo</span><span class="o">();</span>
+        <span class="n">requestLayout</span><span class="o">();</span>
+        <span class="n">invalidate</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>播放Flv无声音</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stream #0: not enough frames to estimate rate; consider increasing probesize
+
+IJKMEDIA: Stream
+</code></pre></div></div>
+<p><a href="https://blog.csdn.net/qq_34420120/article/details/91415061">IjkMediaPlayer 播放无声音Bug</a></p>
+
+<p>因为需要探测视频和音频的格式, 你没声音是在probesize的大小内没获取到音频包, 你可以做的是:</p>
+
+<p>1.增大probesize和analyzeduration
+2.修改ffmpeg源码, 在达到probesize大小但还没获取到视频或音频格式的时候自动增大probesize再继续探测
+            ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, “probesize”, 1024L * 80);</p>
+
+<p>不支持pcm_alaw</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Could not find codec parameters for stream 1 (Audio: pcm_alaw, 8000 Hz, 1 channels, 64 kb/s): unspecified sample format
+
+</code></pre></div></div>
+<p>在module-lite.s中增加支持</p>
+
+<p>手机锁屏后网络中断导致视频中断</p>
+
+<p>开启 前台服务 或者 申请后台服务白名单</p>
+
+<h3 id="扩展截屏录像方法">扩展截屏、录像方法</h3>
+<p>1、通过在ffplay层扩至录像及录屏方法，但是不支持硬解下截屏
+2、可以在java层使用TextureRenderView获取Bitmap的形式进行截图</p>
+
+<h3 id="性能优化">性能优化</h3>
+<p>总延时=采集+编码(缓冲)+发送+传输+接收+解码(缓冲)+播放，你先确认下采集编码端有多少延时</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">//rtmp秒开配置</span>
+ <span class="c1">//设置播放前的最大探测时间 </span>
+ <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"analyzemaxduration"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+ <span class="c1">//播放前的探测Size，默认是1M, 改小一点会出画面更快</span>
+ <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"probesize"</span><span class="o">,</span> <span class="mi">512L</span><span class="o">);</span>
+ <span class="c1">//每处理一个packet之后刷新io上下文</span>
+ <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"flush_packets"</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span>
+            <span class="c1">//是否开启预缓冲，一般直播项目会开启，达到秒开的效果，不过带来了播放丢帧卡顿的体验</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"packet-buffering"</span><span class="o">,</span> <span class="mi">0L</span><span class="o">);</span>
+            <span class="c1">//跳帧处理,放CPU处理较慢时，进行跳帧处理，保证播放流程，画面和声音同步</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"framedrop"</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span>
+            <span class="c1">//rtmp秒开配置 end</span>
+            
+            
+<span class="c1">//播放rtst流图像延时550ms左右, 这个延迟是否还能有所提升，目前使用的参数配置项如下：TCP 连接</span>
+<span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"rtsp_transport"</span><span class="o">,</span> <span class="s">"tcp"</span><span class="o">);</span> 
+<span class="c1">//码流分析时间设置，单位为微秒</span>
+<span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"analyzeduration"</span><span class="o">,</span><span class="mi">500000L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"fast"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_CODEC</span><span class="o">,</span> <span class="s">"threads"</span><span class="o">,</span> <span class="s">"auto"</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"infbuf"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"flush_packets"</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"packet-buffering"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_CODEC</span><span class="o">,</span><span class="s">"skip_loop_filter"</span><span class="o">,</span><span class="mi">48L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"framedrop"</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span> 
+<span class="c1">//减少缓冲</span>
+<span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"fflags"</span><span class="o">,</span> <span class="s">"nobuffer"</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"probesize"</span><span class="o">,</span> <span class="mi">10240L</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"max-fps"</span><span class="o">,</span><span class="mi">25</span><span class="o">);</span> <span class="n">mediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"reconnect"</span><span class="o">,</span><span class="mi">5</span><span class="o">);</span>
+
+
+
+
+<span class="c1">//RTSP优化 </span>
+<span class="c1">//最大帧率</span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span><span class="s">"max-fps"</span><span class="o">,</span><span class="mi">30</span><span class="o">);</span>
+<span class="c1">//不额外优化        </span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"fast"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+<span class="c1">//探测大小 默认10240          </span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"probesize"</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"flush_packets"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="c1">//pause output until enough packets have been read after stalling</span>
+<span class="c1">//是否开启缓冲 </span>
+  <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"packet-buffering"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+<span class="c1">//drop frames when cpu is too slow：0-120   </span>
+<span class="c1">//丢帧,默认是1</span>
+<span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"framedrop"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="c1">//automatically start playing on prepared</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"start-on-prepared"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_CODEC</span><span class="o">,</span> <span class="s">"skip_loop_filter"</span><span class="o">,</span> <span class="mi">48</span><span class="o">);</span><span class="c1">//默认值48</span>
+            <span class="c1">//max buffer size should be pre-read：默认为15*1024*1024</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"max-buffer-size"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span><span class="c1">//最大缓存数</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"min-frames"</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span><span class="c1">//默认最小帧数2</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"max_cached_duration"</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span><span class="c1">//最大缓存时长</span>
+            <span class="c1">//input buffer:don't limit the input buffer size (useful with realtime streams)</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_PLAYER</span><span class="o">,</span> <span class="s">"infbuf"</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span><span class="c1">//是否限制输入缓存数</span>
+            <span class="n">ijkMediaPlayer</span><span class="o">.</span><span class="na">setOption</span><span class="o">(</span><span class="nc">IjkMediaPlayer</span><span class="o">.</span><span class="na">OPT_CATEGORY_FORMAT</span><span class="o">,</span> <span class="s">"fflags"</span><span class="o">,</span> <span class="s">"nobuffer"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="公网直播流测试地址">公网直播流测试地址</h3>
+
+<p>RTMP协议直播源
+香港卫视：rtmp://live.hkstv.hk.lxdns.com/live/hks
+RTSP协议直播源</p>
+<ul>
+  <li>大熊兔（VOD）：rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov</li>
+  <li>国外电视台：rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp</li>
+</ul>
+
+<p>HTTP协议直播源
+http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8</p>
+
+<h3 id="参考链接">参考链接</h3>
+
+<p><a href="https://github.com/Bilibili/ijkplayer">ijkplayer官方地址</a></p>
+
+<p><a href="https://www.jianshu.com/p/496257563f69">ijkplayer中遇到的问题汇总</a></p>
+
+<p><a href="https://github.com/momoxiaoray/ijkplayer">ijkplayer增加截屏和录像方法</a></p>
+
+<p><a href="https://juejin.cn/post/6844904135314128903">音频帧、视频帧及其同步</a></p>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>上一篇</strong> <a href="/2019/09/19/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A5JAVA%E4%B8%BA%E4%BE%8B/">常用设计模式（以JAVA为例）</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">Comments</h2>
+        
+
+
+
+<!--畅言打赏-->
+
+<!-- 畅言打赏功能 -->
+<!-- 代码1：放在页面需要展示的位置  -->
+<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+<div id="cyReward" role="cylabs" data-use="reward"></div>
+<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+<script type="text/javascript" charset="utf-8" src="https://cy-cdn.kuaizhan.com/js/??lib/jquery.js,changyan.labs.https.js?appid=cysWveoyH"></script>
+
+
+<div id="SOHUCS" sid="bilibili / ijkplayer 编译及应用"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysWveoyH',
+conf: 'prod_197c88b7efeb37e1be77d0772ff10000'
+});
+</script>
+
+
+<!--有言评论 邮箱 A-->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131444"></script>
+<!-- UY END -->
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    <li><a href="#similar_posts">Similar Posts</a></li>
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+ <!--Google 代码高亮js-->
+
+<!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>-->
+
+<!--<link rel="stylesheet" type="text/css" href="prettify.css">
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>-->
+
+<!--
+<link rel="stylesheet" type="text/css" href="/css/sunburst.css">
+-->
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             本站记录我编程之旅的沿途风景！ 
+        </p>
+        <p class="contact">
+            Contact me at: 
+            <a href="https://github.com/wuhongsheng" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>  
+            <a href="mailto:664116298@qq.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> 
+                   
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                 Theme designed by HyG.
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/smooth-scroll.min.js " charset="utf-8"></script>
+    <script type="text/javascript">
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    </script>
+    <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+   
+
+  </body>
+
+</html>

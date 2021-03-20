@@ -14,6 +14,24 @@ author: WHS
 
 
 
+### Databinding常见用法
+
+1.字符串判空
+```xml
+<import type="android.text.TextUtils" />                
+    <ImageView
+ 	isGone="@{TextUtils.isEmpty(viewModel.changeInfo)}"
+    android:id="@+id/iv_clear"
+    android:padding="5dp"
+    android:layout_marginEnd="10dp"
+    app:layout_constraintEnd_toEndOf="@id/et"
+    app:layout_constraintTop_toTopOf="@+id/et"
+    app:layout_constraintBottom_toBottomOf="@id/et"
+    android:src="@mipmap/login_close"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+```
 
 
 
