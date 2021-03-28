@@ -24,7 +24,7 @@ type: page
 还有，学习是一个非常愉快的过程。共同加油！
 
 * 2018.11.26 入职皖通科技
-* 2018.6.26-2018-11 科大讯飞
+* 2018.2-2018-11 科大讯飞
 * 2015.6.20-2018.2 北京航天泰坦科技股份有限公司 
 * 2015.6 毕业于滁州学院 地理信息系统专业
 * 2014.12-2015.4 安徽省第四测绘院实习
@@ -36,6 +36,11 @@ type: page
 * GitHub：[wuhongsheng](https://github.com/wuhongsheng)
 * email：664116298@qq.com
 
+## 个人开源项目
+
+[视频播放器_wtplayer](https://github.com/wuhongsheng/wtplayer)
+
+[车牌键盘_vehicle_keyboard](https://github.com/wuhongsheng/vehicle_keyboard)
 
 ## 关于本站
 
