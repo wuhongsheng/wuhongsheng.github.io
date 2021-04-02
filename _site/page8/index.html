@@ -852,6 +852,7 @@
       <li><a href="#adb端口占用" id="markdown-toc-adb端口占用">adb端口占用</a></li>
     </ul>
   </li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
 </ul>
 
 <p>自从换了Mac后adb经常出现问题（经验不足），所以写此篇记录一下常用的adb命令以及一些常见问题解决方法。</p>
@@ -896,6 +897,14 @@ adb shell cd/proc cat cpuinfo
 adb shell wm size
 adb 将当前页面的数据导出来
 adb shell "uiautomator dump --compressed &amp;&amp; cat /sdcard/window_dump.xml"
+# 卸载系统应用
+adb shell pm uninstall [-k] [--user USER_ID] 包名
+# 例如卸载360浏览器
+adb shell pm uninstall -k --user 0 com.qihoo.browser
+# 查看应用报名
+adb shell dumpsys window | grep mCurrentFocus
+
+
 </code></pre></div></div>
 
 <hr />
@@ -963,6 +972,10 @@ error: cannot connect to daemon
 原因：这个是socket 的端口被占用了，我这里是因为360安全助手占用了这个端口，所以其他的就不能够用了。就要删除手机助手的进程，如图里面的360Mobile</p>
 
 <p><img src="https://img-blog.csdn.net/20160718104410461?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></p>
+
+<h2 id="参考链接">参考链接</h2>
+
+<p><a href="https://mp.weixin.qq.com/s/qLWzA8Qx-q0pebEZu1gXMw">黑科技之卸载Android系统应用!</a></p>
 
                 </div>
                 <div class="read-all">

@@ -36,7 +36,7 @@ type: page
 * GitHub：[wuhongsheng](https://github.com/wuhongsheng)
 * email：664116298@qq.com
 
-## 个人开源项目
+## 个人开源项目欢迎Star
 
 [视频播放器_wtplayer](https://github.com/wuhongsheng/wtplayer)
 
