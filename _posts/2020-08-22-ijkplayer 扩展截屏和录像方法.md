@@ -315,6 +315,7 @@ void ijkmp_get_current_frame(IjkMediaPlayer *mp, uint8_t *frame_buf)
 ```
 
 5. 修改 ijkplayer_jni.c
+
 ```c
   + #include <android/bitmap.h>
 
