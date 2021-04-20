@@ -3,7 +3,7 @@ layout: post
 title:  "ArcGISRuntime For Android开发"
 date:   2018-05-15 08:14:54
 categories: GIS
-tags:  GIS
+tags:  GIS Arcgis
 author: WHS
 ---
 

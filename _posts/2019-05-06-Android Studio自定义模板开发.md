@@ -3,7 +3,7 @@ layout: post
 title:  "Android Studio自定义模板开发"
 date:   2019-05-06 08:14:54
 categories: AS
-tags:  AS 
+tags:  AS Android
 author: WHS
 ---
 
