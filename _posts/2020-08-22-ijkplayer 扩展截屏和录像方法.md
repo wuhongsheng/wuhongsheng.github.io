@@ -18,6 +18,7 @@ author: WHS
 
 
 1. 修改ff_ffplay.h 
+
 ```C
 //申明录制视频、截图相关方法
 int       ffp_start_record(FFPlayer *ffp, const char *file_name);
@@ -29,6 +30,7 @@ AVStream            *m_vStream;
 ```
 
 2. 修改ff_ffplay.c
+
 ```c
 void ffp_get_current_frame_l(FFPlayer *ffp, uint8_t *frame_buf)
         {
@@ -251,8 +253,10 @@ int ffp_stop_record(FFPlayer *ffp)
         return 0;
     }
 ```
+
 3. 修复ff_ffplay_def.h
 FFPlayer 结构中增加如下属性
+
 ```c
   AVFormatContext *m_ofmt_ctx;        // 用于输出的AVFormatContext结构体
     AVOutputFormat *m_ofmt;
@@ -376,6 +380,7 @@ LABEL_RETURN:
 ```
 
 6. 修改 android/ijkplayer/ijkplayer-java/src/main/java/tv/danmaku/ijk/media/player/IjkMediaPlayer.java
+
 ```java
   +  public native int startRecord(String var1);
   +  public native int stopRecord();
@@ -383,6 +388,7 @@ LABEL_RETURN:
 ```
 
 7. 修改Android.mk
+
 ```
 - LOCAL_LDLIBS += -llog -landroid
 + LOCAL_LDLIBS += -llog -landroid -ljnigraphics
