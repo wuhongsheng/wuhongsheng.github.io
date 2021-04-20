@@ -19,7 +19,7 @@ author: WHS
 
 * 修改ff_ffplay.h 
 
-```C
+```c
 //申明录制视频、截图相关方法
 int       ffp_start_record(FFPlayer *ffp, const char *file_name);
 int       ffp_stop_record(FFPlayer *ffp);
