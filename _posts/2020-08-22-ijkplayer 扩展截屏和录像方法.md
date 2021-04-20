@@ -17,7 +17,7 @@ author: WHS
 
 
 
-1. 修改ff_ffplay.h 
+* 修改ff_ffplay.h 
 
 ```C
 //申明录制视频、截图相关方法
@@ -29,7 +29,7 @@ void      ffp_get_current_frame_l(FFPlayer *ffp, uint8_t *frame_buf);
 AVStream            *m_vStream;
 ```
 
-2. 修改ff_ffplay.c
+* 修改ff_ffplay.c
 
 ```c
 void ffp_get_current_frame_l(FFPlayer *ffp, uint8_t *frame_buf)
@@ -254,7 +254,8 @@ int ffp_stop_record(FFPlayer *ffp)
     }
 ```
 
-3. 修复ff_ffplay_def.h
+* 修复ff_ffplay_def.h
+
 FFPlayer 结构中增加如下属性
 
 ```c
@@ -273,7 +274,7 @@ FFPlayer 结构中增加如下属性
     int64_t start_a_dts;                // 开始录制时dts 音频
 ```
 
-4. 修改ijkplayer.c
+* 修改ijkplayer.c
 
 ```c
 int ijkmp_start_record(IjkMediaPlayer *mp,const char *file_name)
@@ -314,7 +315,7 @@ void ijkmp_get_current_frame(IjkMediaPlayer *mp, uint8_t *frame_buf)
 
 ```
 
-5. 修改 ijkplayer_jni.c
+* 修改 ijkplayer_jni.c
 
 ```c
   + #include <android/bitmap.h>
@@ -380,15 +381,16 @@ LABEL_RETURN:
   { "stopRecord",             "()I",      (void *) IjkMediaPlayer_stopRecord },
 ```
 
-6. 修改 android/ijkplayer/ijkplayer-java/src/main/java/tv/danmaku/ijk/media/player/IjkMediaPlayer.java
+* 修改 android/ijkplayer/ijkplayer-java/src/main/java/tv/danmaku/ijk/media/player/IjkMediaPlayer.java
 
 ```java
-  +  public native int startRecord(String var1);
-  +  public native int stopRecord();
-  +  public native boolean getCurrentFrame(Bitmap var1);
+  public native int startRecord(String var1);
+  public native int stopRecord();
+  public native boolean getCurrentFrame(Bitmap var1);
 ```
 
-7. 修改Android.mk
+
+* 修改Android.mk
 
 ```
 - LOCAL_LDLIBS += -llog -landroid
