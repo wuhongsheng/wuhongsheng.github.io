@@ -58,7 +58,40 @@ cd ..
 ./compile-ijk.sh all               
 ```
 
+### 常见编译错误
+
+* ./compile-ffmpeg.sh all  编译报错
+```
+tools/do-compile-ffmpeg.sh: ./configure: /bin/sh^M: bad interpreter: No such file or directory
+```
+
+一般是因为Linux无法识别出Windows的DOS格式，此时只需将文件格式转换成unix的即可，方法如下：
+1、编辑出错文件
+vi filename
+
+2、查看该格式（报错文件格式是DOS）
+:set ff
+
+3、修改格式
+:set ff=unix
+
+4、保存退出
+:wq!
+或者用dos2unix 转换
+```
+ dos2unix ./init-android-libyuv.sh ./init-android-soundtouch.sh
+ #对当前目录批量处理
+ find . -type f -exec dos2unix {} \;
+```
+
+
+* Unknown option "--disable-ffserver”.
+
+just delete the line include "--disable-ffserver" in module.sh
+
+
 ### 扩展支持
+
 ```
 增加rtsp协议支持
 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp"
@@ -73,6 +106,7 @@ export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw"
 
 
 ### 日志过滤
+
 1.上层播放组件封装
 WtVideoView
 2.IjkPlayer层
@@ -129,11 +163,12 @@ Could not find codec parameters for stream 1 (Audio: pcm_alaw, 8000 Hz, 1 channe
 
 开启 前台服务 或者 申请后台服务白名单
 
-### 扩展截屏、录像方法
-1、通过在ffplay层扩至录像及录屏方法，但是不支持硬解下截屏
-2、可以在java层使用TextureRenderView获取Bitmap的形式进行截图
+### [扩展截屏、录像方法](http://wuhongsheng.top/2020/08/22/ijkplayer-%E6%89%A9%E5%B1%95%E6%88%AA%E5%B1%8F%E5%92%8C%E5%BD%95%E5%83%8F%E6%96%B9%E6%B3%95)
+
+通过在ffplay层扩至录像及录屏方法，但是不支持硬解下截屏,可以在java层使用TextureRenderView获取Bitmap的形式进行截图
 
 ### 性能优化
+
 总延时=采集+编码(缓冲)+发送+传输+接收+解码(缓冲)+播放，你先确认下采集编码端有多少延时
 
 
