@@ -12,7 +12,7 @@ author: WHS
 
 [ijkplayer](https://github.com/bilibili/ijkplayer)是B站开源的基于ffplay实现的视频播放器，源码不支持截图和录像，因此需要从底层扩展
 
-
+[Demo实现](https://github.com/wuhongsheng/wtplayer)
 
 
 
